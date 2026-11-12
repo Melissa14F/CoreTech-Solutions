@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="es" class="sin-js">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Mis proyectos asignados · CoreTech Solutions</title>
+  <link rel="icon" href="../img/logo.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap">
+  <link rel="stylesheet" href="../css/global.css">
+  <link rel="stylesheet" href="../css/plantillas/panel.css">
+  <link rel="stylesheet" href="../css/plantillas/tarjetas.css">
+  <link rel="stylesheet" href="../css/vistas/desarrollador-proyectos.css">
+  <script src="../js/accesibilidad.js"></script>
+</head>
+<body>
+  <a class="saltar-contenido" href="#contenido">Saltar al contenido</a>
+
+  <div class="panel">
+    <!-- ===================== Menú lateral del cliente ===================== -->
+    <aside class="panel__lateral superficie-noche" aria-label="Menú del equipo">
+      <a class="marca" href="../index.html" aria-label="CoreTech Solutions, ir al sitio público">
+        <img class="marca__logo" src="../img/logo.svg" alt="" width="30" height="30">
+        <span>CoreTech</span>
+      </a>
+      <p class="panel__rol"><strong>Panel del equipo</strong>Tus proyectos y reuniones</p>
+
+      <nav aria-label="Secciones del desarrollador">
+        <p class="navegacion-panel__titulo">Mi trabajo</p>
+        <ul class="navegacion-panel__lista">
+          <li>
+            <a class="navegacion-panel__enlace" href="proyectos.html" aria-current="page">
+              <svg class="icono" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 7a2 2 0 0 1 2-2h4l2 2h8a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2Z"/></svg>
+              Mis proyectos
+              <span class="navegacion-panel__contador" aria-label="2 proyectos">2</span>
+            </a>
+          </li>
+          <li>
+            <a class="navegacion-panel__enlace" href="citas-reuniones.html">
+              <svg class="icono" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="4" width="18" height="17" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>
+              Citas y reuniones
+              <span class="navegacion-panel__contador navegacion-panel__contador--aviso" aria-label="3 pendientes">3</span>
+            </a>
+          </li>
+        </ul>
+      </nav>
+
+      <div class="panel__usuario">
+        <span class="avatar " aria-hidden="true">AP</span>
+        <span class="panel__usuario-datos">
+          <span class="panel__usuario-nombre">Andrés Pérez</span>
+          <span class="panel__usuario-correo">andres.perez@coretechsolutions.co</span>
+        </span>
+        <a class="panel__salir" href="../index.html" data-accion data-mensaje-exito="Cerraste sesión." aria-label="Cerrar sesión" title="Cerrar sesión">
+          <svg class="icono" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4M16 17l5-5-5-5M21 12H9"/></svg>
+        </a>
+      </div>
+    </aside>
+
+    <div class="panel__cuerpo">
+      <!-- ===================== Barra superior ===================== -->
+      <header class="panel__barra">
+        <button type="button" class="boton-icono boton-icono--pequeno boton-menu-panel" aria-expanded="false" aria-label="Abrir menú">
+          <svg class="icono" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+        </button>
+        <nav class="ruta" aria-label="Ruta de navegación">
+          <a href="proyectos.html">Panel</a>
+          <svg class="icono" viewBox="0 0 24 24" aria-hidden="true"><path d="m9 6 6 6-6 6"/></svg>
+          <span aria-current="page">Mis proyectos</span>
+        </nav>
+        <div class="panel__barra-acciones">
+          <a class="boton-icono boton-icono--pequeno campana" href="citas-reuniones.html" aria-label="Notificaciones: 3 nuevas">
+            <svg class="icono" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9"/><path d="M10.3 21a1.94 1.94 0 0 0 3.4 0"/></svg>
+            <span class="campana__punto" aria-hidden="true"></span>
+          </a>
+          <div class="panel__perfil">
+            <span class="avatar " aria-hidden="true">AP</span>
+            <span class="panel__perfil-nombre">Andrés Pérez<small>Product Owner</small></span>
+          </div>
+        </div>
+      </header>
+
+      <!-- ===================== Contenido ===================== -->
+      <main class="panel__contenido" id="contenido">
+        <div class="encabezado-vista aparecer">
+          <div>
+            <h1 class="encabezado-vista__titulo">Hola, Andrés</h1>
+            <p class="encabezado-vista__texto">Esto es lo que tienes para hoy, miércoles 11 de noviembre.</p>
+          </div>
+          <a class="boton boton--contorno" href="citas-reuniones.html"><svg class="icono" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="4" width="18" height="17" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>Citas y reuniones</a>
+        </div>
+
+        <section class="tarjeta pendientes aparecer" aria-labelledby="titulo-pendientes">
+          <h2 class="tarjeta__titulo" id="titulo-pendientes">Pendientes <span class="pendientes__cantidad">3</span></h2>
+          <ul class="pendientes__lista">
+              <li class="pendiente">
+                <span class="pendiente__icono"><svg class="icono" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="4" width="18" height="17" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg></span>
+                <div class="pendiente__texto"><strong>Confirmar 2 citas</strong><span>Andrea Villamizar, mié 18 · Natalia Suárez, vie 20</span></div>
+                <a class="boton boton--contorno boton--pequeno" href="citas-reuniones.html">Confirmar</a>
+              </li>
+              <li class="pendiente">
+                <span class="pendiente__icono"><svg class="icono" viewBox="0 0 24 24" aria-hidden="true"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/><path d="M8 9h8M8 13h5"/></svg></span>
+                <div class="pendiente__texto"><strong>Responder una solicitud de reunión</strong><span>Laura Gómez · Tienda en línea · Revisar el avance</span></div>
+                <a class="boton boton--contorno boton--pequeno" href="citas-reuniones.html#solicitudes">Responder</a>
+              </li>
+          </ul>
+        </section>
+
+        <div class="inicio">
+          <div class="inicio__cabecera">
+            <h2 class="inicio__titulo" id="titulo-proyectos">Mis proyectos</h2>
+            <span class="inicio__carga"><span class="carga" role="img" aria-label="2 de 3 proyectos activos"><span class="carga__unidad carga__unidad--ocupada"></span><span class="carga__unidad carga__unidad--ocupada"></span><span class="carga__unidad"></span></span>2 de 3 cupos</span>
+          </div>
+          <section class="inicio__principal" aria-labelledby="titulo-proyectos">
+            <ul class="lista-proyectos">
+              <li class="proyecto-resumen aparecer" style="--retraso: 0ms">
+                <div class="proyecto-resumen__cabecera">
+                  <img class="proyecto-resumen__imagen" src="../img/servicios/tienda-en-linea.webp" alt="" width="72" height="48">
+                  <div class="proyecto-resumen__nombre">
+                    <h3 class="proyecto-resumen__titulo"><a href="registrar-avance-tienda-en-linea.html">Tienda en línea Laura</a></h3>
+                    <p class="proyecto-resumen__codigo">P-0031 · Desarrollo de tienda en línea</p>
+                  </div>
+                  <span class="proyecto-resumen__porcentaje">40 %<small>del proyecto</small></span>
+                </div>
+                <div class="fases-mini__barras" role="img" aria-label="Proyecto al 40 %, fase 3 de 5"><span class="fases-mini__barra fases-mini__barra--completa"></span><span class="fases-mini__barra fases-mini__barra--completa"></span><span class="fases-mini__barra" style="--relleno: 60%"></span><span class="fases-mini__barra"></span><span class="fases-mini__barra"></span></div>
+                <dl class="proyecto-resumen__datos">
+                  <div><dt>Fase 3 de 5</dt><dd>Desarrollo <small>3 de 5 pasos</small></dd></div>
+                  <div><dt>Cliente</dt><dd>Laura Gómez</dd></div>
+                  <div><dt>Entrega estimada</dt><dd>18 dic 2026 <small>37 días</small></dd></div>
+                </dl>
+                <div class="proyecto-resumen__pie">
+                  <p class="proyecto-resumen__nota"><strong>Siguiente paso:</strong> pedidos y correos de confirmación.</p>
+                  <div class="proyecto-resumen__acciones"><a class="boton-icono boton-icono--pequeno" href="mailto:laura.gomez@correo.com" aria-label="Escribir a Laura Gómez" title="Escribir a Laura"><svg class="icono" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg></a><a class="boton boton--acento boton--pequeno" href="registrar-avance-tienda-en-linea.html"><svg class="icono" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg>Registrar avance</a></div>
+                </div>
+              </li>
+              <li class="proyecto-resumen aparecer" style="--retraso: 60ms">
+                <div class="proyecto-resumen__cabecera">
+                  <img class="proyecto-resumen__imagen" src="../img/servicios/app-movil.webp" alt="" width="72" height="48">
+                  <div class="proyecto-resumen__nombre">
+                    <h3 class="proyecto-resumen__titulo"><a href="registrar-avance-app-de-reservas.html">App de reservas</a></h3>
+                    <p class="proyecto-resumen__codigo">P-0034 · Aplicación móvil</p>
+                  </div>
+                  <span class="proyecto-resumen__porcentaje">0 %<small>del proyecto</small></span>
+                </div>
+                <div class="fases-mini__barras" role="img" aria-label="Proyecto al 0 %, fase 1 de 5"><span class="fases-mini__barra fases-mini__barra--revision" style="--relleno: 100%"></span><span class="fases-mini__barra"></span><span class="fases-mini__barra"></span><span class="fases-mini__barra"></span><span class="fases-mini__barra"></span></div>
+                <dl class="proyecto-resumen__datos">
+                  <div><dt>Fase 1 de 5</dt><dd>Requerimientos <small>esperando aprobación</small></dd></div>
+                  <div><dt>Cliente</dt><dd>Laura Gómez</dd></div>
+                  <div><dt>Entrega estimada</dt><dd>26 feb 2027 <small>107 días</small></dd></div>
+                </dl>
+                <div class="proyecto-resumen__pie">
+                  <p class="proyecto-resumen__nota"><strong>Entregada el 10 nov:</strong> Laura tiene hasta el vie 13 nov para aprobar.</p>
+                  <div class="proyecto-resumen__acciones"><a class="boton-icono boton-icono--pequeno" href="mailto:laura.gomez@correo.com" aria-label="Escribir a Laura Gómez" title="Escribir a Laura"><svg class="icono" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg></a><a class="boton boton--contorno boton--pequeno" href="registrar-avance-app-de-reservas.html">Ver proyecto<svg class="icono icono--mover" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 5l7 7-7 7"/></svg></a></div>
+                </div>
+              </li>
+            </ul>
+          </section>
+
+          <aside class="inicio__lateral">
+            <section class="tarjeta aparecer" style="--retraso: 120ms" aria-labelledby="titulo-agenda">
+              <div class="tarjeta__cabecera">
+                <h2 class="tarjeta__titulo" id="titulo-agenda">Agenda confirmada</h2>
+                <a class="enlace-tarjeta" href="citas-reuniones.html">Ver todo</a>
+              </div>
+              <ul class="agenda">
+                <li class="agenda__item">
+                  <span class="agenda__fecha" aria-hidden="true"><small>Jue</small><strong>12</strong></span>
+                  <div class="agenda__cuerpo"><p class="agenda__titulo">Reunión · Laura Gómez</p><p class="agenda__detalle">10:00 a.&nbsp;m. · Virtual · Tienda en línea</p><div class="agenda__accion"><a class="boton boton--acento boton--pequeno" href="https://meet.google.com/" target="_blank" rel="noopener"><svg class="icono" viewBox="0 0 24 24" aria-hidden="true"><rect x="2" y="6" width="14" height="12" rx="2"/><path d="m16 10 6-3v10l-6-3"/></svg>Unirse</a></div></div>
+                </li>
+                <li class="agenda__item">
+                  <span class="agenda__fecha" aria-hidden="true"><small>Lun</small><strong>16</strong></span>
+                  <div class="agenda__cuerpo"><p class="agenda__titulo">Cita · Felipe Ortega</p><p class="agenda__detalle">10:00 a.&nbsp;m. · Virtual · Integración de pagos</p></div>
+                </li>
+              </ul>
+            </section>
+          </aside>
+        </div>
+      </main>
+    </div>
+  </div>
+
+  <script src="../js/principal.js"></script>
+</body>
+</html>

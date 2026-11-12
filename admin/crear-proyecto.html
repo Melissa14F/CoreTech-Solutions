@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="es" class="sin-js">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Crear proyecto · CoreTech Solutions</title>
+  <link rel="icon" href="../img/logo.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap">
+  <link rel="stylesheet" href="../css/global.css">
+  <link rel="stylesheet" href="../css/plantillas/panel.css">
+  <link rel="stylesheet" href="../css/plantillas/tarjetas.css">
+  <link rel="stylesheet" href="../css/plantillas/proyecto.css">
+  <link rel="stylesheet" href="../css/vistas/admin-crear-proyecto.css">
+  <script src="../js/accesibilidad.js"></script>
+</head>
+<body>
+  <a class="saltar-contenido" href="#contenido">Saltar al contenido</a>
+
+  <div class="panel">
+    <!-- ===================== Menú lateral del cliente ===================== -->
+    <aside class="panel__lateral superficie-noche" aria-label="Menú del administrador">
+      <a class="marca" href="../index.html" aria-label="CoreTech Solutions, ir al sitio público">
+        <img class="marca__logo" src="../img/logo.svg" alt="" width="30" height="30">
+        <span>CoreTech</span>
+      </a>
+      <p class="panel__rol"><strong>Panel de administración</strong>Gestión de CoreTech</p>
+
+      <nav aria-label="Secciones del administrador: Gestión">
+        <p class="navegacion-panel__titulo">Gestión</p>
+        <ul class="navegacion-panel__lista">
+          <li>
+            <a class="navegacion-panel__enlace" href="dashboard.html">
+              <svg class="icono" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="7" height="9" rx="1.5"/><rect x="14" y="3" width="7" height="5" rx="1.5"/><rect x="14" y="12" width="7" height="9" rx="1.5"/><rect x="3" y="16" width="7" height="5" rx="1.5"/></svg>
+              Dashboard
+              
+            </a>
+          </li>
+          <li>
+            <a class="navegacion-panel__enlace" href="citas.html">
+              <svg class="icono" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="4" width="18" height="17" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>
+              Citas
+              <span class="navegacion-panel__contador navegacion-panel__contador--aviso" aria-label="1 sin asignar">1</span>
+            </a>
+          </li>
+          <li>
+            <a class="navegacion-panel__enlace" href="proyectos.html" aria-current="page">
+              <svg class="icono" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 7a2 2 0 0 1 2-2h4l2 2h8a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2Z"/></svg>
+              Proyectos
+              
+            </a>
+          </li>
+          <li>
+            <a class="navegacion-panel__enlace" href="solicitudes.html">
+              <svg class="icono" viewBox="0 0 24 24" aria-hidden="true"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/><path d="M8 9h8M8 13h5"/></svg>
+              Solicitudes de reunión
+              
+            </a>
+          </li>
+        </ul>
+      </nav>
+
+      <nav aria-label="Secciones del administrador: Sitio web">
+        <p class="navegacion-panel__titulo">Sitio web</p>
+        <ul class="navegacion-panel__lista">
+          <li>
+            <a class="navegacion-panel__enlace" href="servicios.html">
+              <svg class="icono" viewBox="0 0 24 24" aria-hidden="true"><path d="m12 2 10 5-10 5L2 7l10-5Z"/><path d="m2 17 10 5 10-5M2 12l10 5 10-5"/></svg>
+              Servicios
+              
+            </a>
+          </li>
+          <li>
+            <a class="navegacion-panel__enlace" href="contenido.html">
+              <svg class="icono" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>
+              Contenido del sitio
+              
+            </a>
+          </li>
+        </ul>
+      </nav>
+
+      <nav aria-label="Secciones del administrador: Seguridad">
+        <p class="navegacion-panel__titulo">Seguridad</p>
+        <ul class="navegacion-panel__lista">
+          <li>
+            <a class="navegacion-panel__enlace" href="usuarios.html">
+              <svg class="icono" viewBox="0 0 24 24" aria-hidden="true"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+              Usuarios
+              
+            </a>
+          </li>
+          <li>
+            <a class="navegacion-panel__enlace" href="roles-permisos.html">
+              <svg class="icono" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10Z"/><path d="m9 12 2 2 4-4"/></svg>
+              Roles y permisos
+              
+            </a>
+          </li>
+          <li>
+            <a class="navegacion-panel__enlace" href="auditoria.html">
+              <svg class="icono" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 5H7a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2h-2"/><rect x="9" y="3" width="6" height="4" rx="1"/><path d="M9 12h6M9 16h4"/></svg>
+              Auditoría
+              
+            </a>
+          </li>
+        </ul>
+      </nav>
+
+      <div class="panel__usuario">
+        <span class="avatar avatar--gris" aria-hidden="true">PL</span>
+        <span class="panel__usuario-datos">
+          <span class="panel__usuario-nombre">Patricia León</span>
+          <span class="panel__usuario-correo">patricia.leon@coretechsolutions.co</span>
+        </span>
+        <a class="panel__salir" href="../index.html" data-accion data-mensaje-exito="Cerraste sesión." aria-label="Cerrar sesión" title="Cerrar sesión">
+          <svg class="icono" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4M16 17l5-5-5-5M21 12H9"/></svg>
+        </a>
+      </div>
+    </aside>
+
+    <div class="panel__cuerpo">
+      <!-- ===================== Barra superior ===================== -->
+      <header class="panel__barra">
+        <button type="button" class="boton-icono boton-icono--pequeno boton-menu-panel" aria-expanded="false" aria-label="Abrir menú">
+          <svg class="icono" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+        </button>
+        <nav class="ruta" aria-label="Ruta de navegación">
+          <a href="dashboard.html">Administración</a>
+          <svg class="icono" viewBox="0 0 24 24" aria-hidden="true"><path d="m9 6 6 6-6 6"/></svg>
+          <a href="proyectos.html">Proyectos</a>
+          <svg class="icono" viewBox="0 0 24 24" aria-hidden="true"><path d="m9 6 6 6-6 6"/></svg>
+          <span aria-current="page">Crear proyecto</span>
+        </nav>
+        <div class="panel__barra-acciones">
+          <a class="boton-icono boton-icono--pequeno campana" href="dashboard.html#alertas" aria-label="Notificaciones: 4 nuevas">
+            <svg class="icono" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9"/><path d="M10.3 21a1.94 1.94 0 0 0 3.4 0"/></svg>
+            <span class="campana__punto" aria-hidden="true"></span>
+          </a>
+          <div class="panel__perfil">
+            <span class="avatar avatar--gris" aria-hidden="true">PL</span>
+            <span class="panel__perfil-nombre">Patricia León<small>Administradora</small></span>
+          </div>
+        </div>
+      </header>
+
+      <!-- ===================== Contenido ===================== -->
+      <main class="panel__contenido" id="contenido">
+        <a class="volver" href="proyectos.html">
+          <svg class="icono" viewBox="0 0 24 24" aria-hidden="true"><path d="M19 12H5M11 19l-7-7 7-7"/></svg>
+          Volver a proyectos
+        </a>
+        <div class="encabezado-vista aparecer">
+          <div>
+            <h1 class="encabezado-vista__titulo">Crear proyecto</h1>
+            <p class="encabezado-vista__texto">Un proyecto nace de una cita atendida. Elige la cita, el equipo responsable y la fecha estimada de entrega. Cada equipo se identifica por su Product Owner.</p>
+          </div>
+        </div>
+
+        <form class="crear-proyecto" data-validar data-formulario-proyecto data-mensaje-error="Revisa los campos marcados en rojo.">
+          <div class="crear-proyecto__principal">
+            <!-- 1. Cita de origen -->
+            <section class="tarjeta seccion-formulario aparecer" aria-labelledby="titulo-origen">
+              <h2 class="seccion-formulario__titulo" id="titulo-origen"><span class="seccion-formulario__numero" aria-hidden="true">1</span>Cita de origen</h2>
+              <div class="campo">
+                <label class="campo__etiqueta" for="proyecto-cita">Cita atendida</label>
+                <select class="campo__control select" id="proyecto-cita" name="cita" required data-mensaje-vacio="Elige la cita de la que nace el proyecto." aria-describedby="proyecto-cita-ayuda proyecto-cita-mensaje">
+                  <option value="">Elige una cita</option>
+                  <optgroup label="Atendidas sin proyecto">
+                    <option value="C-0057" data-cliente="Miguel Ángel Duarte" data-correo="miguel.duarte@correo.com" data-servicio="Página web corporativa" data-fecha="Jueves 5 de noviembre" data-desarrollador="Camila Jaimes" data-nombre="Web corporativa Duarte Asesores">C-0057 · Miguel Ángel Duarte · Página web corporativa</option>
+                  </optgroup>
+                  <optgroup label="Ya generaron un proyecto (RN-04)">
+                    <option value="C-0052" disabled>C-0052 · Laura Gómez · ya es P-0034</option>
+                    <option value="C-0045" disabled>C-0045 · Laura Gómez · ya es P-0031</option>
+                  </optgroup>
+                </select>
+                <p class="campo__ayuda" id="proyecto-cita-ayuda">Solo aparecen las citas atendidas. Cada cita puede generar un único proyecto.</p>
+                <p class="campo__mensaje" id="proyecto-cita-mensaje" aria-live="polite"><svg class="icono" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M12 8v4M12 16h.01"/></svg><span class="campo__mensaje-texto"></span></p>
+              </div>
+              <dl class="datos-cita" data-datos-cita hidden>
+                <div><dt>Cliente</dt><dd data-dato="cliente"></dd></div>
+                <div><dt>Servicio</dt><dd data-dato="servicio"></dd></div>
+                <div><dt>Fecha de la cita</dt><dd data-dato="fecha"></dd></div>
+                <div><dt>La atendió</dt><dd data-dato="desarrollador"></dd></div>
+              </dl>
+            </section>
+
+            <!-- 2. Datos del proyecto -->
+            <section class="tarjeta seccion-formulario aparecer" aria-labelledby="titulo-datos">
+              <h2 class="seccion-formulario__titulo" id="titulo-datos"><span class="seccion-formulario__numero" aria-hidden="true">2</span>Datos del proyecto</h2>
+              <div class="campo">
+                <label class="campo__etiqueta" for="proyecto-nombre">Nombre del proyecto</label>
+                <input class="campo__control" id="proyecto-nombre" name="nombre" type="text" required minlength="5" maxlength="60"
+                       placeholder="Ejemplo: Web corporativa Duarte Asesores"
+                       data-mensaje-vacio="Escribe el nombre que verá el cliente." data-mensaje-corto="Escribe al menos 5 caracteres."
+                       aria-describedby="proyecto-nombre-ayuda proyecto-nombre-mensaje">
+                <p class="campo__ayuda" id="proyecto-nombre-ayuda">Así lo verán el cliente y el desarrollador en su panel.</p>
+                <p class="campo__mensaje" id="proyecto-nombre-mensaje" aria-live="polite"><svg class="icono" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M12 8v4M12 16h.01"/></svg><span class="campo__mensaje-texto"></span></p>
+              </div>
+              <div class="campo">
+                <label class="campo__etiqueta" for="proyecto-alcance">Alcance acordado</label>
+                <textarea class="campo__control campo__control--area" id="proyecto-alcance" name="alcance" required minlength="20" maxlength="600"
+                          placeholder="Ejemplo: sitio de 5 páginas (inicio, servicios, equipo, blog y contacto) con formulario y botón de WhatsApp."
+                          data-mensaje-vacio="Describe lo que se acordó en la cita." data-mensaje-corto="Escribe al menos 20 caracteres."
+                          aria-describedby="proyecto-alcance-mensaje"></textarea>
+                <div class="campo__pie"><p class="campo__mensaje" id="proyecto-alcance-mensaje" aria-live="polite"><svg class="icono" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M12 8v4M12 16h.01"/></svg><span class="campo__mensaje-texto"></span></p><span class="campo__contador" data-contador-de="proyecto-alcance" aria-hidden="true">0 / 600</span></div>
+              </div>
+              <div class="fechas-proyecto">
+                <div class="campo">
+                  <label class="campo__etiqueta" for="proyecto-inicio">Fecha de inicio</label>
+                  <input class="campo__control" id="proyecto-inicio" name="inicio" type="date" value="2026-11-11" min="2026-11-11" required
+                         data-mensaje-vacio="Elige la fecha de inicio." data-mensaje-rango="El inicio no puede ser una fecha pasada."
+                         aria-describedby="proyecto-inicio-mensaje">
+                  <p class="campo__mensaje" id="proyecto-inicio-mensaje" aria-live="polite"><svg class="icono" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M12 8v4M12 16h.01"/></svg><span class="campo__mensaje-texto"></span></p>
+                </div>
+                <div class="campo">
+                  <label class="campo__etiqueta" for="proyecto-entrega">Entrega estimada</label>
+                  <input class="campo__control" id="proyecto-entrega" name="entrega" type="date" min="2026-11-25" required
+                         data-mensaje-vacio="Elige la fecha estimada de entrega." data-mensaje-rango="Debe ser al menos 2 semanas después del inicio."
+                         aria-describedby="proyecto-entrega-ayuda proyecto-entrega-mensaje">
+                  <p class="campo__ayuda" id="proyecto-entrega-ayuda" data-duracion>Mínimo 2 semanas después del inicio.</p>
+                  <p class="campo__mensaje" id="proyecto-entrega-mensaje" aria-live="polite"><svg class="icono" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M12 8v4M12 16h.01"/></svg><span class="campo__mensaje-texto"></span></p>
+                </div>
+              </div>
+            </section>
+
+            <!-- 3. Responsable -->
+            <section class="tarjeta seccion-formulario aparecer" aria-labelledby="titulo-responsable">
+              <h2 class="seccion-formulario__titulo" id="titulo-responsable"><span class="seccion-formulario__numero" aria-hidden="true">3</span>Equipo responsable</h2>
+              <fieldset class="grupo-opciones campo">
+                <legend class="solo-lector">Equipo responsable</legend>
+                <p class="campo__ayuda campo__ayuda--arriba">Cada equipo puede tener máximo 3 proyectos activos (RN-05). Solo su Product Owner registra el avance.</p>
+                <div class="opciones-persona">
+                    <label class="opcion-persona">
+                      <input type="radio" name="desarrollador" value="Camila Jaimes" data-iniciales="CJ" required data-mensaje-vacio="Elige el equipo responsable." aria-describedby="proyecto-desarrollador-mensaje">
+                      <span class="avatar" aria-hidden="true">CJ</span>
+                      <span class="opcion-persona__nombre">Equipo de Camila Jaimes<span class="opcion-persona__detalle">Product Owner: Camila Jaimes · 0 de 3 proyectos activos · 3 cupos libres</span></span>
+                      <span class="carga" role="img" aria-label="0 de 3 proyectos activos"><span class="carga__unidad"></span><span class="carga__unidad"></span><span class="carga__unidad"></span></span>
+                    </label>
+                    <label class="opcion-persona">
+                      <input type="radio" name="desarrollador" value="Sebastián Mora" data-iniciales="SM" required data-mensaje-vacio="Elige el equipo responsable." aria-describedby="proyecto-desarrollador-mensaje">
+                      <span class="avatar" aria-hidden="true">SM</span>
+                      <span class="opcion-persona__nombre">Equipo de Sebastián Mora<span class="opcion-persona__detalle">Product Owner: Sebastián Mora · 1 de 3 proyectos activos · 2 cupos libres</span></span>
+                      <span class="carga" role="img" aria-label="1 de 3 proyectos activos"><span class="carga__unidad carga__unidad--ocupada"></span><span class="carga__unidad"></span><span class="carga__unidad"></span></span>
+                    </label>
+                    <label class="opcion-persona">
+                      <input type="radio" name="desarrollador" value="Andrés Pérez" data-iniciales="AP" required data-mensaje-vacio="Elige el equipo responsable." aria-describedby="proyecto-desarrollador-mensaje">
+                      <span class="avatar" aria-hidden="true">AP</span>
+                      <span class="opcion-persona__nombre">Equipo de Andrés Pérez<span class="opcion-persona__detalle">Product Owner: Andrés Pérez · 2 de 3 proyectos activos · 1 cupo libre</span></span>
+                      <span class="carga" role="img" aria-label="2 de 3 proyectos activos"><span class="carga__unidad carga__unidad--ocupada"></span><span class="carga__unidad carga__unidad--ocupada"></span><span class="carga__unidad"></span></span>
+                    </label>
+                    <label class="opcion-persona opcion-persona--sin-cupo">
+                      <input type="radio" name="desarrollador" value="María Ruiz" data-iniciales="MR" disabled required data-mensaje-vacio="Elige el equipo responsable." aria-describedby="proyecto-desarrollador-mensaje">
+                      <span class="avatar" aria-hidden="true">MR</span>
+                      <span class="opcion-persona__nombre">Equipo de María Ruiz<span class="opcion-persona__detalle">Product Owner: María Ruiz · Sin cupo: ya tiene 3 proyectos activos</span></span>
+                      <span class="carga" role="img" aria-label="3 de 3 proyectos activos"><span class="carga__unidad carga__unidad--ocupada"></span><span class="carga__unidad carga__unidad--ocupada"></span><span class="carga__unidad carga__unidad--ocupada"></span></span>
+                    </label>
+                </div>
+                <p class="campo__mensaje" id="proyecto-desarrollador-mensaje" aria-live="polite"><svg class="icono" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M12 8v4M12 16h.01"/></svg><span class="campo__mensaje-texto"></span></p>
+              </fieldset>
+            </section>
+          </div>
+
+          <!-- Resumen en vivo -->
+          <aside class="crear-proyecto__resumen" aria-labelledby="titulo-resumen">
+            <div class="tarjeta resumen-proyecto aparecer">
+              <h2 class="tarjeta__titulo" id="titulo-resumen">Así se creará</h2>
+              <p class="resumen-proyecto__nombre" data-resumen="nombre">Proyecto sin nombre</p>
+              <dl class="lista-datos">
+                <div class="lista-datos__fila"><dt class="lista-datos__dato">Código</dt><dd class="lista-datos__valor">P-0035</dd></div>
+                <div class="lista-datos__fila"><dt class="lista-datos__dato">Cliente</dt><dd class="lista-datos__valor" data-resumen="cliente">—</dd></div>
+                <div class="lista-datos__fila"><dt class="lista-datos__dato">Servicio</dt><dd class="lista-datos__valor" data-resumen="servicio">—</dd></div>
+                <div class="lista-datos__fila"><dt class="lista-datos__dato">Equipo (Product Owner)</dt><dd class="lista-datos__valor" data-resumen="desarrollador">—</dd></div>
+                <div class="lista-datos__fila"><dt class="lista-datos__dato">Entrega estimada</dt><dd class="lista-datos__valor" data-resumen="entrega">—</dd></div>
+              </dl>
+              <p class="resumen-proyecto__fase"><svg class="icono" viewBox="0 0 24 24" aria-hidden="true"><rect x="4" y="11" width="16" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg><span>Empieza en <strong>Toma de requerimientos · 0 %</strong> (RN-06).</span></p>
+              <p class="resumen-proyecto__aviso"><svg class="icono" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg><span>El cliente y el desarrollador recibirán un correo, y el proyecto aparecerá en sus paneles.</span></p>
+              <a class="boton boton--acento boton--bloque" href="proyectos.html?buscar=P-0035" data-enviar data-mensaje-exito="Proyecto P-0035 creado. Avisamos al cliente y al desarrollador."><svg class="icono" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>Crear proyecto</a>
+              <a class="boton boton--fantasma boton--bloque" href="citas.html">Cancelar</a>
+            </div>
+          </aside>
+        </form>
+      </main>
+    </div>
+  </div>
+
+  <script src="../js/principal.js"></script>
+  <script src="../js/vistas/admin-crear-proyecto.js"></script>
+</body>
+</html>

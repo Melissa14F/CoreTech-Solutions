@@ -1,0 +1,150 @@
+/* ==========================================================================
+   Plantilla: Tarjetas del panel
+   Cifras de resumen, resumen de proyecto, agenda, barra de fases en
+   miniatura y tarjeta de cita.
+   La usan: Mis proyectos y Mis citas (cliente), Mis proyectos asignados y
+   Citas y reuniones (desarrollador) y las pantallas del administrador.
+   Requiere: css/global.css y css/plantillas/panel.css
+   ========================================================================== */
+
+/* 1. Cifras de resumen ======================================================= */
+.resumen-cifras { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: var(--espacio-4); margin-bottom: var(--espacio-8); }
+.indicador { display: flex; align-items: center; gap: var(--espacio-4); padding: var(--espacio-5); border: 1px solid var(--color-borde); border-radius: var(--radio-tarjeta); background: var(--color-fondo); transition: transform var(--duracion-media) var(--curva), box-shadow var(--duracion-media) var(--curva); }
+a.indicador:hover { transform: translateY(-2px); box-shadow: var(--sombra-media); }
+.indicador__icono { width: 44px; height: 44px; flex: none; display: grid; place-items: center; border-radius: var(--radio-caja); background: var(--color-acento-suave); color: var(--color-acento); }
+.indicador__icono--exito { background: var(--color-exito-fondo); color: var(--color-exito); }
+.indicador__icono--aviso { background: var(--color-advertencia-fondo); color: var(--color-advertencia); }
+.indicador__valor { display: block; font-family: var(--fuente-titulos); font-size: 1.375rem; font-weight: 800; line-height: 1.2; }
+.indicador__texto { font-size: .8125rem; color: var(--color-texto-suave); }
+
+/* 2. Inicio del cliente y del desarrollador ================================ */
+.inicio { display: grid; grid-template-columns: minmax(0, 1fr) 340px; gap: var(--espacio-4) var(--espacio-6); align-items: start; }
+/* El título va en su propia fila: así la primera tarjeta de cada columna empieza a la misma altura */
+.inicio > .inicio__cabecera { grid-column: 1; margin-bottom: 0; }
+.inicio__principal { grid-column: 1; }
+.inicio__lateral { grid-column: 2; grid-row: 2; }
+.inicio__cabecera { display: flex; align-items: center; justify-content: space-between; gap: var(--espacio-3); }
+.inicio__titulo { margin: 0; font-size: 1.125rem; }
+.inicio__carga { display: inline-flex; align-items: center; gap: var(--espacio-2); font-size: .8125rem; color: var(--color-texto-suave); }
+.inicio__carga .carga { margin: 0; }
+.inicio__lateral { display: grid; gap: var(--espacio-5); position: sticky; top: 92px; }
+.tarjeta__cabecera { display: flex; align-items: center; justify-content: space-between; gap: var(--espacio-3); margin-bottom: var(--espacio-4); }
+.tarjeta__cabecera .tarjeta__titulo { margin: 0; }
+.enlace-tarjeta { font-size: .8125rem; font-weight: 600; color: var(--color-acento); }
+
+/* Resumen de un proyecto: nombre, avance por fases, 3 datos clave y siguiente acción */
+.lista-proyectos { display: grid; gap: var(--espacio-4); margin: 0; padding: 0; list-style: none; }
+.proyecto-resumen { display: grid; gap: var(--espacio-4); padding: var(--espacio-5) var(--espacio-6); border: 1px solid var(--color-borde); border-radius: var(--radio-tarjeta); background: var(--color-fondo); transition: border-color var(--duracion-media) var(--curva), box-shadow var(--duracion-media) var(--curva); }
+.proyecto-resumen:hover { border-color: #c7c9f6; box-shadow: var(--sombra-media); }
+.proyecto-resumen__cabecera { display: flex; align-items: center; gap: var(--espacio-4); }
+.proyecto-resumen__imagen { width: 64px; height: 43px; flex: none; border-radius: var(--radio-control); object-fit: cover; border: 1px solid var(--color-borde); }
+.proyecto-resumen__nombre { min-width: 0; }
+.proyecto-resumen__titulo { margin: 0 0 2px; font-size: 1.0625rem; }
+.proyecto-resumen__titulo a { color: inherit; }
+.proyecto-resumen__titulo a:hover { color: var(--color-acento); }
+.proyecto-resumen__codigo { margin: 0; font-size: .8125rem; color: var(--color-texto-suave); }
+.proyecto-resumen__porcentaje { margin-left: auto; display: grid; justify-items: end; font-family: var(--fuente-titulos); font-size: 1.5rem; font-weight: 800; line-height: 1.1; color: var(--color-tinta); font-variant-numeric: tabular-nums; }
+.proyecto-resumen__porcentaje small { font-family: var(--fuente-texto, inherit); font-size: .6875rem; font-weight: 600; color: var(--color-texto-suave); }
+.proyecto-resumen__datos { display: grid; grid-template-columns: repeat(3, auto); justify-content: start; gap: var(--espacio-8); margin: 0; }
+.proyecto-resumen__datos > div { min-width: 0; }
+.proyecto-resumen__datos > div + div { padding-left: var(--espacio-8); border-left: 1px solid var(--color-borde-suave); }
+.proyecto-resumen__datos dt { font-size: .75rem; color: var(--color-texto-suave); }
+.proyecto-resumen__datos dd { margin: 2px 0 0; font-size: .875rem; font-weight: 600; color: var(--color-tinta); white-space: nowrap; }
+.proyecto-resumen__datos small { white-space: nowrap; margin-left: 4px; font-size: .75rem; font-weight: 500; color: var(--color-texto-suave); }
+.proyecto-resumen__pie { display: flex; align-items: center; justify-content: space-between; gap: var(--espacio-4); padding-top: var(--espacio-4); border-top: 1px solid var(--color-borde-suave); }
+.proyecto-resumen__nota { margin: 0; font-size: .8125rem; color: var(--color-texto); }
+.proyecto-resumen__nota strong { color: var(--color-tinta); }
+.proyecto-resumen__aviso { color: var(--color-advertencia); font-weight: 600; }
+.proyecto-resumen__acciones { display: flex; align-items: center; gap: var(--espacio-2); flex: none; }
+
+/* Avance por fases: 5 segmentos */
+/* Un segmento por fase (cada una vale 20 %); la fase actual se llena según sus pasos hechos */
+.fases-mini__barras { display: grid; grid-template-columns: repeat(5, 1fr); gap: 4px; }
+.fases-mini__barra { position: relative; height: 6px; overflow: hidden; border-radius: var(--radio-pildora); background: var(--color-borde-suave); }
+.fases-mini__barra::after { content: ""; position: absolute; inset: 0; width: var(--relleno, 0%); border-radius: inherit; background: var(--color-acento); }
+.fases-mini__barra--completa::after { --relleno: 100%; background: var(--color-exito); }
+.fases-mini__barra--revision::after, .fases-mini__barra--correccion::after { background: var(--color-advertencia); }
+
+/* Agenda: próximos encuentros */
+.agenda { display: grid; gap: var(--espacio-2); margin: 0; padding: 0; list-style: none; }
+.agenda__item { display: grid; grid-template-columns: 44px minmax(0, 1fr); align-items: start; gap: var(--espacio-3); padding: var(--espacio-3) 0; }
+.agenda__item + .agenda__item { border-top: 1px solid var(--color-borde-suave); }
+.agenda__fecha { display: grid; justify-items: center; padding: 4px 0; border-radius: var(--radio-control); background: var(--color-acento-suave); color: var(--color-acento); line-height: 1.1; }
+.agenda__fecha small { font-size: .625rem; font-weight: 700; text-transform: uppercase; letter-spacing: .06em; }
+.agenda__fecha strong { font-family: var(--fuente-titulos); font-size: 1.125rem; }
+.agenda__item--pendiente .agenda__fecha { background: var(--color-advertencia-fondo); color: var(--color-advertencia); }
+.agenda__cuerpo { min-width: 0; }
+.agenda__titulo { margin: 0; font-size: .875rem; font-weight: 600; color: var(--color-tinta); }
+.agenda__detalle { margin: 2px 0 0; font-size: .75rem; color: var(--color-texto-suave); }
+.agenda__accion { margin-top: var(--espacio-2); }
+.agenda__item .insignia { font-size: .6875rem; }
+
+/* 3. Tarjeta de cita (cliente y desarrollador) ============================= */
+.lista-citas { display: grid; gap: var(--espacio-4); }
+.tarjeta-cita {
+  display: grid; grid-template-columns: 76px minmax(0, 1fr) auto; gap: var(--espacio-5); align-items: center;
+  padding: var(--espacio-5); border: 1px solid var(--color-borde); border-radius: var(--radio-tarjeta); background: var(--color-fondo);
+  transition: box-shadow var(--duracion-media) var(--curva), border-color var(--duracion-media) var(--curva), opacity var(--duracion-media);
+}
+.tarjeta-cita:hover { border-color: #d6d9e3; box-shadow: var(--sombra-media); }
+.tarjeta-cita--destacada { border-color: #c7c9f6; box-shadow: 0 0 0 4px rgba(79, 70, 229, .08); }
+.tarjeta-cita--cancelada { opacity: .7; }
+.tarjeta-cita--cancelada .tarjeta-cita__fecha { background: var(--color-borde-suave); color: var(--color-texto-suave); }
+
+/* Bloque de fecha tipo calendario */
+.tarjeta-cita__fecha { display: grid; justify-items: center; padding: var(--espacio-3) 0; border-radius: var(--radio-caja); background: var(--color-acento-suave); color: var(--color-acento); text-align: center; line-height: 1.1; }
+.tarjeta-cita__dia-semana { font-size: .6875rem; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; }
+.tarjeta-cita__dia { font-family: var(--fuente-titulos); font-size: 1.75rem; font-weight: 800; }
+.tarjeta-cita__mes { font-size: .75rem; font-weight: 600; }
+.tarjeta-cita--pasada .tarjeta-cita__fecha { background: var(--color-fondo-suave); color: var(--color-texto-suave); }
+
+.tarjeta-cita__cabecera { display: flex; align-items: center; gap: var(--espacio-3); flex-wrap: wrap; margin-bottom: var(--espacio-2); }
+.tarjeta-cita__titulo { margin: 0; font-size: 1rem; }
+.tarjeta-cita__codigo { font-size: .75rem; color: var(--color-texto-tenue); font-weight: 600; }
+.tarjeta-cita__datos { display: flex; flex-wrap: wrap; gap: var(--espacio-2) var(--espacio-5); font-size: .8125rem; color: var(--color-texto-suave); }
+.tarjeta-cita__dato { display: inline-flex; align-items: center; gap: 6px; }
+.tarjeta-cita__dato .icono { width: 15px; height: 15px; }
+.tarjeta-cita__nota { margin: var(--espacio-3) 0 0; font-size: .8125rem; }
+.tarjeta-cita__acciones { display: flex; flex-direction: column; align-items: stretch; gap: var(--espacio-2); min-width: 170px; }
+
+/* 4. Diseño adaptable ====================================================== */
+@media (max-width: 1180px) {
+  .resumen-cifras { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .inicio { grid-template-columns: minmax(0, 1fr); }
+  .inicio__lateral { position: static; grid-column: 1; grid-row: auto; margin-top: var(--espacio-2); }
+}
+@media (max-width: 860px) {
+  .tarjeta-cita { grid-template-columns: 64px minmax(0, 1fr); }
+  .tarjeta-cita__acciones { grid-column: 1 / -1; flex-direction: row; flex-wrap: wrap; min-width: 0; }
+  .tarjeta-cita__acciones .boton { flex: 1; }
+}
+@media (max-width: 640px) {
+  .resumen-cifras { grid-template-columns: minmax(0, 1fr); }
+  .proyecto-resumen { padding: var(--espacio-4); }
+  .proyecto-resumen__imagen { display: none; }
+  .proyecto-resumen__datos { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--espacio-3) var(--espacio-4); }
+  .proyecto-resumen__datos > div + div { padding-left: 0; border-left: 0; }
+  .proyecto-resumen__datos dd { white-space: normal; }
+  .proyecto-resumen__pie { flex-direction: column; align-items: stretch; }
+  .proyecto-resumen__acciones { justify-content: flex-end; }
+}
+
+/* Carga de un desarrollador: 3 unidades, una por proyecto activo (RN-05) */
+.carga { display: flex; gap: 4px; margin-top: 6px; }
+.carga__unidad { width: 22px; height: 6px; border-radius: var(--radio-pildora); background: var(--color-borde); }
+.carga__unidad--ocupada { background: var(--color-acento); }
+
+/* Elegir un desarrollador (asignar cita, crear proyecto): nombre, detalle y carga */
+.opciones-persona { display: grid; gap: var(--espacio-2); }
+.opcion-persona { display: grid; grid-template-columns: auto auto minmax(0, 1fr) auto; align-items: center; gap: var(--espacio-3); padding: var(--espacio-3) var(--espacio-4); border: 1.5px solid var(--color-borde); border-radius: var(--radio-control); cursor: pointer; transition: border-color var(--duracion-rapida), background-color var(--duracion-rapida); }
+.opcion-persona:hover { border-color: #c7c9f6; }
+.opcion-persona:has(:checked) { border-color: var(--color-acento); background: var(--color-acento-suave); }
+.opcion-persona input { width: 16px; height: 16px; margin: 0; accent-color: var(--color-acento); }
+.opcion-persona__nombre { font-size: .875rem; font-weight: 700; color: var(--color-tinta); }
+.opcion-persona__detalle { display: block; font-size: .75rem; font-weight: 400; color: var(--color-texto-suave); }
+.opcion-persona .carga { margin-top: 0; }
+.opcion-persona--sin-cupo { opacity: .6; cursor: not-allowed; background: var(--color-fondo-suave); }
+@media (max-width: 640px) {
+  .opcion-persona { grid-template-columns: auto auto minmax(0, 1fr); }
+  .opcion-persona .carga { grid-column: 3; }
+}

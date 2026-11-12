@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="es" class="sin-js">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Servicios · CoreTech Solutions</title>
+  <link rel="icon" href="../img/logo.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap">
+  <link rel="stylesheet" href="../css/global.css">
+  <link rel="stylesheet" href="../css/plantillas/panel.css">
+  <link rel="stylesheet" href="../css/plantillas/tarjeta-servicio.css">
+  <link rel="stylesheet" href="../css/vistas/admin-servicios.css">
+  <script src="../js/accesibilidad.js"></script>
+</head>
+<body>
+  <a class="saltar-contenido" href="#contenido">Saltar al contenido</a>
+
+  <div class="panel">
+    <!-- ===================== Menú lateral del cliente ===================== -->
+    <aside class="panel__lateral superficie-noche" aria-label="Menú del administrador">
+      <a class="marca" href="../index.html" aria-label="CoreTech Solutions, ir al sitio público">
+        <img class="marca__logo" src="../img/logo.svg" alt="" width="30" height="30">
+        <span>CoreTech</span>
+      </a>
+      <p class="panel__rol"><strong>Panel de administración</strong>Gestión de CoreTech</p>
+
+      <nav aria-label="Secciones del administrador: Gestión">
+        <p class="navegacion-panel__titulo">Gestión</p>
+        <ul class="navegacion-panel__lista">
+          <li>
+            <a class="navegacion-panel__enlace" href="dashboard.html">
+              <svg class="icono" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="7" height="9" rx="1.5"/><rect x="14" y="3" width="7" height="5" rx="1.5"/><rect x="14" y="12" width="7" height="9" rx="1.5"/><rect x="3" y="16" width="7" height="5" rx="1.5"/></svg>
+              Dashboard
+              
+            </a>
+          </li>
+          <li>
+            <a class="navegacion-panel__enlace" href="citas.html">
+              <svg class="icono" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="4" width="18" height="17" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>
+              Citas
+              <span class="navegacion-panel__contador navegacion-panel__contador--aviso" aria-label="1 sin asignar">1</span>
+            </a>
+          </li>
+          <li>
+            <a class="navegacion-panel__enlace" href="proyectos.html">
+              <svg class="icono" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 7a2 2 0 0 1 2-2h4l2 2h8a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2Z"/></svg>
+              Proyectos
+              
+            </a>
+          </li>
+          <li>
+            <a class="navegacion-panel__enlace" href="solicitudes.html">
+              <svg class="icono" viewBox="0 0 24 24" aria-hidden="true"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/><path d="M8 9h8M8 13h5"/></svg>
+              Solicitudes de reunión
+              
+            </a>
+          </li>
+        </ul>
+      </nav>
+
+      <nav aria-label="Secciones del administrador: Sitio web">
+        <p class="navegacion-panel__titulo">Sitio web</p>
+        <ul class="navegacion-panel__lista">
+          <li>
+            <a class="navegacion-panel__enlace" href="servicios.html" aria-current="page">
+              <svg class="icono" viewBox="0 0 24 24" aria-hidden="true"><path d="m12 2 10 5-10 5L2 7l10-5Z"/><path d="m2 17 10 5 10-5M2 12l10 5 10-5"/></svg>
+              Servicios
+              
+            </a>
+          </li>
+          <li>
+            <a class="navegacion-panel__enlace" href="contenido.html">
+              <svg class="icono" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>
+              Contenido del sitio
+              
+            </a>
+          </li>
+        </ul>
+      </nav>
+
+      <nav aria-label="Secciones del administrador: Seguridad">
+        <p class="navegacion-panel__titulo">Seguridad</p>
+        <ul class="navegacion-panel__lista">
+          <li>
+            <a class="navegacion-panel__enlace" href="usuarios.html">
+              <svg class="icono" viewBox="0 0 24 24" aria-hidden="true"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+              Usuarios
+              
+            </a>
+          </li>
+          <li>
+            <a class="navegacion-panel__enlace" href="roles-permisos.html">
+              <svg class="icono" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10Z"/><path d="m9 12 2 2 4-4"/></svg>
+              Roles y permisos
+              
+            </a>
+          </li>
+          <li>
+            <a class="navegacion-panel__enlace" href="auditoria.html">
+              <svg class="icono" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 5H7a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2h-2"/><rect x="9" y="3" width="6" height="4" rx="1"/><path d="M9 12h6M9 16h4"/></svg>
+              Auditoría
+              
+            </a>
+          </li>
+        </ul>
+      </nav>
+
+      <div class="panel__usuario">
+        <span class="avatar avatar--gris" aria-hidden="true">PL</span>
+        <span class="panel__usuario-datos">
+          <span class="panel__usuario-nombre">Patricia León</span>
+          <span class="panel__usuario-correo">patricia.leon@coretechsolutions.co</span>
+        </span>
+        <a class="panel__salir" href="../index.html" data-accion data-mensaje-exito="Cerraste sesión." aria-label="Cerrar sesión" title="Cerrar sesión">
+          <svg class="icono" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4M16 17l5-5-5-5M21 12H9"/></svg>
+        </a>
+      </div>
+    </aside>
+
+    <div class="panel__cuerpo">
+      <!-- ===================== Barra superior ===================== -->
+      <header class="panel__barra">
+        <button type="button" class="boton-icono boton-icono--pequeno boton-menu-panel" aria-expanded="false" aria-label="Abrir menú">
+          <svg class="icono" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+        </button>
+        <nav class="ruta" aria-label="Ruta de navegación">
+          <a href="dashboard.html">Administración</a>
+          <svg class="icono" viewBox="0 0 24 24" aria-hidden="true"><path d="m9 6 6 6-6 6"/></svg>
+          <span aria-current="page">Servicios</span>
+        </nav>
+        <div class="panel__barra-acciones">
+          <a class="boton-icono boton-icono--pequeno campana" href="dashboard.html#alertas" aria-label="Notificaciones: 4 nuevas">
+            <svg class="icono" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9"/><path d="M10.3 21a1.94 1.94 0 0 0 3.4 0"/></svg>
+            <span class="campana__punto" aria-hidden="true"></span>
+          </a>
+          <div class="panel__perfil">
+            <span class="avatar avatar--gris" aria-hidden="true">PL</span>
+            <span class="panel__perfil-nombre">Patricia León<small>Administradora</small></span>
+          </div>
+        </div>
+      </header>
+
+      <!-- ===================== Contenido ===================== -->
+      <main class="panel__contenido" id="contenido">
+        <div class="encabezado-vista aparecer">
+          <div>
+            <h1 class="encabezado-vista__titulo">Servicios</h1>
+            <p class="encabezado-vista__texto">Los servicios del catálogo de la página principal. El orden de esta lista es el orden del carrusel; los ocultos no se muestran ni se pueden agendar.</p>
+          </div>
+          <div class="encabezado-vista__acciones">
+            <a class="boton boton--contorno" href="../index.html#servicios" target="_blank" rel="noopener"><svg class="icono" viewBox="0 0 24 24" aria-hidden="true"><path d="M15 3h6v6M10 14 21 3M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/></svg>Ver en el sitio</a>
+            <button type="button" class="boton boton--acento" data-nuevo><svg class="icono" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg>Nuevo servicio</button>
+          </div>
+        </div>
+
+        <p class="resumen-servicios aparecer" aria-live="polite"><strong data-total-visibles>6</strong> visibles en el catálogo · <span data-total-ocultos>1 oculto</span></p>
+
+        <ol class="lista-servicios" data-lista-servicios aria-label="Servicios en el orden del carrusel">
+          <li class="servicio-item aparecer" data-servicio="tienda-en-linea" data-nombre="Desarrollo de tienda en línea" data-descripcion="Catálogo, carrito de compras y pagos en línea para vender por internet." data-imagen="tienda-en-linea.webp" data-alt="Ilustración de una tienda en línea con productos y carrito de compras" data-citas="26" data-visible="true">
+            <span class="servicio-item__posicion" data-posicion aria-hidden="true">1</span>
+            <div class="servicio-item__orden" role="group" aria-label="Cambiar el orden de Desarrollo de tienda en línea">
+              <button type="button" class="boton-icono boton-icono--mini" data-mover="-1" aria-label="Subir Desarrollo de tienda en línea"><svg class="icono" viewBox="0 0 24 24" aria-hidden="true"><path d="m18 15-6-6-6 6"/></svg></button>
+              <button type="button" class="boton-icono boton-icono--mini" data-mover="1" aria-label="Bajar Desarrollo de tienda en línea"><svg class="icono" viewBox="0 0 24 24" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></button>
+            </div>
+            <span class="servicio-item__miniatura"><img src="../img/servicios/tienda-en-linea.webp" alt="" width="96" height="64" data-item-imagen></span>
+            <div class="servicio-item__datos">
+              <h2 class="servicio-item__nombre" data-item-nombre>Desarrollo de tienda en línea</h2>
+              <p class="servicio-item__descripcion" data-item-descripcion>Catálogo, carrito de compras y pagos en línea para vender por internet.</p>
+            </div>
+            <span class="servicio-item__citas">26 citas en 6 meses</span>
+            <span class="insignia insignia--atendida" data-item-estado>Visible</span>
+            <div class="servicio-item__acciones">
+              <button type="button" class="boton boton--contorno boton--pequeno" data-editar><svg class="icono" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 20h9"/><path d="M16.5 3.5a2.12 2.12 0 0 1 3 3L7 19l-4 1 1-4Z"/></svg>Editar</button>
+              <button type="button" class="boton-icono boton-icono--pequeno" data-alternar aria-label="Ocultar Desarrollo de tienda en línea del catálogo" title="Ocultar del catálogo"><svg class="icono" viewBox="0 0 24 24" aria-hidden="true"><path d="M9.9 4.24A9 9 0 0 1 12 4c6.5 0 10 7 10 7a18 18 0 0 1-2.16 3.19M6.6 6.6A18 18 0 0 0 2 12s3.5 7 10 7a9.7 9.7 0 0 0 5.4-1.6M1 1l22 22"/><path d="M14.12 14.12a3 3 0 1 1-4.24-4.24"/></svg></button>
+              <button type="button" class="boton-icono boton-icono--pequeno boton-icono--peligro" data-eliminar aria-label="Eliminar Desarrollo de tienda en línea" title="Eliminar"><svg class="icono" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 6h18M8 6V4h8v2M6 6l1 14h10l1-14"/></svg></button>
+            </div>
+          </li>
+          <li class="servicio-item aparecer" data-servicio="web-corporativa" data-nombre="Página web corporativa" data-descripcion="Sitio institucional adaptable a celular, rápido y fácil de actualizar." data-imagen="web-corporativa.webp" data-alt="Ilustración de un sitio web en computador y en celular" data-citas="21" data-visible="true">
+            <span class="servicio-item__posicion" data-posicion aria-hidden="true">2</span>
+            <div class="servicio-item__orden" role="group" aria-label="Cambiar el orden de Página web corporativa">
+              <button type="button" class="boton-icono boton-icono--mini" data-mover="-1" aria-label="Subir Página web corporativa"><svg class="icono" viewBox="0 0 24 24" aria-hidden="true"><path d="m18 15-6-6-6 6"/></svg></button>
+              <button type="button" class="boton-icono boton-icono--mini" data-mover="1" aria-label="Bajar Página web corporativa"><svg class="icono" viewBox="0 0 24 24" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></button>
+            </div>
+            <span class="servicio-item__miniatura"><img src="../img/servicios/web-corporativa.webp" alt="" width="96" height="64" data-item-imagen></span>
+            <div class="servicio-item__datos">
+              <h2 class="servicio-item__nombre" data-item-nombre>Página web corporativa</h2>
+              <p class="servicio-item__descripcion" data-item-descripcion>Sitio institucional adaptable a celular, rápido y fácil de actualizar.</p>
+            </div>
+            <span class="servicio-item__citas">21 citas en 6 meses</span>
+            <span class="insignia insignia--atendida" data-item-estado>Visible</span>
+            <div class="servicio-item__acciones">
+              <button type="button" class="boton boton--contorno boton--pequeno" data-editar><svg class="icono" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 20h9"/><path d="M16.5 3.5a2.12 2.12 0 0 1 3 3L7 19l-4 1 1-4Z"/></svg>Editar</button>
+              <button type="button" class="boton-icono boton-icono--pequeno" data-alternar aria-label="Ocultar Página web corporativa del catálogo" title="Ocultar del catálogo"><svg class="icono" viewBox="0 0 24 24" aria-hidden="true"><path d="M9.9 4.24A9 9 0 0 1 12 4c6.5 0 10 7 10 7a18 18 0 0 1-2.16 3.19M6.6 6.6A18 18 0 0 0 2 12s3.5 7 10 7a9.7 9.7 0 0 0 5.4-1.6M1 1l22 22"/><path d="M14.12 14.12a3 3 0 1 1-4.24-4.24"/></svg></button>
+              <button type="button" class="boton-icono boton-icono--pequeno boton-icono--peligro" data-eliminar aria-label="Eliminar Página web corporativa" title="Eliminar"><svg class="icono" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 6h18M8 6V4h8v2M6 6l1 14h10l1-14"/></svg></button>
+            </div>
+          </li>
+          <li class="servicio-item aparecer" data-servicio="app-movil" data-nombre="Aplicación móvil" data-descripcion="Apps para Android e iOS conectadas a los procesos de tu negocio." data-imagen="app-movil.webp" data-alt="Ilustración de dos pantallas de una aplicación móvil" data-citas="15" data-visible="true">
+            <span class="servicio-item__posicion" data-posicion aria-hidden="true">3</span>
+            <div class="servicio-item__orden" role="group" aria-label="Cambiar el orden de Aplicación móvil">
+              <button type="button" class="boton-icono boton-icono--mini" data-mover="-1" aria-label="Subir Aplicación móvil"><svg class="icono" viewBox="0 0 24 24" aria-hidden="true"><path d="m18 15-6-6-6 6"/></svg></button>
+              <button type="button" class="boton-icono boton-icono--mini" data-mover="1" aria-label="Bajar Aplicación móvil"><svg class="icono" viewBox="0 0 24 24" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></button>
+            </div>
+            <span class="servicio-item__miniatura"><img src="../img/servicios/app-movil.webp" alt="" width="96" height="64" data-item-imagen></span>
+            <div class="servicio-item__datos">
+              <h2 class="servicio-item__nombre" data-item-nombre>Aplicación móvil</h2>
+              <p class="servicio-item__descripcion" data-item-descripcion>Apps para Android e iOS conectadas a los procesos de tu negocio.</p>
+            </div>
+            <span class="servicio-item__citas">15 citas en 6 meses</span>
+            <span class="insignia insignia--atendida" data-item-estado>Visible</span>
+            <div class="servicio-item__acciones">
+              <button type="button" class="boton boton--contorno boton--pequeno" data-editar><svg class="icono" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 20h9"/><path d="M16.5 3.5a2.12 2.12 0 0 1 3 3L7 19l-4 1 1-4Z"/></svg>Editar</button>
+              <button type="button" class="boton-icono boton-icono--pequeno" data-alternar aria-label="Ocultar Aplicación móvil del catálogo" title="Ocultar del catálogo"><svg class="icono" viewBox="0 0 24 24" aria-hidden="true"><path d="M9.9 4.24A9 9 0 0 1 12 4c6.5 0 10 7 10 7a18 18 0 0 1-2.16 3.19M6.6 6.6A18 18 0 0 0 2 12s3.5 7 10 7a9.7 9.7 0 0 0 5.4-1.6M1 1l22 22"/><path d="M14.12 14.12a3 3 0 1 1-4.24-4.24"/></svg></button>
+              <button type="button" class="boton-icono boton-icono--pequeno boton-icono--peligro" data-eliminar aria-label="Eliminar Aplicación móvil" title="Eliminar"><svg class="icono" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 6h18M8 6V4h8v2M6 6l1 14h10l1-14"/></svg></button>
+            </div>
+          </li>
+          <li class="servicio-item aparecer" data-servicio="sistema-inventario" data-nombre="Sistema de inventario" data-descripcion="Control de existencias, entradas, salidas y reportes al día." data-imagen="sistema-inventario.webp" data-alt="Ilustración de un panel con gráfica de barras y cajas de inventario" data-citas="7" data-visible="true">
+            <span class="servicio-item__posicion" data-posicion aria-hidden="true">4</span>
+            <div class="servicio-item__orden" role="group" aria-label="Cambiar el orden de Sistema de inventario">
+              <button type="button" class="boton-icono boton-icono--mini" data-mover="-1" aria-label="Subir Sistema de inventario"><svg class="icono" viewBox="0 0 24 24" aria-hidden="true"><path d="m18 15-6-6-6 6"/></svg></button>
+              <button type="button" class="boton-icono boton-icono--mini" data-mover="1" aria-label="Bajar Sistema de inventario"><svg class="icono" viewBox="0 0 24 24" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></button>
+            </div>
+            <span class="servicio-item__miniatura"><img src="../img/servicios/sistema-inventario.webp" alt="" width="96" height="64" data-item-imagen></span>
+            <div class="servicio-item__datos">
+              <h2 class="servicio-item__nombre" data-item-nombre>Sistema de inventario</h2>
+              <p class="servicio-item__descripcion" data-item-descripcion>Control de existencias, entradas, salidas y reportes al día.</p>
+            </div>
+            <span class="servicio-item__citas">7 citas en 6 meses</span>
+            <span class="insignia insignia--atendida" data-item-estado>Visible</span>
+            <div class="servicio-item__acciones">
+              <button type="button" class="boton boton--contorno boton--pequeno" data-editar><svg class="icono" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 20h9"/><path d="M16.5 3.5a2.12 2.12 0 0 1 3 3L7 19l-4 1 1-4Z"/></svg>Editar</button>
+              <button type="button" class="boton-icono boton-icono--pequeno" data-alternar aria-label="Ocultar Sistema de inventario del catálogo" title="Ocultar del catálogo"><svg class="icono" viewBox="0 0 24 24" aria-hidden="true"><path d="M9.9 4.24A9 9 0 0 1 12 4c6.5 0 10 7 10 7a18 18 0 0 1-2.16 3.19M6.6 6.6A18 18 0 0 0 2 12s3.5 7 10 7a9.7 9.7 0 0 0 5.4-1.6M1 1l22 22"/><path d="M14.12 14.12a3 3 0 1 1-4.24-4.24"/></svg></button>
+              <button type="button" class="boton-icono boton-icono--pequeno boton-icono--peligro" data-eliminar aria-label="Eliminar Sistema de inventario" title="Eliminar"><svg class="icono" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 6h18M8 6V4h8v2M6 6l1 14h10l1-14"/></svg></button>
+            </div>
+          </li>
+          <li class="servicio-item aparecer" data-servicio="integracion-pagos" data-nombre="Integración de pagos" data-descripcion="Conecta tu sitio con pasarelas de pago seguras y conciliación automática." data-imagen="integracion-pagos.webp" data-alt="Ilustración de una tarjeta de pago protegida por un escudo con candado" data-citas="9" data-visible="true">
+            <span class="servicio-item__posicion" data-posicion aria-hidden="true">5</span>
+            <div class="servicio-item__orden" role="group" aria-label="Cambiar el orden de Integración de pagos">
+              <button type="button" class="boton-icono boton-icono--mini" data-mover="-1" aria-label="Subir Integración de pagos"><svg class="icono" viewBox="0 0 24 24" aria-hidden="true"><path d="m18 15-6-6-6 6"/></svg></button>
+              <button type="button" class="boton-icono boton-icono--mini" data-mover="1" aria-label="Bajar Integración de pagos"><svg class="icono" viewBox="0 0 24 24" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></button>
+            </div>
+            <span class="servicio-item__miniatura"><img src="../img/servicios/integracion-pagos.webp" alt="" width="96" height="64" data-item-imagen></span>
+            <div class="servicio-item__datos">
+              <h2 class="servicio-item__nombre" data-item-nombre>Integración de pagos</h2>
+              <p class="servicio-item__descripcion" data-item-descripcion>Conecta tu sitio con pasarelas de pago seguras y conciliación automática.</p>
+            </div>
+            <span class="servicio-item__citas">9 citas en 6 meses</span>
+            <span class="insignia insignia--atendida" data-item-estado>Visible</span>
+            <div class="servicio-item__acciones">
+              <button type="button" class="boton boton--contorno boton--pequeno" data-editar><svg class="icono" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 20h9"/><path d="M16.5 3.5a2.12 2.12 0 0 1 3 3L7 19l-4 1 1-4Z"/></svg>Editar</button>
+              <button type="button" class="boton-icono boton-icono--pequeno" data-alternar aria-label="Ocultar Integración de pagos del catálogo" title="Ocultar del catálogo"><svg class="icono" viewBox="0 0 24 24" aria-hidden="true"><path d="M9.9 4.24A9 9 0 0 1 12 4c6.5 0 10 7 10 7a18 18 0 0 1-2.16 3.19M6.6 6.6A18 18 0 0 0 2 12s3.5 7 10 7a9.7 9.7 0 0 0 5.4-1.6M1 1l22 22"/><path d="M14.12 14.12a3 3 0 1 1-4.24-4.24"/></svg></button>
+              <button type="button" class="boton-icono boton-icono--pequeno boton-icono--peligro" data-eliminar aria-label="Eliminar Integración de pagos" title="Eliminar"><svg class="icono" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 6h18M8 6V4h8v2M6 6l1 14h10l1-14"/></svg></button>
+            </div>
+          </li>
+          <li class="servicio-item aparecer" data-servicio="mantenimiento-soporte" data-nombre="Mantenimiento y soporte" data-descripcion="Actualizaciones, copias de seguridad y monitoreo para que tu sistema no se detenga." data-imagen="mantenimiento-soporte.webp" data-alt="Ilustración de una gráfica de rendimiento con engranaje y llave" data-citas="13" data-visible="true">
+            <span class="servicio-item__posicion" data-posicion aria-hidden="true">6</span>
+            <div class="servicio-item__orden" role="group" aria-label="Cambiar el orden de Mantenimiento y soporte">
+              <button type="button" class="boton-icono boton-icono--mini" data-mover="-1" aria-label="Subir Mantenimiento y soporte"><svg class="icono" viewBox="0 0 24 24" aria-hidden="true"><path d="m18 15-6-6-6 6"/></svg></button>
+              <button type="button" class="boton-icono boton-icono--mini" data-mover="1" aria-label="Bajar Mantenimiento y soporte"><svg class="icono" viewBox="0 0 24 24" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></button>
+            </div>
+            <span class="servicio-item__miniatura"><img src="../img/servicios/mantenimiento-soporte.webp" alt="" width="96" height="64" data-item-imagen></span>
+            <div class="servicio-item__datos">
+              <h2 class="servicio-item__nombre" data-item-nombre>Mantenimiento y soporte</h2>
+              <p class="servicio-item__descripcion" data-item-descripcion>Actualizaciones, copias de seguridad y monitoreo para que tu sistema no se detenga.</p>
+            </div>
+            <span class="servicio-item__citas">13 citas en 6 meses</span>
+            <span class="insignia insignia--atendida" data-item-estado>Visible</span>
+            <div class="servicio-item__acciones">
+              <button type="button" class="boton boton--contorno boton--pequeno" data-editar><svg class="icono" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 20h9"/><path d="M16.5 3.5a2.12 2.12 0 0 1 3 3L7 19l-4 1 1-4Z"/></svg>Editar</button>
+              <button type="button" class="boton-icono boton-icono--pequeno" data-alternar aria-label="Ocultar Mantenimiento y soporte del catálogo" title="Ocultar del catálogo"><svg class="icono" viewBox="0 0 24 24" aria-hidden="true"><path d="M9.9 4.24A9 9 0 0 1 12 4c6.5 0 10 7 10 7a18 18 0 0 1-2.16 3.19M6.6 6.6A18 18 0 0 0 2 12s3.5 7 10 7a9.7 9.7 0 0 0 5.4-1.6M1 1l22 22"/><path d="M14.12 14.12a3 3 0 1 1-4.24-4.24"/></svg></button>
+              <button type="button" class="boton-icono boton-icono--pequeno boton-icono--peligro" data-eliminar aria-label="Eliminar Mantenimiento y soporte" title="Eliminar"><svg class="icono" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 6h18M8 6V4h8v2M6 6l1 14h10l1-14"/></svg></button>
+            </div>
+          </li>
+          <li class="servicio-item servicio-item--oculto aparecer" data-servicio="consultoria-digital" data-nombre="Consultoría en transformación digital" data-descripcion="Diagnóstico de tus procesos y un plan para digitalizarlos paso a paso." data-imagen="" data-alt="" data-citas="0" data-visible="false">
+            <span class="servicio-item__posicion" data-posicion aria-hidden="true">7</span>
+            <div class="servicio-item__orden" role="group" aria-label="Cambiar el orden de Consultoría en transformación digital">
+              <button type="button" class="boton-icono boton-icono--mini" data-mover="-1" aria-label="Subir Consultoría en transformación digital"><svg class="icono" viewBox="0 0 24 24" aria-hidden="true"><path d="m18 15-6-6-6 6"/></svg></button>
+              <button type="button" class="boton-icono boton-icono--mini" data-mover="1" aria-label="Bajar Consultoría en transformación digital"><svg class="icono" viewBox="0 0 24 24" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></button>
+            </div>
+            <span class="servicio-item__miniatura"><span class="servicio-item__sin-imagen" data-item-imagen><svg class="icono" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="9" cy="9" r="2"/><path d="m21 15-3.1-3.1a2 2 0 0 0-2.8 0L6 21"/></svg></span></span>
+            <div class="servicio-item__datos">
+              <h2 class="servicio-item__nombre" data-item-nombre>Consultoría en transformación digital</h2>
+              <p class="servicio-item__descripcion" data-item-descripcion>Diagnóstico de tus procesos y un plan para digitalizarlos paso a paso.</p>
+            </div>
+            <span class="servicio-item__citas">Sin citas todavía</span>
+            <span class="insignia insignia--pausado" data-item-estado>Oculto</span>
+            <div class="servicio-item__acciones">
+              <button type="button" class="boton boton--contorno boton--pequeno" data-editar><svg class="icono" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 20h9"/><path d="M16.5 3.5a2.12 2.12 0 0 1 3 3L7 19l-4 1 1-4Z"/></svg>Editar</button>
+              <button type="button" class="boton-icono boton-icono--pequeno" data-alternar aria-label="Mostrar Consultoría en transformación digital en el catálogo" title="Mostrar en el catálogo"><svg class="icono" viewBox="0 0 24 24" aria-hidden="true"><path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7S2 12 2 12Z"/><circle cx="12" cy="12" r="3"/></svg></button>
+              <button type="button" class="boton-icono boton-icono--pequeno boton-icono--peligro" data-eliminar aria-label="Eliminar Consultoría en transformación digital" title="Eliminar"><svg class="icono" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 6h18M8 6V4h8v2M6 6l1 14h10l1-14"/></svg></button>
+            </div>
+          </li>
+        </ol>
+
+        <!-- ===================== Editor de servicio ===================== -->
+        <dialog class="dialogo dialogo--ancho dialogo--editor" id="dialogo-servicio" aria-labelledby="titulo-servicio">
+          <form class="dialogo__formulario" data-validar>
+            <div class="dialogo__cabecera">
+              <span class="dialogo__icono dialogo__icono--acento"><svg class="icono icono--grande" viewBox="0 0 24 24" aria-hidden="true"><path d="m12 2 10 5-10 5L2 7l10-5Z"/><path d="m2 17 10 5 10-5M2 12l10 5 10-5"/></svg></span>
+              <div>
+                <h2 class="dialogo__titulo" id="titulo-servicio" data-titulo-editor>Nuevo servicio</h2>
+                <p class="dialogo__texto">A la derecha ves cómo quedará la tarjeta en el catálogo.</p>
+              </div>
+              <button type="button" class="boton-icono boton-icono--pequeno" data-cerrar-dialogo aria-label="Cerrar"><svg class="icono" viewBox="0 0 24 24" aria-hidden="true"><path d="M18 6 6 18M6 6l12 12"/></svg></button>
+            </div>
+            <div class="dialogo__cuerpo editor-servicio">
+              <div class="editor-servicio__campos">
+                <div class="campo">
+                  <label class="campo__etiqueta" for="servicio-nombre">Nombre</label>
+                  <input class="campo__control" id="servicio-nombre" name="nombre" type="text" required minlength="4" maxlength="40" placeholder="Ejemplo: Consultoría en transformación digital"
+                         data-mensaje-vacio="Escribe el nombre del servicio." data-mensaje-corto="Escribe al menos 4 caracteres." aria-describedby="servicio-nombre-mensaje">
+                  <div class="campo__pie"><p class="campo__mensaje" id="servicio-nombre-mensaje" aria-live="polite"><svg class="icono" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M12 8v4M12 16h.01"/></svg><span class="campo__mensaje-texto"></span></p><span class="campo__contador" data-contador-de="servicio-nombre" aria-hidden="true">0 / 40</span></div>
+                </div>
+                <div class="campo">
+                  <label class="campo__etiqueta" for="servicio-descripcion">Descripción corta</label>
+                  <textarea class="campo__control campo__control--area campo__control--corta" id="servicio-descripcion" name="descripcion" required minlength="20" maxlength="90"
+                            placeholder="Una frase que explique el beneficio para el cliente."
+                            data-mensaje-vacio="Escribe la descripción." data-mensaje-corto="Escribe al menos 20 caracteres." aria-describedby="servicio-descripcion-mensaje"></textarea>
+                  <div class="campo__pie"><p class="campo__mensaje" id="servicio-descripcion-mensaje" aria-live="polite"><svg class="icono" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M12 8v4M12 16h.01"/></svg><span class="campo__mensaje-texto"></span></p><span class="campo__contador" data-contador-de="servicio-descripcion" aria-hidden="true">0 / 90</span></div>
+                </div>
+                <fieldset class="grupo-opciones campo">
+                  <legend class="campo__etiqueta">Imagen</legend>
+                  <div class="galeria" data-galeria>
+                    <label class="galeria__opcion"><input type="radio" name="imagen" value="tienda-en-linea.webp" required data-mensaje-vacio="Elige o sube una imagen." aria-describedby="servicio-imagen-mensaje"><img src="../img/servicios/tienda-en-linea.webp" alt="Desarrollo de tienda en línea" width="96" height="64"></label>
+                    <label class="galeria__opcion"><input type="radio" name="imagen" value="web-corporativa.webp" required data-mensaje-vacio="Elige o sube una imagen." aria-describedby="servicio-imagen-mensaje"><img src="../img/servicios/web-corporativa.webp" alt="Página web corporativa" width="96" height="64"></label>
+                    <label class="galeria__opcion"><input type="radio" name="imagen" value="app-movil.webp" required data-mensaje-vacio="Elige o sube una imagen." aria-describedby="servicio-imagen-mensaje"><img src="../img/servicios/app-movil.webp" alt="Aplicación móvil" width="96" height="64"></label>
+                    <label class="galeria__opcion"><input type="radio" name="imagen" value="sistema-inventario.webp" required data-mensaje-vacio="Elige o sube una imagen." aria-describedby="servicio-imagen-mensaje"><img src="../img/servicios/sistema-inventario.webp" alt="Sistema de inventario" width="96" height="64"></label>
+                    <label class="galeria__opcion"><input type="radio" name="imagen" value="integracion-pagos.webp" required data-mensaje-vacio="Elige o sube una imagen." aria-describedby="servicio-imagen-mensaje"><img src="../img/servicios/integracion-pagos.webp" alt="Integración de pagos" width="96" height="64"></label>
+                    <label class="galeria__opcion"><input type="radio" name="imagen" value="mantenimiento-soporte.webp" required data-mensaje-vacio="Elige o sube una imagen." aria-describedby="servicio-imagen-mensaje"><img src="../img/servicios/mantenimiento-soporte.webp" alt="Mantenimiento y soporte" width="96" height="64"></label>
+                    <label class="galeria__opcion galeria__opcion--subir"><input type="radio" name="imagen" value="propia" required data-mensaje-vacio="Elige o sube una imagen." aria-describedby="servicio-imagen-mensaje" data-opcion-propia><span><svg class="icono" viewBox="0 0 24 24" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M17 8l-5-5-5 5M12 3v12"/></svg>Subir</span></label>
+                  </div>
+                  <p class="campo__ayuda">Proporción 3:2, mínimo 1200 × 800 px, en WebP, PNG o JPG.</p>
+                  <p class="campo__mensaje" id="servicio-imagen-mensaje" aria-live="polite"><svg class="icono" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M12 8v4M12 16h.01"/></svg><span class="campo__mensaje-texto"></span></p>
+                </fieldset>
+                <!-- Fuera del grupo para que no interfiera con la validación de la imagen -->
+                <input class="solo-lector" type="file" accept="image/webp,image/png,image/jpeg" data-archivo tabindex="-1" aria-hidden="true">
+                <div class="campo">
+                  <label class="campo__etiqueta" for="servicio-alt">Texto alternativo de la imagen</label>
+                  <input class="campo__control" id="servicio-alt" name="alt" type="text" required minlength="10" maxlength="120" placeholder="Describe la imagen para quien usa lector de pantalla"
+                         data-mensaje-vacio="Describe la imagen: lo leen las personas con lector de pantalla." data-mensaje-corto="Escribe al menos 10 caracteres." aria-describedby="servicio-alt-mensaje">
+                  <p class="campo__mensaje" id="servicio-alt-mensaje" aria-live="polite"><svg class="icono" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M12 8v4M12 16h.01"/></svg><span class="campo__mensaje-texto"></span></p>
+                </div>
+                <label class="casilla"><input type="checkbox" name="visible" checked data-casilla-visible><span>Mostrar en el catálogo</span></label>
+              </div>
+              <div class="editor-servicio__previa" aria-label="Vista previa de la tarjeta">
+                <p class="editor-servicio__etiqueta"><svg class="icono" viewBox="0 0 24 24" aria-hidden="true"><path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7S2 12 2 12Z"/><circle cx="12" cy="12" r="3"/></svg>Vista previa</p>
+                <article class="tarjeta-servicio" data-previa>
+                  <div class="tarjeta-servicio__imagen" data-previa-imagen></div>
+                  <div class="tarjeta-servicio__cuerpo">
+                    <h3 class="tarjeta-servicio__titulo" data-previa-nombre>Nombre del servicio</h3>
+                    <p class="tarjeta-servicio__descripcion" data-previa-descripcion>La descripción aparecerá aquí.</p>
+                    <div class="tarjeta-servicio__pie"><span class="boton boton--contorno boton--bloque" aria-hidden="true">Agendar cita</span></div>
+                  </div>
+                </article>
+                <p class="editor-servicio__oculto" data-previa-oculto hidden><svg class="icono" viewBox="0 0 24 24" aria-hidden="true"><path d="M9.9 4.24A9 9 0 0 1 12 4c6.5 0 10 7 10 7a18 18 0 0 1-2.16 3.19M6.6 6.6A18 18 0 0 0 2 12s3.5 7 10 7a9.7 9.7 0 0 0 5.4-1.6M1 1l22 22"/><path d="M14.12 14.12a3 3 0 1 1-4.24-4.24"/></svg>No se mostrará en el catálogo.</p>
+              </div>
+            </div>
+            <div class="dialogo__acciones">
+              <button type="button" class="boton boton--contorno" data-cerrar-dialogo>Volver</button>
+              <button type="submit" class="boton boton--acento" data-boton-editor>Crear servicio</button>
+            </div>
+          </form>
+        </dialog>
+
+        <!-- ===================== Eliminar ===================== -->
+        <dialog class="dialogo" id="dialogo-eliminar" aria-labelledby="titulo-eliminar" aria-describedby="texto-eliminar">
+          <div class="dialogo__cuerpo">
+            <span class="dialogo__icono dialogo__icono--peligro"><svg class="icono icono--grande" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 6h18M8 6V4h8v2M6 6l1 14h10l1-14"/></svg></span>
+            <h2 class="dialogo__titulo" id="titulo-eliminar" data-titulo-eliminar>Eliminar servicio</h2>
+            <p class="dialogo__texto" id="texto-eliminar" data-texto-eliminar></p>
+          </div>
+          <div class="dialogo__acciones">
+            <button type="button" class="boton boton--contorno" data-cerrar-dialogo>Volver</button>
+            <button type="button" class="boton boton--oscuro" data-ocultar-en-su-lugar hidden><svg class="icono" viewBox="0 0 24 24" aria-hidden="true"><path d="M9.9 4.24A9 9 0 0 1 12 4c6.5 0 10 7 10 7a18 18 0 0 1-2.16 3.19M6.6 6.6A18 18 0 0 0 2 12s3.5 7 10 7a9.7 9.7 0 0 0 5.4-1.6M1 1l22 22"/><path d="M14.12 14.12a3 3 0 1 1-4.24-4.24"/></svg>Ocultarlo</button>
+            <button type="button" class="boton boton--peligro" data-confirmar-eliminar>Eliminar</button>
+          </div>
+        </dialog>
+      </main>
+    </div>
+  </div>
+
+  <script src="../js/principal.js"></script>
+  <script src="../js/vistas/admin-servicios.js"></script>
+</body>
+</html>

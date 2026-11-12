@@ -1,0 +1,142 @@
+/* ==========================================================================
+   Vista: Registrar avance (desarrollador/registrar-avance-*.html)
+   Requiere: global.css, plantillas/panel.css, plantillas/linea-tiempo.css
+   y plantillas/proyecto.css
+   ========================================================================== */
+
+/* 1. Distribución ========================================================== */
+.registro-avance { display: grid; grid-template-columns: minmax(0, 1fr) 320px; gap: var(--espacio-6); align-items: start; }
+.registro-avance__principal { display: grid; gap: var(--espacio-8); min-width: 0; }
+.registro-avance__lateral { display: grid; gap: var(--espacio-5); position: sticky; top: 92px; }
+
+/* 2. Tarjeta del formulario ================================================ */
+.formulario-avance { border-color: #c7c9f6; box-shadow: 0 16px 40px -24px rgba(79, 70, 229, .35); }
+.formulario-avance__cabecera { display: flex; align-items: center; justify-content: space-between; gap: var(--espacio-3); flex-wrap: wrap; margin-bottom: var(--espacio-5); }
+.formulario-avance__cabecera .tarjeta__titulo { margin: 0; font-size: 1.125rem; }
+.fase-bloqueada { display: inline-flex; align-items: center; gap: 6px; padding: 6px 12px; border-radius: var(--radio-pildora); background: var(--color-fondo-suave); font-size: .8125rem; color: var(--color-texto); }
+.fase-bloqueada .icono { width: 14px; height: 14px; color: var(--color-texto-suave); }
+.formulario-avance__pie { display: flex; align-items: center; justify-content: space-between; gap: var(--espacio-4); flex-wrap: wrap; margin-top: var(--espacio-6); padding-top: var(--espacio-5); border-top: 1px solid var(--color-borde-suave); }
+.formulario-avance__nota { display: flex; align-items: center; gap: 6px; margin: 0; font-size: .8125rem; color: var(--color-texto-suave); }
+.formulario-avance__nota .icono { width: 14px; height: 14px; flex: none; }
+
+/* 3. Selector de porcentaje ================================================ */
+.porcentaje { display: grid; grid-template-columns: 120px minmax(0, 1fr); align-items: center; gap: var(--espacio-5); }
+.porcentaje__control { position: relative; }
+.porcentaje__numero { padding-right: 36px; font-family: var(--fuente-titulos); font-size: 1.5rem; font-weight: 800; font-variant-numeric: tabular-nums; }
+.porcentaje__signo { position: absolute; right: 14px; top: 50%; transform: translateY(-50%); font-weight: 700; color: var(--color-texto-suave); pointer-events: none; }
+.sin-js .porcentaje__deslizador, .sin-js .atajos { display: none; }
+
+/* Barra: la parte ya registrada se ve bloqueada (gris rayado), lo nuevo en índigo */
+.porcentaje__deslizador {
+  --minimo: 0%; --valor: 0%;
+  width: 100%; height: 28px; margin: 0; background: transparent; cursor: pointer; appearance: none; -webkit-appearance: none;
+}
+.porcentaje__deslizador::-webkit-slider-runnable-track {
+  height: 10px; border-radius: var(--radio-pildora);
+  background:
+    linear-gradient(90deg, transparent var(--minimo), var(--color-acento) var(--minimo), var(--color-acento) var(--valor), transparent var(--valor)),
+    repeating-linear-gradient(45deg, #d5d8e0 0 4px, #e6e8ee 4px 8px) 0 0 / var(--minimo) 100% no-repeat,
+    var(--color-fondo-suave);
+  box-shadow: inset 0 0 0 1px var(--color-borde);
+}
+.porcentaje__deslizador::-moz-range-track {
+  height: 10px; border-radius: var(--radio-pildora);
+  background:
+    linear-gradient(90deg, transparent var(--minimo), var(--color-acento) var(--minimo), var(--color-acento) var(--valor), transparent var(--valor)),
+    repeating-linear-gradient(45deg, #d5d8e0 0 4px, #e6e8ee 4px 8px) 0 0 / var(--minimo) 100% no-repeat,
+    var(--color-fondo-suave);
+}
+.porcentaje__deslizador::-webkit-slider-thumb { -webkit-appearance: none; width: 22px; height: 22px; margin-top: -6px; border: 3px solid #fff; border-radius: 50%; background: var(--color-acento); box-shadow: 0 2px 8px rgba(79, 70, 229, .45); transition: transform var(--duracion-rapida); }
+.porcentaje__deslizador::-moz-range-thumb { width: 18px; height: 18px; border: 3px solid #fff; border-radius: 50%; background: var(--color-acento); box-shadow: 0 2px 8px rgba(79, 70, 229, .45); }
+.porcentaje__deslizador:hover::-webkit-slider-thumb { transform: scale(1.1); }
+.porcentaje__deslizador:focus-visible { outline: none; }
+.porcentaje__deslizador:focus-visible::-webkit-slider-thumb { box-shadow: var(--anillo-foco); }
+
+/* Atajos */
+.atajos { display: flex; flex-wrap: wrap; gap: var(--espacio-2); margin-top: var(--espacio-3); }
+.atajo { display: inline-flex; align-items: center; gap: 6px; padding: 6px 12px; border: 1px solid var(--color-borde); border-radius: var(--radio-pildora); background: var(--color-fondo); font-size: .8125rem; font-weight: 600; color: var(--color-tinta); cursor: pointer; transition: border-color var(--duracion-rapida), background-color var(--duracion-rapida), transform var(--duracion-rapida); }
+.atajo:hover { border-color: var(--color-acento); background: var(--color-acento-suave); }
+.atajo:active { transform: scale(.96); }
+.atajo .icono { width: 14px; height: 14px; }
+.atajo--completar { margin-left: auto; border-color: #bfe6cf; color: var(--color-exito); }
+.atajo--completar:hover { border-color: var(--color-exito); background: var(--color-exito-fondo); }
+.atajo:disabled { opacity: .45; cursor: not-allowed; }
+
+.aviso-completar { margin-bottom: var(--espacio-5); }
+
+/* 4. Vista previa de cómo lo ve el cliente ================================= */
+.vista-cliente { padding: var(--espacio-4); border: 1px dashed var(--color-borde); border-radius: var(--radio-caja); }
+.vista-cliente__titulo { display: flex; align-items: center; gap: 6px; margin: 0 0 var(--espacio-3); font-size: .75rem; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; color: var(--color-texto-suave); }
+.vista-cliente__titulo .icono { width: 14px; height: 14px; }
+.vista-cliente .avance__texto.esta-vacio { color: var(--color-texto-tenue); font-style: italic; }
+
+/* Avance recién publicado en la línea de tiempo */
+.avance.esta-nuevo { animation: entrar var(--duracion-media) var(--curva); }
+
+/* 5. Reglas ================================================================ */
+.reglas-avance__lista { display: grid; gap: var(--espacio-3); margin: 0; padding: 0; list-style: none; font-size: .875rem; }
+.reglas-avance__lista li { position: relative; padding-left: 22px; }
+.reglas-avance__lista li::before { content: ""; position: absolute; left: 4px; top: .55em; width: 8px; height: 8px; border-radius: 50%; background: var(--color-acento); }
+
+/* Proyecto finalizado (RN-13): el formulario queda cerrado */
+.formulario-avance.esta-cerrado form { opacity: .5; pointer-events: none; }
+
+/* 6. Diseño adaptable ====================================================== */
+@media (max-width: 1180px) {
+  .registro-avance { grid-template-columns: minmax(0, 1fr); }
+  .registro-avance__lateral { position: static; grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .registro-avance__lateral .reglas-avance { grid-column: 1 / -1; }
+}
+@media (max-width: 640px) {
+  .registro-avance__lateral { grid-template-columns: minmax(0, 1fr); }
+  .porcentaje { grid-template-columns: minmax(0, 1fr); gap: var(--espacio-3); }
+  .porcentaje__control { max-width: 140px; }
+  .atajo--completar { margin-left: 0; }
+  .formulario-avance__pie .boton { width: 100%; }
+  .dialogo__acciones { flex-direction: column-reverse; }
+  .dialogo__acciones .boton { width: 100%; }
+}
+
+/* Tipo de registro: avance (sube) o corrección (baja con motivo, RN-16) ==== */
+.tipo-registro { margin: 0 0 var(--espacio-5); padding: 0; border: 0; min-width: 0; }
+.tipo-registro legend { padding: 0; margin-bottom: 6px; }
+.tipo-registro__opciones { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--espacio-3); }
+.tipo-registro__opcion {
+  display: flex; align-items: flex-start; gap: var(--espacio-3); padding: var(--espacio-3) var(--espacio-4);
+  border: 1.5px solid var(--color-borde); border-radius: var(--radio-caja); cursor: pointer;
+  transition: border-color var(--duracion-rapida), background-color var(--duracion-rapida);
+}
+.tipo-registro__opcion input { margin-top: 3px; accent-color: var(--color-acento); }
+.tipo-registro__opcion strong { display: block; font-size: .9375rem; }
+.tipo-registro__opcion small { display: block; font-size: .8125rem; color: var(--color-texto-suave); }
+.tipo-registro__opcion:has(:checked) { border-color: var(--color-acento); background: var(--color-acento-suave); }
+.tipo-registro__opcion:has([value="correccion"]:checked) { border-color: var(--color-advertencia); background: var(--color-advertencia-fondo); }
+.tipo-registro__opcion:has(:disabled) { opacity: .5; cursor: not-allowed; }
+.tipo-registro__opcion:has(:focus-visible) { outline: 2px solid var(--color-acento); outline-offset: 2px; }
+
+/* Fase entregada: el formulario espera la aprobación del cliente */
+.formulario-avance__espera { margin-bottom: var(--espacio-4); }
+.formulario-avance__espera p { margin: 4px 0 0; }
+@media (max-width: 640px) { .tipo-registro__opciones { grid-template-columns: minmax(0, 1fr); } }
+
+/* Correcciones abiertas: restan al proyecto hasta que se resuelven ========= */
+.correcciones-abiertas { margin-bottom: var(--espacio-5); padding: var(--espacio-4); border: 1px solid #f2c48d; border-radius: var(--radio-caja); background: var(--color-advertencia-fondo); }
+.correcciones-abiertas__titulo { display: flex; align-items: center; gap: var(--espacio-2); margin: 0; font-size: .9375rem; color: var(--color-advertencia-texto); }
+.correcciones-abiertas__titulo .icono { width: 18px; height: 18px; }
+.correcciones-abiertas__titulo span { display: inline-grid; place-items: center; min-width: 22px; height: 22px; padding: 0 6px; border-radius: var(--radio-pildora); background: var(--color-advertencia); color: #fff; font-size: .75rem; }
+.correcciones-abiertas__nota { margin: 4px 0 var(--espacio-3); font-size: .8125rem; color: var(--color-texto); }
+.correcciones-abiertas__lista { display: grid; gap: var(--espacio-2); margin: 0; padding: 0; list-style: none; }
+.correccion-abierta { display: flex; align-items: center; justify-content: space-between; gap: var(--espacio-3); flex-wrap: wrap; padding: var(--espacio-3); border-radius: var(--radio-control); background: #fff; }
+.correccion-abierta__texto { display: grid; gap: 2px; min-width: 0; flex: 1 1 260px; font-size: .875rem; }
+.correccion-abierta__texto small { font-size: .75rem; color: var(--color-texto-suave); }
+.correccion-abierta__resta { margin-left: 4px; color: var(--color-advertencia); font-variant-numeric: tabular-nums; }
+
+/* Impacto del registro en el avance del proyecto */
+.impacto-proyecto { margin: 0 0 var(--espacio-5); padding: var(--espacio-3) var(--espacio-4); border-radius: var(--radio-caja); background: var(--color-fondo-suave); font-size: .875rem; color: var(--color-texto); font-variant-numeric: tabular-nums; }
+
+/* Entregar la fase: se activa cuando todos los pasos están hechos ========== */
+.entrega-fase { display: flex; align-items: center; justify-content: space-between; gap: var(--espacio-4); flex-wrap: wrap; margin-top: var(--espacio-5); padding: var(--espacio-4); border: 1px dashed var(--color-borde); border-radius: var(--radio-caja); background: var(--color-fondo-suave); }
+.entrega-fase strong { display: block; }
+.entrega-fase p { margin: 2px 0 0; font-size: .875rem; color: var(--color-texto-suave); }
+.esta-cerrado .entrega-fase { display: none; }
+.entrega-fase .boton:disabled { opacity: .45; cursor: not-allowed; box-shadow: none; }

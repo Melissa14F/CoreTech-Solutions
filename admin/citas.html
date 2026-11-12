@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="es" class="sin-js">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Citas · CoreTech Solutions</title>
+  <link rel="icon" href="../img/logo.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap">
+  <link rel="stylesheet" href="../css/global.css">
+  <link rel="stylesheet" href="../css/plantillas/panel.css">
+  <link rel="stylesheet" href="../css/plantillas/tarjetas.css">
+  <link rel="stylesheet" href="../css/plantillas/tabla.css">
+  <script src="../js/accesibilidad.js"></script>
+</head>
+<body>
+  <a class="saltar-contenido" href="#contenido">Saltar al contenido</a>
+
+  <div class="panel">
+    <!-- ===================== Menú lateral del cliente ===================== -->
+    <aside class="panel__lateral superficie-noche" aria-label="Menú del administrador">
+      <a class="marca" href="../index.html" aria-label="CoreTech Solutions, ir al sitio público">
+        <img class="marca__logo" src="../img/logo.svg" alt="" width="30" height="30">
+        <span>CoreTech</span>
+      </a>
+      <p class="panel__rol"><strong>Panel de administración</strong>Gestión de CoreTech</p>
+
+      <nav aria-label="Secciones del administrador: Gestión">
+        <p class="navegacion-panel__titulo">Gestión</p>
+        <ul class="navegacion-panel__lista">
+          <li>
+            <a class="navegacion-panel__enlace" href="dashboard.html">
+              <svg class="icono" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="7" height="9" rx="1.5"/><rect x="14" y="3" width="7" height="5" rx="1.5"/><rect x="14" y="12" width="7" height="9" rx="1.5"/><rect x="3" y="16" width="7" height="5" rx="1.5"/></svg>
+              Dashboard
+              
+            </a>
+          </li>
+          <li>
+            <a class="navegacion-panel__enlace" href="citas.html" aria-current="page">
+              <svg class="icono" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="4" width="18" height="17" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>
+              Citas
+              <span class="navegacion-panel__contador navegacion-panel__contador--aviso" aria-label="1 sin asignar">1</span>
+            </a>
+          </li>
+          <li>
+            <a class="navegacion-panel__enlace" href="proyectos.html">
+              <svg class="icono" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 7a2 2 0 0 1 2-2h4l2 2h8a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2Z"/></svg>
+              Proyectos
+              
+            </a>
+          </li>
+          <li>
+            <a class="navegacion-panel__enlace" href="solicitudes.html">
+              <svg class="icono" viewBox="0 0 24 24" aria-hidden="true"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/><path d="M8 9h8M8 13h5"/></svg>
+              Solicitudes de reunión
+              
+            </a>
+          </li>
+        </ul>
+      </nav>
+
+      <nav aria-label="Secciones del administrador: Sitio web">
+        <p class="navegacion-panel__titulo">Sitio web</p>
+        <ul class="navegacion-panel__lista">
+          <li>
+            <a class="navegacion-panel__enlace" href="servicios.html">
+              <svg class="icono" viewBox="0 0 24 24" aria-hidden="true"><path d="m12 2 10 5-10 5L2 7l10-5Z"/><path d="m2 17 10 5 10-5M2 12l10 5 10-5"/></svg>
+              Servicios
+              
+            </a>
+          </li>
+          <li>
+            <a class="navegacion-panel__enlace" href="contenido.html">
+              <svg class="icono" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>
+              Contenido del sitio
+              
+            </a>
+          </li>
+        </ul>
+      </nav>
+
+      <nav aria-label="Secciones del administrador: Seguridad">
+        <p class="navegacion-panel__titulo">Seguridad</p>
+        <ul class="navegacion-panel__lista">
+          <li>
+            <a class="navegacion-panel__enlace" href="usuarios.html">
+              <svg class="icono" viewBox="0 0 24 24" aria-hidden="true"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+              Usuarios
+              
+            </a>
+          </li>
+          <li>
+            <a class="navegacion-panel__enlace" href="roles-permisos.html">
+              <svg class="icono" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10Z"/><path d="m9 12 2 2 4-4"/></svg>
+              Roles y permisos
+              
+            </a>
+          </li>
+          <li>
+            <a class="navegacion-panel__enlace" href="auditoria.html">
+              <svg class="icono" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 5H7a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2h-2"/><rect x="9" y="3" width="6" height="4" rx="1"/><path d="M9 12h6M9 16h4"/></svg>
+              Auditoría
+              
+            </a>
+          </li>
+        </ul>
+      </nav>
+
+      <div class="panel__usuario">
+        <span class="avatar avatar--gris" aria-hidden="true">PL</span>
+        <span class="panel__usuario-datos">
+          <span class="panel__usuario-nombre">Patricia León</span>
+          <span class="panel__usuario-correo">patricia.leon@coretechsolutions.co</span>
+        </span>
+        <a class="panel__salir" href="../index.html" data-accion data-mensaje-exito="Cerraste sesión." aria-label="Cerrar sesión" title="Cerrar sesión">
+          <svg class="icono" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4M16 17l5-5-5-5M21 12H9"/></svg>
+        </a>
+      </div>
+    </aside>
+
+    <div class="panel__cuerpo">
+      <!-- ===================== Barra superior ===================== -->
+      <header class="panel__barra">
+        <button type="button" class="boton-icono boton-icono--pequeno boton-menu-panel" aria-expanded="false" aria-label="Abrir menú">
+          <svg class="icono" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+        </button>
+        <nav class="ruta" aria-label="Ruta de navegación">
+          <a href="dashboard.html">Administración</a>
+          <svg class="icono" viewBox="0 0 24 24" aria-hidden="true"><path d="m9 6 6 6-6 6"/></svg>
+          <span aria-current="page">Citas</span>
+        </nav>
+        <div class="panel__barra-acciones">
+          <a class="boton-icono boton-icono--pequeno campana" href="dashboard.html#alertas" aria-label="Notificaciones: 4 nuevas">
+            <svg class="icono" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9"/><path d="M10.3 21a1.94 1.94 0 0 0 3.4 0"/></svg>
+            <span class="campana__punto" aria-hidden="true"></span>
+          </a>
+          <div class="panel__perfil">
+            <span class="avatar avatar--gris" aria-hidden="true">PL</span>
+            <span class="panel__perfil-nombre">Patricia León<small>Administradora</small></span>
+          </div>
+        </div>
+      </header>
+
+      <!-- ===================== Contenido ===================== -->
+      <main class="panel__contenido" id="contenido">
+        <div class="encabezado-vista aparecer">
+          <div>
+            <h1 class="encabezado-vista__titulo">Citas</h1>
+            <p class="encabezado-vista__texto">Todas las citas de los clientes. Asigna cada cita nueva a un equipo: su Product Owner la confirma y se comunica con el cliente.</p>
+          </div>
+        </div>
+
+        <div data-tabla>
+          <div class="herramientas aparecer">
+            <div class="filtros" role="group" aria-label="Filtrar por estado"><button type="button" class="filtro" data-filtro-estado="todas" aria-pressed="true">Todas <span class="filtro__cantidad" data-cantidad-estado="todas">0</span></button><button type="button" class="filtro" data-filtro-estado="sin-asignar" aria-pressed="false">Sin asignar <span class="filtro__cantidad" data-cantidad-estado="sin-asignar">0</span></button><button type="button" class="filtro" data-filtro-estado="pendiente" aria-pressed="false">Pendientes <span class="filtro__cantidad" data-cantidad-estado="pendiente">0</span></button><button type="button" class="filtro" data-filtro-estado="confirmada" aria-pressed="false">Confirmadas <span class="filtro__cantidad" data-cantidad-estado="confirmada">0</span></button><button type="button" class="filtro" data-filtro-estado="atendida" aria-pressed="false">Atendidas <span class="filtro__cantidad" data-cantidad-estado="atendida">0</span></button><button type="button" class="filtro" data-filtro-estado="cancelada" aria-pressed="false">Canceladas <span class="filtro__cantidad" data-cantidad-estado="cancelada">0</span></button></div>
+            <div class="herramientas__derecha">
+              <label class="buscador">
+                <span class="solo-lector">Buscar cita</span>
+                <svg class="icono" viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+                <input class="campo__control" type="search" placeholder="Buscar cliente o código" data-buscar>
+              </label>
+              <label>
+                <span class="solo-lector">Filtrar por equipo</span>
+                <select class="campo__control select" data-filtro-por="desarrollador"><option value="">Todos los equipos</option><option value="Andrés Pérez">Andrés Pérez</option><option value="María Ruiz">María Ruiz</option><option value="Sebastián Mora">Sebastián Mora</option><option value="Camila Jaimes">Camila Jaimes</option></select>
+              </label>
+            </div>
+          </div>
+
+          <div class="tabla-contenedor aparecer">
+            <table class="tabla-datos">
+              <caption class="solo-lector">Citas de los clientes</caption>
+              <thead>
+                <tr><th scope="col">Cita</th><th scope="col">Cliente</th><th scope="col">Fecha y modalidad</th><th scope="col">Desarrollador</th><th scope="col">Estado</th><th scope="col"><span class="solo-lector">Acciones</span></th></tr>
+              </thead>
+              <tbody>
+              <tr class="fila--atencion" data-fila id="cita-C-0061" data-estado="pendiente sin-asignar" data-desarrollador="" data-codigo="C-0061" data-cliente="Laura Gómez" data-servicio="Desarrollo de tienda en línea" data-fecha="Mar 17 nov, 9:00 a. m." data-modalidad="Virtual">
+                <td data-etiqueta="Cita"><span class="celda-principal"><strong class="codigo">C-0061</strong><small>Desarrollo de tienda en línea</small></span></td>
+                <td data-etiqueta="Cliente"><span class="celda-principal"><strong>Laura Gómez</strong><small>laura.gomez@correo.com</small></span></td>
+                <td data-etiqueta="Fecha"><span class="celda-principal celda-fecha"><strong>Mar 17 nov · 9:00 a. m.</strong><small>En 6 días · <span class="celda-modalidad"><svg class="icono" viewBox="0 0 24 24" aria-hidden="true"><rect x="2" y="6" width="14" height="12" rx="2"/><path d="m16 10 6-3v10l-6-3"/></svg>Virtual</span></small></span></td>
+                <td data-etiqueta="Desarrollador" data-celda-desarrollador><span class="insignia insignia--sin-asignar" data-nombre-desarrollador>Sin asignar</span></td>
+                <td data-etiqueta="Estado"><span class="insignia insignia--pendiente" data-insignia-estado>Pendiente</span></td>
+                <td><div class="celda-acciones" data-acciones><button type="button" class="boton boton--acento boton--pequeno" data-abrir="asignar"><svg class="icono" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4 21a8 8 0 0 1 16 0"/><path d="M19 8v6M16 11h6"/></svg>Asignar</button><button type="button" class="boton-icono boton-icono--pequeno" data-abrir="cancelar" aria-label="Cancelar la cita C-0061" title="Cancelar cita"><svg class="icono" viewBox="0 0 24 24" aria-hidden="true"><path d="M18 6 6 18M6 6l12 12"/></svg></button></div></td>
+              </tr>
+              <tr class="fila--atencion" data-fila id="cita-C-0060" data-estado="pendiente" data-desarrollador="Andrés Pérez" data-codigo="C-0060" data-cliente="Andrea Villamizar" data-servicio="Página web corporativa" data-fecha="Mié 18 nov, 2:00 p. m." data-modalidad="Presencial">
+                <td data-etiqueta="Cita"><span class="celda-principal"><strong class="codigo">C-0060</strong><small>Página web corporativa</small></span></td>
+                <td data-etiqueta="Cliente"><span class="celda-principal"><strong>Andrea Villamizar</strong><small>andrea.villamizar@correo.com</small></span></td>
+                <td data-etiqueta="Fecha"><span class="celda-principal celda-fecha"><strong>Mié 18 nov · 2:00 p. m.</strong><small>En 7 días · <span class="celda-modalidad"><svg class="icono" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 21h18M5 21V7l7-4 7 4v14M9 21v-6h6v6"/></svg>Presencial</span></small></span><span class="celda-nota">Sin confirmar hace 1 día hábil</span></td>
+                <td data-etiqueta="Desarrollador" data-celda-desarrollador><span class="celda-persona"><span class="avatar" aria-hidden="true">AP</span><span data-nombre-desarrollador>Andrés Pérez</span></span></td>
+                <td data-etiqueta="Estado"><span class="insignia insignia--pendiente" data-insignia-estado>Pendiente</span></td>
+                <td><div class="celda-acciones" data-acciones><button type="button" class="boton boton--contorno boton--pequeno" data-abrir="asignar"><svg class="icono" viewBox="0 0 24 24" aria-hidden="true"><path d="M17 1l4 4-4 4"/><path d="M3 11V9a4 4 0 0 1 4-4h14M7 23l-4-4 4-4"/><path d="M21 13v2a4 4 0 0 1-4 4H3"/></svg>Reasignar</button><button type="button" class="boton-icono boton-icono--pequeno" data-abrir="cancelar" aria-label="Cancelar la cita C-0060" title="Cancelar cita"><svg class="icono" viewBox="0 0 24 24" aria-hidden="true"><path d="M18 6 6 18M6 6l12 12"/></svg></button></div></td>
+              </tr>
+              <tr class="" data-fila id="cita-C-0062" data-estado="pendiente" data-desarrollador="Andrés Pérez" data-codigo="C-0062" data-cliente="Natalia Suárez" data-servicio="Mantenimiento y soporte" data-fecha="Vie 20 nov, 9:00 a. m." data-modalidad="Virtual">
+                <td data-etiqueta="Cita"><span class="celda-principal"><strong class="codigo">C-0062</strong><small>Mantenimiento y soporte</small></span></td>
+                <td data-etiqueta="Cliente"><span class="celda-principal"><strong>Natalia Suárez</strong><small>natalia.suarez@correo.com</small></span></td>
+                <td data-etiqueta="Fecha"><span class="celda-principal celda-fecha"><strong>Vie 20 nov · 9:00 a. m.</strong><small>En 9 días · <span class="celda-modalidad"><svg class="icono" viewBox="0 0 24 24" aria-hidden="true"><rect x="2" y="6" width="14" height="12" rx="2"/><path d="m16 10 6-3v10l-6-3"/></svg>Virtual</span></small></span></td>
+                <td data-etiqueta="Desarrollador" data-celda-desarrollador><span class="celda-persona"><span class="avatar" aria-hidden="true">AP</span><span data-nombre-desarrollador>Andrés Pérez</span></span></td>
+                <td data-etiqueta="Estado"><span class="insignia insignia--pendiente" data-insignia-estado>Pendiente</span></td>
+                <td><div class="celda-acciones" data-acciones><button type="button" class="boton boton--contorno boton--pequeno" data-abrir="asignar"><svg class="icono" viewBox="0 0 24 24" aria-hidden="true"><path d="M17 1l4 4-4 4"/><path d="M3 11V9a4 4 0 0 1 4-4h14M7 23l-4-4 4-4"/><path d="M21 13v2a4 4 0 0 1-4 4H3"/></svg>Reasignar</button><button type="button" class="boton-icono boton-icono--pequeno" data-abrir="cancelar" aria-label="Cancelar la cita C-0062" title="Cancelar cita"><svg class="icono" viewBox="0 0 24 24" aria-hidden="true"><path d="M18 6 6 18M6 6l12 12"/></svg></button></div></td>
+              </tr>
+              <tr class="" data-fila id="cita-C-0056" data-estado="confirmada" data-desarrollador="Sebastián Mora" data-codigo="C-0056" data-cliente="Daniela Contreras" data-servicio="Sistema de inventario" data-fecha="Vie 13 nov, 8:00 a. m." data-modalidad="Presencial">
+                <td data-etiqueta="Cita"><span class="celda-principal"><strong class="codigo">C-0056</strong><small>Sistema de inventario</small></span></td>
+                <td data-etiqueta="Cliente"><span class="celda-principal"><strong>Daniela Contreras</strong><small>daniela.contreras@correo.com</small></span></td>
+                <td data-etiqueta="Fecha"><span class="celda-principal celda-fecha"><strong>Vie 13 nov · 8:00 a. m.</strong><small>En 2 días · <span class="celda-modalidad"><svg class="icono" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 21h18M5 21V7l7-4 7 4v14M9 21v-6h6v6"/></svg>Presencial</span></small></span></td>
+                <td data-etiqueta="Desarrollador" data-celda-desarrollador><span class="celda-persona"><span class="avatar" aria-hidden="true">SM</span><span data-nombre-desarrollador>Sebastián Mora</span></span></td>
+                <td data-etiqueta="Estado"><span class="insignia insignia--confirmada" data-insignia-estado>Confirmada</span></td>
+                <td><div class="celda-acciones" data-acciones><button type="button" class="boton boton--contorno boton--pequeno" data-abrir="asignar"><svg class="icono" viewBox="0 0 24 24" aria-hidden="true"><path d="M17 1l4 4-4 4"/><path d="M3 11V9a4 4 0 0 1 4-4h14M7 23l-4-4 4-4"/><path d="M21 13v2a4 4 0 0 1-4 4H3"/></svg>Reasignar</button><button type="button" class="boton-icono boton-icono--pequeno" data-abrir="cancelar" aria-label="Cancelar la cita C-0056" title="Cancelar cita"><svg class="icono" viewBox="0 0 24 24" aria-hidden="true"><path d="M18 6 6 18M6 6l12 12"/></svg></button></div></td>
+              </tr>
+              <tr class="" data-fila id="cita-C-0059" data-estado="confirmada" data-desarrollador="Andrés Pérez" data-codigo="C-0059" data-cliente="Felipe Ortega" data-servicio="Integración de pagos" data-fecha="Lun 16 nov, 10:00 a. m." data-modalidad="Virtual">
+                <td data-etiqueta="Cita"><span class="celda-principal"><strong class="codigo">C-0059</strong><small>Integración de pagos</small></span></td>
+                <td data-etiqueta="Cliente"><span class="celda-principal"><strong>Felipe Ortega</strong><small>felipe.ortega@correo.com</small></span></td>
+                <td data-etiqueta="Fecha"><span class="celda-principal celda-fecha"><strong>Lun 16 nov · 10:00 a. m.</strong><small>En 5 días · <span class="celda-modalidad"><svg class="icono" viewBox="0 0 24 24" aria-hidden="true"><rect x="2" y="6" width="14" height="12" rx="2"/><path d="m16 10 6-3v10l-6-3"/></svg>Virtual</span></small></span></td>
+                <td data-etiqueta="Desarrollador" data-celda-desarrollador><span class="celda-persona"><span class="avatar" aria-hidden="true">AP</span><span data-nombre-desarrollador>Andrés Pérez</span></span></td>
+                <td data-etiqueta="Estado"><span class="insignia insignia--confirmada" data-insignia-estado>Confirmada</span></td>
+                <td><div class="celda-acciones" data-acciones><button type="button" class="boton boton--contorno boton--pequeno" data-abrir="asignar"><svg class="icono" viewBox="0 0 24 24" aria-hidden="true"><path d="M17 1l4 4-4 4"/><path d="M3 11V9a4 4 0 0 1 4-4h14M7 23l-4-4 4-4"/><path d="M21 13v2a4 4 0 0 1-4 4H3"/></svg>Reasignar</button><button type="button" class="boton-icono boton-icono--pequeno" data-abrir="cancelar" aria-label="Cancelar la cita C-0059" title="Cancelar cita"><svg class="icono" viewBox="0 0 24 24" aria-hidden="true"><path d="M18 6 6 18M6 6l12 12"/></svg></button></div></td>
+              </tr>
+              <tr class="" data-fila id="cita-C-0063" data-estado="confirmada" data-desarrollador="María Ruiz" data-codigo="C-0063" data-cliente="Paola Rangel" data-servicio="Aplicación móvil" data-fecha="Jue 19 nov, 3:00 p. m." data-modalidad="Virtual">
+                <td data-etiqueta="Cita"><span class="celda-principal"><strong class="codigo">C-0063</strong><small>Aplicación móvil</small></span></td>
+                <td data-etiqueta="Cliente"><span class="celda-principal"><strong>Paola Rangel</strong><small>paola.rangel@correo.com</small></span></td>
+                <td data-etiqueta="Fecha"><span class="celda-principal celda-fecha"><strong>Jue 19 nov · 3:00 p. m.</strong><small>En 8 días · <span class="celda-modalidad"><svg class="icono" viewBox="0 0 24 24" aria-hidden="true"><rect x="2" y="6" width="14" height="12" rx="2"/><path d="m16 10 6-3v10l-6-3"/></svg>Virtual</span></small></span></td>
+                <td data-etiqueta="Desarrollador" data-celda-desarrollador><span class="celda-persona"><span class="avatar" aria-hidden="true">MR</span><span data-nombre-desarrollador>María Ruiz</span></span></td>
+                <td data-etiqueta="Estado"><span class="insignia insignia--confirmada" data-insignia-estado>Confirmada</span></td>
+                <td><div class="celda-acciones" data-acciones><button type="button" class="boton boton--contorno boton--pequeno" data-abrir="asignar"><svg class="icono" viewBox="0 0 24 24" aria-hidden="true"><path d="M17 1l4 4-4 4"/><path d="M3 11V9a4 4 0 0 1 4-4h14M7 23l-4-4 4-4"/><path d="M21 13v2a4 4 0 0 1-4 4H3"/></svg>Reasignar</button><button type="button" class="boton-icono boton-icono--pequeno" data-abrir="cancelar" aria-label="Cancelar la cita C-0063" title="Cancelar cita"><svg class="icono" viewBox="0 0 24 24" aria-hidden="true"><path d="M18 6 6 18M6 6l12 12"/></svg></button></div></td>
+              </tr>
+              <tr class="" data-fila id="cita-C-0064" data-estado="confirmada" data-desarrollador="Sebastián Mora" data-codigo="C-0064" data-cliente="Hernán Rojas" data-servicio="Mantenimiento y soporte" data-fecha="Mar 24 nov, 4:00 p. m." data-modalidad="Presencial">
+                <td data-etiqueta="Cita"><span class="celda-principal"><strong class="codigo">C-0064</strong><small>Mantenimiento y soporte</small></span></td>
+                <td data-etiqueta="Cliente"><span class="celda-principal"><strong>Hernán Rojas</strong><small>hernan.rojas@correo.com</small></span></td>
+                <td data-etiqueta="Fecha"><span class="celda-principal celda-fecha"><strong>Mar 24 nov · 4:00 p. m.</strong><small>En 13 días · <span class="celda-modalidad"><svg class="icono" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 21h18M5 21V7l7-4 7 4v14M9 21v-6h6v6"/></svg>Presencial</span></small></span></td>
+                <td data-etiqueta="Desarrollador" data-celda-desarrollador><span class="celda-persona"><span class="avatar" aria-hidden="true">SM</span><span data-nombre-desarrollador>Sebastián Mora</span></span></td>
+                <td data-etiqueta="Estado"><span class="insignia insignia--confirmada" data-insignia-estado>Confirmada</span></td>
+                <td><div class="celda-acciones" data-acciones><button type="button" class="boton boton--contorno boton--pequeno" data-abrir="asignar"><svg class="icono" viewBox="0 0 24 24" aria-hidden="true"><path d="M17 1l4 4-4 4"/><path d="M3 11V9a4 4 0 0 1 4-4h14M7 23l-4-4 4-4"/><path d="M21 13v2a4 4 0 0 1-4 4H3"/></svg>Reasignar</button><button type="button" class="boton-icono boton-icono--pequeno" data-abrir="cancelar" aria-label="Cancelar la cita C-0064" title="Cancelar cita"><svg class="icono" viewBox="0 0 24 24" aria-hidden="true"><path d="M18 6 6 18M6 6l12 12"/></svg></button></div></td>
+              </tr>
+              <tr class="fila--atencion" data-fila id="cita-C-0058" data-estado="confirmada" data-desarrollador="Andrés Pérez" data-codigo="C-0058" data-cliente="Jorge Pabón" data-servicio="Mantenimiento y soporte" data-fecha="Lun 9 nov, 9:00 a. m." data-modalidad="Presencial">
+                <td data-etiqueta="Cita"><span class="celda-principal"><strong class="codigo">C-0058</strong><small>Mantenimiento y soporte</small></span></td>
+                <td data-etiqueta="Cliente"><span class="celda-principal"><strong>Jorge Pabón</strong><small>jorge.pabon@correo.com</small></span></td>
+                <td data-etiqueta="Fecha"><span class="celda-principal celda-fecha"><strong>Lun 9 nov · 9:00 a. m.</strong><small>Hace 2 días · <span class="celda-modalidad"><svg class="icono" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 21h18M5 21V7l7-4 7 4v14M9 21v-6h6v6"/></svg>Presencial</span></small></span><span class="celda-nota">Ya pasó: falta marcarla atendida</span></td>
+                <td data-etiqueta="Desarrollador" data-celda-desarrollador><span class="celda-persona"><span class="avatar" aria-hidden="true">AP</span><span data-nombre-desarrollador>Andrés Pérez</span></span></td>
+                <td data-etiqueta="Estado"><span class="insignia insignia--confirmada" data-insignia-estado>Confirmada</span></td>
+                <td><div class="celda-acciones" data-acciones><a class="boton boton--contorno boton--pequeno" href="mailto:andres.perez@coretechsolutions.co?subject=Cita%20C-0058%20sin%20cerrar"><svg class="icono" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg>Recordar a Andrés</a></div></td>
+              </tr>
+              <tr class="" data-fila id="cita-C-0057" data-estado="atendida" data-desarrollador="Camila Jaimes" data-codigo="C-0057" data-cliente="Miguel Ángel Duarte" data-servicio="Página web corporativa" data-fecha="Jue 5 nov, 11:00 a. m." data-modalidad="Presencial">
+                <td data-etiqueta="Cita"><span class="celda-principal"><strong class="codigo">C-0057</strong><small>Página web corporativa</small></span></td>
+                <td data-etiqueta="Cliente"><span class="celda-principal"><strong>Miguel Ángel Duarte</strong><small>miguel.duarte@correo.com</small></span></td>
+                <td data-etiqueta="Fecha"><span class="celda-principal celda-fecha"><strong>Jue 5 nov · 11:00 a. m.</strong><small>Hace 6 días · <span class="celda-modalidad"><svg class="icono" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 21h18M5 21V7l7-4 7 4v14M9 21v-6h6v6"/></svg>Presencial</span></small></span></td>
+                <td data-etiqueta="Desarrollador" data-celda-desarrollador><span class="celda-persona"><span class="avatar" aria-hidden="true">CJ</span><span data-nombre-desarrollador>Camila Jaimes</span></span></td>
+                <td data-etiqueta="Estado"><span class="insignia insignia--atendida" data-insignia-estado>Atendida</span></td>
+                <td><div class="celda-acciones" data-acciones><a class="boton boton--acento boton--pequeno" href="crear-proyecto.html?cita=C-0057"><svg class="icono" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg>Crear proyecto</a></div></td>
+              </tr>
+              <tr class="" data-fila id="cita-C-0054" data-estado="atendida" data-desarrollador="María Ruiz" data-codigo="C-0054" data-cliente="Luis Carvajal" data-servicio="Integración de pagos" data-fecha="Vie 6 nov, 9:00 a. m." data-modalidad="Virtual">
+                <td data-etiqueta="Cita"><span class="celda-principal"><strong class="codigo">C-0054</strong><small>Integración de pagos</small></span></td>
+                <td data-etiqueta="Cliente"><span class="celda-principal"><strong>Luis Carvajal</strong><small>luis.carvajal@correo.com</small></span></td>
+                <td data-etiqueta="Fecha"><span class="celda-principal celda-fecha"><strong>Vie 6 nov · 9:00 a. m.</strong><small>Hace 5 días · <span class="celda-modalidad"><svg class="icono" viewBox="0 0 24 24" aria-hidden="true"><rect x="2" y="6" width="14" height="12" rx="2"/><path d="m16 10 6-3v10l-6-3"/></svg>Virtual</span></small></span></td>
+                <td data-etiqueta="Desarrollador" data-celda-desarrollador><span class="celda-persona"><span class="avatar" aria-hidden="true">MR</span><span data-nombre-desarrollador>María Ruiz</span></span></td>
+                <td data-etiqueta="Estado"><span class="insignia insignia--atendida" data-insignia-estado>Atendida</span></td>
+                <td><div class="celda-acciones" data-acciones><span class="celda-principal"><small>No contrató</small></span></div></td>
+              </tr>
+              <tr class="" data-fila id="cita-C-0052" data-estado="atendida" data-desarrollador="Andrés Pérez" data-codigo="C-0052" data-cliente="Laura Gómez" data-servicio="Aplicación móvil" data-fecha="Mar 3 nov, 10:00 a. m." data-modalidad="Virtual">
+                <td data-etiqueta="Cita"><span class="celda-principal"><strong class="codigo">C-0052</strong><small>Aplicación móvil</small></span></td>
+                <td data-etiqueta="Cliente"><span class="celda-principal"><strong>Laura Gómez</strong><small>laura.gomez@correo.com</small></span></td>
+                <td data-etiqueta="Fecha"><span class="celda-principal celda-fecha"><strong>Mar 3 nov · 10:00 a. m.</strong><small>Hace 8 días · <span class="celda-modalidad"><svg class="icono" viewBox="0 0 24 24" aria-hidden="true"><rect x="2" y="6" width="14" height="12" rx="2"/><path d="m16 10 6-3v10l-6-3"/></svg>Virtual</span></small></span></td>
+                <td data-etiqueta="Desarrollador" data-celda-desarrollador><span class="celda-persona"><span class="avatar" aria-hidden="true">AP</span><span data-nombre-desarrollador>Andrés Pérez</span></span></td>
+                <td data-etiqueta="Estado"><span class="insignia insignia--atendida" data-insignia-estado>Atendida</span></td>
+                <td><div class="celda-acciones" data-acciones><a class="boton boton--fantasma boton--pequeno" href="proyectos.html?buscar=P-0034">Proyecto P-0034 <svg class="icono icono--mover" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 5l7 7-7 7"/></svg></a></div></td>
+              </tr>
+              <tr class="" data-fila id="cita-C-0053" data-estado="atendida" data-desarrollador="Andrés Pérez" data-codigo="C-0053" data-cliente="Jorge Pabón" data-servicio="Mantenimiento y soporte" data-fecha="Lun 2 nov, 2:00 p. m." data-modalidad="Presencial">
+                <td data-etiqueta="Cita"><span class="celda-principal"><strong class="codigo">C-0053</strong><small>Mantenimiento y soporte</small></span></td>
+                <td data-etiqueta="Cliente"><span class="celda-principal"><strong>Jorge Pabón</strong><small>jorge.pabon@correo.com</small></span></td>
+                <td data-etiqueta="Fecha"><span class="celda-principal celda-fecha"><strong>Lun 2 nov · 2:00 p. m.</strong><small>Hace 9 días · <span class="celda-modalidad"><svg class="icono" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 21h18M5 21V7l7-4 7 4v14M9 21v-6h6v6"/></svg>Presencial</span></small></span></td>
+                <td data-etiqueta="Desarrollador" data-celda-desarrollador><span class="celda-persona"><span class="avatar" aria-hidden="true">AP</span><span data-nombre-desarrollador>Andrés Pérez</span></span></td>
+                <td data-etiqueta="Estado"><span class="insignia insignia--atendida" data-insignia-estado>Atendida</span></td>
+                <td><div class="celda-acciones" data-acciones><span class="celda-principal"><small>Se resolvió en la cita</small></span></div></td>
+              </tr>
+              <tr class="" data-fila id="cita-C-0051" data-estado="atendida" data-desarrollador="María Ruiz" data-codigo="C-0051" data-cliente="Paola Rangel" data-servicio="Aplicación móvil" data-fecha="Lun 2 nov, 3:00 p. m." data-modalidad="Virtual">
+                <td data-etiqueta="Cita"><span class="celda-principal"><strong class="codigo">C-0051</strong><small>Aplicación móvil</small></span></td>
+                <td data-etiqueta="Cliente"><span class="celda-principal"><strong>Paola Rangel</strong><small>paola.rangel@correo.com</small></span></td>
+                <td data-etiqueta="Fecha"><span class="celda-principal celda-fecha"><strong>Lun 2 nov · 3:00 p. m.</strong><small>Hace 9 días · <span class="celda-modalidad"><svg class="icono" viewBox="0 0 24 24" aria-hidden="true"><rect x="2" y="6" width="14" height="12" rx="2"/><path d="m16 10 6-3v10l-6-3"/></svg>Virtual</span></small></span></td>
+                <td data-etiqueta="Desarrollador" data-celda-desarrollador><span class="celda-persona"><span class="avatar" aria-hidden="true">MR</span><span data-nombre-desarrollador>María Ruiz</span></span></td>
+                <td data-etiqueta="Estado"><span class="insignia insignia--atendida" data-insignia-estado>Atendida</span></td>
+                <td><div class="celda-acciones" data-acciones><span class="celda-principal"><small>Agendó la cita C-0063</small></span></div></td>
+              </tr>
+              <tr class="fila--apagada" data-fila id="cita-C-0055" data-estado="cancelada" data-desarrollador="" data-codigo="C-0055" data-cliente="Sofía Navarro" data-servicio="Desarrollo de tienda en línea" data-fecha="Mié 4 nov, 2:00 p. m." data-modalidad="Virtual">
+                <td data-etiqueta="Cita"><span class="celda-principal"><strong class="codigo">C-0055</strong><small>Desarrollo de tienda en línea</small></span></td>
+                <td data-etiqueta="Cliente"><span class="celda-principal"><strong>Sofía Navarro</strong><small>sofia.navarro@correo.com</small></span></td>
+                <td data-etiqueta="Fecha"><span class="celda-principal celda-fecha"><strong>Mié 4 nov · 2:00 p. m.</strong><small>Hace 7 días · <span class="celda-modalidad"><svg class="icono" viewBox="0 0 24 24" aria-hidden="true"><rect x="2" y="6" width="14" height="12" rx="2"/><path d="m16 10 6-3v10l-6-3"/></svg>Virtual</span></small></span></td>
+                <td data-etiqueta="Desarrollador" data-celda-desarrollador><span class="celda-principal"><small>No se asignó</small></span></td>
+                <td data-etiqueta="Estado"><span class="insignia insignia--cancelada" data-insignia-estado>Cancelada</span></td>
+                <td><div class="celda-acciones" data-acciones><span class="celda-principal"><small>Canceló el cliente el 3 nov</small></span></div></td>
+              </tr>
+              <tr class="tabla-datos__vacio" data-sin-resultados hidden>
+                <td colspan="6">
+                  <div class="sin-resultados">
+                    <span class="sin-resultados__icono"><svg class="icono icono--grande" viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5M8 11h6"/></svg></span>
+                    <h2 class="sin-resultados__titulo">No hay citas con estos filtros</h2>
+                    <p>Prueba con otro estado, otro equipo u otra búsqueda.</p>
+                    <button type="button" class="boton boton--contorno boton--pequeno" data-limpiar-filtros>Limpiar filtros</button>
+                  </div>
+                </td>
+              </tr>
+              </tbody>
+            </table>
+          </div>
+          <p class="pie-tabla" aria-live="polite"><span data-total-visible>14 resultados</span> · Ordenadas por estado y fecha</p>
+        </div>
+
+        <!-- ===================== Asignar o reasignar ===================== -->
+        <dialog class="dialogo dialogo--ancho" id="dialogo-asignar" aria-labelledby="titulo-asignar">
+          <form class="dialogo__formulario" data-validar>
+            <div class="dialogo__cabecera">
+              <span class="dialogo__icono dialogo__icono--acento"><svg class="icono icono--grande" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4 21a8 8 0 0 1 16 0"/><path d="M19 8v6M16 11h6"/></svg></span>
+              <div>
+                <h2 class="dialogo__titulo" id="titulo-asignar" data-titulo-asignar>Asignar equipo</h2>
+                <p class="dialogo__texto">Le llegará un correo para confirmar la cita con el cliente.</p>
+              </div>
+              <button type="button" class="boton-icono boton-icono--pequeno" data-cerrar-dialogo aria-label="Cerrar"><svg class="icono" viewBox="0 0 24 24" aria-hidden="true"><path d="M18 6 6 18M6 6l12 12"/></svg></button>
+            </div>
+            <div class="dialogo__cuerpo">
+              <div class="resumen-dialogo" data-resumen></div>
+              <fieldset class="grupo-opciones campo">
+                <legend class="campo__etiqueta">Desarrollador <span class="campo__opcional">(de menor a mayor carga)</span></legend>
+                <div class="opciones-persona">
+                  <label class="opcion-persona">
+                    <input type="radio" name="desarrollador" value="Camila Jaimes" data-iniciales="CJ" required data-mensaje-vacio="Elige quién atenderá la cita." aria-describedby="asignar-desarrollador-mensaje">
+                    <span class="avatar" aria-hidden="true">CJ</span>
+                    <span class="opcion-persona__nombre">Camila Jaimes<span class="opcion-persona__detalle">0 de 3 proyectos · 0 citas próximas</span></span>
+                    <span class="carga" role="img" aria-label="0 de 3 proyectos activos"><span class="carga__unidad"></span><span class="carga__unidad"></span><span class="carga__unidad"></span></span>
+                  </label>
+                  <label class="opcion-persona">
+                    <input type="radio" name="desarrollador" value="Sebastián Mora" data-iniciales="SM" required data-mensaje-vacio="Elige quién atenderá la cita." aria-describedby="asignar-desarrollador-mensaje">
+                    <span class="avatar" aria-hidden="true">SM</span>
+                    <span class="opcion-persona__nombre">Sebastián Mora<span class="opcion-persona__detalle">1 de 3 proyectos · 2 citas próximas</span></span>
+                    <span class="carga" role="img" aria-label="1 de 3 proyectos activos"><span class="carga__unidad carga__unidad--ocupada"></span><span class="carga__unidad"></span><span class="carga__unidad"></span></span>
+                  </label>
+                  <label class="opcion-persona">
+                    <input type="radio" name="desarrollador" value="María Ruiz" data-iniciales="MR" required data-mensaje-vacio="Elige quién atenderá la cita." aria-describedby="asignar-desarrollador-mensaje">
+                    <span class="avatar" aria-hidden="true">MR</span>
+                    <span class="opcion-persona__nombre">María Ruiz<span class="opcion-persona__detalle">3 de 3 proyectos · 1 cita próxima</span></span>
+                    <span class="carga" role="img" aria-label="3 de 3 proyectos activos"><span class="carga__unidad carga__unidad--ocupada"></span><span class="carga__unidad carga__unidad--ocupada"></span><span class="carga__unidad carga__unidad--ocupada"></span></span>
+                  </label>
+                  <label class="opcion-persona">
+                    <input type="radio" name="desarrollador" value="Andrés Pérez" data-iniciales="AP" required data-mensaje-vacio="Elige quién atenderá la cita." aria-describedby="asignar-desarrollador-mensaje">
+                    <span class="avatar" aria-hidden="true">AP</span>
+                    <span class="opcion-persona__nombre">Andrés Pérez<span class="opcion-persona__detalle">2 de 3 proyectos · 4 citas próximas</span></span>
+                    <span class="carga" role="img" aria-label="2 de 3 proyectos activos"><span class="carga__unidad carga__unidad--ocupada"></span><span class="carga__unidad carga__unidad--ocupada"></span><span class="carga__unidad"></span></span>
+                  </label>
+                </div>
+                <p class="campo__mensaje" id="asignar-desarrollador-mensaje" aria-live="polite"><svg class="icono" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M12 8v4M12 16h.01"/></svg><span class="campo__mensaje-texto"></span></p>
+              </fieldset>
+              <div class="campo">
+                <label class="campo__etiqueta" for="asignar-nota">Nota para el Product Owner <span class="campo__opcional">(opcional)</span></label>
+                <textarea class="campo__control campo__control--area" id="asignar-nota" name="nota" maxlength="300" placeholder="Ejemplo: Laura ya es cliente; revisa su tienda en línea antes de la cita."></textarea>
+              </div>
+            </div>
+            <div class="dialogo__acciones">
+              <button type="button" class="boton boton--contorno" data-cerrar-dialogo>Volver</button>
+              <button type="submit" class="boton boton--acento">Guardar asignación</button>
+            </div>
+          </form>
+        </dialog>
+
+        <!-- ===================== Cancelar ===================== -->
+        <dialog class="dialogo dialogo--ancho" id="dialogo-cancelar" aria-labelledby="titulo-cancelar">
+          <form class="dialogo__formulario" data-validar>
+            <div class="dialogo__cabecera">
+              <span class="dialogo__icono dialogo__icono--peligro"><svg class="icono icono--grande" viewBox="0 0 24 24" aria-hidden="true"><path d="M18 6 6 18M6 6l12 12"/></svg></span>
+              <div>
+                <h2 class="dialogo__titulo" id="titulo-cancelar">Cancelar cita</h2>
+                <p class="dialogo__texto">El cliente y el Product Owner recibirán un correo con el motivo. La franja queda libre.</p>
+              </div>
+              <button type="button" class="boton-icono boton-icono--pequeno" data-cerrar-dialogo aria-label="Cerrar"><svg class="icono" viewBox="0 0 24 24" aria-hidden="true"><path d="M18 6 6 18M6 6l12 12"/></svg></button>
+            </div>
+            <div class="dialogo__cuerpo">
+              <div class="resumen-dialogo" data-resumen></div>
+              <div class="campo">
+                <label class="campo__etiqueta" for="cancelar-motivo">Motivo</label>
+                <textarea class="campo__control campo__control--area" id="cancelar-motivo" name="motivo" required minlength="15" maxlength="300"
+                          placeholder="Ejemplo: el cliente pidió cambiar la fecha por teléfono; agendará de nuevo."
+                          data-mensaje-vacio="Escribe el motivo: quedará en la auditoría." data-mensaje-corto="Escribe al menos 15 caracteres."
+                          aria-describedby="cancelar-motivo-mensaje"></textarea>
+                <div class="campo__pie"><p class="campo__mensaje" id="cancelar-motivo-mensaje" aria-live="polite"><svg class="icono" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M12 8v4M12 16h.01"/></svg><span class="campo__mensaje-texto"></span></p><span class="campo__contador" data-contador-de="cancelar-motivo" aria-hidden="true">0 / 300</span></div>
+              </div>
+            </div>
+            <div class="dialogo__acciones">
+              <button type="button" class="boton boton--contorno" data-cerrar-dialogo>Volver</button>
+              <button type="submit" class="boton boton--peligro">Cancelar la cita</button>
+            </div>
+          </form>
+        </dialog>
+      </main>
+    </div>
+  </div>
+
+  <script src="../js/principal.js"></script>
+  <script src="../js/tabla.js"></script>
+  <script src="../js/vistas/admin-citas.js"></script>
+</body>
+</html>

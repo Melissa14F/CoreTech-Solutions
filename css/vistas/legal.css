@@ -1,0 +1,38 @@
+/* ==========================================================================
+   Vista: Avisos legales (legal.html)
+   Requiere: css/global.css
+   Contenido: política de tratamiento de datos y términos y condiciones.
+   ========================================================================== */
+
+/* 1. Encabezado de la página =============================================== */
+/* Igual que la portada: el encabezado oscuro queda encima */
+.legal-portada { margin-top: -72px; padding: calc(72px + var(--espacio-16)) 0 var(--espacio-16); }
+.legal-portada__titulo { max-width: 18ch; margin: var(--espacio-5) 0 var(--espacio-4); font-size: clamp(2rem, 4vw, 3rem); font-weight: 800; letter-spacing: -.03em; }
+.legal-portada__texto { max-width: 56ch; margin-bottom: var(--espacio-3); font-size: 1.0625rem; }
+.legal-portada__fecha { margin: 0; font-size: .8125rem; }
+
+/* 2. Contenido con índice lateral ========================================== */
+.legal { display: grid; grid-template-columns: 240px minmax(0, 1fr); gap: var(--espacio-16); padding: var(--espacio-16) 0 var(--espacio-20); }
+.legal__indice { position: sticky; top: 96px; align-self: start; display: grid; gap: var(--espacio-4); }
+.legal__indice-titulo { margin: 0; font-size: .75rem; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--color-tinta); }
+.legal__indice ol { display: grid; gap: var(--espacio-2); padding-left: var(--espacio-4); border-left: 2px solid var(--color-borde); }
+.legal__indice a { font-size: .875rem; color: var(--color-texto-suave); transition: color var(--duracion-rapida); }
+.legal__indice a:hover { color: var(--color-acento); }
+.legal__indice .boton { justify-self: start; margin-top: var(--espacio-4); }
+
+.legal__contenido { max-width: 72ch; }
+.legal__seccion { padding-top: var(--espacio-10); scroll-margin-top: 96px; }
+.legal__seccion + .legal__seccion { margin-top: var(--espacio-10); border-top: 1px solid var(--color-borde-suave); }
+.legal__seccion h2 { margin-bottom: var(--espacio-4); }
+.legal__seccion h3 { margin: var(--espacio-8) 0 var(--espacio-3); }
+.legal__seccion p { color: var(--color-texto); line-height: 1.75; }
+.legal__lista { display: grid; gap: var(--espacio-2); margin-bottom: var(--espacio-4); }
+.legal__lista li { position: relative; padding-left: var(--espacio-6); color: var(--color-texto); line-height: 1.7; }
+.legal__lista li::before { content: ""; position: absolute; left: 4px; top: .7em; width: 6px; height: 6px; border-radius: 50%; background: var(--color-acento); }
+
+/* 3. Diseño adaptable ====================================================== */
+@media (max-width: 860px) {
+  .legal { grid-template-columns: minmax(0, 1fr); gap: var(--espacio-8); padding-top: var(--espacio-10); }
+  .legal__indice, .legal__contenido { min-width: 0; overflow-wrap: anywhere; }
+  .legal__indice { position: static; }
+}

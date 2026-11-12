@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="es" class="sin-js">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Iniciar sesión · CoreTech Solutions</title>
+  <meta name="description" content="Ingresa a tu panel de CoreTech Solutions para ver tus citas y el avance de tus proyectos.">
+  <link rel="icon" href="img/logo.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap">
+  <link rel="stylesheet" href="css/global.css">
+  <link rel="stylesheet" href="css/plantillas/acceso.css">
+  <link rel="stylesheet" href="css/vistas/login.css">
+  <script src="js/accesibilidad.js"></script>
+</head>
+<body>
+  <a class="saltar-contenido" href="#contenido">Saltar al formulario</a>
+
+  <div class="acceso">
+    <!-- ===================== Formulario ===================== -->
+    <div class="acceso__principal">
+      <header class="acceso__superior">
+        <a class="marca" href="index.html" aria-label="CoreTech Solutions, ir al inicio">
+          <img class="marca__logo" src="img/logo.svg" alt="" width="30" height="30">
+          <span>CoreTech</span>
+        </a>
+        <a class="enlace-flecha" href="index.html" style="font-size: .875rem">
+          <svg class="icono" viewBox="0 0 24 24" aria-hidden="true"><path d="M19 12H5M11 19l-7-7 7-7"/></svg>
+          Volver al inicio
+        </a>
+      </header>
+
+      <main class="acceso__caja" id="contenido">
+        <h1 class="acceso__titulo aparecer">Inicia sesión</h1>
+        <p class="acceso__texto aparecer" style="--retraso: 80ms">Ingresa para ver tus citas y el avance de tus proyectos.</p>
+
+        <!-- Se muestra solo si el usuario viene de un servicio del catálogo -->
+        <div class="servicio-elegido aparecer" data-servicio-elegido="" hidden>
+          <img src="img/servicios/tienda-en-linea.webp" alt="" width="52" height="36">
+          <div>
+            <span class="servicio-elegido__dato">Después de ingresar vas a agendar</span>
+            <strong class="servicio-elegido__nombre">Desarrollo de tienda en línea</strong>
+          </div>
+          <a class="servicio-elegido__cambiar enlace" href="index.html#servicios">Cambiar</a>
+        </div>
+
+        <form class="aparecer" style="--retraso: 160ms" data-validar
+              data-mensaje-error="Revisa los campos marcados en rojo."
+              data-mensaje-exito="Bienvenida de nuevo, Laura.">
+
+          <div class="campo">
+            <label class="campo__etiqueta" for="login-correo">Correo electrónico</label>
+            <input class="campo__control" id="login-correo" name="correo" type="email"
+                   autocomplete="email" required placeholder="laura.gomez@correo.com"
+                   data-mensaje-vacio="Escribe el correo con el que creaste tu cuenta." aria-describedby="login-correo-mensaje">
+            <p class="campo__mensaje" id="login-correo-mensaje" aria-live="polite">
+              <svg class="icono" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M12 8v4M12 16h.01"/></svg>
+              <span class="campo__mensaje-texto"></span>
+            </p>
+          </div>
+
+          <div class="campo">
+            <label class="campo__etiqueta" for="login-clave">Contraseña</label>
+            <div class="campo__envoltura">
+              <input class="campo__control" id="login-clave" name="clave" type="password"
+                     autocomplete="current-password" required
+                     data-mensaje-vacio="Escribe tu contraseña." aria-describedby="login-clave-mensaje">
+              <button type="button" class="campo__accion" data-mostrar-clave="login-clave" aria-label="Mostrar contraseña" aria-pressed="false">
+                <svg class="icono" viewBox="0 0 24 24" aria-hidden="true"><path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7-10-7-10-7Z"/><circle cx="12" cy="12" r="3"/></svg>
+              </button>
+            </div>
+            <p class="campo__mensaje" id="login-clave-mensaje" aria-live="polite">
+              <svg class="icono" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M12 8v4M12 16h.01"/></svg>
+              <span class="campo__mensaje-texto"></span>
+            </p>
+          </div>
+
+          <div class="login__opciones">
+            <label class="casilla" for="login-recordarme">
+              <input id="login-recordarme" name="recordarme" type="checkbox">
+              <span>Recordarme</span>
+            </label>
+            <details class="recuperar">
+              <summary>¿Olvidaste tu contraseña?</summary>
+              <div class="alerta alerta--info recuperar__ayuda">
+                <svg class="icono" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4M12 8h.01"/></svg>
+                <div>
+                  <strong>Recupera tu acceso</strong>
+                  <p>Escríbenos a contacto@coretechsolutions.co desde el correo de tu cuenta y te enviaremos un enlace para crear una contraseña nueva.</p>
+                </div>
+              </div>
+            </details>
+          </div>
+
+          <!-- Botón de envío como enlace <a>: sin JavaScript también lleva al panel -->
+          <a class="boton boton--acento boton--grande boton--bloque" href="cliente/mis-proyectos.html"
+             data-enviar data-conservar-servicio data-destino-con-servicio="cliente/agendar-servicio.html">
+            Ingresar
+            <svg class="icono icono--mover" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+          </a>
+        </form>
+
+        <!-- Accesos rápidos para recorrer el prototipo con cada rol -->
+        <p class="separador aparecer">o entra con una cuenta de demostración</p>
+        <div class="accesos-demo aparecer" role="list">
+          <a class="acceso-demo" role="listitem" href="cliente/mis-proyectos.html" data-accion data-mensaje-exito="Bienvenida de nuevo, Laura."
+             data-conservar-servicio data-destino-con-servicio="cliente/agendar-servicio.html">
+            <span class="avatar avatar--acento" aria-hidden="true">LG</span>
+            <span><span class="acceso-demo__nombre">Laura Gómez</span><span class="acceso-demo__rol">Cliente · ve sus citas y proyectos</span></span>
+            <svg class="icono acceso-demo__flecha" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+          </a>
+          <a class="acceso-demo" role="listitem" href="desarrollador/proyectos.html" data-accion data-mensaje-exito="Bienvenido de nuevo, Andrés.">
+            <span class="avatar" aria-hidden="true">AP</span>
+            <span><span class="acceso-demo__nombre">Andrés Pérez</span><span class="acceso-demo__rol">Product Owner · registra el avance de su equipo</span></span>
+            <svg class="icono acceso-demo__flecha" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+          </a>
+          <a class="acceso-demo" role="listitem" href="admin/dashboard.html" data-accion data-mensaje-exito="Bienvenida de nuevo, Patricia.">
+            <span class="avatar avatar--gris" aria-hidden="true">PL</span>
+            <span><span class="acceso-demo__nombre">Patricia León</span><span class="acceso-demo__rol">Administradora · gestiona todo el sistema</span></span>
+            <svg class="icono acceso-demo__flecha" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+          </a>
+        </div>
+
+        <p class="acceso__pie">¿No tienes cuenta? <a class="enlace" href="registro.html" data-conservar-servicio>Crea una</a></p>
+        <p class="acceso__pie acceso__pie--mapa">¿Revisando el prototipo? <a class="enlace" href="mapa.html">Ver todas las interfaces</a></p>
+      </main>
+    </div>
+
+    <!-- ===================== Lateral informativo ===================== -->
+    <aside class="acceso__lateral superficie-noche" aria-label="Lo que encuentras en tu panel">
+      <div class="acceso__lateral-contenido aparecer" style="--retraso: 200ms">
+        <span class="pildora">Tu panel</span>
+        <h2>Todo tu proyecto en un solo lugar</h2>
+        <p>Citas, avances y reuniones con tu equipo, actualizados en tiempo real.</p>
+
+        <!-- Actividad de ejemplo (genérica, sin datos de clientes reales) -->
+        <ul class="actividad" aria-label="Ejemplo de actividad reciente">
+          <li class="actividad__item" style="--retraso: 300ms">
+            <span class="actividad__icono actividad__icono--exito"><svg class="icono" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg></span>
+            <span class="actividad__texto">Paso hecho ✓<span class="actividad__detalle">Desarrollo · Carrito y pagos en línea</span></span>
+            <span class="actividad__hora">Hoy</span>
+          </li>
+          <li class="actividad__item" style="--retraso: 450ms">
+            <span class="actividad__icono actividad__icono--acento"><svg class="icono" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="4" width="18" height="17" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg></span>
+            <span class="actividad__texto">Cita confirmada<span class="actividad__detalle">Martes 17/11 · 9:00 a. m. · Virtual</span></span>
+            <span class="actividad__hora">Ayer</span>
+          </li>
+          <li class="actividad__item" style="--retraso: 600ms">
+            <span class="actividad__icono actividad__icono--aviso"><svg class="icono" viewBox="0 0 24 24" aria-hidden="true"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/><path d="M8 9h8M8 13h5"/></svg></span>
+            <span class="actividad__texto">Reunión solicitada<span class="actividad__detalle">Revisar el flujo de pago</span></span>
+            <span class="actividad__hora">Lun</span>
+          </li>
+        </ul>
+      </div>
+    </aside>
+  </div>
+
+  <script src="js/principal.js"></script>
+</body>
+</html>

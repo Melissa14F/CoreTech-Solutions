@@ -1,0 +1,875 @@
+<!doctype html>
+<html lang="es" class="sin-js">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>CoreTech Solutions · Software a la medida en Cúcuta</title>
+    <meta
+      name="description"
+      content="Desarrollo de software a la medida en Cúcuta. Agenda una cita y sigue cada fase de tu proyecto desde tu panel."
+    />
+    <link rel="icon" href="img/logo.svg" type="image/svg+xml" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@600;700&display=swap"
+    />
+    <link rel="stylesheet" href="css/global.css" />
+    <link rel="stylesheet" href="css/plantillas/tarjeta-servicio.css" />
+    <link rel="stylesheet" href="css/vistas/inicio.css" />
+    <script src="js/accesibilidad.js"></script>
+  </head>
+  <body>
+    <a class="saltar-contenido" href="#contenido">Saltar al contenido</a>
+
+    <!-- ===================== Encabezado ===================== -->
+    <header class="encabezado encabezado--oscuro">
+      <div class="contenedor encabezado__contenido">
+        <a
+          class="marca"
+          href="index.html"
+          aria-label="CoreTech Solutions, ir al inicio"
+        >
+          <img
+            class="marca__logo"
+            src="img/logo.svg"
+            alt=""
+            width="30"
+            height="30"
+          />
+          <span>CoreTech</span>
+        </a>
+
+        <nav class="menu-principal" aria-label="Secciones">
+          <ul class="menu-principal__lista">
+            <li>
+              <a class="menu-principal__enlace" href="#servicios">Servicios</a>
+            </li>
+            <li>
+              <a class="menu-principal__enlace" href="#proceso">Proceso</a>
+            </li>
+            <li>
+              <a class="menu-principal__enlace" href="#contacto">Contacto</a>
+            </li>
+          </ul>
+        </nav>
+
+        <div class="encabezado__acciones">
+          <a
+            class="boton encabezado__boton encabezado__boton--ingresar"
+            href="login.html"
+          >
+            <svg class="icono" viewBox="0 0 24 24" aria-hidden="true">
+              <path
+                d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4M10 17l5-5-5-5M15 12H3"
+              />
+            </svg>
+            Iniciar sesión
+          </a>
+          <a
+            class="boton encabezado__boton encabezado__boton--registro"
+            href="registro.html"
+          >
+            Crear cuenta
+            <svg
+              class="icono icono--mover"
+              viewBox="0 0 24 24"
+              aria-hidden="true"
+            >
+              <path d="M5 12h14M13 5l7 7-7 7" />
+            </svg>
+          </a>
+          <button
+            type="button"
+            class="boton-menu"
+            aria-expanded="false"
+            aria-controls="menu-movil"
+            aria-label="Abrir menú"
+          >
+            <svg
+              class="icono boton-menu__abrir"
+              viewBox="0 0 24 24"
+              aria-hidden="true"
+            >
+              <path d="M4 7h16M4 12h16M4 17h16" />
+            </svg>
+            <svg
+              class="icono boton-menu__cerrar"
+              viewBox="0 0 24 24"
+              aria-hidden="true"
+            >
+              <path d="M18 6 6 18M6 6l12 12" />
+            </svg>
+          </button>
+        </div>
+      </div>
+
+      <nav class="menu-movil" id="menu-movil" aria-label="Menú móvil">
+        <a class="menu-movil__enlace" href="#servicios">Servicios</a>
+        <a class="menu-movil__enlace" href="#proceso">Proceso</a>
+        <a class="menu-movil__enlace" href="#contacto">Contacto</a>
+        <div class="menu-movil__acciones">
+          <a class="boton boton--transparente boton--bloque" href="login.html"
+            >Iniciar sesión</a
+          >
+          <a class="boton boton--acento boton--bloque" href="registro.html"
+            >Crear cuenta</a
+          >
+        </div>
+      </nav>
+    </header>
+
+    <main id="contenido">
+      <!-- ===================== Portada (superficie oscura) ===================== -->
+      <section
+        class="portada superficie-noche"
+        aria-labelledby="titulo-portada"
+      >
+        <div class="contenedor portada__grilla">
+          <div>
+            <span class="pildora portada__pildora aparecer"
+              >Software a la medida</span
+            >
+            <h1
+              class="portada__titulo aparecer"
+              id="titulo-portada"
+              style="--retraso: 80ms"
+            >
+              Tu idea, hecha software.
+              <span class="portada__titulo-acento"
+                >Y cada avance, a la vista.</span
+              >
+            </h1>
+            <p class="portada__texto aparecer" style="--retraso: 160ms">
+              De la primera reunión al despliegue, con un equipo a cargo y tu
+              proyecto visible fase por fase desde tu panel.
+            </p>
+            <div class="portada__acciones aparecer" style="--retraso: 240ms">
+              <a class="boton boton--acento boton--grande" href="registro.html">
+                Agendar una cita
+                <svg
+                  class="icono icono--mover"
+                  viewBox="0 0 24 24"
+                  aria-hidden="true"
+                >
+                  <path d="M5 12h14M13 5l7 7-7 7" />
+                </svg>
+              </a>
+              <a
+                class="boton boton--transparente boton--grande"
+                href="#servicios"
+                >Ver servicios</a
+              >
+            </div>
+            <ul class="portada__garantias aparecer" style="--retraso: 320ms">
+              <li class="portada__garantia">
+                <svg class="icono" viewBox="0 0 24 24" aria-hidden="true">
+                  <path d="M20 6 9 17l-5-5" /></svg
+                >Cita presencial o virtual
+              </li>
+              <li class="portada__garantia">
+                <svg class="icono" viewBox="0 0 24 24" aria-hidden="true">
+                  <path d="M20 6 9 17l-5-5" /></svg
+                >Un equipo con Product Owner
+              </li>
+              <li class="portada__garantia">
+                <svg class="icono" viewBox="0 0 24 24" aria-hidden="true">
+                  <path d="M20 6 9 17l-5-5" /></svg
+                >Avance en tiempo real
+              </li>
+            </ul>
+          </div>
+
+          <!-- Tarjeta de producto: así ve el cliente su proyecto (ejemplo genérico, sin datos de clientes) -->
+          <div class="portada__producto aparecer" style="--retraso: 220ms">
+            <figure
+              class="vista-previa vista-previa--vidrio"
+              style="margin: 0"
+              aria-label="Ejemplo de seguimiento de un proyecto"
+            >
+              <div class="vista-previa__encabezado">
+                <span class="vista-previa__titulo">Tienda en línea</span>
+                <span class="vista-previa__fase">40 % del proyecto</span>
+              </div>
+              <ol class="lista-fases">
+                <li class="lista-fases__item lista-fases__item--completa">
+                  <span class="lista-fases__punto"
+                    ><svg class="icono" viewBox="0 0 24 24" aria-hidden="true">
+                      <path d="M20 6 9 17l-5-5" /></svg
+                  ></span>
+                  Toma de requerimientos
+                  <span class="solo-lector">(completa)</span>
+                </li>
+                <li class="lista-fases__item lista-fases__item--completa">
+                  <span class="lista-fases__punto"
+                    ><svg class="icono" viewBox="0 0 24 24" aria-hidden="true">
+                      <path d="M20 6 9 17l-5-5" /></svg
+                  ></span>
+                  Análisis y diseño <span class="solo-lector">(completa)</span>
+                </li>
+                <li class="lista-fases__item lista-fases__item--actual">
+                  <span class="lista-fases__punto"></span>
+                  Desarrollo <span class="solo-lector">(fase actual)</span>
+                  <span class="lista-fases__porcentaje">3 de 5 pasos</span>
+                  <span
+                    class="barra-progreso lista-fases__barra"
+                    data-animar
+                    style="--valor: 60%"
+                    role="progressbar"
+                    aria-valuenow="3"
+                    aria-valuemin="0"
+                    aria-valuemax="5"
+                    aria-label="Pasos hechos de la fase Desarrollo"
+                  >
+                    <span class="barra-progreso__relleno"></span>
+                  </span>
+                </li>
+                <li class="lista-fases__item lista-fases__item--pendiente">
+                  <span class="lista-fases__punto"></span>Pruebas
+                  <span class="solo-lector">(pendiente)</span>
+                </li>
+                <li class="lista-fases__item lista-fases__item--pendiente">
+                  <span class="lista-fases__punto"></span>Despliegue
+                  <span class="solo-lector">(pendiente)</span>
+                </li>
+              </ol>
+            </figure>
+            <div class="portada__aviso" aria-hidden="true">
+              <span class="portada__aviso-icono"
+                ><svg class="icono" viewBox="0 0 24 24">
+                  <path d="M20 6 9 17l-5-5" /></svg
+              ></span>
+              <span
+                ><strong>Paso hecho ✓</strong
+                ><small>Carrito y pagos en línea</small></span
+              >
+            </div>
+          </div>
+        </div>
+
+        <!-- Cifras del servicio -->
+        <div class="contenedor">
+          <ul class="cifras aparecer" aria-label="CoreTech en cifras">
+            <li class="cifras__item">
+              <span class="cifras__valor">6</span
+              ><span class="cifras__texto">servicios de software</span>
+            </li>
+            <li class="cifras__item">
+              <span class="cifras__valor">5</span
+              ><span class="cifras__texto">fases visibles para ti</span>
+            </li>
+            <li class="cifras__item">
+              <span class="cifras__valor">1</span
+              ><span class="cifras__texto">equipo por proyecto</span>
+            </li>
+            <li class="cifras__item">
+              <span class="cifras__valor">2</span
+              ><span class="cifras__texto"
+                >modalidades: presencial o virtual</span
+              >
+            </li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- ===================== Servicios (carrusel) ===================== -->
+      <section
+        class="seccion"
+        id="servicios"
+        aria-labelledby="titulo-servicios"
+      >
+        <div class="contenedor">
+          <div class="seccion__encabezado aparecer">
+            <span class="antetitulo">Catálogo</span>
+            <h2 id="titulo-servicios">Servicios</h2>
+            <p>
+              Elige el servicio que necesitas y agenda una cita con nuestro
+              equipo.
+            </p>
+          </div>
+
+          <div
+            class="carrusel aparecer"
+            data-carrusel
+            aria-roledescription="carrusel"
+            aria-label="Servicios de CoreTech"
+          >
+            <div class="carrusel__escenario">
+              <button
+                type="button"
+                class="boton-icono carrusel__flecha carrusel__flecha--anterior"
+                data-carrusel-anterior
+                aria-label="Servicios anteriores"
+              >
+                <svg class="icono" viewBox="0 0 24 24" aria-hidden="true">
+                  <path d="M15 6l-6 6 6 6" />
+                </svg>
+              </button>
+              <div class="carrusel__ventana">
+                <ul class="carrusel__pista" aria-live="off">
+                  <li
+                    class="carrusel__diapositiva"
+                    role="group"
+                    aria-roledescription="diapositiva"
+                    aria-label="1 de 6"
+                  >
+                    <article class="tarjeta-servicio">
+                      <div class="tarjeta-servicio__imagen">
+                        <img
+                          src="img/servicios/tienda-en-linea.webp"
+                          alt="Ilustración de una tienda en línea con productos y carrito de compras"
+                          width="1200"
+                          height="800"
+                        />
+                      </div>
+                      <div class="tarjeta-servicio__cuerpo">
+                        <h3 class="tarjeta-servicio__titulo">
+                          Desarrollo de tienda en línea
+                        </h3>
+                        <p class="tarjeta-servicio__descripcion">
+                          Catálogo, carrito de compras y pagos en línea para
+                          vender por internet.
+                        </p>
+                        <div class="tarjeta-servicio__pie">
+                          <a
+                            class="boton boton--contorno boton--bloque"
+                            href="registro.html?servicio=tienda-en-linea"
+                            aria-label="Agendar cita para Desarrollo de tienda en línea"
+                            >Agendar cita</a
+                          >
+                        </div>
+                      </div>
+                    </article>
+                  </li>
+
+                  <li
+                    class="carrusel__diapositiva"
+                    role="group"
+                    aria-roledescription="diapositiva"
+                    aria-label="2 de 6"
+                  >
+                    <article class="tarjeta-servicio">
+                      <div class="tarjeta-servicio__imagen">
+                        <img
+                          src="img/servicios/web-corporativa.webp"
+                          alt="Ilustración de un sitio web en computador y en celular"
+                          width="1200"
+                          height="800"
+                        />
+                      </div>
+                      <div class="tarjeta-servicio__cuerpo">
+                        <h3 class="tarjeta-servicio__titulo">
+                          Página web corporativa
+                        </h3>
+                        <p class="tarjeta-servicio__descripcion">
+                          Sitio institucional adaptable a celular, rápido y
+                          fácil de actualizar.
+                        </p>
+                        <div class="tarjeta-servicio__pie">
+                          <a
+                            class="boton boton--contorno boton--bloque"
+                            href="registro.html?servicio=web-corporativa"
+                            aria-label="Agendar cita para Página web corporativa"
+                            >Agendar cita</a
+                          >
+                        </div>
+                      </div>
+                    </article>
+                  </li>
+
+                  <li
+                    class="carrusel__diapositiva"
+                    role="group"
+                    aria-roledescription="diapositiva"
+                    aria-label="3 de 6"
+                  >
+                    <article class="tarjeta-servicio">
+                      <div class="tarjeta-servicio__imagen">
+                        <img
+                          src="img/servicios/app-movil.webp"
+                          alt="Ilustración de dos pantallas de una aplicación móvil"
+                          width="1200"
+                          height="800"
+                        />
+                      </div>
+                      <div class="tarjeta-servicio__cuerpo">
+                        <h3 class="tarjeta-servicio__titulo">
+                          Aplicación móvil
+                        </h3>
+                        <p class="tarjeta-servicio__descripcion">
+                          Apps para Android e iOS conectadas a los procesos de
+                          tu negocio.
+                        </p>
+                        <div class="tarjeta-servicio__pie">
+                          <a
+                            class="boton boton--contorno boton--bloque"
+                            href="registro.html?servicio=app-movil"
+                            aria-label="Agendar cita para Aplicación móvil"
+                            >Agendar cita</a
+                          >
+                        </div>
+                      </div>
+                    </article>
+                  </li>
+
+                  <li
+                    class="carrusel__diapositiva"
+                    role="group"
+                    aria-roledescription="diapositiva"
+                    aria-label="4 de 6"
+                  >
+                    <article class="tarjeta-servicio">
+                      <div class="tarjeta-servicio__imagen">
+                        <img
+                          src="img/servicios/sistema-inventario.webp"
+                          alt="Ilustración de un panel con gráfica de barras y cajas de inventario"
+                          width="1200"
+                          height="800"
+                          loading="lazy"
+                        />
+                      </div>
+                      <div class="tarjeta-servicio__cuerpo">
+                        <h3 class="tarjeta-servicio__titulo">
+                          Sistema de inventario
+                        </h3>
+                        <p class="tarjeta-servicio__descripcion">
+                          Control de existencias, entradas, salidas y reportes
+                          al día.
+                        </p>
+                        <div class="tarjeta-servicio__pie">
+                          <a
+                            class="boton boton--contorno boton--bloque"
+                            href="registro.html?servicio=sistema-inventario"
+                            aria-label="Agendar cita para Sistema de inventario"
+                            >Agendar cita</a
+                          >
+                        </div>
+                      </div>
+                    </article>
+                  </li>
+
+                  <li
+                    class="carrusel__diapositiva"
+                    role="group"
+                    aria-roledescription="diapositiva"
+                    aria-label="5 de 6"
+                  >
+                    <article class="tarjeta-servicio">
+                      <div class="tarjeta-servicio__imagen">
+                        <img
+                          src="img/servicios/integracion-pagos.webp"
+                          alt="Ilustración de una tarjeta de pago protegida por un escudo con candado"
+                          width="1200"
+                          height="800"
+                          loading="lazy"
+                        />
+                      </div>
+                      <div class="tarjeta-servicio__cuerpo">
+                        <h3 class="tarjeta-servicio__titulo">
+                          Integración de pagos
+                        </h3>
+                        <p class="tarjeta-servicio__descripcion">
+                          Conecta tu sitio con pasarelas de pago seguras y
+                          conciliación automática.
+                        </p>
+                        <div class="tarjeta-servicio__pie">
+                          <a
+                            class="boton boton--contorno boton--bloque"
+                            href="registro.html?servicio=integracion-pagos"
+                            aria-label="Agendar cita para Integración de pagos"
+                            >Agendar cita</a
+                          >
+                        </div>
+                      </div>
+                    </article>
+                  </li>
+
+                  <li
+                    class="carrusel__diapositiva"
+                    role="group"
+                    aria-roledescription="diapositiva"
+                    aria-label="6 de 6"
+                  >
+                    <article class="tarjeta-servicio">
+                      <div class="tarjeta-servicio__imagen">
+                        <img
+                          src="img/servicios/mantenimiento-soporte.webp"
+                          alt="Ilustración de una gráfica de rendimiento con engranaje y llave"
+                          width="1200"
+                          height="800"
+                          loading="lazy"
+                        />
+                      </div>
+                      <div class="tarjeta-servicio__cuerpo">
+                        <h3 class="tarjeta-servicio__titulo">
+                          Mantenimiento y soporte
+                        </h3>
+                        <p class="tarjeta-servicio__descripcion">
+                          Actualizaciones, copias de seguridad y monitoreo para
+                          que tu sistema no se detenga.
+                        </p>
+                        <div class="tarjeta-servicio__pie">
+                          <a
+                            class="boton boton--contorno boton--bloque"
+                            href="registro.html?servicio=mantenimiento-soporte"
+                            aria-label="Agendar cita para Mantenimiento y soporte"
+                            >Agendar cita</a
+                          >
+                        </div>
+                      </div>
+                    </article>
+                  </li>
+                </ul>
+              </div>
+              <button
+                type="button"
+                class="boton-icono carrusel__flecha carrusel__flecha--siguiente"
+                data-carrusel-siguiente
+                aria-label="Servicios siguientes"
+              >
+                <svg class="icono" viewBox="0 0 24 24" aria-hidden="true">
+                  <path d="M9 6l6 6-6 6" />
+                </svg>
+              </button>
+            </div>
+
+            <div class="carrusel__controles">
+              <div
+                class="carrusel__puntos"
+                aria-label="Elegir grupo de servicios"
+              ></div>
+              <span class="carrusel__estado" aria-hidden="true"></span>
+              <div class="carrusel__pausa">
+                <button
+                  type="button"
+                  class="boton-icono"
+                  data-carrusel-pausa
+                  aria-label="Pausar carrusel"
+                  aria-pressed="false"
+                >
+                  <svg
+                    class="icono"
+                    data-icono-pausa
+                    viewBox="0 0 24 24"
+                    aria-hidden="true"
+                  >
+                    <path d="M9 6v12M15 6v12" />
+                  </svg>
+                  <svg
+                    class="icono"
+                    data-icono-reproducir
+                    viewBox="0 0 24 24"
+                    aria-hidden="true"
+                    style="display: none"
+                  >
+                    <path d="M8 5v14l11-7z" />
+                  </svg>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ===================== Proceso ===================== -->
+      <section
+        class="seccion seccion--suave"
+        id="proceso"
+        aria-labelledby="titulo-proceso"
+      >
+        <div class="contenedor">
+          <div class="seccion__encabezado aparecer">
+            <span class="antetitulo">Proceso</span>
+            <h2 id="titulo-proceso">Cómo funciona</h2>
+            <p>
+              Desde la primera reunión hasta el despliegue, siempre sabes en qué
+              va tu proyecto.
+            </p>
+          </div>
+          <div class="pasos-contenedor">
+            <ol class="pasos">
+              <li class="paso aparecer">
+                <span class="paso__icono"
+                  ><svg
+                    class="icono icono--grande"
+                    viewBox="0 0 24 24"
+                    aria-hidden="true"
+                  >
+                    <rect x="3" y="4" width="18" height="17" rx="2" />
+                    <path d="M16 2v4M8 2v4M3 10h18M12 14v4M10 16h4" /></svg
+                ></span>
+                <h3 class="paso__titulo">Agenda tu cita</h3>
+                <p class="paso__texto">
+                  Elige el servicio, la fecha y si prefieres la reunión
+                  presencial o virtual.
+                </p>
+              </li>
+              <li class="paso aparecer" style="--retraso: 120ms">
+                <span class="paso__icono"
+                  ><svg
+                    class="icono icono--grande"
+                    viewBox="0 0 24 24"
+                    aria-hidden="true"
+                  >
+                    <circle cx="12" cy="8" r="4" />
+                    <path d="M4 21a8 8 0 0 1 16 0" /></svg
+                ></span>
+                <h3 class="paso__titulo">Te asignamos un equipo</h3>
+                <p class="paso__texto">
+                  Creamos tu proyecto y un equipo lo construye; su Product Owner
+                  es tu contacto de principio a fin.
+                </p>
+              </li>
+              <li class="paso aparecer" style="--retraso: 240ms">
+                <span class="paso__icono"
+                  ><svg
+                    class="icono icono--grande"
+                    viewBox="0 0 24 24"
+                    aria-hidden="true"
+                  >
+                    <path d="M22 7 13.5 15.5l-5-5L2 17" />
+                    <path d="M16 7h6v6" /></svg
+                ></span>
+                <h3 class="paso__titulo">Sigue cada fase</h3>
+                <p class="paso__texto">
+                  Revisa cada fase, apruébala o pide cambios, y habla con tu
+                  Product Owner cuando lo necesites.
+                </p>
+              </li>
+            </ol>
+          </div>
+        </div>
+      </section>
+
+      <!-- ===================== Contacto ===================== -->
+      <section class="seccion" id="contacto" aria-labelledby="titulo-contacto">
+        <div class="contenedor contacto">
+          <div class="aparecer">
+            <span class="antetitulo">Contacto</span>
+            <h2 id="titulo-contacto">Hablemos de tu proyecto</h2>
+            <p>
+              Atendemos en nuestra oficina de Cúcuta o por videollamada, en el
+              horario que elijas al agendar.
+            </p>
+          </div>
+          <div class="aparecer" style="--retraso: 120ms">
+            <address>
+              <ul class="lista-contacto">
+                <li class="lista-contacto__item">
+                  <span class="lista-contacto__icono"
+                    ><svg class="icono" viewBox="0 0 24 24" aria-hidden="true">
+                      <path
+                        d="M12 21s-7-6.2-7-11.5a7 7 0 0 1 14 0C19 14.8 12 21 12 21Z"
+                      />
+                      <circle cx="12" cy="9.5" r="2.5" /></svg
+                  ></span>
+                  <div>
+                    <span class="lista-contacto__dato">Oficina</span
+                    ><span class="lista-contacto__valor"
+                      >Calle 10 # 4-25, oficina 302, Cúcuta</span
+                    >
+                  </div>
+                </li>
+                <li class="lista-contacto__item lista-contacto__item--ancho">
+                  <span class="lista-contacto__icono"
+                    ><svg class="icono" viewBox="0 0 24 24" aria-hidden="true">
+                      <circle cx="12" cy="12" r="9" />
+                      <path d="M12 7v5l3 2" /></svg
+                  ></span>
+                  <div>
+                    <span class="lista-contacto__dato">Horario de atención</span
+                    ><span class="lista-contacto__valor"
+                      >Lunes a viernes, 8:00 a. m. a 12:00 m. y 2:00 p. m. a
+                      6:00 p. m.</span
+                    >
+                  </div>
+                </li>
+                <li class="lista-contacto__item">
+                  <span class="lista-contacto__icono"
+                    ><svg class="icono" viewBox="0 0 24 24" aria-hidden="true">
+                      <path
+                        d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2"
+                      /></svg
+                  ></span>
+                  <div>
+                    <span class="lista-contacto__dato">Teléfono</span
+                    ><a class="lista-contacto__valor" href="tel:+573001234567"
+                      >300 123 4567</a
+                    >
+                  </div>
+                </li>
+                <li class="lista-contacto__item lista-contacto__item--ancho">
+                  <span class="lista-contacto__icono"
+                    ><svg class="icono" viewBox="0 0 24 24" aria-hidden="true">
+                      <rect x="3" y="5" width="18" height="14" rx="2" />
+                      <path d="m3 7 9 6 9-6" /></svg
+                  ></span>
+                  <div>
+                    <span class="lista-contacto__dato">Correo</span
+                    ><a
+                      class="lista-contacto__valor"
+                      href="mailto:contacto@coretechsolutions.co"
+                      >contacto@coretechsolutions.co</a
+                    >
+                  </div>
+                </li>
+              </ul>
+            </address>
+          </div>
+        </div>
+        <div class="contenedor" style="margin-top: var(--espacio-12)">
+          <div class="franja-llamado superficie-noche aparecer">
+            <div>
+              <h3 class="franja-llamado__titulo">
+                ¿Listo para empezar tu proyecto?
+              </h3>
+              <p class="franja-llamado__texto">
+                Agenda tu primera reunión en menos de dos minutos.
+              </p>
+            </div>
+            <div class="franja-llamado__acciones">
+              <a class="boton boton--claro boton--grande" href="registro.html">
+                Agendar cita
+                <svg
+                  class="icono icono--mover"
+                  viewBox="0 0 24 24"
+                  aria-hidden="true"
+                >
+                  <path d="M5 12h14M13 5l7 7-7 7" />
+                </svg>
+              </a>
+              <a
+                class="boton boton--transparente boton--grande"
+                href="login.html"
+                >Ya tengo cuenta</a
+              >
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- ===================== Pie de página ===================== -->
+    <footer class="pie-pagina pie-pagina--oscuro">
+      <div class="contenedor">
+        <div class="pie-pagina__grilla">
+          <!-- Quiénes somos -->
+          <div class="pie-pagina__marca-bloque">
+            <a
+              class="marca"
+              href="index.html"
+              aria-label="CoreTech Solutions, ir al inicio"
+            >
+              <img
+                class="marca__logo"
+                src="img/logo.svg"
+                alt=""
+                width="30"
+                height="30"
+              />
+              <span>CoreTech</span>
+            </a>
+            <p class="pie-pagina__descripcion">
+              Empresa de desarrollo de software a la medida en Cúcuta. Creamos
+              tiendas en línea, sitios web, aplicaciones y sistemas de gestión,
+              y te mostramos cada avance de tu proyecto.
+            </p>
+          </div>
+
+          <!-- Misión -->
+          <div class="pie-pagina__columna">
+            <h2 class="pie-pagina__titulo">Misión</h2>
+            <p class="pie-pagina__texto">
+              Desarrollar software a la medida que resuelva necesidades reales
+              de las empresas de la región, con un proceso transparente en el
+              que cada cliente sigue el avance de su proyecto de principio a
+              fin.
+            </p>
+          </div>
+
+          <!-- Visión -->
+          <div class="pie-pagina__columna">
+            <h2 class="pie-pagina__titulo">Visión</h2>
+            <p class="pie-pagina__texto">
+              Para 2030, ser la empresa de desarrollo de software de referencia
+              en el oriente colombiano, reconocida por la calidad de sus
+              soluciones y la confianza que genera en sus clientes.
+            </p>
+          </div>
+
+          <!-- Contacto -->
+          <div class="pie-pagina__columna">
+            <h2 class="pie-pagina__titulo">Contacto</h2>
+            <address>
+              <ul class="pie-pagina__lista pie-pagina__lista--contacto">
+                <li>
+                  <svg class="icono" viewBox="0 0 24 24" aria-hidden="true">
+                    <path
+                      d="M12 21s-7-6.2-7-11.5a7 7 0 0 1 14 0C19 14.8 12 21 12 21Z"
+                    />
+                    <circle cx="12" cy="9.5" r="2.5" />
+                  </svg>
+                  <span>Calle 10 # 4-25, oficina 302, Cúcuta</span>
+                </li>
+                <li>
+                  <svg class="icono" viewBox="0 0 24 24" aria-hidden="true">
+                    <path
+                      d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2"
+                    />
+                  </svg>
+                  <a href="tel:+573001234567">300 123 4567</a>
+                </li>
+                <li>
+                  <svg class="icono" viewBox="0 0 24 24" aria-hidden="true">
+                    <rect x="3" y="5" width="18" height="14" rx="2" />
+                    <path d="m3 7 9 6 9-6" />
+                  </svg>
+                  <a href="mailto:contacto@coretechsolutions.co"
+                    >contacto@coretechsolutions.co</a
+                  >
+                </li>
+                <li>
+                  <svg class="icono" viewBox="0 0 24 24" aria-hidden="true">
+                    <circle cx="12" cy="12" r="9" />
+                    <path d="M12 7v5l3 2" />
+                  </svg>
+                  <span>Lunes a viernes, 8:00 a. m. a 6:00 p. m.</span>
+                </li>
+              </ul>
+            </address>
+          </div>
+        </div>
+
+        <!-- Franja inferior: derechos, avisos legales y volver arriba -->
+        <div class="pie-pagina__inferior">
+          <p class="pie-pagina__derechos">
+            © 2026 CoreTech Solutions. Todos los derechos reservados.
+          </p>
+          <nav aria-label="Avisos legales">
+            <ul class="pie-pagina__legales">
+              <li>
+                <a href="legal.html#datos">Política de tratamiento de datos</a>
+              </li>
+              <li><a href="legal.html#terminos">Términos y condiciones</a></li>
+              <li><a href="mapa.html">Mapa del sitio</a></li>
+              <li><a href="guia-estilos.html">Guía de estilos</a></li>
+            </ul>
+          </nav>
+          <a
+            class="boton-icono boton-icono--pequeno pie-pagina__arriba"
+            href="#contenido"
+            aria-label="Volver arriba"
+          >
+            <svg class="icono" viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M12 19V5M5 12l7-7 7 7" />
+            </svg>
+          </a>
+        </div>
+      </div>
+    </footer>
+
+    <script src="js/principal.js"></script>
+    <script src="js/carrusel.js"></script>
+  </body>
+</html>

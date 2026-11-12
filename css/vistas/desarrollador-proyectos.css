@@ -1,0 +1,25 @@
+/* ==========================================================================
+   Vista: Mis proyectos (desarrollador/proyectos.html)
+   Pantalla de inicio del desarrollador: lo que tiene pendiente, sus proyectos
+   y su agenda confirmada. Proyectos y agenda: plantillas/tarjetas.css
+   Requiere: global.css, plantillas/panel.css y plantillas/tarjetas.css
+   ========================================================================== */
+
+/* 1. Pendientes ============================================================ */
+.pendientes { margin-bottom: var(--espacio-6); padding-block: var(--espacio-5) var(--espacio-3); }
+.pendientes .tarjeta__titulo { display: flex; align-items: center; gap: var(--espacio-2); margin: 0 0 var(--espacio-2); }
+.pendientes__cantidad { min-width: 22px; padding: 1px 7px; border-radius: var(--radio-pildora); background: #f59e0b; color: #1f1300; font-size: .75rem; text-align: center; }
+.pendientes__lista { margin: 0; padding: 0; list-style: none; }
+.pendiente { display: grid; grid-template-columns: 36px minmax(0, 1fr) auto; align-items: center; gap: var(--espacio-4); padding: var(--espacio-3) 0; }
+.pendiente + .pendiente { border-top: 1px solid var(--color-borde-suave); }
+.pendiente__icono { width: 36px; height: 36px; display: grid; place-items: center; border-radius: 10px; background: var(--color-advertencia-fondo); color: var(--color-advertencia); }
+.pendiente__icono .icono { width: 18px; height: 18px; }
+.pendiente__texto { display: grid; min-width: 0; }
+.pendiente__texto strong { font-size: .875rem; color: var(--color-tinta); }
+.pendiente__texto span { font-size: .8125rem; color: var(--color-texto-suave); }
+
+/* 2. Diseño adaptable ====================================================== */
+@media (max-width: 640px) {
+  .pendiente { grid-template-columns: 36px minmax(0, 1fr); }
+  .pendiente .boton { grid-column: 2; justify-self: start; }
+}

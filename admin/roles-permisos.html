@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="es" class="sin-js">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Roles y permisos · CoreTech Solutions</title>
+  <link rel="icon" href="../img/logo.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap">
+  <link rel="stylesheet" href="../css/global.css">
+  <link rel="stylesheet" href="../css/plantillas/panel.css">
+  <link rel="stylesheet" href="../css/vistas/admin-roles-permisos.css">
+  <script src="../js/accesibilidad.js"></script>
+</head>
+<body>
+  <a class="saltar-contenido" href="#contenido">Saltar al contenido</a>
+
+  <div class="panel">
+    <!-- ===================== Menú lateral del cliente ===================== -->
+    <aside class="panel__lateral superficie-noche" aria-label="Menú del administrador">
+      <a class="marca" href="../index.html" aria-label="CoreTech Solutions, ir al sitio público">
+        <img class="marca__logo" src="../img/logo.svg" alt="" width="30" height="30">
+        <span>CoreTech</span>
+      </a>
+      <p class="panel__rol"><strong>Panel de administración</strong>Gestión de CoreTech</p>
+
+      <nav aria-label="Secciones del administrador: Gestión">
+        <p class="navegacion-panel__titulo">Gestión</p>
+        <ul class="navegacion-panel__lista">
+          <li>
+            <a class="navegacion-panel__enlace" href="dashboard.html">
+              <svg class="icono" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="7" height="9" rx="1.5"/><rect x="14" y="3" width="7" height="5" rx="1.5"/><rect x="14" y="12" width="7" height="9" rx="1.5"/><rect x="3" y="16" width="7" height="5" rx="1.5"/></svg>
+              Dashboard
+              
+            </a>
+          </li>
+          <li>
+            <a class="navegacion-panel__enlace" href="citas.html">
+              <svg class="icono" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="4" width="18" height="17" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>
+              Citas
+              <span class="navegacion-panel__contador navegacion-panel__contador--aviso" aria-label="1 sin asignar">1</span>
+            </a>
+          </li>
+          <li>
+            <a class="navegacion-panel__enlace" href="proyectos.html">
+              <svg class="icono" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 7a2 2 0 0 1 2-2h4l2 2h8a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2Z"/></svg>
+              Proyectos
+              
+            </a>
+          </li>
+          <li>
+            <a class="navegacion-panel__enlace" href="solicitudes.html">
+              <svg class="icono" viewBox="0 0 24 24" aria-hidden="true"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/><path d="M8 9h8M8 13h5"/></svg>
+              Solicitudes de reunión
+              
+            </a>
+          </li>
+        </ul>
+      </nav>
+
+      <nav aria-label="Secciones del administrador: Sitio web">
+        <p class="navegacion-panel__titulo">Sitio web</p>
+        <ul class="navegacion-panel__lista">
+          <li>
+            <a class="navegacion-panel__enlace" href="servicios.html">
+              <svg class="icono" viewBox="0 0 24 24" aria-hidden="true"><path d="m12 2 10 5-10 5L2 7l10-5Z"/><path d="m2 17 10 5 10-5M2 12l10 5 10-5"/></svg>
+              Servicios
+              
+            </a>
+          </li>
+          <li>
+            <a class="navegacion-panel__enlace" href="contenido.html">
+              <svg class="icono" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>
+              Contenido del sitio
+              
+            </a>
+          </li>
+        </ul>
+      </nav>
+
+      <nav aria-label="Secciones del administrador: Seguridad">
+        <p class="navegacion-panel__titulo">Seguridad</p>
+        <ul class="navegacion-panel__lista">
+          <li>
+            <a class="navegacion-panel__enlace" href="usuarios.html">
+              <svg class="icono" viewBox="0 0 24 24" aria-hidden="true"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+              Usuarios
+              
+            </a>
+          </li>
+          <li>
+            <a class="navegacion-panel__enlace" href="roles-permisos.html" aria-current="page">
+              <svg class="icono" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10Z"/><path d="m9 12 2 2 4-4"/></svg>
+              Roles y permisos
+              
+            </a>
+          </li>
+          <li>
+            <a class="navegacion-panel__enlace" href="auditoria.html">
+              <svg class="icono" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 5H7a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2h-2"/><rect x="9" y="3" width="6" height="4" rx="1"/><path d="M9 12h6M9 16h4"/></svg>
+              Auditoría
+              
+            </a>
+          </li>
+        </ul>
+      </nav>
+
+      <div class="panel__usuario">
+        <span class="avatar avatar--gris" aria-hidden="true">PL</span>
+        <span class="panel__usuario-datos">
+          <span class="panel__usuario-nombre">Patricia León</span>
+          <span class="panel__usuario-correo">patricia.leon@coretechsolutions.co</span>
+        </span>
+        <a class="panel__salir" href="../index.html" data-accion data-mensaje-exito="Cerraste sesión." aria-label="Cerrar sesión" title="Cerrar sesión">
+          <svg class="icono" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4M16 17l5-5-5-5M21 12H9"/></svg>
+        </a>
+      </div>
+    </aside>
+
+    <div class="panel__cuerpo">
+      <!-- ===================== Barra superior ===================== -->
+      <header class="panel__barra">
+        <button type="button" class="boton-icono boton-icono--pequeno boton-menu-panel" aria-expanded="false" aria-label="Abrir menú">
+          <svg class="icono" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+        </button>
+        <nav class="ruta" aria-label="Ruta de navegación">
+          <a href="dashboard.html">Administración</a>
+          <svg class="icono" viewBox="0 0 24 24" aria-hidden="true"><path d="m9 6 6 6-6 6"/></svg>
+          <span aria-current="page">Roles y permisos</span>
+        </nav>
+        <div class="panel__barra-acciones">
+          <a class="boton-icono boton-icono--pequeno campana" href="dashboard.html#alertas" aria-label="Notificaciones: 4 nuevas">
+            <svg class="icono" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9"/><path d="M10.3 21a1.94 1.94 0 0 0 3.4 0"/></svg>
+            <span class="campana__punto" aria-hidden="true"></span>
+          </a>
+          <div class="panel__perfil">
+            <span class="avatar avatar--gris" aria-hidden="true">PL</span>
+            <span class="panel__perfil-nombre">Patricia León<small>Administradora</small></span>
+          </div>
+        </div>
+      </header>
+
+      <!-- ===================== Contenido ===================== -->
+      <main class="panel__contenido" id="contenido">
+        <div class="encabezado-vista aparecer">
+          <div>
+            <h1 class="encabezado-vista__titulo">Roles y permisos</h1>
+            <p class="encabezado-vista__texto">Activa o desactiva lo que puede hacer cada rol. Los permisos con candado los fija una regla del negocio y no se pueden cambiar.</p>
+          </div>
+        </div>
+
+        <ul class="roles-resumen" aria-label="Resumen de roles">
+          <li class="rol-resumen aparecer" data-resumen-rol="cliente">
+            <span class="rol-resumen__icono"><svg class="icono icono--grande" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4 21a8 8 0 0 1 16 0"/></svg></span>
+            <span class="rol-resumen__nombre">Cliente</span>
+            <span class="rol-resumen__dato"><strong data-cantidad-permisos>0</strong> permisos · <a href="usuarios.html">9 usuarios</a></span>
+            <span class="rol-resumen__texto">Se registra desde el sitio. Agenda citas y sigue sus proyectos.</span>
+          </li>
+          <li class="rol-resumen aparecer" data-resumen-rol="desarrollador">
+            <span class="rol-resumen__icono"><svg class="icono icono--grande" viewBox="0 0 24 24" aria-hidden="true"><path d="m16 18 6-6-6-6M8 6l-6 6 6 6"/></svg></span>
+            <span class="rol-resumen__nombre">Desarrollador</span>
+            <span class="rol-resumen__dato"><strong data-cantidad-permisos>0</strong> permisos · <a href="usuarios.html">5 usuarios</a></span>
+            <span class="rol-resumen__texto">Lo crea el administrador. Atiende citas y registra avances.</span>
+          </li>
+          <li class="rol-resumen aparecer rol-resumen--fijo" data-resumen-rol="administrador">
+            <span class="rol-resumen__icono"><svg class="icono icono--grande" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10Z"/><path d="m9 12 2 2 4-4"/></svg></span>
+            <span class="rol-resumen__nombre">Administrador</span>
+            <span class="rol-resumen__dato"><strong data-cantidad-permisos>0</strong> permisos · <a href="usuarios.html">1 usuario</a></span>
+            <span class="rol-resumen__texto">Gestiona todo. Sus permisos no se pueden quitar para no perder el control del sistema.</span>
+          </li>
+        </ul>
+
+        <form class="matriz-contenedor aparecer" data-matriz action="dashboard.html">
+          <table class="matriz">
+            <caption class="solo-lector">Permisos de cada rol</caption>
+            <thead>
+              <tr>
+                <th scope="col" class="matriz__permiso">Permiso</th>
+                <th scope="col">Cliente</th>
+                <th scope="col"><span class="texto-largo">Desarrollador</span><abbr class="texto-corto" title="Desarrollador">Desarr.</abbr></th>
+                <th scope="col"><span class="texto-largo">Administrador</span><abbr class="texto-corto" title="Administrador">Admin.</abbr> <svg class="icono" viewBox="0 0 24 24" aria-hidden="true"><rect x="4" y="11" width="16" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg><span class="solo-lector">(bloqueado)</span></th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr class="matriz__grupo"><th scope="rowgroup" colspan="4">Citas</th></tr>
+              <tr class="matriz__fila" data-permiso="Agendar citas">
+                <th scope="row" class="matriz__permiso"><span class="matriz__nombre">Agendar citas<span class="matriz__regla">RN-01 a RN-03</span></span><small>Elegir servicio, fecha, hora y modalidad.</small></th>
+                <td class="matriz__celda" data-etiqueta="Cliente"><label class="interruptor-permiso" title="Cliente: Agendar citas"><input type="checkbox" role="switch" id="p1-cliente" data-rol="cliente" data-inicial="true" checked><span class="interruptor-permiso__pista" aria-hidden="true"></span><span class="solo-lector">Cliente: Agendar citas</span></label></td><td class="matriz__celda" data-etiqueta="Desarrollador"><label class="interruptor-permiso" title="Desarrollador: Agendar citas"><input type="checkbox" role="switch" id="p1-desarrollador" data-rol="desarrollador" data-inicial="false"><span class="interruptor-permiso__pista" aria-hidden="true"></span><span class="solo-lector">Desarrollador: Agendar citas</span></label></td><td class="matriz__celda" data-etiqueta="Administrador"><span class="permiso-fijo permiso-fijo--si" title="El administrador siempre lo tiene"><svg class="icono" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span class="solo-lector">Permitido. El administrador siempre lo tiene</span></span></td>
+              </tr>
+              <tr class="matriz__fila" data-permiso="Cancelar su cita pendiente">
+                <th scope="row" class="matriz__permiso"><span class="matriz__nombre">Cancelar su cita pendiente<span class="matriz__regla">RN-12</span></span><small>Solo mientras la cita está pendiente.</small></th>
+                <td class="matriz__celda" data-etiqueta="Cliente"><label class="interruptor-permiso" title="Cliente: Cancelar su cita pendiente"><input type="checkbox" role="switch" id="p2-cliente" data-rol="cliente" data-inicial="true" checked><span class="interruptor-permiso__pista" aria-hidden="true"></span><span class="solo-lector">Cliente: Cancelar su cita pendiente</span></label></td><td class="matriz__celda" data-etiqueta="Desarrollador"><label class="interruptor-permiso" title="Desarrollador: Cancelar su cita pendiente"><input type="checkbox" role="switch" id="p2-desarrollador" data-rol="desarrollador" data-inicial="false"><span class="interruptor-permiso__pista" aria-hidden="true"></span><span class="solo-lector">Desarrollador: Cancelar su cita pendiente</span></label></td><td class="matriz__celda" data-etiqueta="Administrador"><span class="permiso-fijo permiso-fijo--si" title="El administrador siempre lo tiene"><svg class="icono" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span class="solo-lector">Permitido. El administrador siempre lo tiene</span></span></td>
+              </tr>
+              <tr class="matriz__fila" data-permiso="Ver citas asignadas">
+                <th scope="row" class="matriz__permiso"><span class="matriz__nombre">Ver citas asignadas<span class="matriz__regla">RN-12</span></span><small>Las citas que la administración le asignó.</small></th>
+                <td class="matriz__celda" data-etiqueta="Cliente"><label class="interruptor-permiso" title="Cliente: Ver citas asignadas"><input type="checkbox" role="switch" id="p3-cliente" data-rol="cliente" data-inicial="false"><span class="interruptor-permiso__pista" aria-hidden="true"></span><span class="solo-lector">Cliente: Ver citas asignadas</span></label></td><td class="matriz__celda" data-etiqueta="Desarrollador"><span class="permiso-fijo permiso-fijo--si" title="Fijo por RN-12"><svg class="icono" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span class="solo-lector">Permitido. Fijo por RN-12</span></span></td><td class="matriz__celda" data-etiqueta="Administrador"><span class="permiso-fijo permiso-fijo--si" title="El administrador siempre lo tiene"><svg class="icono" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span class="solo-lector">Permitido. El administrador siempre lo tiene</span></span></td>
+              </tr>
+              <tr class="matriz__fila" data-permiso="Confirmar y marcar citas como atendidas">
+                <th scope="row" class="matriz__permiso"><span class="matriz__nombre">Confirmar y marcar citas como atendidas<span class="matriz__regla">RN-12</span></span><small>Con el enlace de la videollamada si es virtual.</small></th>
+                <td class="matriz__celda" data-etiqueta="Cliente"><span class="permiso-fijo" title="Fijo por RN-12"><svg class="icono" viewBox="0 0 24 24" aria-hidden="true"><rect x="4" y="11" width="16" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg><span class="solo-lector">No permitido. Fijo por RN-12</span></span></td><td class="matriz__celda" data-etiqueta="Desarrollador"><span class="permiso-fijo permiso-fijo--si" title="Fijo por RN-12"><svg class="icono" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span class="solo-lector">Permitido. Fijo por RN-12</span></span></td><td class="matriz__celda" data-etiqueta="Administrador"><span class="permiso-fijo permiso-fijo--si" title="El administrador siempre lo tiene"><svg class="icono" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span class="solo-lector">Permitido. El administrador siempre lo tiene</span></span></td>
+              </tr>
+              <tr class="matriz__fila" data-permiso="Ver todas las citas">
+                <th scope="row" class="matriz__permiso"><span class="matriz__nombre">Ver todas las citas<span class="matriz__regla">RN-10</span></span><small>Las citas de todos los clientes.</small></th>
+                <td class="matriz__celda" data-etiqueta="Cliente"><span class="permiso-fijo" title="Fijo por RN-10"><svg class="icono" viewBox="0 0 24 24" aria-hidden="true"><rect x="4" y="11" width="16" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg><span class="solo-lector">No permitido. Fijo por RN-10</span></span></td><td class="matriz__celda" data-etiqueta="Desarrollador"><label class="interruptor-permiso" title="Desarrollador: Ver todas las citas"><input type="checkbox" role="switch" id="p5-desarrollador" data-rol="desarrollador" data-inicial="false"><span class="interruptor-permiso__pista" aria-hidden="true"></span><span class="solo-lector">Desarrollador: Ver todas las citas</span></label></td><td class="matriz__celda" data-etiqueta="Administrador"><span class="permiso-fijo permiso-fijo--si" title="El administrador siempre lo tiene"><svg class="icono" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span class="solo-lector">Permitido. El administrador siempre lo tiene</span></span></td>
+              </tr>
+              <tr class="matriz__fila" data-permiso="Asignar desarrollador a una cita">
+                <th scope="row" class="matriz__permiso"><span class="matriz__nombre">Asignar desarrollador a una cita<span class="matriz__regla">RN-12</span></span></th>
+                <td class="matriz__celda" data-etiqueta="Cliente"><span class="permiso-fijo" title="Fijo por RN-12"><svg class="icono" viewBox="0 0 24 24" aria-hidden="true"><rect x="4" y="11" width="16" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg><span class="solo-lector">No permitido. Fijo por RN-12</span></span></td><td class="matriz__celda" data-etiqueta="Desarrollador"><label class="interruptor-permiso" title="Desarrollador: Asignar desarrollador a una cita"><input type="checkbox" role="switch" id="p6-desarrollador" data-rol="desarrollador" data-inicial="false"><span class="interruptor-permiso__pista" aria-hidden="true"></span><span class="solo-lector">Desarrollador: Asignar desarrollador a una cita</span></label></td><td class="matriz__celda" data-etiqueta="Administrador"><span class="permiso-fijo permiso-fijo--si" title="El administrador siempre lo tiene"><svg class="icono" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span class="solo-lector">Permitido. El administrador siempre lo tiene</span></span></td>
+              </tr>
+              <tr class="matriz__grupo"><th scope="rowgroup" colspan="4">Proyectos</th></tr>
+              <tr class="matriz__fila" data-permiso="Ver sus proyectos y avances">
+                <th scope="row" class="matriz__permiso"><span class="matriz__nombre">Ver sus proyectos y avances<span class="matriz__regla">RN-10 y RN-11</span></span><small>El cliente ve los suyos; el desarrollador, los que tiene a cargo.</small></th>
+                <td class="matriz__celda" data-etiqueta="Cliente"><span class="permiso-fijo permiso-fijo--si" title="Fijo por RN-10 y RN-11"><svg class="icono" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span class="solo-lector">Permitido. Fijo por RN-10 y RN-11</span></span></td><td class="matriz__celda" data-etiqueta="Desarrollador"><span class="permiso-fijo permiso-fijo--si" title="Fijo por RN-10 y RN-11"><svg class="icono" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span class="solo-lector">Permitido. Fijo por RN-10 y RN-11</span></span></td><td class="matriz__celda" data-etiqueta="Administrador"><span class="permiso-fijo permiso-fijo--si" title="El administrador siempre lo tiene"><svg class="icono" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span class="solo-lector">Permitido. El administrador siempre lo tiene</span></span></td>
+              </tr>
+              <tr class="matriz__fila" data-permiso="Ver proyectos de otros clientes">
+                <th scope="row" class="matriz__permiso"><span class="matriz__nombre">Ver proyectos de otros clientes<span class="matriz__regla">RN-10</span></span></th>
+                <td class="matriz__celda" data-etiqueta="Cliente"><span class="permiso-fijo" title="Fijo por RN-10"><svg class="icono" viewBox="0 0 24 24" aria-hidden="true"><rect x="4" y="11" width="16" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg><span class="solo-lector">No permitido. Fijo por RN-10</span></span></td><td class="matriz__celda" data-etiqueta="Desarrollador"><label class="interruptor-permiso" title="Desarrollador: Ver proyectos de otros clientes"><input type="checkbox" role="switch" id="p8-desarrollador" data-rol="desarrollador" data-inicial="false"><span class="interruptor-permiso__pista" aria-hidden="true"></span><span class="solo-lector">Desarrollador: Ver proyectos de otros clientes</span></label></td><td class="matriz__celda" data-etiqueta="Administrador"><span class="permiso-fijo permiso-fijo--si" title="El administrador siempre lo tiene"><svg class="icono" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span class="solo-lector">Permitido. El administrador siempre lo tiene</span></span></td>
+              </tr>
+              <tr class="matriz__fila" data-permiso="Registrar avances">
+                <th scope="row" class="matriz__permiso"><span class="matriz__nombre">Registrar avances<span class="matriz__regla">RN-07</span></span><small>Solo en los proyectos de los que es responsable.</small></th>
+                <td class="matriz__celda" data-etiqueta="Cliente"><span class="permiso-fijo" title="Fijo por RN-07"><svg class="icono" viewBox="0 0 24 24" aria-hidden="true"><rect x="4" y="11" width="16" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg><span class="solo-lector">No permitido. Fijo por RN-07</span></span></td><td class="matriz__celda" data-etiqueta="Desarrollador"><span class="permiso-fijo permiso-fijo--si" title="Fijo por RN-07"><svg class="icono" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span class="solo-lector">Permitido. Fijo por RN-07</span></span></td><td class="matriz__celda" data-etiqueta="Administrador"><span class="permiso-fijo" title="Fijo por RN-07"><svg class="icono" viewBox="0 0 24 24" aria-hidden="true"><rect x="4" y="11" width="16" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg><span class="solo-lector">No permitido. Fijo por RN-07</span></span></td>
+              </tr>
+              <tr class="matriz__fila" data-permiso="Editar o borrar avances publicados">
+                <th scope="row" class="matriz__permiso"><span class="matriz__nombre">Editar o borrar avances publicados<span class="matriz__regla">RNF-02</span></span><small>Los avances quedan como registro y no se modifican.</small></th>
+                <td class="matriz__celda" data-etiqueta="Cliente"><span class="permiso-fijo" title="Fijo por RNF-02"><svg class="icono" viewBox="0 0 24 24" aria-hidden="true"><rect x="4" y="11" width="16" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg><span class="solo-lector">No permitido. Fijo por RNF-02</span></span></td><td class="matriz__celda" data-etiqueta="Desarrollador"><span class="permiso-fijo" title="Fijo por RNF-02"><svg class="icono" viewBox="0 0 24 24" aria-hidden="true"><rect x="4" y="11" width="16" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg><span class="solo-lector">No permitido. Fijo por RNF-02</span></span></td><td class="matriz__celda" data-etiqueta="Administrador"><span class="permiso-fijo" title="Fijo por RNF-02"><svg class="icono" viewBox="0 0 24 24" aria-hidden="true"><rect x="4" y="11" width="16" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg><span class="solo-lector">No permitido. Fijo por RNF-02</span></span></td>
+              </tr>
+              <tr class="matriz__fila" data-permiso="Crear proyectos y asignar responsable">
+                <th scope="row" class="matriz__permiso"><span class="matriz__nombre">Crear proyectos y asignar responsable<span class="matriz__regla">RN-04 y RN-05</span></span></th>
+                <td class="matriz__celda" data-etiqueta="Cliente"><span class="permiso-fijo" title="Fijo por RN-04 y RN-05"><svg class="icono" viewBox="0 0 24 24" aria-hidden="true"><rect x="4" y="11" width="16" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg><span class="solo-lector">No permitido. Fijo por RN-04 y RN-05</span></span></td><td class="matriz__celda" data-etiqueta="Desarrollador"><label class="interruptor-permiso" title="Desarrollador: Crear proyectos y asignar responsable"><input type="checkbox" role="switch" id="p11-desarrollador" data-rol="desarrollador" data-inicial="false"><span class="interruptor-permiso__pista" aria-hidden="true"></span><span class="solo-lector">Desarrollador: Crear proyectos y asignar responsable</span></label></td><td class="matriz__celda" data-etiqueta="Administrador"><span class="permiso-fijo permiso-fijo--si" title="El administrador siempre lo tiene"><svg class="icono" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span class="solo-lector">Permitido. El administrador siempre lo tiene</span></span></td>
+              </tr>
+              <tr class="matriz__fila" data-permiso="Editar, pausar o cancelar proyectos">
+                <th scope="row" class="matriz__permiso"><span class="matriz__nombre">Editar, pausar o cancelar proyectos</span><small>Nombre, alcance y fecha estimada de entrega.</small></th>
+                <td class="matriz__celda" data-etiqueta="Cliente"><span class="permiso-fijo" title="No aplica a este rol"><svg class="icono" viewBox="0 0 24 24" aria-hidden="true"><rect x="4" y="11" width="16" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg><span class="solo-lector">No permitido. No aplica a este rol</span></span></td><td class="matriz__celda" data-etiqueta="Desarrollador"><label class="interruptor-permiso" title="Desarrollador: Editar, pausar o cancelar proyectos"><input type="checkbox" role="switch" id="p12-desarrollador" data-rol="desarrollador" data-inicial="false"><span class="interruptor-permiso__pista" aria-hidden="true"></span><span class="solo-lector">Desarrollador: Editar, pausar o cancelar proyectos</span></label></td><td class="matriz__celda" data-etiqueta="Administrador"><span class="permiso-fijo permiso-fijo--si" title="El administrador siempre lo tiene"><svg class="icono" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span class="solo-lector">Permitido. El administrador siempre lo tiene</span></span></td>
+              </tr>
+              <tr class="matriz__grupo"><th scope="rowgroup" colspan="4">Reuniones de seguimiento</th></tr>
+              <tr class="matriz__fila" data-permiso="Solicitar reunión">
+                <th scope="row" class="matriz__permiso"><span class="matriz__nombre">Solicitar reunión<span class="matriz__regla">RN-14 y RN-15</span></span><small>Desde un proyecto activo propio, una a la vez.</small></th>
+                <td class="matriz__celda" data-etiqueta="Cliente"><label class="interruptor-permiso" title="Cliente: Solicitar reunión"><input type="checkbox" role="switch" id="p13-cliente" data-rol="cliente" data-inicial="true" checked><span class="interruptor-permiso__pista" aria-hidden="true"></span><span class="solo-lector">Cliente: Solicitar reunión</span></label></td><td class="matriz__celda" data-etiqueta="Desarrollador"><span class="permiso-fijo" title="Fijo por RN-14 y RN-15"><svg class="icono" viewBox="0 0 24 24" aria-hidden="true"><rect x="4" y="11" width="16" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg><span class="solo-lector">No permitido. Fijo por RN-14 y RN-15</span></span></td><td class="matriz__celda" data-etiqueta="Administrador"><span class="permiso-fijo" title="Fijo por RN-14 y RN-15"><svg class="icono" viewBox="0 0 24 24" aria-hidden="true"><rect x="4" y="11" width="16" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg><span class="solo-lector">No permitido. Fijo por RN-14 y RN-15</span></span></td>
+              </tr>
+              <tr class="matriz__fila" data-permiso="Programar o rechazar solicitudes">
+                <th scope="row" class="matriz__permiso"><span class="matriz__nombre">Programar o rechazar solicitudes</span><small>De los proyectos que tiene a cargo.</small></th>
+                <td class="matriz__celda" data-etiqueta="Cliente"><span class="permiso-fijo" title="No aplica a este rol"><svg class="icono" viewBox="0 0 24 24" aria-hidden="true"><rect x="4" y="11" width="16" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg><span class="solo-lector">No permitido. No aplica a este rol</span></span></td><td class="matriz__celda" data-etiqueta="Desarrollador"><label class="interruptor-permiso" title="Desarrollador: Programar o rechazar solicitudes"><input type="checkbox" role="switch" id="p14-desarrollador" data-rol="desarrollador" data-inicial="true" checked><span class="interruptor-permiso__pista" aria-hidden="true"></span><span class="solo-lector">Desarrollador: Programar o rechazar solicitudes</span></label></td><td class="matriz__celda" data-etiqueta="Administrador"><span class="permiso-fijo permiso-fijo--si" title="El administrador siempre lo tiene"><svg class="icono" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span class="solo-lector">Permitido. El administrador siempre lo tiene</span></span></td>
+              </tr>
+              <tr class="matriz__grupo"><th scope="rowgroup" colspan="4">Sitio web</th></tr>
+              <tr class="matriz__fila" data-permiso="Editar servicios del catálogo">
+                <th scope="row" class="matriz__permiso"><span class="matriz__nombre">Editar servicios del catálogo</span><small>Crear, editar, ocultar y ordenar servicios.</small></th>
+                <td class="matriz__celda" data-etiqueta="Cliente"><span class="permiso-fijo" title="No aplica a este rol"><svg class="icono" viewBox="0 0 24 24" aria-hidden="true"><rect x="4" y="11" width="16" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg><span class="solo-lector">No permitido. No aplica a este rol</span></span></td><td class="matriz__celda" data-etiqueta="Desarrollador"><label class="interruptor-permiso" title="Desarrollador: Editar servicios del catálogo"><input type="checkbox" role="switch" id="p15-desarrollador" data-rol="desarrollador" data-inicial="false"><span class="interruptor-permiso__pista" aria-hidden="true"></span><span class="solo-lector">Desarrollador: Editar servicios del catálogo</span></label></td><td class="matriz__celda" data-etiqueta="Administrador"><span class="permiso-fijo permiso-fijo--si" title="El administrador siempre lo tiene"><svg class="icono" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span class="solo-lector">Permitido. El administrador siempre lo tiene</span></span></td>
+              </tr>
+              <tr class="matriz__fila" data-permiso="Editar el contenido de la página principal">
+                <th scope="row" class="matriz__permiso"><span class="matriz__nombre">Editar el contenido de la página principal</span><small>Textos, misión, visión, contacto y pie de página.</small></th>
+                <td class="matriz__celda" data-etiqueta="Cliente"><span class="permiso-fijo" title="No aplica a este rol"><svg class="icono" viewBox="0 0 24 24" aria-hidden="true"><rect x="4" y="11" width="16" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg><span class="solo-lector">No permitido. No aplica a este rol</span></span></td><td class="matriz__celda" data-etiqueta="Desarrollador"><label class="interruptor-permiso" title="Desarrollador: Editar el contenido de la página principal"><input type="checkbox" role="switch" id="p16-desarrollador" data-rol="desarrollador" data-inicial="false"><span class="interruptor-permiso__pista" aria-hidden="true"></span><span class="solo-lector">Desarrollador: Editar el contenido de la página principal</span></label></td><td class="matriz__celda" data-etiqueta="Administrador"><span class="permiso-fijo permiso-fijo--si" title="El administrador siempre lo tiene"><svg class="icono" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span class="solo-lector">Permitido. El administrador siempre lo tiene</span></span></td>
+              </tr>
+              <tr class="matriz__grupo"><th scope="rowgroup" colspan="4">Gestión y seguridad</th></tr>
+              <tr class="matriz__fila" data-permiso="Ver el dashboard">
+                <th scope="row" class="matriz__permiso"><span class="matriz__nombre">Ver el dashboard</span><small>Indicadores del negocio y del equipo.</small></th>
+                <td class="matriz__celda" data-etiqueta="Cliente"><span class="permiso-fijo" title="No aplica a este rol"><svg class="icono" viewBox="0 0 24 24" aria-hidden="true"><rect x="4" y="11" width="16" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg><span class="solo-lector">No permitido. No aplica a este rol</span></span></td><td class="matriz__celda" data-etiqueta="Desarrollador"><label class="interruptor-permiso" title="Desarrollador: Ver el dashboard"><input type="checkbox" role="switch" id="p17-desarrollador" data-rol="desarrollador" data-inicial="false"><span class="interruptor-permiso__pista" aria-hidden="true"></span><span class="solo-lector">Desarrollador: Ver el dashboard</span></label></td><td class="matriz__celda" data-etiqueta="Administrador"><span class="permiso-fijo permiso-fijo--si" title="El administrador siempre lo tiene"><svg class="icono" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span class="solo-lector">Permitido. El administrador siempre lo tiene</span></span></td>
+              </tr>
+              <tr class="matriz__fila" data-permiso="Crear y editar cuentas">
+                <th scope="row" class="matriz__permiso"><span class="matriz__nombre">Crear y editar cuentas</span><small>Crear desarrolladores, activar y desactivar cuentas.</small></th>
+                <td class="matriz__celda" data-etiqueta="Cliente"><span class="permiso-fijo" title="No aplica a este rol"><svg class="icono" viewBox="0 0 24 24" aria-hidden="true"><rect x="4" y="11" width="16" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg><span class="solo-lector">No permitido. No aplica a este rol</span></span></td><td class="matriz__celda" data-etiqueta="Desarrollador"><label class="interruptor-permiso" title="Desarrollador: Crear y editar cuentas"><input type="checkbox" role="switch" id="p18-desarrollador" data-rol="desarrollador" data-inicial="false"><span class="interruptor-permiso__pista" aria-hidden="true"></span><span class="solo-lector">Desarrollador: Crear y editar cuentas</span></label></td><td class="matriz__celda" data-etiqueta="Administrador"><span class="permiso-fijo permiso-fijo--si" title="El administrador siempre lo tiene"><svg class="icono" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span class="solo-lector">Permitido. El administrador siempre lo tiene</span></span></td>
+              </tr>
+              <tr class="matriz__fila" data-permiso="Cambiar los permisos de los roles">
+                <th scope="row" class="matriz__permiso"><span class="matriz__nombre">Cambiar los permisos de los roles<span class="matriz__regla">Solo administradores</span></span></th>
+                <td class="matriz__celda" data-etiqueta="Cliente"><span class="permiso-fijo" title="Fijo por Solo administradores"><svg class="icono" viewBox="0 0 24 24" aria-hidden="true"><rect x="4" y="11" width="16" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg><span class="solo-lector">No permitido. Fijo por Solo administradores</span></span></td><td class="matriz__celda" data-etiqueta="Desarrollador"><span class="permiso-fijo" title="Fijo por Solo administradores"><svg class="icono" viewBox="0 0 24 24" aria-hidden="true"><rect x="4" y="11" width="16" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg><span class="solo-lector">No permitido. Fijo por Solo administradores</span></span></td><td class="matriz__celda" data-etiqueta="Administrador"><span class="permiso-fijo permiso-fijo--si" title="El administrador siempre lo tiene"><svg class="icono" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span class="solo-lector">Permitido. El administrador siempre lo tiene</span></span></td>
+              </tr>
+              <tr class="matriz__fila" data-permiso="Ver la auditoría">
+                <th scope="row" class="matriz__permiso"><span class="matriz__nombre">Ver la auditoría</span><small>Quién hizo qué y cuándo.</small></th>
+                <td class="matriz__celda" data-etiqueta="Cliente"><span class="permiso-fijo" title="No aplica a este rol"><svg class="icono" viewBox="0 0 24 24" aria-hidden="true"><rect x="4" y="11" width="16" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg><span class="solo-lector">No permitido. No aplica a este rol</span></span></td><td class="matriz__celda" data-etiqueta="Desarrollador"><label class="interruptor-permiso" title="Desarrollador: Ver la auditoría"><input type="checkbox" role="switch" id="p20-desarrollador" data-rol="desarrollador" data-inicial="false"><span class="interruptor-permiso__pista" aria-hidden="true"></span><span class="solo-lector">Desarrollador: Ver la auditoría</span></label></td><td class="matriz__celda" data-etiqueta="Administrador"><span class="permiso-fijo permiso-fijo--si" title="El administrador siempre lo tiene"><svg class="icono" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span class="solo-lector">Permitido. El administrador siempre lo tiene</span></span></td>
+              </tr>
+              <tr class="matriz__fila" data-permiso="Editar o borrar registros de auditoría">
+                <th scope="row" class="matriz__permiso"><span class="matriz__nombre">Editar o borrar registros de auditoría<span class="matriz__regla">RNF-02</span></span><small>La auditoría no se puede alterar.</small></th>
+                <td class="matriz__celda" data-etiqueta="Cliente"><span class="permiso-fijo" title="Fijo por RNF-02"><svg class="icono" viewBox="0 0 24 24" aria-hidden="true"><rect x="4" y="11" width="16" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg><span class="solo-lector">No permitido. Fijo por RNF-02</span></span></td><td class="matriz__celda" data-etiqueta="Desarrollador"><span class="permiso-fijo" title="Fijo por RNF-02"><svg class="icono" viewBox="0 0 24 24" aria-hidden="true"><rect x="4" y="11" width="16" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg><span class="solo-lector">No permitido. Fijo por RNF-02</span></span></td><td class="matriz__celda" data-etiqueta="Administrador"><span class="permiso-fijo" title="Fijo por RNF-02"><svg class="icono" viewBox="0 0 24 24" aria-hidden="true"><rect x="4" y="11" width="16" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg><span class="solo-lector">No permitido. Fijo por RNF-02</span></span></td>
+              </tr>
+            </tbody>
+          </table>
+        </form>
+
+        <p class="nota-matriz"><svg class="icono" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4M12 8h.01"/></svg><span>Los cambios aplican desde el próximo inicio de sesión de cada usuario y quedan registrados en la <a href="auditoria.html">auditoría</a>.</span></p>
+
+        <!-- Barra de cambios sin guardar -->
+        <div class="barra-cambios" data-barra-cambios hidden role="region" aria-label="Cambios sin guardar">
+          <p class="barra-cambios__texto"><strong data-cantidad-cambios>0 cambios</strong> sin guardar</p>
+          <button type="button" class="boton boton--transparente" data-descartar><svg class="icono" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 7v6h6"/><path d="M21 17a9 9 0 0 0-15-6.7L3 13"/></svg>Descartar</button>
+          <button type="button" class="boton boton--acento" data-guardar><svg class="icono" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>Guardar cambios</button>
+        </div>
+      </main>
+    </div>
+  </div>
+
+  <script src="../js/principal.js"></script>
+  <script src="../js/vistas/admin-roles-permisos.js"></script>
+</body>
+</html>

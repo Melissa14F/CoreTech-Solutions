@@ -1,0 +1,33 @@
+/* ==========================================================================
+   Vista: Agendar cita · Paso 3, confirmación (cliente/agendar-confirmar.html)
+   Requiere: global.css, plantillas/panel.css y plantillas/agendamiento.css
+   ========================================================================== */
+
+/* 1. Detalle de la cita ==================================================== */
+.detalle-cita { display: grid; }
+.detalle-cita__fila { display: grid; grid-template-columns: 44px minmax(0, 1fr) auto; align-items: center; gap: var(--espacio-4); padding: var(--espacio-4) 0; border-bottom: 1px solid var(--color-borde-suave); }
+.detalle-cita__fila:first-child { padding-top: 0; }
+.detalle-cita__fila:last-child { border-bottom: 0; padding-bottom: 0; }
+.detalle-cita__icono { width: 44px; height: 44px; display: grid; place-items: center; border-radius: var(--radio-caja); background: var(--color-acento-suave); color: var(--color-acento); }
+.detalle-cita__imagen { width: 44px; height: 44px; border-radius: var(--radio-caja); object-fit: cover; }
+.detalle-cita__dato { display: block; font-size: .75rem; color: var(--color-texto-suave); }
+.detalle-cita__valor { display: block; font-weight: 600; }
+.detalle-cita__nota { display: block; margin-top: 2px; font-size: .8125rem; color: var(--color-texto-suave); }
+.detalle-cita__cambiar { font-size: .8125rem; }
+
+/* 2. Campo de comentarios ================================================== */
+.campo__control--area { min-height: 120px; resize: vertical; line-height: 1.55; }
+.campo__pie { display: flex; justify-content: space-between; gap: var(--espacio-3); }
+.campo__contador { font-size: .75rem; color: var(--color-texto-tenue); font-variant-numeric: tabular-nums; }
+
+/* 3. Aviso de estado ======================================================= */
+.aviso-estado { margin-top: var(--espacio-5); }
+
+/* 4. Diseño adaptable ====================================================== */
+@media (max-width: 480px) {
+  .detalle-cita__fila { grid-template-columns: 40px minmax(0, 1fr); }
+  .detalle-cita__cambiar { grid-column: 2; justify-self: start; }
+}
+
+/* Descripción que escribió el cliente en el paso 2 (texto largo, peso normal) */
+.detalle-cita__valor--texto { font-weight: 400; line-height: 1.55; color: var(--color-texto); overflow-wrap: anywhere; }

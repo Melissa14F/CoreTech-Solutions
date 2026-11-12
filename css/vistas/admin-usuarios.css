@@ -1,0 +1,34 @@
+/* ==========================================================================
+   Vista: Usuarios (admin/usuarios.html)
+   Requiere: global.css, plantillas/panel.css, plantillas/tarjetas.css
+   (barra de carga) y plantillas/tabla.css
+   ========================================================================== */
+
+/* 1. Celdas de la tabla ==================================================== */
+.celda-usuario { display: flex; align-items: center; gap: var(--espacio-3); min-width: 240px; }
+.celda-usuario .avatar { width: 36px; height: 36px; }
+.celda-actividad { display: grid; gap: 6px; }
+.celda-actividad .carga { margin-top: 0; }
+.insignia--oscuro { background: var(--color-tinta); color: #fff; }
+.insignia--cliente { background: var(--color-fondo-suave); color: var(--color-texto); box-shadow: inset 0 0 0 1px var(--color-borde); }
+.etiqueta-tu { padding: 4px 10px; border-radius: var(--radio-pildora); background: var(--color-fondo-suave); font-size: .75rem; font-weight: 600; color: var(--color-texto-suave); }
+
+/* 2. Formulario de usuario ================================================= */
+.clave-temporal { display: flex; align-items: center; justify-content: space-between; gap: var(--espacio-4); flex-wrap: wrap; padding: var(--espacio-4); border: 1px dashed #c7c9f6; border-radius: var(--radio-caja); background: #fbfbff; }
+.clave-temporal__titulo { margin: 0 0 4px; font-size: .8125rem; font-weight: 700; color: var(--color-tinta); }
+.clave-temporal__valor { display: inline-block; padding: 4px 10px; border-radius: 6px; background: var(--color-fondo); box-shadow: inset 0 0 0 1px var(--color-borde); font-family: ui-monospace, Consolas, monospace; font-size: 1rem; font-weight: 700; letter-spacing: .06em; color: var(--color-acento); }
+.clave-temporal__ayuda { margin: 6px 0 0; font-size: .75rem; color: var(--color-texto-suave); }
+.clave-temporal__valor.esta-actualizado { animation: destello-clave .6s var(--curva); }
+@keyframes destello-clave { 0% { background: var(--color-acento-suave); } }
+
+/* Aviso al desactivar a un desarrollador con proyectos activos */
+.aviso-proyectos { margin-top: var(--espacio-4); text-align: left; }
+.aviso-proyectos .boton { margin-top: var(--espacio-3); }
+
+/* 3. Diseño adaptable ====================================================== */
+@media (max-width: 900px) {
+  .celda-usuario { min-width: 0; }
+  .celda-usuario .celda-principal { min-width: 0; }
+}
+@media (max-width: 640px) {
+}

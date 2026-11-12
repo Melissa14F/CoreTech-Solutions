@@ -1,0 +1,50 @@
+/* ==========================================================================
+   Vista: Cita registrada (cliente/cita-registrada.html)
+   Requiere: global.css y plantillas/panel.css
+   Pantalla de éxito al terminar de agendar.
+   ========================================================================== */
+
+/* 1. Contenedor centrado =================================================== */
+.exito { max-width: 760px; margin: 0 auto; }
+.exito__cabecera { text-align: center; margin-bottom: var(--espacio-8); }
+.exito__titulo { margin: var(--espacio-6) 0 var(--espacio-2); font-size: clamp(1.75rem, 3vw, 2.25rem); font-weight: 800; letter-spacing: -.03em; }
+.exito__texto { max-width: 52ch; margin: 0 auto; font-size: 1.0625rem; }
+
+/* 2. Marca de verificación animada ========================================= */
+.exito__marca {
+  position: relative; width: 88px; height: 88px; margin: 0 auto; display: grid; place-items: center; border-radius: 50%;
+  background: var(--color-exito); color: #fff; box-shadow: 0 16px 40px rgba(15, 157, 88, .35); animation: aparecer-marca 600ms var(--curva) both;
+}
+.exito__marca::before { content: ""; position: absolute; inset: -10px; border: 2px solid rgba(15, 157, 88, .25); border-radius: 50%; animation: onda 1.8s var(--curva) .4s infinite; }
+.exito__marca .icono { width: 40px; height: 40px; stroke-width: 2.6; stroke-dasharray: 30; stroke-dashoffset: 30; animation: trazar 500ms var(--curva) 350ms forwards; }
+@keyframes aparecer-marca { from { opacity: 0; transform: scale(.6); } to { opacity: 1; transform: none; } }
+@keyframes trazar { to { stroke-dashoffset: 0; } }
+@keyframes onda { 0% { opacity: 1; transform: scale(.9); } 100% { opacity: 0; transform: scale(1.35); } }
+
+/* 3. Tarjeta con los datos de la cita ====================================== */
+.comprobante { overflow: hidden; padding: 0; }
+.comprobante__cabecera { display: flex; align-items: center; justify-content: space-between; gap: var(--espacio-3); flex-wrap: wrap; padding: var(--espacio-5) var(--espacio-6); border-bottom: 1px dashed var(--color-borde); background: var(--color-fondo-suave); }
+.comprobante__codigo { font-family: var(--fuente-titulos); font-size: 1.125rem; font-weight: 800; letter-spacing: .02em; }
+.comprobante__codigo small { display: block; font-family: var(--fuente-texto); font-size: .75rem; font-weight: 500; letter-spacing: 0; color: var(--color-texto-suave); }
+.comprobante__datos { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--espacio-5) var(--espacio-6); padding: var(--espacio-6); }
+.comprobante__dato { font-size: .75rem; color: var(--color-texto-suave); }
+.comprobante__valor { font-weight: 600; }
+.comprobante__pie { display: flex; align-items: center; gap: var(--espacio-3); padding: var(--espacio-4) var(--espacio-6); border-top: 1px solid var(--color-borde-suave); font-size: .875rem; color: var(--color-texto-suave); }
+.comprobante__pie .icono { color: var(--color-exito); }
+
+/* 4. Próximos pasos ======================================================== */
+.siguientes { margin-top: var(--espacio-6); }
+.siguientes__lista { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: var(--espacio-4); counter-reset: siguiente; }
+.siguientes__item { position: relative; padding: var(--espacio-5); border: 1px solid var(--color-borde); border-radius: var(--radio-caja); background: var(--color-fondo); }
+.siguientes__item::before { counter-increment: siguiente; content: counter(siguiente); display: grid; place-items: center; width: 28px; height: 28px; margin-bottom: var(--espacio-3); border-radius: 50%; background: var(--color-acento-suave); color: var(--color-acento); font-size: .8125rem; font-weight: 700; }
+.siguientes__titulo { margin: 0 0 var(--espacio-1); font-size: .9375rem; }
+.siguientes__texto { margin: 0; font-size: .8125rem; }
+
+/* 5. Acciones ============================================================== */
+.exito__acciones { display: flex; justify-content: center; gap: var(--espacio-3); flex-wrap: wrap; margin-top: var(--espacio-8); }
+
+/* 6. Diseño adaptable ====================================================== */
+@media (max-width: 640px) {
+  .comprobante__datos, .siguientes__lista { grid-template-columns: minmax(0, 1fr); }
+  .exito__acciones .boton { width: 100%; }
+}

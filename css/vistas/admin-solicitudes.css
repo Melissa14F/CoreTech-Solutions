@@ -1,0 +1,17 @@
+/* ==========================================================================
+   Vista: Solicitudes de reunión (admin/solicitudes.html)
+   Requiere: global.css, plantillas/panel.css y plantillas/tabla.css
+   ========================================================================== */
+
+.alerta.aparecer { margin-bottom: var(--espacio-5); }
+.celda-solicitud { min-width: 220px; max-width: 270px; }
+.celda-responsable { display: flex !important; align-items: center; gap: 6px; margin-top: 6px !important; color: var(--color-texto) !important; font-weight: 600; }
+.celda-responsable .avatar { width: 20px; height: 20px; font-size: .5625rem; }
+.celda-solicitud small { font-style: normal; }
+.tabla-datos .celda-fecha small { white-space: normal; }
+.nota-presencial { display: flex; align-items: center; gap: var(--espacio-2); margin: 0; padding: var(--espacio-3) var(--espacio-4); border-radius: var(--radio-caja); background: var(--color-fondo-suave); font-size: .875rem; }
+.nota-presencial .icono { width: 16px; height: 16px; flex: none; color: var(--color-acento); }
+
+@media (max-width: 900px) {
+  .celda-solicitud { min-width: 0; max-width: none; }
+}

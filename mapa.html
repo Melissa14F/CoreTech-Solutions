@@ -1,0 +1,524 @@
+<!DOCTYPE html>
+<html lang="es" class="sin-js">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Mapa del sitio · CoreTech Solutions</title>
+  <meta name="description" content="Todas las interfaces del prototipo de CoreTech Solutions.">
+  <link rel="icon" href="img/logo.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap">
+  <link rel="stylesheet" href="css/global.css">
+  <link rel="stylesheet" href="css/plantillas/documento.css">
+  <link rel="stylesheet" href="css/vistas/mapa.css">
+  <script src="js/accesibilidad.js"></script>
+</head>
+<body>
+  <a class="saltar-contenido" href="#contenido">Saltar al contenido</a>
+
+  <!-- ===================== Encabezado ===================== -->
+  <header class="encabezado encabezado--oscuro">
+    <div class="contenedor encabezado__contenido">
+      <a class="marca" href="index.html" aria-label="CoreTech Solutions, ir al inicio">
+        <img class="marca__logo" src="img/logo.svg" alt="" width="30" height="30">
+        <span>CoreTech</span>
+      </a>
+
+      <nav class="menu-principal" aria-label="Secciones">
+        <ul class="menu-principal__lista">
+          <li><a class="menu-principal__enlace" href="index.html#servicios">Servicios</a></li>
+          <li><a class="menu-principal__enlace" href="index.html#proceso">Proceso</a></li>
+          <li><a class="menu-principal__enlace" href="index.html#contacto">Contacto</a></li>
+        </ul>
+      </nav>
+
+      <div class="encabezado__acciones">
+        <a class="boton encabezado__boton encabezado__boton--ingresar" href="login.html">
+          <svg class="icono" viewBox="0 0 24 24" aria-hidden="true"><path d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4M10 17l5-5-5-5M15 12H3"/></svg>
+          Iniciar sesión
+        </a>
+        <a class="boton encabezado__boton encabezado__boton--registro" href="registro.html">
+          Crear cuenta
+          <svg class="icono icono--mover" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+        </a>
+        <button type="button" class="boton-menu" aria-expanded="false" aria-controls="menu-movil" aria-label="Abrir menú">
+          <svg class="icono boton-menu__abrir" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+          <svg class="icono boton-menu__cerrar" viewBox="0 0 24 24" aria-hidden="true"><path d="M18 6 6 18M6 6l12 12"/></svg>
+        </button>
+      </div>
+    </div>
+
+    <nav class="menu-movil" id="menu-movil" aria-label="Menú móvil">
+      <a class="menu-movil__enlace" href="index.html#servicios">Servicios</a>
+      <a class="menu-movil__enlace" href="index.html#proceso">Proceso</a>
+      <a class="menu-movil__enlace" href="index.html#contacto">Contacto</a>
+      <div class="menu-movil__acciones">
+        <a class="boton boton--transparente boton--bloque" href="login.html">Iniciar sesión</a>
+        <a class="boton boton--acento boton--bloque" href="registro.html">Crear cuenta</a>
+      </div>
+    </nav>
+  </header>
+
+  <main id="contenido">
+    <section class="documento-portada superficie-noche" aria-labelledby="titulo-pagina">
+      <div class="contenedor">
+        <span class="pildora aparecer">Mapa del sitio</span>
+        <h1 class="documento-portada__titulo aparecer" id="titulo-pagina" style="--retraso: 80ms">Las 29 interfaces del prototipo</h1>
+        <p class="documento-portada__texto aparecer" style="--retraso: 160ms">Cada pantalla de CoreTech Solutions con una descripción corta. Todas están conectadas: desde aquí puedes abrir cualquiera.</p>
+      </div>
+    </section>
+
+    <div class="contenedor documento">
+      <nav class="documento__atajos aparecer" aria-label="Grupos de interfaces"><a class="pildora-enlace" href="#sitio-publico">Sitio público · 4</a><a class="pildora-enlace" href="#cliente">Cliente · 9</a><a class="pildora-enlace" href="#equipo">Equipo · 4</a><a class="pildora-enlace" href="#administrador">Administrador · 10</a><a class="pildora-enlace" href="#documentacion">Documentación · 2</a></nav>
+
+      <section class="mapa-accesos aparecer" aria-labelledby="titulo-accesos">
+        <h2 class="mapa-accesos__titulo" id="titulo-accesos">Para probar cada rol</h2>
+        <p>En <a href="login.html">Iniciar sesión</a> hay accesos de demostración: <strong>Laura Gómez</strong> (cliente), <strong>Andrés Pérez</strong> (desarrollador) y <strong>Patricia León</strong> (administradora). Los datos son de prueba y los cambios no se guardan al recargar.</p>
+      </section>
+
+      <section class="mapa-flujos" aria-labelledby="titulo-flujos">
+        <h2 class="mapa-grupo__titulo" id="titulo-flujos">Flujos principales</h2>
+        <ol class="flujos">
+          <li class="flujo aparecer"><p class="flujo__titulo">Cliente nuevo agenda su primera cita</p><ol class="flujo__pasos"><li><a href="index.html">Elige un servicio</a></li><li><a href="registro.html">Crea su cuenta</a></li><li><a href="cliente/agendar-fecha.html">Fecha y detalles</a></li><li><a href="cliente/agendar-confirmar.html">Confirma</a></li><li><a href="cliente/cita-registrada.html">Cita registrada</a></li><li><a href="cliente/mis-citas.html">Mis citas</a></li></ol></li>
+          <li class="flujo aparecer"><p class="flujo__titulo">Cliente sigue su proyecto</p><ol class="flujo__pasos"><li><a href="login.html">Inicia sesión</a></li><li><a href="cliente/mis-proyectos.html">Mis proyectos</a></li><li><a href="cliente/proyecto-tienda-en-linea.html">Línea de tiempo y solicitar reunión</a></li></ol></li>
+          <li class="flujo aparecer"><p class="flujo__titulo">Desarrollador atiende y registra</p><ol class="flujo__pasos"><li><a href="login.html">Inicia sesión</a></li><li><a href="desarrollador/proyectos.html">Sus proyectos</a></li><li><a href="desarrollador/citas-reuniones.html">Confirma citas</a></li><li><a href="desarrollador/registrar-avance-tienda-en-linea.html">Registra un avance</a></li></ol></li>
+          <li class="flujo aparecer"><p class="flujo__titulo">Administrador convierte una cita en proyecto</p><ol class="flujo__pasos"><li><a href="admin/dashboard.html">Dashboard</a></li><li><a href="admin/citas.html">Asigna la cita</a></li><li><a href="admin/crear-proyecto.html">Crea el proyecto</a></li><li><a href="admin/proyectos.html">Lo ve en Proyectos</a></li></ol></li>
+        </ol>
+      </section>
+
+      <section class="mapa-grupo" id="sitio-publico" aria-labelledby="titulo-sitio-publico">
+        <div class="mapa-grupo__cabecera">
+          <h2 class="mapa-grupo__titulo" id="titulo-sitio-publico">Sitio público <span class="mapa-grupo__cantidad">4</span></h2>
+          <p class="mapa-grupo__texto">Lo que ve cualquier visitante, sin iniciar sesión.</p>
+        </div>
+        <ol class="mapa-grupo__lista" start="1">
+          <li class="interfaz aparecer">
+            <a class="interfaz__enlace" href="index.html">
+              <span class="interfaz__numero">01</span>
+              <span class="interfaz__cuerpo">
+                <span class="interfaz__nombre">Página principal</span>
+                <span class="interfaz__texto">Portada, carrusel de servicios con botón para agendar, proceso en 3 pasos, contacto y pie de página con misión y visión.</span>
+                <code class="interfaz__archivo">index.html</code>
+              </span>
+              <svg class="icono interfaz__flecha" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+            </a>
+          </li>
+          <li class="interfaz aparecer">
+            <a class="interfaz__enlace" href="registro.html">
+              <span class="interfaz__numero">02</span>
+              <span class="interfaz__cuerpo">
+                <span class="interfaz__nombre">Crear cuenta</span>
+                <span class="interfaz__texto">Registro del cliente con validación en vivo y contraseña segura. Si viene de un servicio, lo conserva para agendar.</span>
+                <code class="interfaz__archivo">registro.html</code>
+              </span>
+              <svg class="icono interfaz__flecha" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+            </a>
+          </li>
+          <li class="interfaz aparecer">
+            <a class="interfaz__enlace" href="login.html">
+              <span class="interfaz__numero">03</span>
+              <span class="interfaz__cuerpo">
+                <span class="interfaz__nombre">Iniciar sesión</span>
+                <span class="interfaz__texto">Acceso con correo y contraseña, recuperación de contraseña y accesos de demostración para cada rol.</span>
+                <code class="interfaz__archivo">login.html</code>
+              </span>
+              <svg class="icono interfaz__flecha" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+            </a>
+          </li>
+          <li class="interfaz aparecer">
+            <a class="interfaz__enlace" href="legal.html">
+              <span class="interfaz__numero">04</span>
+              <span class="interfaz__cuerpo">
+                <span class="interfaz__nombre">Avisos legales</span>
+                <span class="interfaz__texto">Política de tratamiento de datos personales (Ley 1581 de 2012) y términos y condiciones.</span>
+                <code class="interfaz__archivo">legal.html</code>
+              </span>
+              <svg class="icono interfaz__flecha" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+            </a>
+          </li>
+        </ol>
+      </section>
+      <section class="mapa-grupo" id="cliente" aria-labelledby="titulo-cliente">
+        <div class="mapa-grupo__cabecera">
+          <h2 class="mapa-grupo__titulo" id="titulo-cliente">Cliente <span class="mapa-grupo__cantidad">9</span></h2>
+          <p class="mapa-grupo__texto">Panel de Laura Gómez: agenda citas y sigue sus proyectos.</p>
+        </div>
+        <ol class="mapa-grupo__lista" start="5">
+          <li class="interfaz aparecer">
+            <a class="interfaz__enlace" href="cliente/agendar-servicio.html">
+              <span class="interfaz__numero">05</span>
+              <span class="interfaz__cuerpo">
+                <span class="interfaz__nombre">Agendar · 1. Servicio</span>
+                <span class="interfaz__texto">Primer paso: elegir el servicio del catálogo.</span>
+                <code class="interfaz__archivo">cliente/agendar-servicio.html</code>
+              </span>
+              <svg class="icono interfaz__flecha" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+            </a>
+          </li>
+          <li class="interfaz aparecer">
+            <a class="interfaz__enlace" href="cliente/agendar-fecha.html">
+              <span class="interfaz__numero">06</span>
+              <span class="interfaz__cuerpo">
+                <span class="interfaz__nombre">Agendar · 2. Fecha y detalles</span>
+                <span class="interfaz__texto">Calendario mensual con franjas disponibles (RN-01, RN-02), modalidad presencial o virtual y descripción de lo que necesita el cliente.</span>
+                <code class="interfaz__archivo">cliente/agendar-fecha.html</code>
+              </span>
+              <svg class="icono interfaz__flecha" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+            </a>
+          </li>
+          <li class="interfaz aparecer">
+            <a class="interfaz__enlace" href="cliente/agendar-confirmar.html">
+              <span class="interfaz__numero">07</span>
+              <span class="interfaz__cuerpo">
+                <span class="interfaz__nombre">Agendar · 3. Confirmación</span>
+                <span class="interfaz__texto">Resumen de la cita y notas para el equipo antes de confirmar.</span>
+                <code class="interfaz__archivo">cliente/agendar-confirmar.html</code>
+              </span>
+              <svg class="icono interfaz__flecha" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+            </a>
+          </li>
+          <li class="interfaz aparecer">
+            <a class="interfaz__enlace" href="cliente/cita-registrada.html">
+              <span class="interfaz__numero">08</span>
+              <span class="interfaz__cuerpo">
+                <span class="interfaz__nombre">Cita registrada</span>
+                <span class="interfaz__texto">Confirmación con el código de la cita y los siguientes pasos.</span>
+                <code class="interfaz__archivo">cliente/cita-registrada.html</code>
+              </span>
+              <svg class="icono interfaz__flecha" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+            </a>
+          </li>
+          <li class="interfaz aparecer">
+            <a class="interfaz__enlace" href="cliente/mis-citas.html">
+              <span class="interfaz__numero">09</span>
+              <span class="interfaz__cuerpo">
+                <span class="interfaz__nombre">Mis citas</span>
+                <span class="interfaz__texto">Citas próximas, atendidas y canceladas, con filtros y cancelación de citas pendientes (RN-03, RN-12).</span>
+                <code class="interfaz__archivo">cliente/mis-citas.html</code>
+              </span>
+              <svg class="icono interfaz__flecha" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+            </a>
+          </li>
+          <li class="interfaz aparecer">
+            <a class="interfaz__enlace" href="cliente/mis-proyectos.html">
+              <span class="interfaz__numero">10</span>
+              <span class="interfaz__cuerpo">
+                <span class="interfaz__nombre">Mis proyectos</span>
+                <span class="interfaz__texto">Proyectos del cliente con su avance (20 % por fase), su Product Owner y la fecha estimada de entrega (RN-10).</span>
+                <code class="interfaz__archivo">cliente/mis-proyectos.html</code>
+              </span>
+              <svg class="icono interfaz__flecha" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+            </a>
+          </li>
+          <li class="interfaz aparecer">
+            <a class="interfaz__enlace" href="cliente/proyecto-tienda-en-linea.html">
+              <span class="interfaz__numero">11</span>
+              <span class="interfaz__cuerpo">
+                <span class="interfaz__nombre">Detalle del proyecto (en desarrollo)</span>
+                <span class="interfaz__texto">5 fases de 20 %; cada una con sus pasos explicados en lenguaje sencillo y su chulo de hecho, correcciones incluidas (RN-14 a RN-16).</span>
+                <code class="interfaz__archivo">cliente/proyecto-tienda-en-linea.html</code>
+              </span>
+              <svg class="icono interfaz__flecha" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+            </a>
+          </li>
+          <li class="interfaz aparecer">
+            <a class="interfaz__enlace" href="cliente/proyecto-app-de-reservas.html">
+              <span class="interfaz__numero">12</span>
+              <span class="interfaz__cuerpo">
+                <span class="interfaz__nombre">Detalle del proyecto (fase por aprobar)</span>
+                <span class="interfaz__texto">Fase por aprobar con plazo de 3 días hábiles: aprobar (suma 20 %), pedir un ajuste (2 rondas incluidas) o algo nuevo que se cotiza (RN-16, RN-17).</span>
+                <code class="interfaz__archivo">cliente/proyecto-app-de-reservas.html</code>
+              </span>
+              <svg class="icono interfaz__flecha" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+            </a>
+          </li>
+          <li class="interfaz aparecer">
+            <a class="interfaz__enlace" href="cliente/proyecto-no-encontrado.html">
+              <span class="interfaz__numero">13</span>
+              <span class="interfaz__cuerpo">
+                <span class="interfaz__nombre">Proyecto no encontrado</span>
+                <span class="interfaz__texto">Mensaje cuando se intenta abrir un proyecto que no existe o es de otro cliente (RN-10).</span>
+                <code class="interfaz__archivo">cliente/proyecto-no-encontrado.html</code>
+              </span>
+              <svg class="icono interfaz__flecha" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+            </a>
+          </li>
+        </ol>
+      </section>
+      <section class="mapa-grupo" id="equipo" aria-labelledby="titulo-equipo">
+        <div class="mapa-grupo__cabecera">
+          <h2 class="mapa-grupo__titulo" id="titulo-equipo">Equipo <span class="mapa-grupo__cantidad">4</span></h2>
+          <p class="mapa-grupo__texto">Panel de Andrés Pérez, Product Owner: atiende citas y registra el avance de su equipo.</p>
+        </div>
+        <ol class="mapa-grupo__lista" start="14">
+          <li class="interfaz aparecer">
+            <a class="interfaz__enlace" href="desarrollador/proyectos.html">
+              <span class="interfaz__numero">14</span>
+              <span class="interfaz__cuerpo">
+                <span class="interfaz__nombre">Mis proyectos asignados</span>
+                <span class="interfaz__texto">Inicio del equipo: pendientes, cupos y proyectos asignados.</span>
+                <code class="interfaz__archivo">desarrollador/proyectos.html</code>
+              </span>
+              <svg class="icono interfaz__flecha" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+            </a>
+          </li>
+          <li class="interfaz aparecer">
+            <a class="interfaz__enlace" href="desarrollador/citas-reuniones.html">
+              <span class="interfaz__numero">15</span>
+              <span class="interfaz__cuerpo">
+                <span class="interfaz__nombre">Citas y reuniones</span>
+                <span class="interfaz__texto">Confirmar citas (con enlace si es virtual), marcarlas como atendidas y programar o rechazar solicitudes de reunión.</span>
+                <code class="interfaz__archivo">desarrollador/citas-reuniones.html</code>
+              </span>
+              <svg class="icono interfaz__flecha" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+            </a>
+          </li>
+          <li class="interfaz aparecer">
+            <a class="interfaz__enlace" href="desarrollador/registrar-avance-tienda-en-linea.html">
+              <span class="interfaz__numero">16</span>
+              <span class="interfaz__cuerpo">
+                <span class="interfaz__nombre">Registrar trabajo (en desarrollo)</span>
+                <span class="interfaz__texto">Marcar pasos con una nota para el cliente, agregar correcciones, cerrar Desarrollo y Despliegue o entregar al cliente Requerimientos, Diseño y Pruebas (RN-07 a RN-09, RN-16, RN-17).</span>
+                <code class="interfaz__archivo">desarrollador/registrar-avance-tienda-en-linea.html</code>
+              </span>
+              <svg class="icono interfaz__flecha" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+            </a>
+          </li>
+          <li class="interfaz aparecer">
+            <a class="interfaz__enlace" href="desarrollador/registrar-avance-app-de-reservas.html">
+              <span class="interfaz__numero">17</span>
+              <span class="interfaz__cuerpo">
+                <span class="interfaz__nombre">Registrar trabajo (fase entregada)</span>
+                <span class="interfaz__texto">Fase terminada esperando la aprobación del cliente (RN-16).</span>
+                <code class="interfaz__archivo">desarrollador/registrar-avance-app-de-reservas.html</code>
+              </span>
+              <svg class="icono interfaz__flecha" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+            </a>
+          </li>
+        </ol>
+      </section>
+      <section class="mapa-grupo" id="administrador" aria-labelledby="titulo-administrador">
+        <div class="mapa-grupo__cabecera">
+          <h2 class="mapa-grupo__titulo" id="titulo-administrador">Administrador <span class="mapa-grupo__cantidad">10</span></h2>
+          <p class="mapa-grupo__texto">Panel de Patricia León: gestiona todo el sistema.</p>
+        </div>
+        <ol class="mapa-grupo__lista" start="18">
+          <li class="interfaz aparecer">
+            <a class="interfaz__enlace" href="admin/dashboard.html">
+              <span class="interfaz__numero">18</span>
+              <span class="interfaz__cuerpo">
+                <span class="interfaz__nombre">Dashboard</span>
+                <span class="interfaz__texto">Indicadores del negocio, asuntos que requieren atención, carga del equipo, gráficos y actividad reciente.</span>
+                <code class="interfaz__archivo">admin/dashboard.html</code>
+              </span>
+              <svg class="icono interfaz__flecha" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+            </a>
+          </li>
+          <li class="interfaz aparecer">
+            <a class="interfaz__enlace" href="admin/citas.html">
+              <span class="interfaz__numero">19</span>
+              <span class="interfaz__cuerpo">
+                <span class="interfaz__nombre">Citas</span>
+                <span class="interfaz__texto">Todas las citas: asignar o reasignar equipo, cancelar y crear proyecto desde una cita atendida.</span>
+                <code class="interfaz__archivo">admin/citas.html</code>
+              </span>
+              <svg class="icono interfaz__flecha" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+            </a>
+          </li>
+          <li class="interfaz aparecer">
+            <a class="interfaz__enlace" href="admin/crear-proyecto.html">
+              <span class="interfaz__numero">20</span>
+              <span class="interfaz__cuerpo">
+                <span class="interfaz__nombre">Crear proyecto</span>
+                <span class="interfaz__texto">Desde una cita atendida (RN-04), con un equipo según su cupo (RN-05) y fecha estimada de entrega.</span>
+                <code class="interfaz__archivo">admin/crear-proyecto.html</code>
+              </span>
+              <svg class="icono interfaz__flecha" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+            </a>
+          </li>
+          <li class="interfaz aparecer">
+            <a class="interfaz__enlace" href="admin/proyectos.html">
+              <span class="interfaz__numero">21</span>
+              <span class="interfaz__cuerpo">
+                <span class="interfaz__nombre">Proyectos</span>
+                <span class="interfaz__texto">Editar, reasignar equipo, pausar, reanudar o cancelar proyectos.</span>
+                <code class="interfaz__archivo">admin/proyectos.html</code>
+              </span>
+              <svg class="icono interfaz__flecha" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+            </a>
+          </li>
+          <li class="interfaz aparecer">
+            <a class="interfaz__enlace" href="admin/solicitudes.html">
+              <span class="interfaz__numero">22</span>
+              <span class="interfaz__cuerpo">
+                <span class="interfaz__nombre">Solicitudes de reunión</span>
+                <span class="interfaz__texto">Todas las solicitudes de los clientes: programar, rechazar o cancelar.</span>
+                <code class="interfaz__archivo">admin/solicitudes.html</code>
+              </span>
+              <svg class="icono interfaz__flecha" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+            </a>
+          </li>
+          <li class="interfaz aparecer">
+            <a class="interfaz__enlace" href="admin/servicios.html">
+              <span class="interfaz__numero">23</span>
+              <span class="interfaz__cuerpo">
+                <span class="interfaz__nombre">Servicios</span>
+                <span class="interfaz__texto">Catálogo del sitio: crear, editar con vista previa, ordenar, ocultar y eliminar.</span>
+                <code class="interfaz__archivo">admin/servicios.html</code>
+              </span>
+              <svg class="icono interfaz__flecha" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+            </a>
+          </li>
+          <li class="interfaz aparecer">
+            <a class="interfaz__enlace" href="admin/contenido.html">
+              <span class="interfaz__numero">24</span>
+              <span class="interfaz__cuerpo">
+                <span class="interfaz__nombre">Contenido del sitio</span>
+                <span class="interfaz__texto">Textos de la página principal con vista previa por sección.</span>
+                <code class="interfaz__archivo">admin/contenido.html</code>
+              </span>
+              <svg class="icono interfaz__flecha" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+            </a>
+          </li>
+          <li class="interfaz aparecer">
+            <a class="interfaz__enlace" href="admin/usuarios.html">
+              <span class="interfaz__numero">25</span>
+              <span class="interfaz__cuerpo">
+                <span class="interfaz__nombre">Usuarios</span>
+                <span class="interfaz__texto">Crear cuentas de equipo con sus integrantes, editar, activar o desactivar cuentas y restablecer contraseñas.</span>
+                <code class="interfaz__archivo">admin/usuarios.html</code>
+              </span>
+              <svg class="icono interfaz__flecha" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+            </a>
+          </li>
+          <li class="interfaz aparecer">
+            <a class="interfaz__enlace" href="admin/roles-permisos.html">
+              <span class="interfaz__numero">26</span>
+              <span class="interfaz__cuerpo">
+                <span class="interfaz__nombre">Roles y permisos</span>
+                <span class="interfaz__texto">Matriz de permisos por rol; los fijados por reglas del negocio y los del administrador están bloqueados.</span>
+                <code class="interfaz__archivo">admin/roles-permisos.html</code>
+              </span>
+              <svg class="icono interfaz__flecha" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+            </a>
+          </li>
+          <li class="interfaz aparecer">
+            <a class="interfaz__enlace" href="admin/auditoria.html">
+              <span class="interfaz__numero">27</span>
+              <span class="interfaz__cuerpo">
+                <span class="interfaz__nombre">Auditoría</span>
+                <span class="interfaz__texto">Registro inmutable de quién hizo qué, cuándo y desde dónde, con filtros y exportación a CSV.</span>
+                <code class="interfaz__archivo">admin/auditoria.html</code>
+              </span>
+              <svg class="icono interfaz__flecha" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+            </a>
+          </li>
+        </ol>
+      </section>
+      <section class="mapa-grupo" id="documentacion" aria-labelledby="titulo-documentacion">
+        <div class="mapa-grupo__cabecera">
+          <h2 class="mapa-grupo__titulo" id="titulo-documentacion">Documentación <span class="mapa-grupo__cantidad">2</span></h2>
+          <p class="mapa-grupo__texto">Páginas de apoyo del prototipo.</p>
+        </div>
+        <ol class="mapa-grupo__lista" start="28">
+          <li class="interfaz aparecer">
+            <a class="interfaz__enlace" href="mapa.html">
+              <span class="interfaz__numero">28</span>
+              <span class="interfaz__cuerpo">
+                <span class="interfaz__nombre">Mapa del sitio</span>
+                <span class="interfaz__texto">Esta página: todas las interfaces y los flujos principales.</span>
+                <code class="interfaz__archivo">mapa.html</code>
+              </span>
+              <svg class="icono interfaz__flecha" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+            </a>
+          </li>
+          <li class="interfaz aparecer">
+            <a class="interfaz__enlace" href="guia-estilos.html">
+              <span class="interfaz__numero">29</span>
+              <span class="interfaz__cuerpo">
+                <span class="interfaz__nombre">Guía de estilos</span>
+                <span class="interfaz__texto">Paleta, tipografía, espaciado, botones, formularios, insignias, alertas y tarjetas.</span>
+                <code class="interfaz__archivo">guia-estilos.html</code>
+              </span>
+              <svg class="icono interfaz__flecha" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+            </a>
+          </li>
+        </ol>
+      </section>
+    </div>
+  </main>
+
+  <!-- ===================== Pie de página ===================== -->
+  <footer class="pie-pagina pie-pagina--oscuro">
+    <div class="contenedor">
+      <div class="pie-pagina__grilla">
+
+        <!-- Quiénes somos -->
+        <div class="pie-pagina__marca-bloque">
+          <a class="marca" href="index.html" aria-label="CoreTech Solutions, ir al inicio">
+            <img class="marca__logo" src="img/logo.svg" alt="" width="30" height="30">
+            <span>CoreTech</span>
+          </a>
+          <p class="pie-pagina__descripcion">Empresa de desarrollo de software a la medida en Cúcuta. Creamos tiendas en línea, sitios web, aplicaciones y sistemas de gestión, y te mostramos cada avance de tu proyecto.</p>
+        </div>
+
+        <!-- Misión -->
+        <div class="pie-pagina__columna">
+          <h2 class="pie-pagina__titulo">Misión</h2>
+          <p class="pie-pagina__texto">Desarrollar software a la medida que resuelva necesidades reales de las empresas de la región, con un proceso transparente en el que cada cliente sigue el avance de su proyecto de principio a fin.</p>
+        </div>
+
+        <!-- Visión -->
+        <div class="pie-pagina__columna">
+          <h2 class="pie-pagina__titulo">Visión</h2>
+          <p class="pie-pagina__texto">Para 2030, ser la empresa de desarrollo de software de referencia en el oriente colombiano, reconocida por la calidad de sus soluciones y la confianza que genera en sus clientes.</p>
+        </div>
+
+        <!-- Contacto -->
+        <div class="pie-pagina__columna">
+          <h2 class="pie-pagina__titulo">Contacto</h2>
+          <address>
+            <ul class="pie-pagina__lista pie-pagina__lista--contacto">
+              <li>
+                <svg class="icono" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s-7-6.2-7-11.5a7 7 0 0 1 14 0C19 14.8 12 21 12 21Z"/><circle cx="12" cy="9.5" r="2.5"/></svg>
+                <span>Calle 10 # 4-25, oficina 302, Cúcuta</span>
+              </li>
+              <li>
+                <svg class="icono" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2"/></svg>
+                <a href="tel:+573001234567">300 123 4567</a>
+              </li>
+              <li>
+                <svg class="icono" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg>
+                <a href="mailto:contacto@coretechsolutions.co">contacto@coretechsolutions.co</a>
+              </li>
+              <li>
+                <svg class="icono" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>
+                <span>Lunes a viernes, 8:00 a. m. a 6:00 p. m.</span>
+              </li>
+            </ul>
+          </address>
+        </div>
+      </div>
+
+      <!-- Franja inferior: derechos, avisos legales y volver arriba -->
+      <div class="pie-pagina__inferior">
+        <p class="pie-pagina__derechos">© 2026 CoreTech Solutions. Todos los derechos reservados.</p>
+        <nav aria-label="Avisos legales">
+          <ul class="pie-pagina__legales">
+            <li><a href="legal.html#datos">Política de tratamiento de datos</a></li>
+            <li><a href="legal.html#terminos">Términos y condiciones</a></li>
+            <li><a href="mapa.html">Mapa del sitio</a></li>
+            <li><a href="guia-estilos.html">Guía de estilos</a></li>
+          </ul>
+        </nav>
+        <a class="boton-icono boton-icono--pequeno pie-pagina__arriba" href="#contenido" aria-label="Volver arriba">
+          <svg class="icono" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 19V5M5 12l7-7 7 7"/></svg>
+        </a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/principal.js"></script>
+</body>
+</html>

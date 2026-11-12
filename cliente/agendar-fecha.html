@@ -1,0 +1,1454 @@
+<!DOCTYPE html>
+<html lang="es" class="sin-js">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Agendar cita · Paso 2 · CoreTech Solutions</title>
+  <link rel="icon" href="../img/logo.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap">
+  <link rel="stylesheet" href="../css/global.css">
+  <link rel="stylesheet" href="../css/plantillas/panel.css">
+  <link rel="stylesheet" href="../css/plantillas/agendamiento.css">
+  <link rel="stylesheet" href="../css/vistas/agendar-fecha.css">
+  <script src="../js/accesibilidad.js"></script>
+</head>
+<body>
+  <a class="saltar-contenido" href="#contenido">Saltar al contenido</a>
+
+  <div class="panel">
+    <!-- ===================== Menú lateral del cliente ===================== -->
+    <aside class="panel__lateral superficie-noche" aria-label="Menú del cliente">
+      <a class="marca" href="../index.html" aria-label="CoreTech Solutions, ir al sitio público">
+        <img class="marca__logo" src="../img/logo.svg" alt="" width="30" height="30">
+        <span>CoreTech</span>
+      </a>
+      <p class="panel__rol"><strong>Panel del cliente</strong>Tus citas y proyectos</p>
+
+      <nav aria-label="Secciones del cliente">
+        <p class="navegacion-panel__titulo">Mi cuenta</p>
+        <ul class="navegacion-panel__lista">
+          <li>
+            <a class="navegacion-panel__enlace" href="mis-proyectos.html">
+              <svg class="icono" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 7a2 2 0 0 1 2-2h4l2 2h8a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2Z"/></svg>
+              Mis proyectos
+              <span class="navegacion-panel__contador" aria-label="2 proyectos">2</span>
+            </a>
+          </li>
+          <li>
+            <a class="navegacion-panel__enlace" href="mis-citas.html">
+              <svg class="icono" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="4" width="18" height="17" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>
+              Mis citas
+              
+            </a>
+          </li>
+          <li>
+            <a class="navegacion-panel__enlace" href="agendar-servicio.html" aria-current="page">
+              <svg class="icono" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="4" width="18" height="17" rx="2"/><path d="M16 2v4M8 2v4M3 10h18M12 13v5M9.5 15.5h5"/></svg>
+              Agendar cita
+              
+            </a>
+          </li>
+        </ul>
+      </nav>
+
+      <div class="panel__usuario">
+        <span class="avatar avatar--acento" aria-hidden="true">LG</span>
+        <span class="panel__usuario-datos">
+          <span class="panel__usuario-nombre">Laura Gómez</span>
+          <span class="panel__usuario-correo">laura.gomez@correo.com</span>
+        </span>
+        <a class="panel__salir" href="../index.html" data-accion data-mensaje-exito="Cerraste sesión." aria-label="Cerrar sesión" title="Cerrar sesión">
+          <svg class="icono" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4M16 17l5-5-5-5M21 12H9"/></svg>
+        </a>
+      </div>
+    </aside>
+
+    <div class="panel__cuerpo">
+      <!-- ===================== Barra superior ===================== -->
+      <header class="panel__barra">
+        <button type="button" class="boton-icono boton-icono--pequeno boton-menu-panel" aria-expanded="false" aria-label="Abrir menú">
+          <svg class="icono" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+        </button>
+        <nav class="ruta" aria-label="Ruta de navegación">
+          <a href="mis-proyectos.html">Panel</a>
+          <svg class="icono" viewBox="0 0 24 24" aria-hidden="true"><path d="m9 6 6 6-6 6"/></svg>
+          <a href="mis-citas.html">Mis citas</a>
+          <svg class="icono" viewBox="0 0 24 24" aria-hidden="true"><path d="m9 6 6 6-6 6"/></svg>
+          <span aria-current="page">Agendar cita</span>
+        </nav>
+        <div class="panel__barra-acciones">
+          <a class="boton-icono boton-icono--pequeno campana" href="mis-citas.html" aria-label="Notificaciones: 2 nuevas">
+            <svg class="icono" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9"/><path d="M10.3 21a1.94 1.94 0 0 0 3.4 0"/></svg>
+            <span class="campana__punto" aria-hidden="true"></span>
+          </a>
+          <div class="panel__perfil">
+            <span class="avatar avatar--acento" aria-hidden="true">LG</span>
+            <span class="panel__perfil-nombre">Laura Gómez<small>Cliente</small></span>
+          </div>
+        </div>
+      </header>
+
+      <!-- ===================== Contenido ===================== -->
+      <main class="panel__contenido" id="contenido">
+        <a class="volver" href="agendar-servicio.html" data-conservar-servicio>
+          <svg class="icono" viewBox="0 0 24 24" aria-hidden="true"><path d="M19 12H5M11 19l-7-7 7-7"/></svg>
+          Volver al paso 1
+        </a>
+        <div class="encabezado-vista aparecer">
+          <div>
+            <h1 class="encabezado-vista__titulo">Agendar una cita</h1>
+            <p class="encabezado-vista__texto">Elige el día y la hora, cómo prefieres reunirte y cuéntanos qué necesitas.</p>
+          </div>
+        </div>
+
+        <ol class="pasos-cita aparecer" aria-label="Pasos para agendar">
+          <li class="pasos-cita__paso pasos-cita__paso--hecho"><span class="pasos-cita__texto">Servicio<small>Paso 1 de 3</small></span></li>
+          <li class="pasos-cita__paso pasos-cita__paso--actual" aria-current="step"><span class="pasos-cita__texto">Fecha y detalles<small>Paso 2 de 3</small></span></li>
+          <li class="pasos-cita__paso"><span class="pasos-cita__texto">Confirmación<small>Paso 3 de 3</small></span></li>
+          <li class="pasos-cita__progreso" aria-hidden="true"><span style="--avance: 67%"></span></li>
+        </ol>
+
+        <div class="agendamiento">
+          <form class="agendamiento__principal" data-validar data-mensaje-error="Completa el día, la hora, la modalidad y lo que necesitas para continuar.">
+
+            <!-- Día y hora -->
+            <section class="tarjeta aparecer" aria-labelledby="titulo-fecha">
+              <div class="calendario-cita__encabezado">
+                <div>
+                  <h2 class="agendamiento__titulo-bloque" id="titulo-fecha">¿Cuándo quieres la cita?</h2>
+                  <p class="agendamiento__ayuda">Elige un día con cupos y luego la hora que te sirva.</p>
+                </div>
+                <p class="calendario-cita__plazo">
+                  <svg class="icono" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="4" width="18" height="17" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>
+                  Del 12 nov al 11 dic
+                </p>
+              </div>
+
+              <div class="calendario-cita">
+                <fieldset class="grupo-opciones campo calendario">
+                  <legend class="solo-lector">Día de la cita</legend>
+                  <div class="calendario__cabecera">
+                    <p class="calendario__titulo" data-titulo-mes-actual aria-live="polite">Noviembre 2026</p>
+                    <div class="calendario__flechas">
+                      <button type="button" class="boton-icono boton-icono--pequeno" data-mes-anterior aria-label="Mes anterior" disabled>
+                        <svg class="icono" viewBox="0 0 24 24" aria-hidden="true"><path d="M15 6l-6 6 6 6"/></svg>
+                      </button>
+                      <button type="button" class="boton-icono boton-icono--pequeno" data-mes-siguiente aria-label="Mes siguiente">
+                        <svg class="icono" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg>
+                      </button>
+                    </div>
+                  </div>
+                  <div class="calendario__semana" aria-hidden="true"><abbr title="Lunes">L</abbr><abbr title="Martes">M</abbr><abbr title="Miércoles">X</abbr><abbr title="Jueves">J</abbr><abbr title="Viernes">V</abbr><abbr title="Sábado">S</abbr><abbr title="Domingo">D</abbr></div>
+                <div class="calendario__mes" data-mes="2026-11" data-titulo-mes="Noviembre 2026">
+                  <p class="calendario__titulo-sin-js">Noviembre 2026</p>
+                  <span class="calendario__vacio" aria-hidden="true"></span>
+                  <span class="calendario__vacio" aria-hidden="true"></span>
+                  <span class="calendario__vacio" aria-hidden="true"></span>
+                  <span class="calendario__vacio" aria-hidden="true"></span>
+                  <span class="calendario__vacio" aria-hidden="true"></span>
+                  <span class="calendario__vacio" aria-hidden="true"></span>
+                  <span class="calendario__dia calendario__dia--inactivo" title="Ya pasó" aria-hidden="true"><span class="calendario__numero">1</span></span>
+                  <span class="calendario__dia calendario__dia--inactivo" title="Ya pasó" aria-hidden="true"><span class="calendario__numero">2</span></span>
+                  <span class="calendario__dia calendario__dia--inactivo" title="Ya pasó" aria-hidden="true"><span class="calendario__numero">3</span></span>
+                  <span class="calendario__dia calendario__dia--inactivo" title="Ya pasó" aria-hidden="true"><span class="calendario__numero">4</span></span>
+                  <span class="calendario__dia calendario__dia--inactivo" title="Ya pasó" aria-hidden="true"><span class="calendario__numero">5</span></span>
+                  <span class="calendario__dia calendario__dia--inactivo" title="Ya pasó" aria-hidden="true"><span class="calendario__numero">6</span></span>
+                  <span class="calendario__dia calendario__dia--inactivo" title="Ya pasó" aria-hidden="true"><span class="calendario__numero">7</span></span>
+                  <span class="calendario__dia calendario__dia--inactivo" title="Ya pasó" aria-hidden="true"><span class="calendario__numero">8</span></span>
+                  <span class="calendario__dia calendario__dia--inactivo" title="Ya pasó" aria-hidden="true"><span class="calendario__numero">9</span></span>
+                  <span class="calendario__dia calendario__dia--inactivo" title="Ya pasó" aria-hidden="true"><span class="calendario__numero">10</span></span>
+                  <span class="calendario__dia calendario__dia--hoy calendario__dia--inactivo" title="Hoy" aria-current="date" aria-hidden="true"><span class="calendario__numero">11</span></span>
+                  <label class="calendario__dia calendario__dia--pocos" title="2 horarios libres">
+                    <input class="control-oculto" type="radio" name="fecha" value="2026-11-12" required data-texto="Jueves 12 de noviembre"
+                           data-mensaje-vacio="Elige el día de tu cita." aria-describedby="fecha-mensaje">
+                    <span class="calendario__numero" aria-hidden="true">12</span>
+                    <span class="calendario__cupos" aria-hidden="true"></span>
+                    <span class="solo-lector">Jueves 12 de noviembre, 2 horarios libres</span>
+                  </label>
+                  <label class="calendario__dia calendario__dia--pocos" title="2 horarios libres">
+                    <input class="control-oculto" type="radio" name="fecha" value="2026-11-13" required data-texto="Viernes 13 de noviembre"
+                           data-mensaje-vacio="Elige el día de tu cita." aria-describedby="fecha-mensaje">
+                    <span class="calendario__numero" aria-hidden="true">13</span>
+                    <span class="calendario__cupos" aria-hidden="true"></span>
+                    <span class="solo-lector">Viernes 13 de noviembre, 2 horarios libres</span>
+                  </label>
+                  <span class="calendario__dia calendario__dia--inactivo" title="Fin de semana" aria-hidden="true"><span class="calendario__numero">14</span></span>
+                  <span class="calendario__dia calendario__dia--inactivo" title="Fin de semana" aria-hidden="true"><span class="calendario__numero">15</span></span>
+                  <span class="calendario__dia calendario__dia--inactivo calendario__dia--festivo" title="Festivo: Independencia de Cartagena" aria-hidden="true"><span class="calendario__numero">16</span></span>
+                  <label class="calendario__dia" title="5 horarios libres">
+                    <input class="control-oculto" type="radio" name="fecha" value="2026-11-17" required data-texto="Martes 17 de noviembre"
+                           data-mensaje-vacio="Elige el día de tu cita." aria-describedby="fecha-mensaje">
+                    <span class="calendario__numero" aria-hidden="true">17</span>
+                    <span class="calendario__cupos" aria-hidden="true"></span>
+                    <span class="solo-lector">Martes 17 de noviembre, 5 horarios libres</span>
+                  </label>
+                  <label class="calendario__dia" title="7 horarios libres">
+                    <input class="control-oculto" type="radio" name="fecha" value="2026-11-18" required data-texto="Miércoles 18 de noviembre"
+                           data-mensaje-vacio="Elige el día de tu cita." aria-describedby="fecha-mensaje">
+                    <span class="calendario__numero" aria-hidden="true">18</span>
+                    <span class="calendario__cupos" aria-hidden="true"></span>
+                    <span class="solo-lector">Miércoles 18 de noviembre, 7 horarios libres</span>
+                  </label>
+                  <label class="calendario__dia" title="6 horarios libres">
+                    <input class="control-oculto" type="radio" name="fecha" value="2026-11-19" required data-texto="Jueves 19 de noviembre"
+                           data-mensaje-vacio="Elige el día de tu cita." aria-describedby="fecha-mensaje">
+                    <span class="calendario__numero" aria-hidden="true">19</span>
+                    <span class="calendario__cupos" aria-hidden="true"></span>
+                    <span class="solo-lector">Jueves 19 de noviembre, 6 horarios libres</span>
+                  </label>
+                  <span class="calendario__dia calendario__dia--inactivo" title="Sin cupos" aria-hidden="true"><span class="calendario__numero">20</span></span>
+                  <span class="calendario__dia calendario__dia--inactivo" title="Fin de semana" aria-hidden="true"><span class="calendario__numero">21</span></span>
+                  <span class="calendario__dia calendario__dia--inactivo" title="Fin de semana" aria-hidden="true"><span class="calendario__numero">22</span></span>
+                  <label class="calendario__dia" title="6 horarios libres">
+                    <input class="control-oculto" type="radio" name="fecha" value="2026-11-23" required data-texto="Lunes 23 de noviembre"
+                           data-mensaje-vacio="Elige el día de tu cita." aria-describedby="fecha-mensaje">
+                    <span class="calendario__numero" aria-hidden="true">23</span>
+                    <span class="calendario__cupos" aria-hidden="true"></span>
+                    <span class="solo-lector">Lunes 23 de noviembre, 6 horarios libres</span>
+                  </label>
+                  <label class="calendario__dia" title="6 horarios libres">
+                    <input class="control-oculto" type="radio" name="fecha" value="2026-11-24" required data-texto="Martes 24 de noviembre"
+                           data-mensaje-vacio="Elige el día de tu cita." aria-describedby="fecha-mensaje">
+                    <span class="calendario__numero" aria-hidden="true">24</span>
+                    <span class="calendario__cupos" aria-hidden="true"></span>
+                    <span class="solo-lector">Martes 24 de noviembre, 6 horarios libres</span>
+                  </label>
+                  <label class="calendario__dia" title="7 horarios libres">
+                    <input class="control-oculto" type="radio" name="fecha" value="2026-11-25" required data-texto="Miércoles 25 de noviembre"
+                           data-mensaje-vacio="Elige el día de tu cita." aria-describedby="fecha-mensaje">
+                    <span class="calendario__numero" aria-hidden="true">25</span>
+                    <span class="calendario__cupos" aria-hidden="true"></span>
+                    <span class="solo-lector">Miércoles 25 de noviembre, 7 horarios libres</span>
+                  </label>
+                  <label class="calendario__dia calendario__dia--pocos" title="1 horario libre">
+                    <input class="control-oculto" type="radio" name="fecha" value="2026-11-26" required data-texto="Jueves 26 de noviembre"
+                           data-mensaje-vacio="Elige el día de tu cita." aria-describedby="fecha-mensaje">
+                    <span class="calendario__numero" aria-hidden="true">26</span>
+                    <span class="calendario__cupos" aria-hidden="true"></span>
+                    <span class="solo-lector">Jueves 26 de noviembre, 1 horario libre</span>
+                  </label>
+                  <label class="calendario__dia" title="6 horarios libres">
+                    <input class="control-oculto" type="radio" name="fecha" value="2026-11-27" required data-texto="Viernes 27 de noviembre"
+                           data-mensaje-vacio="Elige el día de tu cita." aria-describedby="fecha-mensaje">
+                    <span class="calendario__numero" aria-hidden="true">27</span>
+                    <span class="calendario__cupos" aria-hidden="true"></span>
+                    <span class="solo-lector">Viernes 27 de noviembre, 6 horarios libres</span>
+                  </label>
+                  <span class="calendario__dia calendario__dia--inactivo" title="Fin de semana" aria-hidden="true"><span class="calendario__numero">28</span></span>
+                  <span class="calendario__dia calendario__dia--inactivo" title="Fin de semana" aria-hidden="true"><span class="calendario__numero">29</span></span>
+                  <label class="calendario__dia" title="6 horarios libres">
+                    <input class="control-oculto" type="radio" name="fecha" value="2026-11-30" required data-texto="Lunes 30 de noviembre"
+                           data-mensaje-vacio="Elige el día de tu cita." aria-describedby="fecha-mensaje">
+                    <span class="calendario__numero" aria-hidden="true">30</span>
+                    <span class="calendario__cupos" aria-hidden="true"></span>
+                    <span class="solo-lector">Lunes 30 de noviembre, 6 horarios libres</span>
+                  </label>
+                </div>
+                <div class="calendario__mes calendario__mes--oculto" data-mes="2026-12" data-titulo-mes="Diciembre 2026">
+                  <p class="calendario__titulo-sin-js">Diciembre 2026</p>
+                  <span class="calendario__vacio" aria-hidden="true"></span>
+                  <label class="calendario__dia" title="6 horarios libres">
+                    <input class="control-oculto" type="radio" name="fecha" value="2026-12-01" required data-texto="Martes 1 de diciembre"
+                           data-mensaje-vacio="Elige el día de tu cita." aria-describedby="fecha-mensaje">
+                    <span class="calendario__numero" aria-hidden="true">1</span>
+                    <span class="calendario__cupos" aria-hidden="true"></span>
+                    <span class="solo-lector">Martes 1 de diciembre, 6 horarios libres</span>
+                  </label>
+                  <label class="calendario__dia" title="7 horarios libres">
+                    <input class="control-oculto" type="radio" name="fecha" value="2026-12-02" required data-texto="Miércoles 2 de diciembre"
+                           data-mensaje-vacio="Elige el día de tu cita." aria-describedby="fecha-mensaje">
+                    <span class="calendario__numero" aria-hidden="true">2</span>
+                    <span class="calendario__cupos" aria-hidden="true"></span>
+                    <span class="solo-lector">Miércoles 2 de diciembre, 7 horarios libres</span>
+                  </label>
+                  <label class="calendario__dia" title="6 horarios libres">
+                    <input class="control-oculto" type="radio" name="fecha" value="2026-12-03" required data-texto="Jueves 3 de diciembre"
+                           data-mensaje-vacio="Elige el día de tu cita." aria-describedby="fecha-mensaje">
+                    <span class="calendario__numero" aria-hidden="true">3</span>
+                    <span class="calendario__cupos" aria-hidden="true"></span>
+                    <span class="solo-lector">Jueves 3 de diciembre, 6 horarios libres</span>
+                  </label>
+                  <label class="calendario__dia calendario__dia--pocos" title="2 horarios libres">
+                    <input class="control-oculto" type="radio" name="fecha" value="2026-12-04" required data-texto="Viernes 4 de diciembre"
+                           data-mensaje-vacio="Elige el día de tu cita." aria-describedby="fecha-mensaje">
+                    <span class="calendario__numero" aria-hidden="true">4</span>
+                    <span class="calendario__cupos" aria-hidden="true"></span>
+                    <span class="solo-lector">Viernes 4 de diciembre, 2 horarios libres</span>
+                  </label>
+                  <span class="calendario__dia calendario__dia--inactivo" title="Fin de semana" aria-hidden="true"><span class="calendario__numero">5</span></span>
+                  <span class="calendario__dia calendario__dia--inactivo" title="Fin de semana" aria-hidden="true"><span class="calendario__numero">6</span></span>
+                  <label class="calendario__dia" title="6 horarios libres">
+                    <input class="control-oculto" type="radio" name="fecha" value="2026-12-07" required data-texto="Lunes 7 de diciembre"
+                           data-mensaje-vacio="Elige el día de tu cita." aria-describedby="fecha-mensaje">
+                    <span class="calendario__numero" aria-hidden="true">7</span>
+                    <span class="calendario__cupos" aria-hidden="true"></span>
+                    <span class="solo-lector">Lunes 7 de diciembre, 6 horarios libres</span>
+                  </label>
+                  <span class="calendario__dia calendario__dia--inactivo calendario__dia--festivo" title="Festivo: Inmaculada Concepción" aria-hidden="true"><span class="calendario__numero">8</span></span>
+                  <label class="calendario__dia" title="7 horarios libres">
+                    <input class="control-oculto" type="radio" name="fecha" value="2026-12-09" required data-texto="Miércoles 9 de diciembre"
+                           data-mensaje-vacio="Elige el día de tu cita." aria-describedby="fecha-mensaje">
+                    <span class="calendario__numero" aria-hidden="true">9</span>
+                    <span class="calendario__cupos" aria-hidden="true"></span>
+                    <span class="solo-lector">Miércoles 9 de diciembre, 7 horarios libres</span>
+                  </label>
+                  <label class="calendario__dia" title="6 horarios libres">
+                    <input class="control-oculto" type="radio" name="fecha" value="2026-12-10" required data-texto="Jueves 10 de diciembre"
+                           data-mensaje-vacio="Elige el día de tu cita." aria-describedby="fecha-mensaje">
+                    <span class="calendario__numero" aria-hidden="true">10</span>
+                    <span class="calendario__cupos" aria-hidden="true"></span>
+                    <span class="solo-lector">Jueves 10 de diciembre, 6 horarios libres</span>
+                  </label>
+                  <label class="calendario__dia" title="6 horarios libres">
+                    <input class="control-oculto" type="radio" name="fecha" value="2026-12-11" required data-texto="Viernes 11 de diciembre"
+                           data-mensaje-vacio="Elige el día de tu cita." aria-describedby="fecha-mensaje">
+                    <span class="calendario__numero" aria-hidden="true">11</span>
+                    <span class="calendario__cupos" aria-hidden="true"></span>
+                    <span class="solo-lector">Viernes 11 de diciembre, 6 horarios libres</span>
+                  </label>
+                  <span class="calendario__dia calendario__dia--inactivo" title="Fuera del plazo" aria-hidden="true"><span class="calendario__numero">12</span></span>
+                  <span class="calendario__dia calendario__dia--inactivo" title="Fuera del plazo" aria-hidden="true"><span class="calendario__numero">13</span></span>
+                  <span class="calendario__dia calendario__dia--inactivo" title="Fuera del plazo" aria-hidden="true"><span class="calendario__numero">14</span></span>
+                  <span class="calendario__dia calendario__dia--inactivo" title="Fuera del plazo" aria-hidden="true"><span class="calendario__numero">15</span></span>
+                  <span class="calendario__dia calendario__dia--inactivo" title="Fuera del plazo" aria-hidden="true"><span class="calendario__numero">16</span></span>
+                  <span class="calendario__dia calendario__dia--inactivo" title="Fuera del plazo" aria-hidden="true"><span class="calendario__numero">17</span></span>
+                  <span class="calendario__dia calendario__dia--inactivo" title="Fuera del plazo" aria-hidden="true"><span class="calendario__numero">18</span></span>
+                  <span class="calendario__dia calendario__dia--inactivo" title="Fuera del plazo" aria-hidden="true"><span class="calendario__numero">19</span></span>
+                  <span class="calendario__dia calendario__dia--inactivo" title="Fuera del plazo" aria-hidden="true"><span class="calendario__numero">20</span></span>
+                  <span class="calendario__dia calendario__dia--inactivo" title="Fuera del plazo" aria-hidden="true"><span class="calendario__numero">21</span></span>
+                  <span class="calendario__dia calendario__dia--inactivo" title="Fuera del plazo" aria-hidden="true"><span class="calendario__numero">22</span></span>
+                  <span class="calendario__dia calendario__dia--inactivo" title="Fuera del plazo" aria-hidden="true"><span class="calendario__numero">23</span></span>
+                  <span class="calendario__dia calendario__dia--inactivo" title="Fuera del plazo" aria-hidden="true"><span class="calendario__numero">24</span></span>
+                  <span class="calendario__dia calendario__dia--inactivo" title="Fuera del plazo" aria-hidden="true"><span class="calendario__numero">25</span></span>
+                  <span class="calendario__dia calendario__dia--inactivo" title="Fuera del plazo" aria-hidden="true"><span class="calendario__numero">26</span></span>
+                  <span class="calendario__dia calendario__dia--inactivo" title="Fuera del plazo" aria-hidden="true"><span class="calendario__numero">27</span></span>
+                  <span class="calendario__dia calendario__dia--inactivo" title="Fuera del plazo" aria-hidden="true"><span class="calendario__numero">28</span></span>
+                  <span class="calendario__dia calendario__dia--inactivo" title="Fuera del plazo" aria-hidden="true"><span class="calendario__numero">29</span></span>
+                  <span class="calendario__dia calendario__dia--inactivo" title="Fuera del plazo" aria-hidden="true"><span class="calendario__numero">30</span></span>
+                  <span class="calendario__dia calendario__dia--inactivo" title="Fuera del plazo" aria-hidden="true"><span class="calendario__numero">31</span></span>
+                </div>
+                  <ul class="leyenda" aria-hidden="true">
+                    <li class="leyenda__item"><span class="leyenda__muestra"><span class="leyenda__punto"></span></span>Con cupos</li>
+                    <li class="leyenda__item"><span class="leyenda__muestra"><span class="leyenda__punto leyenda__punto--pocos"></span></span>Pocos cupos</li>
+                    <li class="leyenda__item"><span class="leyenda__muestra leyenda__muestra--inactiva"></span>No disponible</li>
+                  </ul>
+                  <p class="campo__mensaje grupo-opciones__mensaje" id="fecha-mensaje" aria-live="polite">
+                    <svg class="icono" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M12 8v4M12 16h.01"/></svg>
+                    <span class="campo__mensaje-texto"></span>
+                  </p>
+                </fieldset>
+
+                <fieldset class="grupo-opciones campo horarios">
+                  <legend class="solo-lector">Hora de la cita</legend>
+                  <p class="franjas__vacio" data-franjas-vacio>
+                    <svg class="icono icono--grande" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>
+                    <span><strong>Elige un día</strong>Aquí verás sus horarios libres.</span>
+                  </p>
+                  <div class="franjas franjas--oculta franjas--primera" data-franjas-de="2026-11-12">
+                    <div class="franjas__cabecera">
+                      <p class="franjas__dia">Jueves 12 de noviembre</p>
+                      <p class="franjas__conteo">2 de 8 libres</p>
+                    </div>
+                    <div>
+                      <p class="franjas__grupo-titulo">Mañana</p>
+                      <div class="franjas__lista">
+                        <label class="franja franja--ocupada">
+                          <input class="control-oculto" type="radio" name="hora" value="08:00" disabled>
+                          8:00 a. m.<span class="solo-lector">, ocupada</span>
+                        </label>
+                        <label class="franja franja--ocupada">
+                          <input class="control-oculto" type="radio" name="hora" value="09:00" disabled>
+                          9:00 a. m.<span class="solo-lector">, ocupada</span>
+                        </label>
+                        <label class="franja franja--ocupada franja--tuya" title="Ya tienes una cita a esta hora">
+                          <input class="control-oculto" type="radio" name="hora" value="10:00" disabled>
+                          10:00 a. m.<span class="franja__estado">Tu reunión</span>
+                        </label>
+                        <label class="franja">
+                          <input class="control-oculto" type="radio" name="hora" value="11:00" required data-texto="11:00 a. m."
+                                 data-mensaje-vacio="Elige la hora de tu cita." aria-describedby="hora-mensaje">
+                          11:00 a. m.
+                        </label>
+                      </div>
+                    </div>
+                    <div>
+                      <p class="franjas__grupo-titulo">Tarde</p>
+                      <div class="franjas__lista">
+                        <label class="franja franja--ocupada">
+                          <input class="control-oculto" type="radio" name="hora" value="14:00" disabled>
+                          2:00 p. m.<span class="solo-lector">, ocupada</span>
+                        </label>
+                        <label class="franja franja--ocupada">
+                          <input class="control-oculto" type="radio" name="hora" value="15:00" disabled>
+                          3:00 p. m.<span class="solo-lector">, ocupada</span>
+                        </label>
+                        <label class="franja franja--ocupada">
+                          <input class="control-oculto" type="radio" name="hora" value="16:00" disabled>
+                          4:00 p. m.<span class="solo-lector">, ocupada</span>
+                        </label>
+                        <label class="franja">
+                          <input class="control-oculto" type="radio" name="hora" value="17:00" required data-texto="5:00 p. m."
+                                 data-mensaje-vacio="Elige la hora de tu cita." aria-describedby="hora-mensaje">
+                          5:00 p. m.
+                        </label>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="franjas franjas--oculta" data-franjas-de="2026-11-13">
+                    <div class="franjas__cabecera">
+                      <p class="franjas__dia">Viernes 13 de noviembre</p>
+                      <p class="franjas__conteo">2 de 8 libres</p>
+                    </div>
+                    <div>
+                      <p class="franjas__grupo-titulo">Mañana</p>
+                      <div class="franjas__lista">
+                        <label class="franja franja--ocupada">
+                          <input class="control-oculto" type="radio" name="hora" value="08:00" disabled>
+                          8:00 a. m.<span class="solo-lector">, ocupada</span>
+                        </label>
+                        <label class="franja franja--ocupada">
+                          <input class="control-oculto" type="radio" name="hora" value="09:00" disabled>
+                          9:00 a. m.<span class="solo-lector">, ocupada</span>
+                        </label>
+                        <label class="franja">
+                          <input class="control-oculto" type="radio" name="hora" value="10:00" required data-texto="10:00 a. m."
+                                 data-mensaje-vacio="Elige la hora de tu cita." aria-describedby="hora-mensaje">
+                          10:00 a. m.
+                        </label>
+                        <label class="franja franja--ocupada">
+                          <input class="control-oculto" type="radio" name="hora" value="11:00" disabled>
+                          11:00 a. m.<span class="solo-lector">, ocupada</span>
+                        </label>
+                      </div>
+                    </div>
+                    <div>
+                      <p class="franjas__grupo-titulo">Tarde</p>
+                      <div class="franjas__lista">
+                        <label class="franja franja--ocupada">
+                          <input class="control-oculto" type="radio" name="hora" value="14:00" disabled>
+                          2:00 p. m.<span class="solo-lector">, ocupada</span>
+                        </label>
+                        <label class="franja">
+                          <input class="control-oculto" type="radio" name="hora" value="15:00" required data-texto="3:00 p. m."
+                                 data-mensaje-vacio="Elige la hora de tu cita." aria-describedby="hora-mensaje">
+                          3:00 p. m.
+                        </label>
+                        <label class="franja franja--ocupada">
+                          <input class="control-oculto" type="radio" name="hora" value="16:00" disabled>
+                          4:00 p. m.<span class="solo-lector">, ocupada</span>
+                        </label>
+                        <label class="franja franja--ocupada">
+                          <input class="control-oculto" type="radio" name="hora" value="17:00" disabled>
+                          5:00 p. m.<span class="solo-lector">, ocupada</span>
+                        </label>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="franjas franjas--oculta" data-franjas-de="2026-11-17">
+                    <div class="franjas__cabecera">
+                      <p class="franjas__dia">Martes 17 de noviembre</p>
+                      <p class="franjas__conteo">5 de 8 libres</p>
+                    </div>
+                    <div>
+                      <p class="franjas__grupo-titulo">Mañana</p>
+                      <div class="franjas__lista">
+                        <label class="franja">
+                          <input class="control-oculto" type="radio" name="hora" value="08:00" required data-texto="8:00 a. m."
+                                 data-mensaje-vacio="Elige la hora de tu cita." aria-describedby="hora-mensaje">
+                          8:00 a. m.
+                        </label>
+                        <label class="franja franja--ocupada franja--tuya" title="Ya tienes una cita a esta hora">
+                          <input class="control-oculto" type="radio" name="hora" value="09:00" disabled>
+                          9:00 a. m.<span class="franja__estado">Tu cita C-0061</span>
+                        </label>
+                        <label class="franja franja--ocupada">
+                          <input class="control-oculto" type="radio" name="hora" value="10:00" disabled>
+                          10:00 a. m.<span class="solo-lector">, ocupada</span>
+                        </label>
+                        <label class="franja">
+                          <input class="control-oculto" type="radio" name="hora" value="11:00" required data-texto="11:00 a. m."
+                                 data-mensaje-vacio="Elige la hora de tu cita." aria-describedby="hora-mensaje">
+                          11:00 a. m.
+                        </label>
+                      </div>
+                    </div>
+                    <div>
+                      <p class="franjas__grupo-titulo">Tarde</p>
+                      <div class="franjas__lista">
+                        <label class="franja">
+                          <input class="control-oculto" type="radio" name="hora" value="14:00" required data-texto="2:00 p. m."
+                                 data-mensaje-vacio="Elige la hora de tu cita." aria-describedby="hora-mensaje">
+                          2:00 p. m.
+                        </label>
+                        <label class="franja franja--ocupada">
+                          <input class="control-oculto" type="radio" name="hora" value="15:00" disabled>
+                          3:00 p. m.<span class="solo-lector">, ocupada</span>
+                        </label>
+                        <label class="franja">
+                          <input class="control-oculto" type="radio" name="hora" value="16:00" required data-texto="4:00 p. m."
+                                 data-mensaje-vacio="Elige la hora de tu cita." aria-describedby="hora-mensaje">
+                          4:00 p. m.
+                        </label>
+                        <label class="franja">
+                          <input class="control-oculto" type="radio" name="hora" value="17:00" required data-texto="5:00 p. m."
+                                 data-mensaje-vacio="Elige la hora de tu cita." aria-describedby="hora-mensaje">
+                          5:00 p. m.
+                        </label>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="franjas franjas--oculta" data-franjas-de="2026-11-18">
+                    <div class="franjas__cabecera">
+                      <p class="franjas__dia">Miércoles 18 de noviembre</p>
+                      <p class="franjas__conteo">7 de 8 libres</p>
+                    </div>
+                    <div>
+                      <p class="franjas__grupo-titulo">Mañana</p>
+                      <div class="franjas__lista">
+                        <label class="franja">
+                          <input class="control-oculto" type="radio" name="hora" value="08:00" required data-texto="8:00 a. m."
+                                 data-mensaje-vacio="Elige la hora de tu cita." aria-describedby="hora-mensaje">
+                          8:00 a. m.
+                        </label>
+                        <label class="franja">
+                          <input class="control-oculto" type="radio" name="hora" value="09:00" required data-texto="9:00 a. m."
+                                 data-mensaje-vacio="Elige la hora de tu cita." aria-describedby="hora-mensaje">
+                          9:00 a. m.
+                        </label>
+                        <label class="franja">
+                          <input class="control-oculto" type="radio" name="hora" value="10:00" required data-texto="10:00 a. m."
+                                 data-mensaje-vacio="Elige la hora de tu cita." aria-describedby="hora-mensaje">
+                          10:00 a. m.
+                        </label>
+                        <label class="franja">
+                          <input class="control-oculto" type="radio" name="hora" value="11:00" required data-texto="11:00 a. m."
+                                 data-mensaje-vacio="Elige la hora de tu cita." aria-describedby="hora-mensaje">
+                          11:00 a. m.
+                        </label>
+                      </div>
+                    </div>
+                    <div>
+                      <p class="franjas__grupo-titulo">Tarde</p>
+                      <div class="franjas__lista">
+                        <label class="franja">
+                          <input class="control-oculto" type="radio" name="hora" value="14:00" required data-texto="2:00 p. m."
+                                 data-mensaje-vacio="Elige la hora de tu cita." aria-describedby="hora-mensaje">
+                          2:00 p. m.
+                        </label>
+                        <label class="franja">
+                          <input class="control-oculto" type="radio" name="hora" value="15:00" required data-texto="3:00 p. m."
+                                 data-mensaje-vacio="Elige la hora de tu cita." aria-describedby="hora-mensaje">
+                          3:00 p. m.
+                        </label>
+                        <label class="franja franja--ocupada">
+                          <input class="control-oculto" type="radio" name="hora" value="16:00" disabled>
+                          4:00 p. m.<span class="solo-lector">, ocupada</span>
+                        </label>
+                        <label class="franja">
+                          <input class="control-oculto" type="radio" name="hora" value="17:00" required data-texto="5:00 p. m."
+                                 data-mensaje-vacio="Elige la hora de tu cita." aria-describedby="hora-mensaje">
+                          5:00 p. m.
+                        </label>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="franjas franjas--oculta" data-franjas-de="2026-11-19">
+                    <div class="franjas__cabecera">
+                      <p class="franjas__dia">Jueves 19 de noviembre</p>
+                      <p class="franjas__conteo">6 de 8 libres</p>
+                    </div>
+                    <div>
+                      <p class="franjas__grupo-titulo">Mañana</p>
+                      <div class="franjas__lista">
+                        <label class="franja">
+                          <input class="control-oculto" type="radio" name="hora" value="08:00" required data-texto="8:00 a. m."
+                                 data-mensaje-vacio="Elige la hora de tu cita." aria-describedby="hora-mensaje">
+                          8:00 a. m.
+                        </label>
+                        <label class="franja">
+                          <input class="control-oculto" type="radio" name="hora" value="09:00" required data-texto="9:00 a. m."
+                                 data-mensaje-vacio="Elige la hora de tu cita." aria-describedby="hora-mensaje">
+                          9:00 a. m.
+                        </label>
+                        <label class="franja">
+                          <input class="control-oculto" type="radio" name="hora" value="10:00" required data-texto="10:00 a. m."
+                                 data-mensaje-vacio="Elige la hora de tu cita." aria-describedby="hora-mensaje">
+                          10:00 a. m.
+                        </label>
+                        <label class="franja">
+                          <input class="control-oculto" type="radio" name="hora" value="11:00" required data-texto="11:00 a. m."
+                                 data-mensaje-vacio="Elige la hora de tu cita." aria-describedby="hora-mensaje">
+                          11:00 a. m.
+                        </label>
+                      </div>
+                    </div>
+                    <div>
+                      <p class="franjas__grupo-titulo">Tarde</p>
+                      <div class="franjas__lista">
+                        <label class="franja franja--ocupada">
+                          <input class="control-oculto" type="radio" name="hora" value="14:00" disabled>
+                          2:00 p. m.<span class="solo-lector">, ocupada</span>
+                        </label>
+                        <label class="franja">
+                          <input class="control-oculto" type="radio" name="hora" value="15:00" required data-texto="3:00 p. m."
+                                 data-mensaje-vacio="Elige la hora de tu cita." aria-describedby="hora-mensaje">
+                          3:00 p. m.
+                        </label>
+                        <label class="franja">
+                          <input class="control-oculto" type="radio" name="hora" value="16:00" required data-texto="4:00 p. m."
+                                 data-mensaje-vacio="Elige la hora de tu cita." aria-describedby="hora-mensaje">
+                          4:00 p. m.
+                        </label>
+                        <label class="franja franja--ocupada">
+                          <input class="control-oculto" type="radio" name="hora" value="17:00" disabled>
+                          5:00 p. m.<span class="solo-lector">, ocupada</span>
+                        </label>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="franjas franjas--oculta" data-franjas-de="2026-11-23">
+                    <div class="franjas__cabecera">
+                      <p class="franjas__dia">Lunes 23 de noviembre</p>
+                      <p class="franjas__conteo">6 de 8 libres</p>
+                    </div>
+                    <div>
+                      <p class="franjas__grupo-titulo">Mañana</p>
+                      <div class="franjas__lista">
+                        <label class="franja">
+                          <input class="control-oculto" type="radio" name="hora" value="08:00" required data-texto="8:00 a. m."
+                                 data-mensaje-vacio="Elige la hora de tu cita." aria-describedby="hora-mensaje">
+                          8:00 a. m.
+                        </label>
+                        <label class="franja">
+                          <input class="control-oculto" type="radio" name="hora" value="09:00" required data-texto="9:00 a. m."
+                                 data-mensaje-vacio="Elige la hora de tu cita." aria-describedby="hora-mensaje">
+                          9:00 a. m.
+                        </label>
+                        <label class="franja">
+                          <input class="control-oculto" type="radio" name="hora" value="10:00" required data-texto="10:00 a. m."
+                                 data-mensaje-vacio="Elige la hora de tu cita." aria-describedby="hora-mensaje">
+                          10:00 a. m.
+                        </label>
+                        <label class="franja franja--ocupada">
+                          <input class="control-oculto" type="radio" name="hora" value="11:00" disabled>
+                          11:00 a. m.<span class="solo-lector">, ocupada</span>
+                        </label>
+                      </div>
+                    </div>
+                    <div>
+                      <p class="franjas__grupo-titulo">Tarde</p>
+                      <div class="franjas__lista">
+                        <label class="franja">
+                          <input class="control-oculto" type="radio" name="hora" value="14:00" required data-texto="2:00 p. m."
+                                 data-mensaje-vacio="Elige la hora de tu cita." aria-describedby="hora-mensaje">
+                          2:00 p. m.
+                        </label>
+                        <label class="franja">
+                          <input class="control-oculto" type="radio" name="hora" value="15:00" required data-texto="3:00 p. m."
+                                 data-mensaje-vacio="Elige la hora de tu cita." aria-describedby="hora-mensaje">
+                          3:00 p. m.
+                        </label>
+                        <label class="franja franja--ocupada">
+                          <input class="control-oculto" type="radio" name="hora" value="16:00" disabled>
+                          4:00 p. m.<span class="solo-lector">, ocupada</span>
+                        </label>
+                        <label class="franja">
+                          <input class="control-oculto" type="radio" name="hora" value="17:00" required data-texto="5:00 p. m."
+                                 data-mensaje-vacio="Elige la hora de tu cita." aria-describedby="hora-mensaje">
+                          5:00 p. m.
+                        </label>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="franjas franjas--oculta" data-franjas-de="2026-11-24">
+                    <div class="franjas__cabecera">
+                      <p class="franjas__dia">Martes 24 de noviembre</p>
+                      <p class="franjas__conteo">6 de 8 libres</p>
+                    </div>
+                    <div>
+                      <p class="franjas__grupo-titulo">Mañana</p>
+                      <div class="franjas__lista">
+                        <label class="franja">
+                          <input class="control-oculto" type="radio" name="hora" value="08:00" required data-texto="8:00 a. m."
+                                 data-mensaje-vacio="Elige la hora de tu cita." aria-describedby="hora-mensaje">
+                          8:00 a. m.
+                        </label>
+                        <label class="franja">
+                          <input class="control-oculto" type="radio" name="hora" value="09:00" required data-texto="9:00 a. m."
+                                 data-mensaje-vacio="Elige la hora de tu cita." aria-describedby="hora-mensaje">
+                          9:00 a. m.
+                        </label>
+                        <label class="franja franja--ocupada">
+                          <input class="control-oculto" type="radio" name="hora" value="10:00" disabled>
+                          10:00 a. m.<span class="solo-lector">, ocupada</span>
+                        </label>
+                        <label class="franja">
+                          <input class="control-oculto" type="radio" name="hora" value="11:00" required data-texto="11:00 a. m."
+                                 data-mensaje-vacio="Elige la hora de tu cita." aria-describedby="hora-mensaje">
+                          11:00 a. m.
+                        </label>
+                      </div>
+                    </div>
+                    <div>
+                      <p class="franjas__grupo-titulo">Tarde</p>
+                      <div class="franjas__lista">
+                        <label class="franja">
+                          <input class="control-oculto" type="radio" name="hora" value="14:00" required data-texto="2:00 p. m."
+                                 data-mensaje-vacio="Elige la hora de tu cita." aria-describedby="hora-mensaje">
+                          2:00 p. m.
+                        </label>
+                        <label class="franja franja--ocupada">
+                          <input class="control-oculto" type="radio" name="hora" value="15:00" disabled>
+                          3:00 p. m.<span class="solo-lector">, ocupada</span>
+                        </label>
+                        <label class="franja">
+                          <input class="control-oculto" type="radio" name="hora" value="16:00" required data-texto="4:00 p. m."
+                                 data-mensaje-vacio="Elige la hora de tu cita." aria-describedby="hora-mensaje">
+                          4:00 p. m.
+                        </label>
+                        <label class="franja">
+                          <input class="control-oculto" type="radio" name="hora" value="17:00" required data-texto="5:00 p. m."
+                                 data-mensaje-vacio="Elige la hora de tu cita." aria-describedby="hora-mensaje">
+                          5:00 p. m.
+                        </label>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="franjas franjas--oculta" data-franjas-de="2026-11-25">
+                    <div class="franjas__cabecera">
+                      <p class="franjas__dia">Miércoles 25 de noviembre</p>
+                      <p class="franjas__conteo">7 de 8 libres</p>
+                    </div>
+                    <div>
+                      <p class="franjas__grupo-titulo">Mañana</p>
+                      <div class="franjas__lista">
+                        <label class="franja">
+                          <input class="control-oculto" type="radio" name="hora" value="08:00" required data-texto="8:00 a. m."
+                                 data-mensaje-vacio="Elige la hora de tu cita." aria-describedby="hora-mensaje">
+                          8:00 a. m.
+                        </label>
+                        <label class="franja">
+                          <input class="control-oculto" type="radio" name="hora" value="09:00" required data-texto="9:00 a. m."
+                                 data-mensaje-vacio="Elige la hora de tu cita." aria-describedby="hora-mensaje">
+                          9:00 a. m.
+                        </label>
+                        <label class="franja">
+                          <input class="control-oculto" type="radio" name="hora" value="10:00" required data-texto="10:00 a. m."
+                                 data-mensaje-vacio="Elige la hora de tu cita." aria-describedby="hora-mensaje">
+                          10:00 a. m.
+                        </label>
+                        <label class="franja">
+                          <input class="control-oculto" type="radio" name="hora" value="11:00" required data-texto="11:00 a. m."
+                                 data-mensaje-vacio="Elige la hora de tu cita." aria-describedby="hora-mensaje">
+                          11:00 a. m.
+                        </label>
+                      </div>
+                    </div>
+                    <div>
+                      <p class="franjas__grupo-titulo">Tarde</p>
+                      <div class="franjas__lista">
+                        <label class="franja">
+                          <input class="control-oculto" type="radio" name="hora" value="14:00" required data-texto="2:00 p. m."
+                                 data-mensaje-vacio="Elige la hora de tu cita." aria-describedby="hora-mensaje">
+                          2:00 p. m.
+                        </label>
+                        <label class="franja">
+                          <input class="control-oculto" type="radio" name="hora" value="15:00" required data-texto="3:00 p. m."
+                                 data-mensaje-vacio="Elige la hora de tu cita." aria-describedby="hora-mensaje">
+                          3:00 p. m.
+                        </label>
+                        <label class="franja franja--ocupada">
+                          <input class="control-oculto" type="radio" name="hora" value="16:00" disabled>
+                          4:00 p. m.<span class="solo-lector">, ocupada</span>
+                        </label>
+                        <label class="franja">
+                          <input class="control-oculto" type="radio" name="hora" value="17:00" required data-texto="5:00 p. m."
+                                 data-mensaje-vacio="Elige la hora de tu cita." aria-describedby="hora-mensaje">
+                          5:00 p. m.
+                        </label>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="franjas franjas--oculta" data-franjas-de="2026-11-26">
+                    <div class="franjas__cabecera">
+                      <p class="franjas__dia">Jueves 26 de noviembre</p>
+                      <p class="franjas__conteo">1 de 8 libres</p>
+                    </div>
+                    <div>
+                      <p class="franjas__grupo-titulo">Mañana</p>
+                      <div class="franjas__lista">
+                        <label class="franja franja--ocupada">
+                          <input class="control-oculto" type="radio" name="hora" value="08:00" disabled>
+                          8:00 a. m.<span class="solo-lector">, ocupada</span>
+                        </label>
+                        <label class="franja franja--ocupada">
+                          <input class="control-oculto" type="radio" name="hora" value="09:00" disabled>
+                          9:00 a. m.<span class="solo-lector">, ocupada</span>
+                        </label>
+                        <label class="franja franja--ocupada">
+                          <input class="control-oculto" type="radio" name="hora" value="10:00" disabled>
+                          10:00 a. m.<span class="solo-lector">, ocupada</span>
+                        </label>
+                        <label class="franja franja--ocupada">
+                          <input class="control-oculto" type="radio" name="hora" value="11:00" disabled>
+                          11:00 a. m.<span class="solo-lector">, ocupada</span>
+                        </label>
+                      </div>
+                    </div>
+                    <div>
+                      <p class="franjas__grupo-titulo">Tarde</p>
+                      <div class="franjas__lista">
+                        <label class="franja">
+                          <input class="control-oculto" type="radio" name="hora" value="14:00" required data-texto="2:00 p. m."
+                                 data-mensaje-vacio="Elige la hora de tu cita." aria-describedby="hora-mensaje">
+                          2:00 p. m.
+                        </label>
+                        <label class="franja franja--ocupada">
+                          <input class="control-oculto" type="radio" name="hora" value="15:00" disabled>
+                          3:00 p. m.<span class="solo-lector">, ocupada</span>
+                        </label>
+                        <label class="franja franja--ocupada">
+                          <input class="control-oculto" type="radio" name="hora" value="16:00" disabled>
+                          4:00 p. m.<span class="solo-lector">, ocupada</span>
+                        </label>
+                        <label class="franja franja--ocupada">
+                          <input class="control-oculto" type="radio" name="hora" value="17:00" disabled>
+                          5:00 p. m.<span class="solo-lector">, ocupada</span>
+                        </label>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="franjas franjas--oculta" data-franjas-de="2026-11-27">
+                    <div class="franjas__cabecera">
+                      <p class="franjas__dia">Viernes 27 de noviembre</p>
+                      <p class="franjas__conteo">6 de 8 libres</p>
+                    </div>
+                    <div>
+                      <p class="franjas__grupo-titulo">Mañana</p>
+                      <div class="franjas__lista">
+                        <label class="franja franja--ocupada">
+                          <input class="control-oculto" type="radio" name="hora" value="08:00" disabled>
+                          8:00 a. m.<span class="solo-lector">, ocupada</span>
+                        </label>
+                        <label class="franja">
+                          <input class="control-oculto" type="radio" name="hora" value="09:00" required data-texto="9:00 a. m."
+                                 data-mensaje-vacio="Elige la hora de tu cita." aria-describedby="hora-mensaje">
+                          9:00 a. m.
+                        </label>
+                        <label class="franja">
+                          <input class="control-oculto" type="radio" name="hora" value="10:00" required data-texto="10:00 a. m."
+                                 data-mensaje-vacio="Elige la hora de tu cita." aria-describedby="hora-mensaje">
+                          10:00 a. m.
+                        </label>
+                        <label class="franja">
+                          <input class="control-oculto" type="radio" name="hora" value="11:00" required data-texto="11:00 a. m."
+                                 data-mensaje-vacio="Elige la hora de tu cita." aria-describedby="hora-mensaje">
+                          11:00 a. m.
+                        </label>
+                      </div>
+                    </div>
+                    <div>
+                      <p class="franjas__grupo-titulo">Tarde</p>
+                      <div class="franjas__lista">
+                        <label class="franja">
+                          <input class="control-oculto" type="radio" name="hora" value="14:00" required data-texto="2:00 p. m."
+                                 data-mensaje-vacio="Elige la hora de tu cita." aria-describedby="hora-mensaje">
+                          2:00 p. m.
+                        </label>
+                        <label class="franja franja--ocupada">
+                          <input class="control-oculto" type="radio" name="hora" value="15:00" disabled>
+                          3:00 p. m.<span class="solo-lector">, ocupada</span>
+                        </label>
+                        <label class="franja">
+                          <input class="control-oculto" type="radio" name="hora" value="16:00" required data-texto="4:00 p. m."
+                                 data-mensaje-vacio="Elige la hora de tu cita." aria-describedby="hora-mensaje">
+                          4:00 p. m.
+                        </label>
+                        <label class="franja">
+                          <input class="control-oculto" type="radio" name="hora" value="17:00" required data-texto="5:00 p. m."
+                                 data-mensaje-vacio="Elige la hora de tu cita." aria-describedby="hora-mensaje">
+                          5:00 p. m.
+                        </label>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="franjas franjas--oculta" data-franjas-de="2026-11-30">
+                    <div class="franjas__cabecera">
+                      <p class="franjas__dia">Lunes 30 de noviembre</p>
+                      <p class="franjas__conteo">6 de 8 libres</p>
+                    </div>
+                    <div>
+                      <p class="franjas__grupo-titulo">Mañana</p>
+                      <div class="franjas__lista">
+                        <label class="franja">
+                          <input class="control-oculto" type="radio" name="hora" value="08:00" required data-texto="8:00 a. m."
+                                 data-mensaje-vacio="Elige la hora de tu cita." aria-describedby="hora-mensaje">
+                          8:00 a. m.
+                        </label>
+                        <label class="franja">
+                          <input class="control-oculto" type="radio" name="hora" value="09:00" required data-texto="9:00 a. m."
+                                 data-mensaje-vacio="Elige la hora de tu cita." aria-describedby="hora-mensaje">
+                          9:00 a. m.
+                        </label>
+                        <label class="franja">
+                          <input class="control-oculto" type="radio" name="hora" value="10:00" required data-texto="10:00 a. m."
+                                 data-mensaje-vacio="Elige la hora de tu cita." aria-describedby="hora-mensaje">
+                          10:00 a. m.
+                        </label>
+                        <label class="franja franja--ocupada">
+                          <input class="control-oculto" type="radio" name="hora" value="11:00" disabled>
+                          11:00 a. m.<span class="solo-lector">, ocupada</span>
+                        </label>
+                      </div>
+                    </div>
+                    <div>
+                      <p class="franjas__grupo-titulo">Tarde</p>
+                      <div class="franjas__lista">
+                        <label class="franja">
+                          <input class="control-oculto" type="radio" name="hora" value="14:00" required data-texto="2:00 p. m."
+                                 data-mensaje-vacio="Elige la hora de tu cita." aria-describedby="hora-mensaje">
+                          2:00 p. m.
+                        </label>
+                        <label class="franja">
+                          <input class="control-oculto" type="radio" name="hora" value="15:00" required data-texto="3:00 p. m."
+                                 data-mensaje-vacio="Elige la hora de tu cita." aria-describedby="hora-mensaje">
+                          3:00 p. m.
+                        </label>
+                        <label class="franja franja--ocupada">
+                          <input class="control-oculto" type="radio" name="hora" value="16:00" disabled>
+                          4:00 p. m.<span class="solo-lector">, ocupada</span>
+                        </label>
+                        <label class="franja">
+                          <input class="control-oculto" type="radio" name="hora" value="17:00" required data-texto="5:00 p. m."
+                                 data-mensaje-vacio="Elige la hora de tu cita." aria-describedby="hora-mensaje">
+                          5:00 p. m.
+                        </label>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="franjas franjas--oculta" data-franjas-de="2026-12-01">
+                    <div class="franjas__cabecera">
+                      <p class="franjas__dia">Martes 1 de diciembre</p>
+                      <p class="franjas__conteo">6 de 8 libres</p>
+                    </div>
+                    <div>
+                      <p class="franjas__grupo-titulo">Mañana</p>
+                      <div class="franjas__lista">
+                        <label class="franja">
+                          <input class="control-oculto" type="radio" name="hora" value="08:00" required data-texto="8:00 a. m."
+                                 data-mensaje-vacio="Elige la hora de tu cita." aria-describedby="hora-mensaje">
+                          8:00 a. m.
+                        </label>
+                        <label class="franja">
+                          <input class="control-oculto" type="radio" name="hora" value="09:00" required data-texto="9:00 a. m."
+                                 data-mensaje-vacio="Elige la hora de tu cita." aria-describedby="hora-mensaje">
+                          9:00 a. m.
+                        </label>
+                        <label class="franja franja--ocupada">
+                          <input class="control-oculto" type="radio" name="hora" value="10:00" disabled>
+                          10:00 a. m.<span class="solo-lector">, ocupada</span>
+                        </label>
+                        <label class="franja">
+                          <input class="control-oculto" type="radio" name="hora" value="11:00" required data-texto="11:00 a. m."
+                                 data-mensaje-vacio="Elige la hora de tu cita." aria-describedby="hora-mensaje">
+                          11:00 a. m.
+                        </label>
+                      </div>
+                    </div>
+                    <div>
+                      <p class="franjas__grupo-titulo">Tarde</p>
+                      <div class="franjas__lista">
+                        <label class="franja">
+                          <input class="control-oculto" type="radio" name="hora" value="14:00" required data-texto="2:00 p. m."
+                                 data-mensaje-vacio="Elige la hora de tu cita." aria-describedby="hora-mensaje">
+                          2:00 p. m.
+                        </label>
+                        <label class="franja franja--ocupada">
+                          <input class="control-oculto" type="radio" name="hora" value="15:00" disabled>
+                          3:00 p. m.<span class="solo-lector">, ocupada</span>
+                        </label>
+                        <label class="franja">
+                          <input class="control-oculto" type="radio" name="hora" value="16:00" required data-texto="4:00 p. m."
+                                 data-mensaje-vacio="Elige la hora de tu cita." aria-describedby="hora-mensaje">
+                          4:00 p. m.
+                        </label>
+                        <label class="franja">
+                          <input class="control-oculto" type="radio" name="hora" value="17:00" required data-texto="5:00 p. m."
+                                 data-mensaje-vacio="Elige la hora de tu cita." aria-describedby="hora-mensaje">
+                          5:00 p. m.
+                        </label>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="franjas franjas--oculta" data-franjas-de="2026-12-02">
+                    <div class="franjas__cabecera">
+                      <p class="franjas__dia">Miércoles 2 de diciembre</p>
+                      <p class="franjas__conteo">7 de 8 libres</p>
+                    </div>
+                    <div>
+                      <p class="franjas__grupo-titulo">Mañana</p>
+                      <div class="franjas__lista">
+                        <label class="franja">
+                          <input class="control-oculto" type="radio" name="hora" value="08:00" required data-texto="8:00 a. m."
+                                 data-mensaje-vacio="Elige la hora de tu cita." aria-describedby="hora-mensaje">
+                          8:00 a. m.
+                        </label>
+                        <label class="franja">
+                          <input class="control-oculto" type="radio" name="hora" value="09:00" required data-texto="9:00 a. m."
+                                 data-mensaje-vacio="Elige la hora de tu cita." aria-describedby="hora-mensaje">
+                          9:00 a. m.
+                        </label>
+                        <label class="franja">
+                          <input class="control-oculto" type="radio" name="hora" value="10:00" required data-texto="10:00 a. m."
+                                 data-mensaje-vacio="Elige la hora de tu cita." aria-describedby="hora-mensaje">
+                          10:00 a. m.
+                        </label>
+                        <label class="franja">
+                          <input class="control-oculto" type="radio" name="hora" value="11:00" required data-texto="11:00 a. m."
+                                 data-mensaje-vacio="Elige la hora de tu cita." aria-describedby="hora-mensaje">
+                          11:00 a. m.
+                        </label>
+                      </div>
+                    </div>
+                    <div>
+                      <p class="franjas__grupo-titulo">Tarde</p>
+                      <div class="franjas__lista">
+                        <label class="franja">
+                          <input class="control-oculto" type="radio" name="hora" value="14:00" required data-texto="2:00 p. m."
+                                 data-mensaje-vacio="Elige la hora de tu cita." aria-describedby="hora-mensaje">
+                          2:00 p. m.
+                        </label>
+                        <label class="franja">
+                          <input class="control-oculto" type="radio" name="hora" value="15:00" required data-texto="3:00 p. m."
+                                 data-mensaje-vacio="Elige la hora de tu cita." aria-describedby="hora-mensaje">
+                          3:00 p. m.
+                        </label>
+                        <label class="franja franja--ocupada">
+                          <input class="control-oculto" type="radio" name="hora" value="16:00" disabled>
+                          4:00 p. m.<span class="solo-lector">, ocupada</span>
+                        </label>
+                        <label class="franja">
+                          <input class="control-oculto" type="radio" name="hora" value="17:00" required data-texto="5:00 p. m."
+                                 data-mensaje-vacio="Elige la hora de tu cita." aria-describedby="hora-mensaje">
+                          5:00 p. m.
+                        </label>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="franjas franjas--oculta" data-franjas-de="2026-12-03">
+                    <div class="franjas__cabecera">
+                      <p class="franjas__dia">Jueves 3 de diciembre</p>
+                      <p class="franjas__conteo">6 de 8 libres</p>
+                    </div>
+                    <div>
+                      <p class="franjas__grupo-titulo">Mañana</p>
+                      <div class="franjas__lista">
+                        <label class="franja">
+                          <input class="control-oculto" type="radio" name="hora" value="08:00" required data-texto="8:00 a. m."
+                                 data-mensaje-vacio="Elige la hora de tu cita." aria-describedby="hora-mensaje">
+                          8:00 a. m.
+                        </label>
+                        <label class="franja">
+                          <input class="control-oculto" type="radio" name="hora" value="09:00" required data-texto="9:00 a. m."
+                                 data-mensaje-vacio="Elige la hora de tu cita." aria-describedby="hora-mensaje">
+                          9:00 a. m.
+                        </label>
+                        <label class="franja">
+                          <input class="control-oculto" type="radio" name="hora" value="10:00" required data-texto="10:00 a. m."
+                                 data-mensaje-vacio="Elige la hora de tu cita." aria-describedby="hora-mensaje">
+                          10:00 a. m.
+                        </label>
+                        <label class="franja">
+                          <input class="control-oculto" type="radio" name="hora" value="11:00" required data-texto="11:00 a. m."
+                                 data-mensaje-vacio="Elige la hora de tu cita." aria-describedby="hora-mensaje">
+                          11:00 a. m.
+                        </label>
+                      </div>
+                    </div>
+                    <div>
+                      <p class="franjas__grupo-titulo">Tarde</p>
+                      <div class="franjas__lista">
+                        <label class="franja franja--ocupada">
+                          <input class="control-oculto" type="radio" name="hora" value="14:00" disabled>
+                          2:00 p. m.<span class="solo-lector">, ocupada</span>
+                        </label>
+                        <label class="franja">
+                          <input class="control-oculto" type="radio" name="hora" value="15:00" required data-texto="3:00 p. m."
+                                 data-mensaje-vacio="Elige la hora de tu cita." aria-describedby="hora-mensaje">
+                          3:00 p. m.
+                        </label>
+                        <label class="franja">
+                          <input class="control-oculto" type="radio" name="hora" value="16:00" required data-texto="4:00 p. m."
+                                 data-mensaje-vacio="Elige la hora de tu cita." aria-describedby="hora-mensaje">
+                          4:00 p. m.
+                        </label>
+                        <label class="franja franja--ocupada">
+                          <input class="control-oculto" type="radio" name="hora" value="17:00" disabled>
+                          5:00 p. m.<span class="solo-lector">, ocupada</span>
+                        </label>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="franjas franjas--oculta" data-franjas-de="2026-12-04">
+                    <div class="franjas__cabecera">
+                      <p class="franjas__dia">Viernes 4 de diciembre</p>
+                      <p class="franjas__conteo">2 de 8 libres</p>
+                    </div>
+                    <div>
+                      <p class="franjas__grupo-titulo">Mañana</p>
+                      <div class="franjas__lista">
+                        <label class="franja">
+                          <input class="control-oculto" type="radio" name="hora" value="08:00" required data-texto="8:00 a. m."
+                                 data-mensaje-vacio="Elige la hora de tu cita." aria-describedby="hora-mensaje">
+                          8:00 a. m.
+                        </label>
+                        <label class="franja franja--ocupada">
+                          <input class="control-oculto" type="radio" name="hora" value="09:00" disabled>
+                          9:00 a. m.<span class="solo-lector">, ocupada</span>
+                        </label>
+                        <label class="franja franja--ocupada">
+                          <input class="control-oculto" type="radio" name="hora" value="10:00" disabled>
+                          10:00 a. m.<span class="solo-lector">, ocupada</span>
+                        </label>
+                        <label class="franja franja--ocupada">
+                          <input class="control-oculto" type="radio" name="hora" value="11:00" disabled>
+                          11:00 a. m.<span class="solo-lector">, ocupada</span>
+                        </label>
+                      </div>
+                    </div>
+                    <div>
+                      <p class="franjas__grupo-titulo">Tarde</p>
+                      <div class="franjas__lista">
+                        <label class="franja franja--ocupada">
+                          <input class="control-oculto" type="radio" name="hora" value="14:00" disabled>
+                          2:00 p. m.<span class="solo-lector">, ocupada</span>
+                        </label>
+                        <label class="franja franja--ocupada">
+                          <input class="control-oculto" type="radio" name="hora" value="15:00" disabled>
+                          3:00 p. m.<span class="solo-lector">, ocupada</span>
+                        </label>
+                        <label class="franja franja--ocupada">
+                          <input class="control-oculto" type="radio" name="hora" value="16:00" disabled>
+                          4:00 p. m.<span class="solo-lector">, ocupada</span>
+                        </label>
+                        <label class="franja">
+                          <input class="control-oculto" type="radio" name="hora" value="17:00" required data-texto="5:00 p. m."
+                                 data-mensaje-vacio="Elige la hora de tu cita." aria-describedby="hora-mensaje">
+                          5:00 p. m.
+                        </label>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="franjas franjas--oculta" data-franjas-de="2026-12-07">
+                    <div class="franjas__cabecera">
+                      <p class="franjas__dia">Lunes 7 de diciembre</p>
+                      <p class="franjas__conteo">6 de 8 libres</p>
+                    </div>
+                    <div>
+                      <p class="franjas__grupo-titulo">Mañana</p>
+                      <div class="franjas__lista">
+                        <label class="franja">
+                          <input class="control-oculto" type="radio" name="hora" value="08:00" required data-texto="8:00 a. m."
+                                 data-mensaje-vacio="Elige la hora de tu cita." aria-describedby="hora-mensaje">
+                          8:00 a. m.
+                        </label>
+                        <label class="franja">
+                          <input class="control-oculto" type="radio" name="hora" value="09:00" required data-texto="9:00 a. m."
+                                 data-mensaje-vacio="Elige la hora de tu cita." aria-describedby="hora-mensaje">
+                          9:00 a. m.
+                        </label>
+                        <label class="franja">
+                          <input class="control-oculto" type="radio" name="hora" value="10:00" required data-texto="10:00 a. m."
+                                 data-mensaje-vacio="Elige la hora de tu cita." aria-describedby="hora-mensaje">
+                          10:00 a. m.
+                        </label>
+                        <label class="franja franja--ocupada">
+                          <input class="control-oculto" type="radio" name="hora" value="11:00" disabled>
+                          11:00 a. m.<span class="solo-lector">, ocupada</span>
+                        </label>
+                      </div>
+                    </div>
+                    <div>
+                      <p class="franjas__grupo-titulo">Tarde</p>
+                      <div class="franjas__lista">
+                        <label class="franja">
+                          <input class="control-oculto" type="radio" name="hora" value="14:00" required data-texto="2:00 p. m."
+                                 data-mensaje-vacio="Elige la hora de tu cita." aria-describedby="hora-mensaje">
+                          2:00 p. m.
+                        </label>
+                        <label class="franja">
+                          <input class="control-oculto" type="radio" name="hora" value="15:00" required data-texto="3:00 p. m."
+                                 data-mensaje-vacio="Elige la hora de tu cita." aria-describedby="hora-mensaje">
+                          3:00 p. m.
+                        </label>
+                        <label class="franja franja--ocupada">
+                          <input class="control-oculto" type="radio" name="hora" value="16:00" disabled>
+                          4:00 p. m.<span class="solo-lector">, ocupada</span>
+                        </label>
+                        <label class="franja">
+                          <input class="control-oculto" type="radio" name="hora" value="17:00" required data-texto="5:00 p. m."
+                                 data-mensaje-vacio="Elige la hora de tu cita." aria-describedby="hora-mensaje">
+                          5:00 p. m.
+                        </label>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="franjas franjas--oculta" data-franjas-de="2026-12-09">
+                    <div class="franjas__cabecera">
+                      <p class="franjas__dia">Miércoles 9 de diciembre</p>
+                      <p class="franjas__conteo">7 de 8 libres</p>
+                    </div>
+                    <div>
+                      <p class="franjas__grupo-titulo">Mañana</p>
+                      <div class="franjas__lista">
+                        <label class="franja">
+                          <input class="control-oculto" type="radio" name="hora" value="08:00" required data-texto="8:00 a. m."
+                                 data-mensaje-vacio="Elige la hora de tu cita." aria-describedby="hora-mensaje">
+                          8:00 a. m.
+                        </label>
+                        <label class="franja">
+                          <input class="control-oculto" type="radio" name="hora" value="09:00" required data-texto="9:00 a. m."
+                                 data-mensaje-vacio="Elige la hora de tu cita." aria-describedby="hora-mensaje">
+                          9:00 a. m.
+                        </label>
+                        <label class="franja">
+                          <input class="control-oculto" type="radio" name="hora" value="10:00" required data-texto="10:00 a. m."
+                                 data-mensaje-vacio="Elige la hora de tu cita." aria-describedby="hora-mensaje">
+                          10:00 a. m.
+                        </label>
+                        <label class="franja">
+                          <input class="control-oculto" type="radio" name="hora" value="11:00" required data-texto="11:00 a. m."
+                                 data-mensaje-vacio="Elige la hora de tu cita." aria-describedby="hora-mensaje">
+                          11:00 a. m.
+                        </label>
+                      </div>
+                    </div>
+                    <div>
+                      <p class="franjas__grupo-titulo">Tarde</p>
+                      <div class="franjas__lista">
+                        <label class="franja">
+                          <input class="control-oculto" type="radio" name="hora" value="14:00" required data-texto="2:00 p. m."
+                                 data-mensaje-vacio="Elige la hora de tu cita." aria-describedby="hora-mensaje">
+                          2:00 p. m.
+                        </label>
+                        <label class="franja">
+                          <input class="control-oculto" type="radio" name="hora" value="15:00" required data-texto="3:00 p. m."
+                                 data-mensaje-vacio="Elige la hora de tu cita." aria-describedby="hora-mensaje">
+                          3:00 p. m.
+                        </label>
+                        <label class="franja franja--ocupada">
+                          <input class="control-oculto" type="radio" name="hora" value="16:00" disabled>
+                          4:00 p. m.<span class="solo-lector">, ocupada</span>
+                        </label>
+                        <label class="franja">
+                          <input class="control-oculto" type="radio" name="hora" value="17:00" required data-texto="5:00 p. m."
+                                 data-mensaje-vacio="Elige la hora de tu cita." aria-describedby="hora-mensaje">
+                          5:00 p. m.
+                        </label>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="franjas franjas--oculta" data-franjas-de="2026-12-10">
+                    <div class="franjas__cabecera">
+                      <p class="franjas__dia">Jueves 10 de diciembre</p>
+                      <p class="franjas__conteo">6 de 8 libres</p>
+                    </div>
+                    <div>
+                      <p class="franjas__grupo-titulo">Mañana</p>
+                      <div class="franjas__lista">
+                        <label class="franja">
+                          <input class="control-oculto" type="radio" name="hora" value="08:00" required data-texto="8:00 a. m."
+                                 data-mensaje-vacio="Elige la hora de tu cita." aria-describedby="hora-mensaje">
+                          8:00 a. m.
+                        </label>
+                        <label class="franja">
+                          <input class="control-oculto" type="radio" name="hora" value="09:00" required data-texto="9:00 a. m."
+                                 data-mensaje-vacio="Elige la hora de tu cita." aria-describedby="hora-mensaje">
+                          9:00 a. m.
+                        </label>
+                        <label class="franja">
+                          <input class="control-oculto" type="radio" name="hora" value="10:00" required data-texto="10:00 a. m."
+                                 data-mensaje-vacio="Elige la hora de tu cita." aria-describedby="hora-mensaje">
+                          10:00 a. m.
+                        </label>
+                        <label class="franja">
+                          <input class="control-oculto" type="radio" name="hora" value="11:00" required data-texto="11:00 a. m."
+                                 data-mensaje-vacio="Elige la hora de tu cita." aria-describedby="hora-mensaje">
+                          11:00 a. m.
+                        </label>
+                      </div>
+                    </div>
+                    <div>
+                      <p class="franjas__grupo-titulo">Tarde</p>
+                      <div class="franjas__lista">
+                        <label class="franja franja--ocupada">
+                          <input class="control-oculto" type="radio" name="hora" value="14:00" disabled>
+                          2:00 p. m.<span class="solo-lector">, ocupada</span>
+                        </label>
+                        <label class="franja">
+                          <input class="control-oculto" type="radio" name="hora" value="15:00" required data-texto="3:00 p. m."
+                                 data-mensaje-vacio="Elige la hora de tu cita." aria-describedby="hora-mensaje">
+                          3:00 p. m.
+                        </label>
+                        <label class="franja">
+                          <input class="control-oculto" type="radio" name="hora" value="16:00" required data-texto="4:00 p. m."
+                                 data-mensaje-vacio="Elige la hora de tu cita." aria-describedby="hora-mensaje">
+                          4:00 p. m.
+                        </label>
+                        <label class="franja franja--ocupada">
+                          <input class="control-oculto" type="radio" name="hora" value="17:00" disabled>
+                          5:00 p. m.<span class="solo-lector">, ocupada</span>
+                        </label>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="franjas franjas--oculta" data-franjas-de="2026-12-11">
+                    <div class="franjas__cabecera">
+                      <p class="franjas__dia">Viernes 11 de diciembre</p>
+                      <p class="franjas__conteo">6 de 8 libres</p>
+                    </div>
+                    <div>
+                      <p class="franjas__grupo-titulo">Mañana</p>
+                      <div class="franjas__lista">
+                        <label class="franja franja--ocupada">
+                          <input class="control-oculto" type="radio" name="hora" value="08:00" disabled>
+                          8:00 a. m.<span class="solo-lector">, ocupada</span>
+                        </label>
+                        <label class="franja">
+                          <input class="control-oculto" type="radio" name="hora" value="09:00" required data-texto="9:00 a. m."
+                                 data-mensaje-vacio="Elige la hora de tu cita." aria-describedby="hora-mensaje">
+                          9:00 a. m.
+                        </label>
+                        <label class="franja">
+                          <input class="control-oculto" type="radio" name="hora" value="10:00" required data-texto="10:00 a. m."
+                                 data-mensaje-vacio="Elige la hora de tu cita." aria-describedby="hora-mensaje">
+                          10:00 a. m.
+                        </label>
+                        <label class="franja">
+                          <input class="control-oculto" type="radio" name="hora" value="11:00" required data-texto="11:00 a. m."
+                                 data-mensaje-vacio="Elige la hora de tu cita." aria-describedby="hora-mensaje">
+                          11:00 a. m.
+                        </label>
+                      </div>
+                    </div>
+                    <div>
+                      <p class="franjas__grupo-titulo">Tarde</p>
+                      <div class="franjas__lista">
+                        <label class="franja">
+                          <input class="control-oculto" type="radio" name="hora" value="14:00" required data-texto="2:00 p. m."
+                                 data-mensaje-vacio="Elige la hora de tu cita." aria-describedby="hora-mensaje">
+                          2:00 p. m.
+                        </label>
+                        <label class="franja franja--ocupada">
+                          <input class="control-oculto" type="radio" name="hora" value="15:00" disabled>
+                          3:00 p. m.<span class="solo-lector">, ocupada</span>
+                        </label>
+                        <label class="franja">
+                          <input class="control-oculto" type="radio" name="hora" value="16:00" required data-texto="4:00 p. m."
+                                 data-mensaje-vacio="Elige la hora de tu cita." aria-describedby="hora-mensaje">
+                          4:00 p. m.
+                        </label>
+                        <label class="franja">
+                          <input class="control-oculto" type="radio" name="hora" value="17:00" required data-texto="5:00 p. m."
+                                 data-mensaje-vacio="Elige la hora de tu cita." aria-describedby="hora-mensaje">
+                          5:00 p. m.
+                        </label>
+                      </div>
+                    </div>
+                  </div>
+                  <p class="campo__mensaje grupo-opciones__mensaje" id="hora-mensaje" aria-live="polite">
+                    <svg class="icono" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M12 8v4M12 16h.01"/></svg>
+                    <span class="campo__mensaje-texto"></span>
+                  </p>
+                </fieldset>
+              </div>
+            </section>
+
+            <!-- Modalidad -->
+            <section class="tarjeta aparecer" aria-labelledby="titulo-modalidad">
+              <fieldset class="grupo-opciones campo">
+                <legend><h2 class="agendamiento__titulo-bloque" id="titulo-modalidad">¿Cómo prefieres reunirte?</h2></legend>
+                <p class="agendamiento__ayuda">Puedes venir a nuestra oficina o conectarte por videollamada.</p>
+                <div class="modalidades">
+                  <label class="modalidad">
+                    <input class="control-oculto" type="radio" name="modalidad" value="presencial" required data-texto="Presencial"
+                           data-mensaje-vacio="Elige si la cita es presencial o virtual." aria-describedby="modalidad-mensaje">
+                    <span class="modalidad__icono"><svg class="icono icono--grande" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 21h18M5 21V7l7-4 7 4v14M9 21v-6h6v6M9 10h.01M15 10h.01"/></svg></span>
+                    <span>
+                      <span class="modalidad__nombre">Presencial</span>
+                      <span class="modalidad__descripcion">En nuestra oficina en Cúcuta.</span>
+                      <span class="modalidad__detalle">Calle 10 # 4-25, oficina 302, Cúcuta. Llega 10 minutos antes.</span>
+                    </span>
+                    <span class="modalidad__marca" aria-hidden="true"></span>
+                  </label>
+                  <label class="modalidad">
+                    <input class="control-oculto" type="radio" name="modalidad" value="virtual" required data-texto="Virtual"
+                           data-mensaje-vacio="Elige si la cita es presencial o virtual." aria-describedby="modalidad-mensaje">
+                    <span class="modalidad__icono"><svg class="icono icono--grande" viewBox="0 0 24 24" aria-hidden="true"><rect x="2" y="6" width="14" height="12" rx="2"/><path d="m16 10 6-3v10l-6-3"/></svg></span>
+                    <span>
+                      <span class="modalidad__nombre">Virtual</span>
+                      <span class="modalidad__descripcion">Por videollamada, desde donde estés.</span>
+                      <span class="modalidad__detalle">Te enviaremos el enlace de la videollamada cuando tu cita sea confirmada.</span>
+                    </span>
+                    <span class="modalidad__marca" aria-hidden="true"></span>
+                  </label>
+                </div>
+                <p class="campo__mensaje grupo-opciones__mensaje" id="modalidad-mensaje" aria-live="polite">
+                  <svg class="icono" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M12 8v4M12 16h.01"/></svg>
+                  <span class="campo__mensaje-texto"></span>
+                </p>
+              </fieldset>
+            </section>
+
+            <!-- Descripción de lo que necesita el cliente -->
+            <section class="tarjeta aparecer" aria-labelledby="titulo-necesidad">
+              <div class="campo necesidad">
+                <label class="agendamiento__titulo-bloque" for="cita-descripcion" id="titulo-necesidad">Cuéntanos qué necesitas</label>
+                <p class="agendamiento__ayuda" id="cita-descripcion-ayuda">Qué quieres lograr, para quién es y si ya tienes algo (página, logo, catálogo). Así el equipo llega preparado.</p>
+                <textarea class="campo__control campo__control--area" id="cita-descripcion" name="descripcion" required minlength="20" maxlength="500" rows="4"
+                          placeholder="Ejemplo: tengo una tienda de ropa en Cúcuta y quiero vender por internet, con pagos por PSE y tarjeta. Ya tengo logo y fotos de los productos."
+                          data-mensaje-vacio="Cuéntanos brevemente qué necesitas." data-mensaje-corto="Escribe un poco más (mínimo 20 caracteres) para entender tu necesidad."
+                          aria-describedby="cita-descripcion-ayuda cita-descripcion-mensaje"></textarea>
+                <div class="campo__pie"><p class="campo__mensaje" id="cita-descripcion-mensaje" aria-live="polite"><svg class="icono" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M12 8v4M12 16h.01"/></svg><span class="campo__mensaje-texto"></span></p><span class="campo__contador" data-contador-de="cita-descripcion" aria-hidden="true">0 / 500</span></div>
+              </div>
+            </section>
+
+            <div class="acciones-paso">
+              <a class="boton boton--contorno" href="agendar-servicio.html" data-conservar-servicio>
+                <svg class="icono" viewBox="0 0 24 24" aria-hidden="true"><path d="M19 12H5M11 19l-7-7 7-7"/></svg>
+                Atrás
+              </a>
+              <div class="acciones-paso__derecha">
+                <a class="boton boton--acento boton--grande" href="agendar-confirmar.html" data-enviar data-pasar-campos="fecha,hora,modalidad,descripcion">
+                  Continuar
+                  <svg class="icono icono--mover" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+                </a>
+              </div>
+            </div>
+          </form>
+
+          <!-- Resumen que se completa en cada paso -->
+          <aside class="tarjeta resumen-cita aparecer" style="--retraso: 120ms" aria-labelledby="titulo-resumen">
+            <h2 class="tarjeta__titulo" id="titulo-resumen">Resumen de tu cita</h2>
+            <dl class="resumen-cita__lista">
+              <div class="resumen-cita__fila"><dt class="resumen-cita__dato">Servicio</dt><dd class="resumen-cita__valor" data-resumen="servicio">Sin elegir</dd></div>
+              <div class="resumen-cita__fila"><dt class="resumen-cita__dato">Fecha y hora</dt><dd class="resumen-cita__valor resumen-cita__valor--pendiente" data-resumen="fecha" aria-live="polite">Sin elegir</dd></div>
+              <div class="resumen-cita__fila"><dt class="resumen-cita__dato">Modalidad</dt><dd class="resumen-cita__valor resumen-cita__valor--pendiente" data-resumen="modalidad" aria-live="polite">Sin elegir</dd></div>
+              <div class="resumen-cita__fila"><dt class="resumen-cita__dato">Tu necesidad</dt><dd class="resumen-cita__valor resumen-cita__valor--pendiente" data-resumen="descripcion" aria-live="polite">Sin escribir</dd></div>
+              <div class="resumen-cita__fila"><dt class="resumen-cita__dato">Duración</dt><dd class="resumen-cita__valor">1 hora</dd></div>
+            </dl>
+            <ul class="resumen-cita__nota">
+              <li><svg class="icono" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4 21a8 8 0 0 1 16 0"/></svg>Te asignaremos un equipo; su Product Owner confirmará tu cita.</li>
+            </ul>
+          </aside>
+        </div>
+      </main>
+    </div>
+  </div>
+
+  <script src="../js/principal.js"></script>
+  <script src="../js/vistas/agendar-fecha.js"></script>
+</body>
+</html>

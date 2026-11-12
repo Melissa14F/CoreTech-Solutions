@@ -1,0 +1,206 @@
+/* ==========================================================================
+   Plantilla: Línea de tiempo de fases
+   La usan el detalle del proyecto del cliente, del desarrollador y del
+   administrador.
+   Requiere: css/global.css
+   Estructura:
+     .linea-tiempo
+       └── .fase (--completa | --actual | --pendiente)
+             ├── .fase__marcador   punto de la línea
+             └── .fase__tarjeta    nombre, fechas, avance y lista de avances
+   ========================================================================== */
+
+/* 1. Línea vertical ======================================================== */
+.linea-tiempo { position: relative; display: grid; gap: var(--espacio-4); }
+.fase { position: relative; display: grid; grid-template-columns: 40px minmax(0, 1fr); gap: var(--espacio-4); }
+/* Tramo de línea que une cada fase con la siguiente */
+.fase::before { content: ""; position: absolute; left: 19px; top: 40px; bottom: calc(-1 * var(--espacio-4)); width: 2px; background: var(--color-borde); }
+.fase:last-child::before { display: none; }
+.fase--completa::before { background: var(--color-exito); }
+.fase--actual::before { background: linear-gradient(var(--color-acento), var(--color-borde)); }
+.fase--pendiente::before { background: repeating-linear-gradient(var(--color-borde) 0 6px, transparent 6px 12px); }
+
+/* 2. Marcador ============================================================== */
+.fase__marcador { position: relative; z-index: 1; width: 40px; height: 40px; display: grid; place-items: center; border: 2px solid var(--color-borde); border-radius: 50%; background: var(--color-fondo); color: var(--color-texto-tenue); font-weight: 700; font-size: .875rem; }
+.fase--completa .fase__marcador { border-color: var(--color-exito); background: var(--color-exito); color: #fff; }
+.fase--completa .fase__marcador .icono { stroke-width: 3; }
+.fase--actual .fase__marcador { border-color: var(--color-acento); background: var(--color-acento); color: #fff; box-shadow: 0 0 0 6px rgba(79, 70, 229, .15); }
+.fase--actual .fase__marcador::after { content: ""; position: absolute; inset: -8px; border: 2px solid rgba(79, 70, 229, .3); border-radius: 50%; animation: onda-fase 2.2s var(--curva) infinite; }
+@keyframes onda-fase { 0% { opacity: 1; transform: scale(.85); } 100% { opacity: 0; transform: scale(1.3); } }
+
+/* 3. Tarjeta de la fase ==================================================== */
+.fase__tarjeta { min-width: 0; border: 1px solid var(--color-borde); border-radius: var(--radio-tarjeta); background: var(--color-fondo); overflow: hidden; }
+.fase--actual .fase__tarjeta { border-color: #c7c9f6; box-shadow: 0 16px 40px rgba(79, 70, 229, .1); }
+.fase--pendiente .fase__tarjeta { background: transparent; border-style: dashed; }
+
+/* Cabecera: se usa <summary> en las fases que se pueden abrir y cerrar */
+.fase__cabecera { display: flex; align-items: center; gap: var(--espacio-4); flex-wrap: wrap; padding: var(--espacio-4) var(--espacio-5); list-style: none; cursor: default; }
+.fase__cabecera::-webkit-details-marker { display: none; }
+summary.fase__cabecera { cursor: pointer; transition: background-color var(--duracion-rapida); }
+summary.fase__cabecera:hover { background: var(--color-fondo-suave); }
+.fase__nombre { margin: 0; font-size: 1rem; }
+.fase--pendiente .fase__nombre { color: var(--color-texto-tenue); }
+.fase__fechas { font-size: .8125rem; color: var(--color-texto-suave); }
+.fase__resumen { display: flex; align-items: center; gap: var(--espacio-3); margin-left: auto; font-size: .8125rem; }
+.fase__flecha { width: 18px; height: 18px; color: var(--color-texto-suave); transition: transform var(--duracion-media) var(--curva); }
+details[open] > .fase__cabecera .fase__flecha { transform: rotate(180deg); }
+.fase__porcentaje { font-weight: 700; color: var(--color-acento); font-variant-numeric: tabular-nums; }
+/* Fase entregada, esperando la aprobación del cliente */
+.fase--revision .fase__marcador { border-color: var(--color-advertencia); background: var(--color-advertencia); box-shadow: 0 0 0 6px rgba(180, 83, 9, .14); }
+.fase--revision .fase__marcador::after { border-color: rgba(180, 83, 9, .3); }
+.fase--revision .fase__tarjeta { border-color: #f2c48d; box-shadow: 0 16px 40px rgba(180, 83, 9, .08); }
+.fase--revision .fase__porcentaje { color: var(--color-advertencia); }
+.fase--revision .barra-progreso__relleno { background: var(--color-advertencia); }
+.fase--revision::before { background: linear-gradient(var(--color-advertencia), var(--color-borde)); }
+.fase--completa .fase__porcentaje { color: var(--color-exito); }
+
+.fase__cuerpo { padding: 0 var(--espacio-5) var(--espacio-5); }
+details[open] .fase__cuerpo { animation: aparecer-arriba var(--duracion-media) var(--curva); }
+/* Barra de la fase + su peso en el avance general */
+.fase__progreso { display: grid; gap: 6px; margin-bottom: var(--espacio-5); }
+.fase__progreso .barra-progreso { height: 8px; }
+.fase__peso { font-size: .75rem; color: var(--color-texto-suave); }
+.fase--pendiente .fase__peso { color: var(--color-texto-tenue); }
+.fase__nota { margin: 0; padding: var(--espacio-4) var(--espacio-5); font-size: .8125rem; color: var(--color-texto-tenue); }
+
+/* 4. Avances dentro de la fase (más reciente primero, RN-11) =============== */
+.avances { display: grid; gap: var(--espacio-3); }
+.avance { display: grid; grid-template-columns: auto minmax(0, 1fr); gap: var(--espacio-3); padding: var(--espacio-4); border-radius: var(--radio-caja); background: var(--color-fondo-suave); }
+.avance__porcentaje { align-self: start; min-width: 52px; padding: 4px 8px; border-radius: var(--radio-pildora); background: var(--color-fondo); border: 1px solid var(--color-borde); font-size: .75rem; font-weight: 700; text-align: center; color: var(--color-tinta); }
+.avance__texto { margin: 0 0 4px; color: var(--color-tinta); font-size: .9375rem; }
+.avance__meta { margin: 0; display: flex; align-items: center; flex-wrap: wrap; gap: var(--espacio-1) var(--espacio-3); font-size: .75rem; color: var(--color-texto-suave); }
+.avance--reciente { background: var(--color-acento-suave); }
+.avance--reciente .avance__porcentaje { border-color: var(--color-acento); color: var(--color-acento); }
+
+/* Porcentaje con el cambio respecto al registro anterior (+30 / −30) */
+.avance__porcentaje { display: grid; justify-items: center; align-content: center; width: 60px; min-width: 0; padding: 4px 0; line-height: 1.2; }
+.avance__porcentaje strong { font-weight: 700; font-variant-numeric: tabular-nums; }
+.avance__cambio { font-size: .6875rem; font-weight: 600; color: var(--color-exito); font-variant-numeric: tabular-nums; }
+.avance__porcentaje--icono { place-items: center; min-height: 32px; }
+.avance__porcentaje--icono .icono { width: 16px; height: 16px; }
+
+/* Etiqueta del tipo de registro */
+.avance__etiqueta { display: inline-flex; align-items: center; padding: 1px 8px; border-radius: var(--radio-pildora); font-size: .6875rem; font-weight: 700; }
+.avance__etiqueta--entrega { background: var(--color-acento-suave); color: var(--color-acento); }
+.avance__etiqueta--correccion, .avance__etiqueta--cambios { background: var(--color-advertencia-fondo); color: var(--color-advertencia-texto); }
+.avance__etiqueta--aprobacion, .avance__etiqueta--resuelta { background: var(--color-exito-fondo); color: var(--color-exito-texto); }
+.avance__detalle { font-weight: 600; color: var(--color-texto); }
+
+/* Corrección y cambios pedidos: tono de advertencia; aprobación: tono de éxito */
+.avance--correccion .avance__cambio { color: var(--color-advertencia); }
+.avance--correccion .avance__porcentaje, .avance--cambios .avance__porcentaje { border-color: #f2c48d; color: var(--color-advertencia); }
+.avance--cambios { background: var(--color-advertencia-fondo); }
+.avance--cambios .avance__texto { font-style: italic; }
+.avance--aprobacion .avance__porcentaje { border-color: var(--color-exito); background: var(--color-exito); color: #fff; }
+.avance--aprobacion .avance__porcentaje .icono { stroke-width: 3; }
+
+/* Fase aprobada con una corrección abierta: resta al proyecto mientras se rehace */
+.fase--con-correccion .fase__marcador { border-color: var(--color-advertencia); background: var(--color-advertencia); }
+.fase--con-correccion .fase__tarjeta { border-color: #f2c48d; }
+.fase--con-correccion .fase__porcentaje { color: var(--color-advertencia); }
+.fase--con-correccion::before { background: linear-gradient(var(--color-advertencia), var(--color-exito)); }
+.fase__aviso-correccion { display: flex; gap: var(--espacio-2); align-items: flex-start; margin: 0 0 var(--espacio-4); padding: var(--espacio-3) var(--espacio-4); border-radius: var(--radio-caja); background: var(--color-advertencia-fondo); font-size: .875rem; color: var(--color-advertencia-texto); }
+.fase__aviso-correccion .icono { flex: none; width: 18px; height: 18px; margin-top: 2px; }
+
+/* Caja de revisión: la fase se entregó y espera al cliente */
+.revision-fase { display: grid; grid-template-columns: auto minmax(0, 1fr); gap: var(--espacio-3) var(--espacio-4); align-items: start; margin-bottom: var(--espacio-5); padding: var(--espacio-4) var(--espacio-5); border: 1px solid #f2c48d; border-radius: var(--radio-caja); background: var(--color-advertencia-fondo); }
+.revision-fase__icono { width: 44px; height: 44px; display: grid; place-items: center; border-radius: 50%; background: #fff; color: var(--color-advertencia); }
+.revision-fase__texto > strong { display: block; color: var(--color-advertencia-texto); }
+.revision-fase__texto p { margin: 4px 0 0; font-size: .875rem; color: var(--color-texto); }
+.revision-fase__acciones { grid-column: 2; display: flex; flex-wrap: wrap; gap: var(--espacio-2); }
+@media (max-width: 640px) {
+  .revision-fase { grid-template-columns: minmax(0, 1fr); padding: var(--espacio-4); }
+  .revision-fase__icono { display: none; }
+  .revision-fase__acciones { grid-column: 1; }
+  .revision-fase__acciones .boton { flex: 1 1 100%; justify-content: center; }
+}
+
+/* Estado vacío: aún no hay avances */
+.avances-vacio { display: grid; justify-items: center; gap: var(--espacio-2); padding: var(--espacio-8) var(--espacio-5); border: 1px dashed var(--color-borde); border-radius: var(--radio-caja); text-align: center; }
+.avances-vacio__icono { width: 48px; height: 48px; display: grid; place-items: center; border-radius: 50%; background: var(--color-fondo-suave); color: var(--color-texto-suave); }
+.avances-vacio__titulo { margin: var(--espacio-2) 0 0; font-size: .9375rem; }
+.avances-vacio p { margin: 0; max-width: 42ch; font-size: .875rem; }
+
+/* 5. Diseño adaptable ====================================================== */
+@media (max-width: 640px) {
+  .fase { grid-template-columns: 32px minmax(0, 1fr); gap: var(--espacio-3); }
+  .fase::before { left: 15px; top: 32px; }
+  .fase__marcador { width: 32px; height: 32px; font-size: .75rem; }
+  .fase__cabecera { padding: var(--espacio-4); }
+  .fase__resumen { margin-left: 0; width: 100%; }
+  .fase__cuerpo { padding: 0 var(--espacio-4) var(--espacio-4); }
+}
+
+/* 6. Fases de 20 % con pasos (chulo de hecho) ============================== */
+.fase__valor { min-width: 44px; text-align: right; font-weight: 800; font-variant-numeric: tabular-nums; color: var(--color-texto-tenue); }
+.fase--completa .fase__valor { color: var(--color-exito); }
+.fase--actual .fase__valor { color: var(--color-acento); }
+.fase--revision .fase__valor, .fase--con-correccion .fase__valor { color: var(--color-advertencia); }
+.fase__que-es { margin: 0 0 var(--espacio-4); font-size: .9375rem; color: var(--color-texto); }
+.pasos-fase__titulo { margin: 0 0 var(--espacio-2); font-size: .6875rem; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--color-texto-suave); }
+
+.pasos-fase { display: grid; margin: 0; padding: 0; list-style: none; }
+.paso-fase { position: relative; display: grid; grid-template-columns: 28px minmax(0, 1fr); gap: var(--espacio-3); padding: var(--espacio-3) 0; }
+.paso-fase + .paso-fase { border-top: 1px solid var(--color-borde-suave); }
+/* Marca del paso: ✓ hecho, anillo en curso, círculo vacío pendiente */
+.paso-fase__marca { width: 26px; height: 26px; display: grid; place-items: center; margin-top: 1px; border: 2px solid var(--color-borde); border-radius: 50%; background: var(--color-fondo); }
+.paso-fase__marca .icono { width: 15px; height: 15px; stroke-width: 3; }
+.paso-fase--hecho .paso-fase__marca { border-color: var(--color-exito); background: var(--color-exito); color: #fff; }
+.paso-fase--en-curso .paso-fase__marca { border-color: var(--color-acento); box-shadow: inset 0 0 0 4px var(--color-fondo), inset 0 0 0 12px var(--color-acento); }
+.paso-fase--pendiente .paso-fase__marca { border-style: dashed; }
+.paso-fase--correccion.paso-fase--en-curso .paso-fase__marca, .paso-fase--correccion.paso-fase--pendiente .paso-fase__marca { border-color: var(--color-advertencia); }
+
+.paso-fase__titulo { margin: 0; font-weight: 700; color: var(--color-tinta); }
+.paso-fase--pendiente .paso-fase__titulo { color: var(--color-texto); }
+.paso-fase__explicacion { margin: 2px 0 0; font-size: .875rem; color: var(--color-texto-suave); }
+.paso-fase__nota { margin: var(--espacio-2) 0 0; padding: var(--espacio-2) var(--espacio-3); border-radius: var(--radio-control); background: var(--color-fondo-suave); font-size: .875rem; color: var(--color-texto); }
+.paso-fase__estado { display: inline-block; margin-top: 6px; font-size: .75rem; font-weight: 600; color: var(--color-exito-texto); }
+.paso-fase--en-curso .paso-fase__estado { color: var(--color-acento); }
+.paso-fase__etiqueta { display: inline-flex; align-items: center; gap: 4px; margin-bottom: 4px; padding: 1px 8px; border-radius: var(--radio-pildora); background: var(--color-advertencia-fondo); color: var(--color-advertencia-texto); font-size: .6875rem; font-weight: 700; }
+.paso-fase__etiqueta .icono { width: 12px; height: 12px; }
+.paso-fase.esta-nuevo { animation: aparecer-arriba var(--duracion-media) var(--curva); }
+
+.fase__aprobacion { display: flex; align-items: center; gap: var(--espacio-2); margin: var(--espacio-3) 0 0; padding: var(--espacio-3) var(--espacio-4); border-radius: var(--radio-caja); background: var(--color-exito-fondo); font-size: .875rem; font-weight: 600; color: var(--color-exito-texto); }
+.fase__aprobacion .icono { width: 18px; height: 18px; stroke-width: 3; }
+.fase--pendiente summary.fase__cabecera { cursor: pointer; }
+.fase--pendiente .paso-fase__marca { opacity: .7; }
+
+/* 7. Bocetos de pantallas dentro de un paso =============================== */
+.bocetos { display: grid; grid-template-columns: repeat(auto-fill, minmax(128px, 1fr)); gap: var(--espacio-3); margin: var(--espacio-3) 0 0; padding: 0; list-style: none; }
+.boceto { display: grid; gap: 6px; padding: 6px; border: 1px solid var(--color-borde); border-radius: var(--radio-caja); background: var(--color-fondo); color: var(--color-texto); text-decoration: none; transition: border-color var(--duracion-rapida), box-shadow var(--duracion-media) var(--curva), transform var(--duracion-media) var(--curva); }
+.boceto:hover { border-color: var(--color-acento); box-shadow: 0 10px 24px rgba(15, 23, 42, .08); transform: translateY(-2px); }
+.boceto:focus-visible { outline: 2px solid var(--color-acento); outline-offset: 2px; }
+.boceto img { display: block; width: 100%; height: auto; aspect-ratio: 10 / 7; object-fit: cover; border-radius: 6px; background: var(--color-fondo-suave); }
+.boceto__titulo { padding: 0 2px 2px; font-size: .8125rem; font-weight: 600; }
+
+/* Visor de bocetos */
+.visor-boceto { width: min(960px, calc(100vw - 32px)); max-height: calc(100vh - 32px); padding: var(--espacio-5); }
+.visor-boceto::backdrop { background: rgba(15, 23, 42, .7); }
+.visor-boceto__cabecera { display: flex; align-items: flex-start; justify-content: space-between; gap: var(--espacio-3); margin-bottom: var(--espacio-4); }
+.visor-boceto__titulo { margin: 0; font-size: 1.125rem; }
+.visor-boceto__contador { margin: 2px 0 0; font-size: .8125rem; color: var(--color-texto-suave); }
+.visor-boceto__cuerpo { display: grid; grid-template-columns: auto minmax(0, 1fr) auto; align-items: center; gap: var(--espacio-3); }
+.visor-boceto__imagen { display: block; width: 100%; height: auto; max-height: calc(100vh - 220px); object-fit: contain; border: 1px solid var(--color-borde); border-radius: var(--radio-caja); background: #f8fafc; }
+.visor-boceto__flecha[hidden] { display: none; }
+.visor-boceto__nota { margin: var(--espacio-3) 0 0; font-size: .8125rem; color: var(--color-texto-suave); text-align: center; }
+@media (max-width: 640px) {
+  .bocetos { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .visor-boceto { padding: var(--espacio-4); }
+  .visor-boceto__cuerpo { grid-template-columns: minmax(0, 1fr); }
+  .visor-boceto__flecha { display: none; }
+}
+
+/* 8. Reglas de aprobación: plazo, rondas y tipo de cambio ================== */
+.fase__quien-cierra { display: inline-block; font-size: .8125rem; font-weight: 600; color: var(--color-texto-suave); }
+.revision-fase__datos { display: grid; gap: 4px; margin: var(--espacio-3) 0 0; padding: 0; list-style: none; font-size: .8125rem; color: var(--color-texto); }
+.revision-fase__datos li { display: flex; gap: 6px; align-items: flex-start; }
+.revision-fase__datos .icono { flex: none; width: 15px; height: 15px; margin-top: 2px; color: var(--color-advertencia); }
+.paso-fase--alcance .paso-fase__etiqueta { background: var(--color-acento-suave); color: var(--color-acento); }
+.fase__aviso-plazo { margin-bottom: var(--espacio-4); }
+.tipo-cambio { margin: 0 0 var(--espacio-4); padding: 0; border: 0; display: grid; gap: var(--espacio-2); }
+.tipo-cambio__opcion { display: flex; gap: var(--espacio-3); align-items: flex-start; padding: var(--espacio-3) var(--espacio-4); border: 1.5px solid var(--color-borde); border-radius: var(--radio-caja); cursor: pointer; }
+.tipo-cambio__opcion input { margin-top: 4px; accent-color: var(--color-acento); }
+.tipo-cambio__opcion strong { display: block; font-size: .9375rem; }
+.tipo-cambio__opcion small { display: block; font-size: .8125rem; color: var(--color-texto-suave); }
+.tipo-cambio__opcion:has(:checked) { border-color: var(--color-acento); background: var(--color-acento-suave); }
+.tipo-cambio__opcion:has(:disabled) { opacity: .55; cursor: not-allowed; }

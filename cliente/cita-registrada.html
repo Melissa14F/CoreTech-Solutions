@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="es" class="sin-js">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Cita registrada · CoreTech Solutions</title>
+  <link rel="icon" href="../img/logo.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap">
+  <link rel="stylesheet" href="../css/global.css">
+  <link rel="stylesheet" href="../css/plantillas/panel.css">
+  <link rel="stylesheet" href="../css/vistas/cita-registrada.css">
+  <script src="../js/accesibilidad.js"></script>
+</head>
+<body>
+  <a class="saltar-contenido" href="#contenido">Saltar al contenido</a>
+
+  <div class="panel">
+    <!-- ===================== Menú lateral del cliente ===================== -->
+    <aside class="panel__lateral superficie-noche" aria-label="Menú del cliente">
+      <a class="marca" href="../index.html" aria-label="CoreTech Solutions, ir al sitio público">
+        <img class="marca__logo" src="../img/logo.svg" alt="" width="30" height="30">
+        <span>CoreTech</span>
+      </a>
+      <p class="panel__rol"><strong>Panel del cliente</strong>Tus citas y proyectos</p>
+
+      <nav aria-label="Secciones del cliente">
+        <p class="navegacion-panel__titulo">Mi cuenta</p>
+        <ul class="navegacion-panel__lista">
+          <li>
+            <a class="navegacion-panel__enlace" href="mis-proyectos.html">
+              <svg class="icono" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 7a2 2 0 0 1 2-2h4l2 2h8a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2Z"/></svg>
+              Mis proyectos
+              <span class="navegacion-panel__contador" aria-label="2 proyectos">2</span>
+            </a>
+          </li>
+          <li>
+            <a class="navegacion-panel__enlace" href="mis-citas.html" aria-current="page">
+              <svg class="icono" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="4" width="18" height="17" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>
+              Mis citas
+              
+            </a>
+          </li>
+          <li>
+            <a class="navegacion-panel__enlace" href="agendar-servicio.html">
+              <svg class="icono" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="4" width="18" height="17" rx="2"/><path d="M16 2v4M8 2v4M3 10h18M12 13v5M9.5 15.5h5"/></svg>
+              Agendar cita
+              
+            </a>
+          </li>
+        </ul>
+      </nav>
+
+      <div class="panel__usuario">
+        <span class="avatar avatar--acento" aria-hidden="true">LG</span>
+        <span class="panel__usuario-datos">
+          <span class="panel__usuario-nombre">Laura Gómez</span>
+          <span class="panel__usuario-correo">laura.gomez@correo.com</span>
+        </span>
+        <a class="panel__salir" href="../index.html" data-accion data-mensaje-exito="Cerraste sesión." aria-label="Cerrar sesión" title="Cerrar sesión">
+          <svg class="icono" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4M16 17l5-5-5-5M21 12H9"/></svg>
+        </a>
+      </div>
+    </aside>
+
+    <div class="panel__cuerpo">
+      <!-- ===================== Barra superior ===================== -->
+      <header class="panel__barra">
+        <button type="button" class="boton-icono boton-icono--pequeno boton-menu-panel" aria-expanded="false" aria-label="Abrir menú">
+          <svg class="icono" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+        </button>
+        <nav class="ruta" aria-label="Ruta de navegación">
+          <a href="mis-proyectos.html">Panel</a>
+          <svg class="icono" viewBox="0 0 24 24" aria-hidden="true"><path d="m9 6 6 6-6 6"/></svg>
+          <a href="mis-citas.html">Mis citas</a>
+          <svg class="icono" viewBox="0 0 24 24" aria-hidden="true"><path d="m9 6 6 6-6 6"/></svg>
+          <span aria-current="page">Cita registrada</span>
+        </nav>
+        <div class="panel__barra-acciones">
+          <a class="boton-icono boton-icono--pequeno campana" href="mis-citas.html" aria-label="Notificaciones: 2 nuevas">
+            <svg class="icono" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9"/><path d="M10.3 21a1.94 1.94 0 0 0 3.4 0"/></svg>
+            <span class="campana__punto" aria-hidden="true"></span>
+          </a>
+          <div class="panel__perfil">
+            <span class="avatar avatar--acento" aria-hidden="true">LG</span>
+            <span class="panel__perfil-nombre">Laura Gómez<small>Cliente</small></span>
+          </div>
+        </div>
+      </header>
+
+      <!-- ===================== Contenido ===================== -->
+      <main class="panel__contenido" id="contenido">
+        <div class="exito">
+          <div class="exito__cabecera">
+            <div class="exito__marca" aria-hidden="true">
+              <svg class="icono" viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg>
+            </div>
+            <h1 class="exito__titulo">Tu cita quedó registrada</h1>
+            <p class="exito__texto">Te enviamos la confirmación a <strong>laura.gomez@correo.com</strong>. Te avisaremos cuando el Product Owner de tu equipo confirme la cita.</p>
+          </div>
+
+          <!-- Comprobante -->
+          <section class="tarjeta comprobante aparecer" aria-labelledby="titulo-comprobante">
+            <div class="comprobante__cabecera">
+              <h2 class="comprobante__codigo" id="titulo-comprobante"><small>Código de la cita</small>C-0061</h2>
+              <span class="insignia insignia--pendiente">Pendiente</span>
+            </div>
+            <dl class="comprobante__datos">
+              <div><dt class="comprobante__dato">Servicio</dt><dd class="comprobante__valor" data-cita="servicio">Desarrollo de tienda en línea</dd></div>
+              <div><dt class="comprobante__dato">Modalidad</dt><dd class="comprobante__valor" data-cita="modalidad">Virtual</dd></div>
+              <div><dt class="comprobante__dato">Fecha</dt><dd class="comprobante__valor" data-cita="fecha">Martes 17 de noviembre de 2026</dd></div>
+              <div><dt class="comprobante__dato">Hora</dt><dd class="comprobante__valor" data-cita="hora">9:00 a. m. a 10:00 a. m.</dd></div>
+            </dl>
+            <p class="comprobante__pie">
+              <svg class="icono" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4M12 8h.01"/></svg>
+              <span data-cita="detalle-modalidad">Por videollamada. Te enviaremos el enlace cuando tu cita sea confirmada.</span>
+            </p>
+          </section>
+
+          <!-- Qué sigue -->
+          <section class="siguientes aparecer" style="--retraso: 120ms" aria-labelledby="titulo-siguientes">
+            <h2 class="tarjeta__titulo" id="titulo-siguientes">Qué sigue</h2>
+            <ol class="siguientes__lista">
+              <li class="siguientes__item"><h3 class="siguientes__titulo">Asignamos un equipo</h3><p class="siguientes__texto">La administración elige el equipo; su Product Owner atenderá tu cita.</p></li>
+              <li class="siguientes__item"><h3 class="siguientes__titulo">Él confirma la cita</h3><p class="siguientes__texto">Si es virtual, te envía el enlace de la videollamada.</p></li>
+              <li class="siguientes__item"><h3 class="siguientes__titulo">Se reúnen</h3><p class="siguientes__texto">Después de la reunión creamos tu proyecto y lo sigues desde tu panel.</p></li>
+            </ol>
+          </section>
+
+          <div class="exito__acciones">
+            <a class="boton boton--acento boton--grande" href="mis-citas.html">
+              Ver mis citas
+              <svg class="icono icono--mover" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+            </a>
+            <a class="boton boton--contorno boton--grande" href="mis-proyectos.html">Ir a mis proyectos</a>
+          </div>
+        </div>
+      </main>
+    </div>
+  </div>
+
+  <script src="../js/principal.js"></script>
+  <script src="../js/vistas/datos-cita.js"></script>
+</body>
+</html>

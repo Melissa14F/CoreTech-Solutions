@@ -1,0 +1,47 @@
+/* ==========================================================================
+   Vista: Iniciar sesión (login.html)
+   Requiere: css/global.css y css/plantillas/acceso.css
+   ========================================================================== */
+
+/* 1. Opciones bajo la contraseña =========================================== */
+.login__opciones { display: flex; align-items: center; justify-content: space-between; gap: var(--espacio-4); flex-wrap: wrap; margin: calc(-1 * var(--espacio-2)) 0 var(--espacio-6); }
+
+/* "¿Olvidaste tu contraseña?" se despliega sin JavaScript (<details>) */
+.recuperar summary { cursor: pointer; list-style: none; font-size: .875rem; font-weight: 600; color: var(--color-acento); }
+.recuperar summary::-webkit-details-marker { display: none; }
+.recuperar summary:hover { text-decoration: underline; text-underline-offset: 3px; }
+.recuperar { text-align: right; }
+.recuperar[open] { flex-basis: 100%; } /* al abrirse ocupa toda la fila y muestra la ayuda debajo */
+.recuperar__ayuda { margin-top: var(--espacio-3); text-align: left; animation: aparecer-arriba var(--duracion-media) var(--curva); }
+
+/* 2. Accesos de demostración (para recorrer el prototipo por rol) ========== */
+.separador { display: flex; align-items: center; gap: var(--espacio-3); margin: var(--espacio-8) 0 var(--espacio-5); font-size: .75rem; color: var(--color-texto-tenue); }
+.separador::before, .separador::after { content: ""; flex: 1; height: 1px; background: var(--color-borde-suave); }
+
+.accesos-demo { display: grid; gap: var(--espacio-2); }
+.acceso-demo {
+  display: flex; align-items: center; gap: var(--espacio-3); padding: var(--espacio-3) var(--espacio-4);
+  border: 1px solid var(--color-borde); border-radius: var(--radio-caja); font-size: .875rem;
+  transition: border-color var(--duracion-rapida), background-color var(--duracion-rapida), transform var(--duracion-rapida), box-shadow var(--duracion-rapida);
+}
+.acceso-demo:hover { border-color: var(--color-acento); background: var(--color-acento-suave); box-shadow: 0 6px 16px rgba(79, 70, 229, .12); }
+.acceso-demo:active { transform: scale(.99); }
+.acceso-demo__nombre { font-weight: 600; }
+.acceso-demo__rol { display: block; font-size: .75rem; color: var(--color-texto-suave); }
+.acceso-demo__flecha { margin-left: auto; color: var(--color-texto-suave); transition: transform var(--duracion-media) var(--curva), color var(--duracion-rapida); }
+.acceso-demo:hover .acceso-demo__flecha { transform: translateX(3px); color: var(--color-acento); }
+
+/* 3. Lateral: actividad reciente de ejemplo ================================ */
+.actividad { display: grid; gap: var(--espacio-3); margin-top: var(--espacio-8); }
+.actividad__item {
+  display: flex; align-items: center; gap: var(--espacio-3); padding: var(--espacio-4);
+  border: 1px solid var(--borde-noche); border-radius: var(--radio-caja); background: var(--vidrio); backdrop-filter: blur(10px);
+  animation: entrar 600ms var(--curva) both; animation-delay: var(--retraso, 0ms);
+}
+.actividad__icono { width: 36px; height: 36px; flex: none; display: grid; place-items: center; border-radius: 50%; }
+.actividad__icono--exito { background: rgba(74, 222, 128, .14); color: #4ade80; }
+.actividad__icono--acento { background: rgba(165, 180, 252, .14); color: var(--color-indigo-claro); }
+.actividad__icono--aviso { background: rgba(251, 191, 36, .14); color: #fbbf24; }
+.actividad__texto { font-size: .875rem; color: #fff; font-weight: 600; }
+.actividad__detalle { display: block; font-size: .75rem; font-weight: 400; color: var(--color-texto-noche); }
+.actividad__hora { margin-left: auto; font-size: .75rem; color: #5f6886; white-space: nowrap; }

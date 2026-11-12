@@ -1,0 +1,57 @@
+/* ==========================================================================
+   Vista: Auditoría (admin/auditoria.html)
+   Requiere: global.css, plantillas/panel.css, plantillas/tarjetas.css
+   (íconos de indicador) y plantillas/tabla.css
+   ========================================================================== */
+
+/* 1. Resumen =============================================================== */
+.resumen-auditoria { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: var(--espacio-4); margin: 0 0 var(--espacio-6); padding: 0; list-style: none; }
+.resumen-auditoria__dato { display: flex; align-items: center; gap: var(--espacio-3); padding: var(--espacio-4); border: 1px solid var(--color-borde); border-radius: var(--radio-tarjeta); background: var(--color-fondo); }
+.resumen-auditoria__dato strong { display: block; font-family: var(--fuente-titulos); font-size: 1.25rem; font-weight: 800; line-height: 1.2; color: var(--color-tinta); }
+.resumen-auditoria__dato small { font-size: .8125rem; color: var(--color-texto-suave); }
+.resumen-auditoria__dato--fijo { background: var(--color-fondo-suave); }
+.resumen-auditoria__dato--fijo .indicador__icono { background: var(--color-tinta); color: #fff; }
+.indicador__icono--peligro { background: var(--color-error-fondo); color: var(--color-error); }
+.avatar--alerta { background: var(--color-error); }
+
+/* 2. Tabla ================================================================= */
+.tabla-auditoria td { vertical-align: top; }
+.celda-hora { white-space: nowrap; font-size: .8125rem; font-weight: 600; color: var(--color-texto); font-variant-numeric: tabular-nums; }
+.celda-evento { min-width: 320px; }
+.celda-evento strong { display: inline-flex !important; flex-wrap: wrap; align-items: center; gap: var(--espacio-2); }
+.celda-evento .insignia .icono { width: 12px; height: 12px; }
+.celda-evento .insignia::before { display: none; }
+
+/* Módulo: etiqueta neutra; el color no lleva significado, solo el texto */
+.modulo { display: inline-block; padding: 3px 10px; border-radius: var(--radio-pildora); background: var(--color-fondo-suave); box-shadow: inset 0 0 0 1px var(--color-borde); font-size: .75rem; font-weight: 600; color: var(--color-texto); white-space: nowrap; }
+
+/* Detalle desplegable (funciona sin JavaScript) */
+.detalle-evento { margin-top: var(--espacio-2); }
+.detalle-evento summary { display: inline-flex; align-items: center; gap: 4px; font-size: .75rem; font-weight: 700; color: var(--color-acento); cursor: pointer; list-style: none; }
+.detalle-evento summary::-webkit-details-marker { display: none; }
+.detalle-evento summary::after { content: ""; width: 6px; height: 6px; border-right: 1.5px solid currentColor; border-bottom: 1.5px solid currentColor; transform: rotate(45deg) translateY(-2px); transition: transform var(--duracion-rapida); }
+.detalle-evento[open] summary::after { transform: rotate(225deg) translateY(-1px); }
+.detalle-evento__cuerpo { margin-top: var(--espacio-2); padding: var(--espacio-3); border-radius: var(--radio-caja); background: var(--color-fondo-suave); animation: entrar var(--duracion-rapida) var(--curva); }
+.cambios { display: grid; gap: var(--espacio-2); margin: 0; padding: 0; list-style: none; }
+.cambio { display: grid; grid-template-columns: minmax(0, 150px) minmax(0, 1fr) auto minmax(0, 1fr); align-items: start; gap: var(--espacio-2); font-size: .8125rem; }
+.cambio .icono { width: 14px; height: 14px; margin-top: 3px; color: var(--color-texto-tenue); }
+.cambio__campo { font-weight: 600; color: var(--color-tinta); }
+.cambio__antes { color: var(--color-texto-suave); text-decoration: line-through; text-decoration-color: rgba(217, 45, 32, .5); overflow-wrap: anywhere; }
+.cambio__despues { color: var(--color-tinta); font-weight: 600; overflow-wrap: anywhere; }
+.detalle-evento__origen, .detalle-evento__sin-cambios { margin: var(--espacio-2) 0 0; font-size: .75rem; color: var(--color-texto-suave); }
+.detalle-evento__sin-cambios { margin: 0; }
+
+/* 3. Diseño adaptable ====================================================== */
+@media (max-width: 1080px) {
+  .resumen-auditoria { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+@media (max-width: 900px) {
+  .celda-evento { min-width: 0; }
+  .cambio { grid-template-columns: minmax(0, 1fr); gap: 0; }
+  .cambio .icono { display: none; }
+  .cambio__antes::before { content: "Antes: "; text-decoration: none; }
+  .cambio__despues::before { content: "Ahora: "; font-weight: 400; color: var(--color-texto-suave); }
+}
+@media (max-width: 640px) {
+  .resumen-auditoria { grid-template-columns: minmax(0, 1fr); }
+}

@@ -1,0 +1,152 @@
+/* ==========================================================================
+   Vista: Agendar cita · Paso 2, fecha, hora y modalidad (cliente/agendar-fecha.html)
+   Requiere: global.css, plantillas/panel.css y plantillas/agendamiento.css
+   ========================================================================== */
+
+/* 1. Grupos de opciones (fieldset sin borde) =============================== */
+.grupo-opciones { margin: 0; padding: 0; border: 0; min-width: 0; }
+.grupo-opciones legend { padding: 0; }
+.grupo-opciones__mensaje { margin-top: var(--espacio-3); }
+.grupo-opciones--separado { margin-top: var(--espacio-6); }
+
+/* Las opciones usan radios reales ocultos a la vista (siguen siendo accesibles por teclado) */
+.control-oculto { position: absolute; opacity: 0; pointer-events: none; }
+
+/* 2. Encabezado de la sección ============================================== */
+.calendario-cita__encabezado { display: flex; align-items: flex-start; justify-content: space-between; gap: var(--espacio-4); flex-wrap: wrap; }
+.calendario-cita__plazo {
+  display: inline-flex; align-items: center; gap: 6px; margin: 0; padding: 6px 12px; border-radius: var(--radio-pildora);
+  background: var(--color-fondo-suave); font-size: .8125rem; font-weight: 600; color: var(--color-texto-suave); white-space: nowrap;
+}
+.calendario-cita__plazo .icono { width: 16px; height: 16px; color: var(--color-acento); }
+
+/* Calendario + horarios: lado a lado cuando la tarjeta tiene espacio (consulta de contenedor) */
+.tarjeta:has(> .calendario-cita) { container-type: inline-size; }
+.calendario-cita { display: grid; grid-template-columns: minmax(0, 1fr); gap: var(--espacio-6); }
+
+/* 3. Calendario de mes ===================================================== */
+.calendario__cabecera { display: flex; align-items: center; justify-content: space-between; gap: var(--espacio-3); margin-bottom: var(--espacio-3); }
+.calendario__titulo { margin: 0; color: var(--color-texto); font-family: var(--fuente-titulos); font-size: 1.0625rem; font-weight: 700; }
+.calendario__flechas { display: flex; gap: var(--espacio-2); }
+.calendario__flechas .boton-icono:disabled { opacity: .35; cursor: not-allowed; }
+.calendario__semana, .calendario__mes { display: grid; grid-template-columns: repeat(7, minmax(0, 1fr)); gap: 4px; }
+.calendario__semana { margin-bottom: 4px; }
+.calendario__semana abbr {
+  padding: var(--espacio-2) 0; text-align: center; text-decoration: none; font-size: .6875rem; font-weight: 700;
+  letter-spacing: .08em; color: var(--color-texto-tenue);
+}
+.calendario__mes--oculto { display: none; }
+.calendario__titulo-sin-js { display: none; }
+
+.calendario__dia {
+  position: relative; display: grid; place-items: center; height: 48px;
+  border: 1.5px solid transparent; border-radius: var(--radio-control); font-size: .9375rem; font-weight: 600;
+  font-variant-numeric: tabular-nums;
+}
+label.calendario__dia { cursor: pointer; background: var(--color-fondo-suave); transition: border-color var(--duracion-rapida), background-color var(--duracion-rapida); }
+label.calendario__dia:hover { border-color: var(--color-acento); background: var(--color-fondo); }
+.calendario__numero { line-height: 1; }
+/* Punto de cupos debajo del número (con texto alternativo en .solo-lector) */
+.calendario__cupos { position: absolute; bottom: 7px; left: 50%; width: 5px; height: 5px; margin-left: -2.5px; border-radius: 50%; background: var(--color-exito); }
+.calendario__dia--pocos .calendario__cupos { background: var(--color-advertencia); }
+/* Días no elegibles: pasados, fines de semana, festivos, sin cupos o fuera del plazo */
+.calendario__dia--inactivo { color: var(--color-texto-tenue); font-weight: 400; }
+.calendario__dia--festivo .calendario__numero { text-decoration: line-through; }
+/* Hoy: anillo */
+.calendario__dia--hoy { border-color: var(--color-borde); }
+.calendario__dia--hoy::after { content: "Hoy"; position: absolute; bottom: 4px; font-size: .5625rem; font-weight: 700; letter-spacing: .04em; text-transform: uppercase; color: var(--color-acento); }
+/* Elegido */
+label.calendario__dia:has(:checked) { border-color: var(--color-acento); background: var(--color-acento); color: #fff; box-shadow: 0 6px 16px rgba(79, 70, 229, .3); }
+label.calendario__dia:has(:checked) .calendario__cupos { background: #fff; }
+.calendario__dia:has(:focus-visible), .franja:has(:focus-visible), .modalidad:has(:focus-visible) { outline: 2px solid var(--color-acento); outline-offset: 2px; }
+
+/* Sin JavaScript se ven los dos meses, uno debajo del otro, con su nombre */
+.sin-js .calendario__mes--oculto { display: grid; margin-top: var(--espacio-5); }
+.sin-js .calendario__titulo-sin-js { display: block; grid-column: 1 / -1; margin: 0 0 var(--espacio-2); font-weight: 700; }
+.sin-js .calendario__cabecera { display: none; }
+
+/* 4. Horarios del día elegido ============================================== */
+.horarios { padding: var(--espacio-5); border-radius: var(--radio-caja); background: var(--color-fondo-suave); align-self: stretch; }
+.franjas { display: grid; gap: var(--espacio-4); }
+.franjas--oculta { display: none; }
+.sin-js .franjas--primera { display: grid; } /* sin JavaScript se ven las franjas del primer día */
+.franjas__cabecera { display: flex; align-items: baseline; justify-content: space-between; gap: var(--espacio-3); flex-wrap: wrap; padding-bottom: var(--espacio-3); border-bottom: 1px solid var(--color-borde); }
+.franjas__dia { margin: 0; color: var(--color-texto); font-family: var(--fuente-titulos); font-weight: 700; }
+.franjas__conteo { margin: 0; font-size: .8125rem; color: var(--color-texto-suave); }
+.franjas__grupo-titulo { margin: 0 0 var(--espacio-2); font-size: .6875rem; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--color-texto-suave); }
+.franjas__lista { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--espacio-2); }
+.franja {
+  position: relative; display: grid; place-items: center; padding: 10px var(--espacio-2);
+  border: 1.5px solid var(--color-borde); border-radius: var(--radio-control); background: var(--color-fondo); cursor: pointer;
+  font-size: .875rem; font-weight: 600; font-variant-numeric: tabular-nums; transition: border-color var(--duracion-rapida), background-color var(--duracion-rapida);
+}
+.franja:hover { border-color: var(--color-acento); }
+.franja:has(:checked) { border-color: var(--color-acento); background: var(--color-acento); color: #fff; }
+/* Franja ocupada (RN-02): tachada, no se puede elegir */
+.franja--ocupada { cursor: not-allowed; color: var(--color-texto-tenue); font-weight: 400; text-decoration: line-through; background: transparent; border-style: dashed; }
+.franja--ocupada:hover { border-color: var(--color-borde); }
+/* Hora en la que el cliente ya tiene otra cita (RN-03): no se tacha, se identifica */
+.franja--tuya { gap: 0; padding-block: 6px; text-decoration: none; color: var(--color-acento); border-color: #c7c9f6; background: var(--color-acento-suave); }
+.franja--tuya:hover { border-color: #c7c9f6; }
+.franja__estado { font-size: .6875rem; font-weight: 600; }
+.franjas__vacio { display: grid; justify-items: center; gap: var(--espacio-2); margin: 0; padding: var(--espacio-8, 48px) var(--espacio-4); text-align: center; color: var(--color-texto-suave); font-size: .875rem; }
+.franjas__vacio .icono { color: var(--color-texto-tenue); }
+.franjas__vacio strong { display: block; color: var(--color-texto); }
+.sin-js .franjas__vacio { display: none; }
+html:not(.sin-js) .horarios:has([data-franjas-vacio]:not([hidden])) { display: grid; align-content: center; }
+
+.leyenda { display: flex; flex-wrap: wrap; gap: var(--espacio-4); margin: var(--espacio-4) 0 0; padding: 0; list-style: none; font-size: .75rem; color: var(--color-texto-suave); }
+.leyenda__item { display: inline-flex; align-items: center; gap: 6px; }
+.leyenda__muestra { position: relative; width: 18px; height: 18px; border-radius: 5px; background: var(--color-fondo-suave); border: 1px solid var(--color-borde-suave); }
+.leyenda__muestra--inactiva { background: transparent; border-style: dashed; }
+.leyenda__punto { position: absolute; bottom: 3px; left: 50%; width: 5px; height: 5px; margin-left: -2.5px; border-radius: 50%; background: var(--color-exito); }
+.leyenda__punto--pocos { background: var(--color-advertencia); }
+
+/* Distribución según el ancho de la tarjeta (va después de las reglas base) */
+@container (min-width: 440px) and (max-width: 639px) {
+  .franjas__lista { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+}
+@container (min-width: 640px) {
+  .calendario-cita { grid-template-columns: minmax(0, 1.25fr) minmax(250px, 1fr); align-items: start; }
+}
+
+/* 5. Modalidad ============================================================= */
+.modalidades { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--espacio-4); }
+.modalidad {
+  position: relative; display: grid; grid-template-columns: auto minmax(0, 1fr) auto; gap: var(--espacio-4); align-items: start;
+  padding: var(--espacio-5); border: 1.5px solid var(--color-borde); border-radius: var(--radio-tarjeta); background: var(--color-fondo); cursor: pointer;
+  transition: border-color var(--duracion-rapida), box-shadow var(--duracion-media) var(--curva), transform var(--duracion-media) var(--curva);
+}
+.modalidad:hover { border-color: #c7c9f6; transform: translateY(-2px); }
+.modalidad__icono { width: 44px; height: 44px; display: grid; place-items: center; border-radius: var(--radio-caja); background: var(--color-acento-suave); color: var(--color-acento); }
+.modalidad__nombre { display: block; font-weight: 700; }
+.modalidad__descripcion { display: block; margin-top: 2px; font-size: .8125rem; color: var(--color-texto-suave); }
+.modalidad__detalle { display: none; margin-top: var(--espacio-3); padding: var(--espacio-3); border-radius: var(--radio-control); background: var(--color-fondo-suave); font-size: .8125rem; color: var(--color-texto); }
+.modalidad__marca { width: 22px; height: 22px; display: grid; place-items: center; border: 2px solid var(--color-borde); border-radius: 50%; }
+.modalidad:has(:checked) { border-color: var(--color-acento); box-shadow: 0 0 0 4px rgba(79, 70, 229, .12); }
+.modalidad:has(:checked) .modalidad__detalle { display: block; animation: aparecer-arriba var(--duracion-media) var(--curva); }
+.modalidad:has(:checked) .modalidad__marca { border-color: var(--color-acento); background: var(--color-acento); }
+.modalidad:has(:checked) .modalidad__marca::after { content: ""; width: 8px; height: 8px; border-radius: 50%; background: #fff; }
+
+/* 6. Descripción de la necesidad ========================================== */
+.necesidad .agendamiento__titulo-bloque { display: block; font-family: var(--fuente-titulos); font-weight: 700; color: var(--color-texto); }
+.necesidad .agendamiento__ayuda { margin-bottom: var(--espacio-4); }
+.necesidad .campo__control--area { min-height: 120px; }
+/* En el resumen lateral la descripción se recorta a dos líneas */
+.resumen-cita__fila:has([data-resumen="descripcion"]) .resumen-cita__dato { flex-shrink: 0; }
+.resumen-cita__valor[data-resumen="descripcion"] {
+  min-width: 0; overflow: hidden; overflow-wrap: anywhere;
+  display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 2; line-clamp: 2;
+}
+
+/* 7. Diseño adaptable ====================================================== */
+@media (max-width: 760px) {
+  .modalidades { grid-template-columns: minmax(0, 1fr); }
+}
+@media (max-width: 480px) {
+  .calendario__semana, .calendario__mes { gap: 2px; }
+  .calendario__dia { height: 42px; font-size: .875rem; }
+  .calendario__cupos { bottom: 5px; }
+  .calendario__dia--hoy::after { display: none; }
+  .horarios { padding: var(--espacio-4); }
+}

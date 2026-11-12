@@ -1,0 +1,39 @@
+/* ==========================================================================
+   Plantilla: pantallas de un proyecto
+   Se usa en el detalle del proyecto del cliente y en "Registrar avance" del
+   desarrollador. Requiere: global.css y plantillas/panel.css
+   ========================================================================== */
+
+/* 1. Encabezado del proyecto =============================================== */
+.proyecto-cabecera { display: flex; align-items: center; gap: var(--espacio-5); flex-wrap: wrap; margin-bottom: var(--espacio-6); }
+.proyecto-cabecera__imagen { width: 96px; height: 64px; border-radius: var(--radio-caja); object-fit: cover; border: 1px solid var(--color-borde); }
+.proyecto-cabecera__titulo { display: flex; align-items: center; gap: var(--espacio-3); flex-wrap: wrap; margin: 0 0 4px; font-size: clamp(1.5rem, 2.4vw, 1.875rem); font-weight: 800; letter-spacing: -.03em; }
+.proyecto-cabecera__subtitulo { margin: 0; font-size: .875rem; }
+.proyecto-cabecera__acciones { margin-left: auto; }
+.proyecto-detalle__titulo { margin: 0 0 var(--espacio-4); font-size: 1.125rem; }
+
+/* 2. Tarjetas laterales: persona de contacto y lista de datos ============== */
+.persona-contacto { display: flex; align-items: center; gap: var(--espacio-3); margin-bottom: var(--espacio-4); }
+.persona-contacto .avatar { width: 44px; height: 44px; font-size: .875rem; }
+.persona-contacto__nombre { display: block; font-weight: 700; }
+.persona-contacto__rol { font-size: .8125rem; color: var(--color-texto-suave); }
+.lista-datos { display: grid; gap: var(--espacio-3); font-size: .875rem; }
+.lista-datos__fila { display: flex; justify-content: space-between; gap: var(--espacio-3); }
+.lista-datos__dato { color: var(--color-texto-suave); }
+.lista-datos__valor { font-weight: 600; text-align: right; }
+
+/* 3. Diseño adaptable ====================================================== */
+@media (max-width: 640px) {
+  .proyecto-cabecera__acciones { margin-left: 0; width: 100%; }
+  .proyecto-cabecera__acciones .boton { width: 100%; }
+}
+
+/* Equipo del proyecto: el Product Owner es el contacto; los demás, la lista */
+.equipo__nota { margin: 0 0 var(--espacio-4); font-size: .8125rem; color: var(--color-texto-suave); }
+.equipo__titulo { margin: 0 0 var(--espacio-2); font-size: .6875rem; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--color-texto-suave); }
+.equipo { display: grid; gap: var(--espacio-2); margin: 0; padding: 0; list-style: none; }
+.equipo__miembro { display: flex; align-items: center; gap: var(--espacio-3); }
+.equipo__nombre { display: block; font-size: .875rem; font-weight: 600; }
+.equipo__rol { display: block; font-size: .75rem; color: var(--color-texto-suave); }
+.avatar--pequeno { width: 32px; height: 32px; font-size: .6875rem; }
+.equipo .avatar { background: var(--color-acento-suave); color: var(--color-acento); }

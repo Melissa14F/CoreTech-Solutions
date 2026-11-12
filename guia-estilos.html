@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="es" class="sin-js">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Guía de estilos · CoreTech Solutions</title>
+  <meta name="description" content="Colores, tipografía y componentes del prototipo de CoreTech Solutions.">
+  <link rel="icon" href="img/logo.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap">
+  <link rel="stylesheet" href="css/global.css">
+  <link rel="stylesheet" href="css/plantillas/documento.css">
+  <link rel="stylesheet" href="css/plantillas/tarjeta-servicio.css">
+  <link rel="stylesheet" href="css/plantillas/tarjetas.css">
+  <link rel="stylesheet" href="css/vistas/guia-estilos.css">
+  <script src="js/accesibilidad.js"></script>
+</head>
+<body>
+  <a class="saltar-contenido" href="#contenido">Saltar al contenido</a>
+
+  <!-- ===================== Encabezado ===================== -->
+  <header class="encabezado encabezado--oscuro">
+    <div class="contenedor encabezado__contenido">
+      <a class="marca" href="index.html" aria-label="CoreTech Solutions, ir al inicio">
+        <img class="marca__logo" src="img/logo.svg" alt="" width="30" height="30">
+        <span>CoreTech</span>
+      </a>
+
+      <nav class="menu-principal" aria-label="Secciones">
+        <ul class="menu-principal__lista">
+          <li><a class="menu-principal__enlace" href="index.html#servicios">Servicios</a></li>
+          <li><a class="menu-principal__enlace" href="index.html#proceso">Proceso</a></li>
+          <li><a class="menu-principal__enlace" href="index.html#contacto">Contacto</a></li>
+        </ul>
+      </nav>
+
+      <div class="encabezado__acciones">
+        <a class="boton encabezado__boton encabezado__boton--ingresar" href="login.html">
+          <svg class="icono" viewBox="0 0 24 24" aria-hidden="true"><path d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4M10 17l5-5-5-5M15 12H3"/></svg>
+          Iniciar sesión
+        </a>
+        <a class="boton encabezado__boton encabezado__boton--registro" href="registro.html">
+          Crear cuenta
+          <svg class="icono icono--mover" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+        </a>
+        <button type="button" class="boton-menu" aria-expanded="false" aria-controls="menu-movil" aria-label="Abrir menú">
+          <svg class="icono boton-menu__abrir" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+          <svg class="icono boton-menu__cerrar" viewBox="0 0 24 24" aria-hidden="true"><path d="M18 6 6 18M6 6l12 12"/></svg>
+        </button>
+      </div>
+    </div>
+
+    <nav class="menu-movil" id="menu-movil" aria-label="Menú móvil">
+      <a class="menu-movil__enlace" href="index.html#servicios">Servicios</a>
+      <a class="menu-movil__enlace" href="index.html#proceso">Proceso</a>
+      <a class="menu-movil__enlace" href="index.html#contacto">Contacto</a>
+      <div class="menu-movil__acciones">
+        <a class="boton boton--transparente boton--bloque" href="login.html">Iniciar sesión</a>
+        <a class="boton boton--acento boton--bloque" href="registro.html">Crear cuenta</a>
+      </div>
+    </nav>
+  </header>
+
+  <main id="contenido">
+    <section class="documento-portada superficie-noche" aria-labelledby="titulo-pagina">
+      <div class="contenedor">
+        <span class="pildora aparecer">Guía de estilos</span>
+        <h1 class="documento-portada__titulo aparecer" id="titulo-pagina" style="--retraso: 80ms">Un solo lenguaje visual</h1>
+        <p class="documento-portada__texto aparecer" style="--retraso: 160ms">Los colores, textos y componentes que usan todas las interfaces. Todo sale de las variables de <code>css/global.css</code>: si cambias una, cambia en todo el sitio.</p>
+      </div>
+    </section>
+
+    <div class="contenedor documento documento--con-indice">
+      <nav class="documento__indice" aria-label="Contenido de la guía">
+        <p class="documento__indice-titulo">Contenido</p>
+        <ol><li><a href="#colores">Colores</a></li><li><a href="#tipografia">Tipografía</a></li><li><a href="#espaciado">Espaciado y formas</a></li><li><a href="#botones">Botones</a></li><li><a href="#formularios">Formularios</a></li><li><a href="#insignias">Insignias</a></li><li><a href="#alertas">Alertas y mensajes</a></li><li><a href="#tarjetas">Tarjetas</a></li><li><a href="#iconos">Íconos</a></li><li><a href="#accesibilidad">Accesibilidad</a></li><li><a href="#codigo">Convenciones del código</a></li></ol>
+        <a class="boton boton--contorno boton--pequeno" href="mapa.html">Ver el mapa del sitio</a>
+      </nav>
+
+      <div class="guia">
+        <section class="guia__seccion" id="colores" aria-labelledby="titulo-colores">
+          <h2 class="guia__titulo" id="titulo-colores">Colores</h2>
+          <p class="guia__texto">Paleta «Medianoche e índigo». Los textos sobre cada fondo cumplen el contraste mínimo AA (4.5:1). Los colores de estado nunca se usan solos: van con texto o ícono.</p>
+<h3 class="guia__subtitulo">Marca</h3><ul class="paleta"><li class="color"><span class="color__muestra" style="background: var(--color-noche)"></span><span class="color__datos"><strong>Noche</strong><code>--color-noche</code><code>#0b1020</code><small>Fondo oscuro: portada, menú del panel, pie</small></span></li><li class="color"><span class="color__muestra" style="background: var(--color-noche-suave)"></span><span class="color__datos"><strong>Noche suave</strong><code>--color-noche-suave</code><code>#121933</code><small>Superficies sobre el fondo oscuro</small></span></li><li class="color"><span class="color__muestra" style="background: var(--color-acento)"></span><span class="color__datos"><strong>Acento</strong><code>--color-acento</code><code>#4f46e5</code><small>Índigo: botones principales, enlaces, foco</small></span></li><li class="color"><span class="color__muestra" style="background: var(--color-acento-hover)"></span><span class="color__datos"><strong>Acento hover</strong><code>--color-acento-hover</code><code>#4338ca</code><small>Índigo al pasar el cursor</small></span></li><li class="color"><span class="color__muestra" style="background: var(--color-acento-suave)"></span><span class="color__datos"><strong>Acento suave</strong><code>--color-acento-suave</code><code>#eef0ff</code><small>Fondos de selección e íconos</small></span></li><li class="color"><span class="color__muestra" style="background: var(--color-indigo-claro)"></span><span class="color__datos"><strong>Indigo claro</strong><code>--color-indigo-claro</code><code>#a5b4fc</code><small>Acento sobre fondo oscuro</small></span></li></ul>
+<h3 class="guia__subtitulo">Texto y superficies</h3><ul class="paleta"><li class="color"><span class="color__muestra" style="background: var(--color-tinta)"></span><span class="color__datos"><strong>Tinta</strong><code>--color-tinta</code><code>#111827</code><small>Títulos y texto principal</small></span></li><li class="color"><span class="color__muestra" style="background: var(--color-texto)"></span><span class="color__datos"><strong>Texto</strong><code>--color-texto</code><code>#374151</code><small>Párrafos</small></span></li><li class="color"><span class="color__muestra" style="background: var(--color-texto-suave)"></span><span class="color__datos"><strong>Texto suave</strong><code>--color-texto-suave</code><code>#6b7280</code><small>Texto secundario</small></span></li><li class="color"><span class="color__muestra" style="background: var(--color-texto-tenue)"></span><span class="color__datos"><strong>Texto tenue</strong><code>--color-texto-tenue</code><code>#9ca3af</code><small>Deshabilitado y pendiente</small></span></li><li class="color"><span class="color__muestra" style="background: var(--color-borde)"></span><span class="color__datos"><strong>Borde</strong><code>--color-borde</code><code>#e5e7eb</code><small>Bordes</small></span></li><li class="color"><span class="color__muestra" style="background: var(--color-fondo-suave)"></span><span class="color__datos"><strong>Fondo suave</strong><code>--color-fondo-suave</code><code>#f7f7fb</code><small>Fondo de los paneles</small></span></li></ul>
+<h3 class="guia__subtitulo">Estados</h3><ul class="paleta"><li class="color"><span class="color__muestra" style="background: var(--color-exito)"></span><span class="color__datos"><strong>Exito</strong><code>--color-exito</code><code>#0f9d58</code><small>Confirmado, atendido, completado</small></span></li><li class="color"><span class="color__muestra" style="background: var(--color-advertencia)"></span><span class="color__datos"><strong>Advertencia</strong><code>--color-advertencia</code><code>#b45309</code><small>Pendiente, sin avances</small></span></li><li class="color"><span class="color__muestra" style="background: var(--color-error)"></span><span class="color__datos"><strong>Error</strong><code>--color-error</code><code>#d92d20</code><small>Errores, fuera de plazo, eliminar</small></span></li></ul>
+
+        </section>
+
+        <section class="guia__seccion" id="tipografia" aria-labelledby="titulo-tipografia">
+          <h2 class="guia__titulo" id="titulo-tipografia">Tipografía</h2>
+          <p class="guia__texto">Plus Jakarta Sans para títulos y cifras; Inter para textos e interfaz. Los tamaños se adaptan a la pantalla con <code>clamp()</code>.</p>
+          <div class="tipos">
+            <div class="tipo"><span class="tipo__etiqueta">Título de página · Plus Jakarta Sans 800</span><p class="tipo__muestra tipo__muestra--h1">Tu idea, hecha software.</p></div>
+            <div class="tipo"><span class="tipo__etiqueta">Título de sección · 800</span><p class="tipo__muestra tipo__muestra--h2">Cómo funciona</p></div>
+            <div class="tipo"><span class="tipo__etiqueta">Título de tarjeta · 700</span><p class="tipo__muestra tipo__muestra--h3">Desarrollo de tienda en línea</p></div>
+            <div class="tipo"><span class="tipo__etiqueta">Párrafo · Inter 400, 16 px, interlineado 1.6</span><p class="tipo__muestra">De la primera reunión al despliegue, con un equipo a cargo y tu proyecto visible fase por fase desde tu panel.</p></div>
+            <div class="tipo"><span class="tipo__etiqueta">Texto secundario · Inter 400, 13 px</span><p class="tipo__muestra tipo__muestra--pequena">Enviada ayer, 4:12 p. m. · Virtual</p></div>
+            <div class="tipo"><span class="tipo__etiqueta">Etiqueta · Inter 700, mayúsculas</span><p class="tipo__muestra tipo__muestra--etiqueta">Por confirmar</p></div>
+          </div>
+        </section>
+
+        <section class="guia__seccion" id="espaciado" aria-labelledby="titulo-espaciado">
+          <h2 class="guia__titulo" id="titulo-espaciado">Espaciado y formas</h2>
+          <p class="guia__texto">Todos los márgenes salen de una escala de 4 px. Las esquinas son más redondas cuanto más grande es el elemento.</p>
+          <div class="formas">
+            <div><h3 class="guia__subtitulo">Espaciado</h3><ul class="espacios"><li class="espacio"><span class="espacio__barra" style="width: var(--espacio-1)"></span><code>--espacio-1</code><small>4 px</small></li><li class="espacio"><span class="espacio__barra" style="width: var(--espacio-2)"></span><code>--espacio-2</code><small>8 px</small></li><li class="espacio"><span class="espacio__barra" style="width: var(--espacio-3)"></span><code>--espacio-3</code><small>12 px</small></li><li class="espacio"><span class="espacio__barra" style="width: var(--espacio-4)"></span><code>--espacio-4</code><small>16 px</small></li><li class="espacio"><span class="espacio__barra" style="width: var(--espacio-6)"></span><code>--espacio-6</code><small>24 px</small></li><li class="espacio"><span class="espacio__barra" style="width: var(--espacio-8)"></span><code>--espacio-8</code><small>32 px</small></li><li class="espacio"><span class="espacio__barra" style="width: var(--espacio-12)"></span><code>--espacio-12</code><small>48 px</small></li><li class="espacio"><span class="espacio__barra" style="width: var(--espacio-16)"></span><code>--espacio-16</code><small>64 px</small></li></ul></div>
+            <div><h3 class="guia__subtitulo">Radios</h3><ul class="radios"><li class="radio-muestra"><span style="border-radius: var(--radio-control)"></span><code>--radio-control</code><small>8 px · campos y botones</small></li><li class="radio-muestra"><span style="border-radius: var(--radio-caja)"></span><code>--radio-caja</code><small>12 px · cajas internas</small></li><li class="radio-muestra"><span style="border-radius: var(--radio-tarjeta)"></span><code>--radio-tarjeta</code><small>16 px · tarjetas</small></li><li class="radio-muestra"><span style="border-radius: var(--radio-pildora)"></span><code>--radio-pildora</code><small>Píldoras e insignias</small></li></ul>
+            <h3 class="guia__subtitulo">Sombras</h3><ul class="sombras"><li class="sombra-muestra" style="box-shadow: var(--sombra-baja)"><code>--sombra-baja</code><small>Tarjetas en reposo</small></li><li class="sombra-muestra" style="box-shadow: var(--sombra-media)"><code>--sombra-media</code><small>Al pasar el cursor</small></li><li class="sombra-muestra" style="box-shadow: var(--sombra-alta)"><code>--sombra-alta</code><small>Ventanas y menús</small></li></ul></div>
+          </div>
+        </section>
+
+        <section class="guia__seccion" id="botones" aria-labelledby="titulo-botones">
+          <h2 class="guia__titulo" id="titulo-botones">Botones</h2>
+          <p class="guia__texto">Un solo botón principal (índigo) por pantalla o por grupo de acciones. Los enlaces que parecen botón usan las mismas clases. Todos tienen estado de foco visible y reaccionan al presionarlos.</p>
+          <div class="muestra">
+            <div class="muestra__fila">
+              <button type="button" class="boton boton--acento"><svg class="icono" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg>Principal</button>
+              <button type="button" class="boton boton--oscuro">Oscuro</button>
+              <button type="button" class="boton boton--contorno">Contorno</button>
+              <button type="button" class="boton boton--fantasma">Fantasma</button>
+              <button type="button" class="boton boton--peligro">Peligro</button>
+            </div>
+            <div class="muestra__fila">
+              <button type="button" class="boton boton--acento boton--pequeno">Pequeño</button>
+              <button type="button" class="boton boton--acento boton--grande">Grande</button>
+              <button type="button" class="boton boton--acento esta-cargando" aria-label="Guardando">Guardando</button>
+              <a class="boton boton--acento" href="guia-estilos.html#botones" aria-disabled="true" tabindex="-1">Deshabilitado</a>
+              <button type="button" class="boton-icono" aria-label="Botón de ícono"><svg class="icono" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 20h9"/><path d="M16.5 3.5a2.12 2.12 0 0 1 3 3L7 19l-4 1 1-4Z"/></svg></button>
+            </div>
+            <div class="muestra__fila muestra__fila--oscura superficie-noche">
+              <button type="button" class="boton boton--acento">Sobre fondo oscuro</button>
+              <button type="button" class="boton boton--claro">Claro</button>
+              <button type="button" class="boton boton--transparente">Transparente</button>
+            </div>
+          </div>
+          <pre class="codigo-ejemplo"><code>&lt;a class="boton boton--acento" href="registro.html"&gt;Crear cuenta&lt;/a&gt;</code></pre>
+        </section>
+
+        <section class="guia__seccion" id="formularios" aria-labelledby="titulo-formularios">
+          <h2 class="guia__titulo" id="titulo-formularios">Formularios</h2>
+          <p class="guia__texto">Cada campo tiene etiqueta visible, ayuda cuando hace falta y un mensaje de error que dice cómo corregirlo. La validación aparece al salir del campo, no mientras se escribe por primera vez.</p>
+          <form class="muestra muestra--formulario" action="guia-estilos.html#formularios" data-validar data-mensaje-error="Así se ve un error: revisa los campos en rojo.">
+            <div class="campo">
+              <label class="campo__etiqueta" for="ej-nombre">Campo normal</label>
+              <input class="campo__control" id="ej-nombre" type="text" placeholder="Ejemplo: Laura Gómez" required minlength="3" data-mensaje-vacio="Escribe tu nombre completo." aria-describedby="ej-nombre-ayuda ej-nombre-mensaje">
+              <p class="campo__ayuda" id="ej-nombre-ayuda">Texto de ayuda debajo del campo.</p>
+              <p class="campo__mensaje" id="ej-nombre-mensaje" aria-live="polite"><svg class="icono" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M12 8v4M12 16h.01"/></svg><span class="campo__mensaje-texto"></span></p>
+            </div>
+            <div class="campo campo--invalido">
+              <label class="campo__etiqueta" for="ej-correo">Con error</label>
+              <input class="campo__control" id="ej-correo" type="email" value="laura@correo" aria-invalid="true" aria-describedby="ej-correo-mensaje">
+              <p class="campo__mensaje" id="ej-correo-mensaje"><svg class="icono" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M12 8v4M12 16h.01"/></svg><span class="campo__mensaje-texto">Escribe un correo válido, por ejemplo nombre@empresa.com.</span></p>
+            </div>
+            <div class="campo campo--valido">
+              <label class="campo__etiqueta" for="ej-telefono">Válido</label>
+              <input class="campo__control" id="ej-telefono" type="tel" value="300 123 4567">
+            </div>
+            <div class="campo">
+              <label class="campo__etiqueta" for="ej-select">Lista desplegable</label>
+              <select class="campo__control select" id="ej-select"><option>Revisar el avance</option><option>Duda técnica</option></select>
+            </div>
+            <div class="campo">
+              <label class="campo__etiqueta" for="ej-texto">Texto largo con contador <span class="campo__opcional">(opcional)</span></label>
+              <textarea class="campo__control campo__control--area" id="ej-texto" maxlength="200" placeholder="Cuéntanos qué necesitas."></textarea>
+              <div class="campo__pie"><span></span><span class="campo__contador" data-contador-de="ej-texto" aria-hidden="true">0 / 200</span></div>
+            </div>
+            <fieldset class="grupo-opciones campo">
+              <legend class="campo__etiqueta">Opciones</legend>
+              <div class="opciones-en-linea">
+                <label class="opcion-simple"><input type="radio" name="ej-modalidad" checked>Virtual</label>
+                <label class="opcion-simple"><input type="radio" name="ej-modalidad">Presencial</label>
+              </div>
+            </fieldset>
+            <label class="casilla"><input type="checkbox" checked><span>Casilla de aceptación</span></label>
+            <div class="muestra__fila"><button type="submit" class="boton boton--acento">Probar la validación</button></div>
+          </form>
+        </section>
+
+        <section class="guia__seccion" id="insignias" aria-labelledby="titulo-insignias">
+          <h2 class="guia__titulo" id="titulo-insignias">Insignias</h2>
+          <p class="guia__texto">Muestran el estado de una cita, un proyecto o una cuenta. Siempre con texto; el color solo refuerza.</p>
+          <div class="muestra"><div class="muestra__fila">
+            <span class="insignia insignia--pendiente">Pendiente</span>
+            <span class="insignia insignia--confirmada">Confirmada</span>
+            <span class="insignia insignia--atendida">Atendida</span>
+            <span class="insignia insignia--cancelada">Cancelada</span>
+            <span class="insignia insignia--activo">En curso</span>
+            <span class="insignia insignia--finalizado">Finalizado</span>
+            <span class="insignia insignia--vencido">Fuera de plazo</span>
+            <span class="insignia insignia--pausado">Pausado</span>
+            <span class="insignia insignia--sin-asignar">Sin asignar</span>
+          </div></div>
+        </section>
+
+        <section class="guia__seccion" id="alertas" aria-labelledby="titulo-alertas">
+          <h2 class="guia__titulo" id="titulo-alertas">Alertas y mensajes</h2>
+          <p class="guia__texto">Las alertas viven dentro de la página; los mensajes flotantes confirman una acción y desaparecen solos.</p>
+          <div class="muestra muestra--columna">
+            <div class="alerta alerta--info" role="note"><svg class="icono" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M12 8v4M12 16h.01"/></svg><div><strong>Información</strong><p>Solo puedes tener una cita pendiente a la vez.</p></div></div>
+            <div class="alerta alerta--exito" role="note"><svg class="icono" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><div><strong>Éxito</strong><p>Tu solicitud de reunión fue enviada.</p></div></div>
+            <div class="alerta alerta--advertencia" role="note"><svg class="icono" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M12 8v4M12 16h.01"/></svg><div><strong>Advertencia</strong><p>Tienes 2 citas por confirmar.</p></div></div>
+            <div class="alerta alerta--error" role="note"><svg class="icono" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M12 8v4M12 16h.01"/></svg><div><strong>Error</strong><p>No pudimos guardar los cambios. Intenta de nuevo.</p></div></div>
+            <div class="muestra__fila">
+              <button type="button" class="boton boton--contorno" data-mostrar-mensaje="exito">Mostrar mensaje de éxito</button>
+              <button type="button" class="boton boton--contorno" data-mostrar-mensaje="error">Mostrar mensaje de error</button>
+            </div>
+          </div>
+        </section>
+
+        <section class="guia__seccion" id="tarjetas" aria-labelledby="titulo-tarjetas">
+          <h2 class="guia__titulo" id="titulo-tarjetas">Tarjetas</h2>
+          <p class="guia__texto">La tarjeta de servicio del catálogo y el indicador de los paneles. Al pasar el cursor se elevan un poco para invitar al clic.</p>
+          <div class="muestra muestra--tarjetas">
+            <article class="tarjeta-servicio">
+              <div class="tarjeta-servicio__imagen"><img src="img/servicios/tienda-en-linea.webp" alt="Ilustración de una tienda en línea con productos y carrito de compras" width="1200" height="800"></div>
+              <div class="tarjeta-servicio__cuerpo">
+                <h3 class="tarjeta-servicio__titulo">Desarrollo de tienda en línea</h3>
+                <p class="tarjeta-servicio__descripcion">Catálogo, carrito de compras y pagos en línea para vender por internet.</p>
+                <div class="tarjeta-servicio__pie"><a class="boton boton--contorno boton--bloque" href="registro.html?servicio=tienda-en-linea">Agendar cita</a></div>
+              </div>
+            </article>
+            <div class="muestra__columna">
+              <div class="indicador"><span class="indicador__icono"><svg class="icono icono--grande" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 7a2 2 0 0 1 2-2h4l2 2h8a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2Z"/></svg></span><span><span class="indicador__valor">2 de 3</span><span class="indicador__texto">Proyectos activos</span></span></div>
+              <div class="indicador"><span class="indicador__icono indicador__icono--aviso"><svg class="icono icono--grande" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="4" width="18" height="17" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg></span><span><span class="indicador__valor">2</span><span class="indicador__texto">Citas por confirmar</span></span></div>
+              <div class="indicador"><span class="indicador__icono indicador__icono--exito"><svg class="icono icono--grande" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg></span><span><span class="indicador__valor">85 %</span><span class="indicador__texto">Entregas a tiempo</span></span></div>
+            </div>
+          </div>
+        </section>
+
+        <section class="guia__seccion" id="iconos" aria-labelledby="titulo-iconos">
+          <h2 class="guia__titulo" id="titulo-iconos">Íconos</h2>
+          <p class="guia__texto">Íconos de línea de 24 × 24 con trazo de 2 px, dibujados en SVG dentro del HTML. Son decorativos (<code>aria-hidden</code>): el texto del botón o un <code>aria-label</code> dice qué hacen.</p>
+<ul class="iconos"><li class="icono-muestra"><svg class="icono icono--grande" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="4" width="18" height="17" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg><span>Calendario</span></li><li class="icono-muestra"><svg class="icono icono--grande" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 7a2 2 0 0 1 2-2h4l2 2h8a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2Z"/></svg><span>Carpeta</span></li><li class="icono-muestra"><svg class="icono icono--grande" viewBox="0 0 24 24" aria-hidden="true"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/><path d="M8 9h8M8 13h5"/></svg><span>Mensaje</span></li><li class="icono-muestra"><svg class="icono icono--grande" viewBox="0 0 24 24" aria-hidden="true"><rect x="2" y="6" width="14" height="12" rx="2"/><path d="m16 10 6-3v10l-6-3"/></svg><span>Virtual</span></li><li class="icono-muestra"><svg class="icono icono--grande" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 21h18M5 21V7l7-4 7 4v14M9 21v-6h6v6"/></svg><span>Presencial</span></li><li class="icono-muestra"><svg class="icono icono--grande" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4 21a8 8 0 0 1 16 0"/></svg><span>Persona</span></li><li class="icono-muestra"><svg class="icono icono--grande" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg><span>Reloj</span></li><li class="icono-muestra"><svg class="icono icono--grande" viewBox="0 0 24 24" aria-hidden="true"><rect x="4" y="11" width="16" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg><span>Candado</span></li><li class="icono-muestra"><svg class="icono icono--grande" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span>Confirmar</span></li><li class="icono-muestra"><svg class="icono icono--grande" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg><span>Agregar</span></li><li class="icono-muestra"><svg class="icono icono--grande" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 20h9"/><path d="M16.5 3.5a2.12 2.12 0 0 1 3 3L7 19l-4 1 1-4Z"/></svg><span>Editar</span></li><li class="icono-muestra"><svg class="icono icono--grande" viewBox="0 0 24 24" aria-hidden="true"><path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3"/><path d="M12 9v4M12 17h.01"/></svg><span>Alerta</span></li></ul>
+        </section>
+
+        <section class="guia__seccion" id="accesibilidad" aria-labelledby="titulo-accesibilidad">
+          <h2 class="guia__titulo" id="titulo-accesibilidad">Accesibilidad</h2>
+          <p class="guia__texto">Pautas que siguen todas las interfaces (WCAG 2.1 nivel AA).</p>
+          <ul class="pautas">
+            <li><strong>Contraste.</strong> Texto con contraste mínimo de 4.5:1 y modo de alto contraste en el panel de accesibilidad.</li>
+            <li><strong>Teclado.</strong> Todo se usa con teclado, con foco visible; las ventanas atrapan el foco y se cierran con Escape; hay enlace "Saltar al contenido".</li>
+            <li><strong>Lectores de pantalla.</strong> Etiquetas en todos los campos, regiones con <code>aria-live</code> para errores y mensajes, y tablas ocultas para los gráficos.</li>
+            <li><strong>Movimiento.</strong> Las animaciones respetan <code>prefers-reduced-motion</code> y se pueden pausar desde el panel.</li>
+            <li><strong>Panel de accesibilidad.</strong> Botón al borde derecho con lectura en voz alta, tamaño de texto, contraste, saturación, fuente para dislexia, espaciado, filtros para daltonismo y guía de lectura.</li>
+            <li><strong>Sin JavaScript.</strong> La navegación funciona con enlaces normales; los formularios usan la validación del navegador.</li>
+            <li><strong>Diseño adaptable.</strong> Se probó de 320 px (celular pequeño) a 2560 px (monitor 2K) sin desplazamiento horizontal (RNF-03). En pantallas grandes el contenido se centra y crece hasta un ancho cómodo de lectura.</li>
+          </ul>
+        </section>
+
+        <section class="guia__seccion" id="codigo" aria-labelledby="titulo-codigo">
+          <h2 class="guia__titulo" id="titulo-codigo">Convenciones del código</h2>
+          <p class="guia__texto">Cómo está organizado el prototipo para que sea fácil de mantener.</p>
+          <ul class="pautas">
+            <li><strong>Nombres en español</strong> con la convención BEM: <code>bloque__elemento--modificador</code> (por ejemplo, <code>tarjeta-cita__fecha</code>, <code>boton--acento</code>).</li>
+            <li><strong>Estados</strong> con el prefijo <code>esta-</code> (<code>esta-cargando</code>, <code>esta-visible</code>) y modos de accesibilidad con <code>modo-</code>.</li>
+            <li><strong>CSS en tres capas:</strong> <code>css/global.css</code> (variables y componentes) → <code>css/plantillas/</code> (estructuras compartidas) → <code>css/vistas/</code> (un archivo por vista).</li>
+            <li><strong>JavaScript</strong> en <code>js/</code>, sin librerías: <code>principal.js</code> para todo el sitio y <code>js/vistas/</code> para cada pantalla. Los elementos se buscan por atributos <code>data-</code>, no por clases de estilo.</li>
+            <li><strong>Imágenes</strong> en <code>img/</code>; las de los servicios en formato WebP con proporción 3:2.</li>
+          </ul>
+        </section>
+
+      </div>
+    </div>
+  </main>
+
+  <!-- ===================== Pie de página ===================== -->
+  <footer class="pie-pagina pie-pagina--oscuro">
+    <div class="contenedor">
+      <div class="pie-pagina__grilla">
+
+        <!-- Quiénes somos -->
+        <div class="pie-pagina__marca-bloque">
+          <a class="marca" href="index.html" aria-label="CoreTech Solutions, ir al inicio">
+            <img class="marca__logo" src="img/logo.svg" alt="" width="30" height="30">
+            <span>CoreTech</span>
+          </a>
+          <p class="pie-pagina__descripcion">Empresa de desarrollo de software a la medida en Cúcuta. Creamos tiendas en línea, sitios web, aplicaciones y sistemas de gestión, y te mostramos cada avance de tu proyecto.</p>
+        </div>
+
+        <!-- Misión -->
+        <div class="pie-pagina__columna">
+          <h2 class="pie-pagina__titulo">Misión</h2>
+          <p class="pie-pagina__texto">Desarrollar software a la medida que resuelva necesidades reales de las empresas de la región, con un proceso transparente en el que cada cliente sigue el avance de su proyecto de principio a fin.</p>
+        </div>
+
+        <!-- Visión -->
+        <div class="pie-pagina__columna">
+          <h2 class="pie-pagina__titulo">Visión</h2>
+          <p class="pie-pagina__texto">Para 2030, ser la empresa de desarrollo de software de referencia en el oriente colombiano, reconocida por la calidad de sus soluciones y la confianza que genera en sus clientes.</p>
+        </div>
+
+        <!-- Contacto -->
+        <div class="pie-pagina__columna">
+          <h2 class="pie-pagina__titulo">Contacto</h2>
+          <address>
+            <ul class="pie-pagina__lista pie-pagina__lista--contacto">
+              <li>
+                <svg class="icono" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s-7-6.2-7-11.5a7 7 0 0 1 14 0C19 14.8 12 21 12 21Z"/><circle cx="12" cy="9.5" r="2.5"/></svg>
+                <span>Calle 10 # 4-25, oficina 302, Cúcuta</span>
+              </li>
+              <li>
+                <svg class="icono" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2"/></svg>
+                <a href="tel:+573001234567">300 123 4567</a>
+              </li>
+              <li>
+                <svg class="icono" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg>
+                <a href="mailto:contacto@coretechsolutions.co">contacto@coretechsolutions.co</a>
+              </li>
+              <li>
+                <svg class="icono" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>
+                <span>Lunes a viernes, 8:00 a. m. a 6:00 p. m.</span>
+              </li>
+            </ul>
+          </address>
+        </div>
+      </div>
+
+      <!-- Franja inferior: derechos, avisos legales y volver arriba -->
+      <div class="pie-pagina__inferior">
+        <p class="pie-pagina__derechos">© 2026 CoreTech Solutions. Todos los derechos reservados.</p>
+        <nav aria-label="Avisos legales">
+          <ul class="pie-pagina__legales">
+            <li><a href="legal.html#datos">Política de tratamiento de datos</a></li>
+            <li><a href="legal.html#terminos">Términos y condiciones</a></li>
+            <li><a href="mapa.html">Mapa del sitio</a></li>
+            <li><a href="guia-estilos.html">Guía de estilos</a></li>
+          </ul>
+        </nav>
+        <a class="boton-icono boton-icono--pequeno pie-pagina__arriba" href="#contenido" aria-label="Volver arriba">
+          <svg class="icono" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 19V5M5 12l7-7 7 7"/></svg>
+        </a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/principal.js"></script>
+  <script src="js/vistas/guia-estilos.js"></script>
+</body>
+</html>

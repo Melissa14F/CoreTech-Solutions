@@ -1,0 +1,53 @@
+/* ==========================================================================
+   Vista: Citas y reuniones del desarrollador (desarrollador/citas-reuniones.html)
+   Requiere: global.css, plantillas/panel.css y plantillas/tarjetas.css
+   ========================================================================== */
+
+/* 1. Pestañas ============================================================== */
+.pestanas { display: flex; gap: var(--espacio-1); margin-bottom: var(--espacio-6); padding: var(--espacio-1); border: 1px solid var(--color-borde); border-radius: var(--radio-caja); background: var(--color-fondo); width: fit-content; max-width: 100%; }
+.pestana {
+  display: inline-flex; align-items: center; gap: var(--espacio-2); padding: 10px 16px; border: 0; border-radius: var(--radio-control);
+  background: transparent; color: var(--color-texto-suave); font-size: .875rem; font-weight: 600; cursor: pointer;
+  transition: background-color var(--duracion-rapida), color var(--duracion-rapida);
+}
+.pestana:hover { color: var(--color-tinta); background: var(--color-fondo-suave); }
+.pestana[aria-selected="true"] { background: var(--color-tinta); color: #fff; }
+.pestana__contador { min-width: 20px; padding: 0 6px; border-radius: var(--radio-pildora); background: #f59e0b; color: #1f1300; font-size: .6875rem; text-align: center; }
+.pestana__contador:empty, .pestana__contador[data-valor="0"] { display: none; }
+.sin-js .pestanas { display: none; } /* sin JavaScript se ven las dos secciones, una debajo de la otra */
+.panel-pestana + .panel-pestana { margin-top: var(--espacio-12); }
+.panel-pestana__titulo-sin-js { display: none; }
+.sin-js .panel-pestana__titulo-sin-js { display: block; margin: 0 0 var(--espacio-4); font-size: 1.25rem; }
+
+/* 2. Grupos ================================================================ */
+.grupo-agenda + .grupo-agenda { margin-top: var(--espacio-8); }
+.grupo-agenda__titulo { display: flex; align-items: center; gap: var(--espacio-2); margin: 0 0 var(--espacio-4); font-size: .8125rem; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; color: var(--color-texto-suave); }
+.grupo-agenda__titulo .insignia { text-transform: none; letter-spacing: 0; }
+.grupo-agenda__vacio { padding: var(--espacio-5); border: 1px dashed var(--color-borde); border-radius: var(--radio-caja); font-size: .875rem; color: var(--color-texto-suave); text-align: center; }
+.tarjeta-cita--aviso { border-color: #f6d7aa; box-shadow: 0 0 0 4px rgba(180, 83, 9, .06); }
+.tarjeta-cita--aviso .tarjeta-cita__fecha { background: var(--color-advertencia-fondo); color: var(--color-advertencia); }
+.tarjeta-cita__enlace { display: inline-flex; align-items: center; gap: 6px; margin-top: var(--espacio-3); padding: 6px 10px; border-radius: var(--radio-control); background: var(--color-fondo-suave); font-family: ui-monospace, Consolas, monospace; font-size: .8125rem; overflow-wrap: anywhere; }
+.tarjeta-cita__comentario { margin: var(--espacio-3) 0 0; padding: var(--espacio-3) var(--espacio-4); border-left: 3px solid var(--color-borde); background: var(--color-fondo-suave); font-size: .875rem; font-style: italic; color: var(--color-texto); border-radius: 0; }
+
+/* 3. Opciones de fecha sugeridas por el cliente ============================ */
+.sugeridas { display: flex; flex-wrap: wrap; gap: var(--espacio-2); margin-top: var(--espacio-3); }
+.sugeridas__opcion { display: inline-flex; align-items: center; gap: 6px; padding: 6px 10px; border: 1px solid var(--color-borde); border-radius: var(--radio-pildora); font-size: .8125rem; font-weight: 600; }
+.sugeridas__opcion small { font-weight: 500; color: var(--color-texto-suave); }
+
+/* 4. Ventanas de diálogo (la base del formulario está en global.css) ====== */
+
+/* 5. Diseño adaptable ====================================================== */
+@media (max-width: 640px) {
+  .pestanas { width: 100%; }
+  .pestana { flex: 1; justify-content: center; padding: 10px 8px; }
+  .dialogo__acciones { flex-direction: column-reverse; }
+  .dialogo__acciones .boton { width: 100%; }
+}
+
+/* 6. Reacción al mover una tarjeta de grupo ================================ */
+.tarjeta-cita.esta-resaltada { animation: resaltar-tarjeta 1.6s var(--curva); }
+@keyframes resaltar-tarjeta {
+  0%, 30% { box-shadow: 0 0 0 4px var(--color-acento-suave); border-color: var(--color-acento); }
+  100% { box-shadow: none; }
+}
+@media (prefers-reduced-motion: reduce) { .tarjeta-cita.esta-resaltada { animation: none; } }

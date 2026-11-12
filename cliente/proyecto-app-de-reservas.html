@@ -1,0 +1,586 @@
+<!DOCTYPE html>
+<html lang="es" class="sin-js">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>App de reservas · CoreTech Solutions</title>
+  <link rel="icon" href="../img/logo.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap">
+  <link rel="stylesheet" href="../css/global.css">
+  <link rel="stylesheet" href="../css/plantillas/panel.css">
+  <link rel="stylesheet" href="../css/plantillas/linea-tiempo.css">
+  <link rel="stylesheet" href="../css/plantillas/proyecto.css">
+  <link rel="stylesheet" href="../css/vistas/proyecto-detalle.css">
+  <script src="../js/accesibilidad.js"></script>
+</head>
+<body>
+  <a class="saltar-contenido" href="#contenido">Saltar al contenido</a>
+
+  <div class="panel">
+    <!-- ===================== Menú lateral del cliente ===================== -->
+    <aside class="panel__lateral superficie-noche" aria-label="Menú del cliente">
+      <a class="marca" href="../index.html" aria-label="CoreTech Solutions, ir al sitio público">
+        <img class="marca__logo" src="../img/logo.svg" alt="" width="30" height="30">
+        <span>CoreTech</span>
+      </a>
+      <p class="panel__rol"><strong>Panel del cliente</strong>Tus citas y proyectos</p>
+
+      <nav aria-label="Secciones del cliente">
+        <p class="navegacion-panel__titulo">Mi cuenta</p>
+        <ul class="navegacion-panel__lista">
+          <li>
+            <a class="navegacion-panel__enlace" href="mis-proyectos.html" aria-current="page">
+              <svg class="icono" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 7a2 2 0 0 1 2-2h4l2 2h8a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2Z"/></svg>
+              Mis proyectos
+              <span class="navegacion-panel__contador" aria-label="2 proyectos">2</span>
+            </a>
+          </li>
+          <li>
+            <a class="navegacion-panel__enlace" href="mis-citas.html">
+              <svg class="icono" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="4" width="18" height="17" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>
+              Mis citas
+              
+            </a>
+          </li>
+          <li>
+            <a class="navegacion-panel__enlace" href="agendar-servicio.html">
+              <svg class="icono" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="4" width="18" height="17" rx="2"/><path d="M16 2v4M8 2v4M3 10h18M12 13v5M9.5 15.5h5"/></svg>
+              Agendar cita
+              
+            </a>
+          </li>
+        </ul>
+      </nav>
+
+      <div class="panel__usuario">
+        <span class="avatar avatar--acento" aria-hidden="true">LG</span>
+        <span class="panel__usuario-datos">
+          <span class="panel__usuario-nombre">Laura Gómez</span>
+          <span class="panel__usuario-correo">laura.gomez@correo.com</span>
+        </span>
+        <a class="panel__salir" href="../index.html" data-accion data-mensaje-exito="Cerraste sesión." aria-label="Cerrar sesión" title="Cerrar sesión">
+          <svg class="icono" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4M16 17l5-5-5-5M21 12H9"/></svg>
+        </a>
+      </div>
+    </aside>
+
+    <div class="panel__cuerpo">
+      <!-- ===================== Barra superior ===================== -->
+      <header class="panel__barra">
+        <button type="button" class="boton-icono boton-icono--pequeno boton-menu-panel" aria-expanded="false" aria-label="Abrir menú">
+          <svg class="icono" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+        </button>
+        <nav class="ruta" aria-label="Ruta de navegación">
+          <a href="mis-proyectos.html">Panel</a>
+          <svg class="icono" viewBox="0 0 24 24" aria-hidden="true"><path d="m9 6 6 6-6 6"/></svg>
+          <a href="mis-proyectos.html">Mis proyectos</a>
+          <svg class="icono" viewBox="0 0 24 24" aria-hidden="true"><path d="m9 6 6 6-6 6"/></svg>
+          <span aria-current="page">App de reservas</span>
+        </nav>
+        <div class="panel__barra-acciones">
+          <a class="boton-icono boton-icono--pequeno campana" href="mis-citas.html" aria-label="Notificaciones: 2 nuevas">
+            <svg class="icono" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9"/><path d="M10.3 21a1.94 1.94 0 0 0 3.4 0"/></svg>
+            <span class="campana__punto" aria-hidden="true"></span>
+          </a>
+          <div class="panel__perfil">
+            <span class="avatar avatar--acento" aria-hidden="true">LG</span>
+            <span class="panel__perfil-nombre">Laura Gómez<small>Cliente</small></span>
+          </div>
+        </div>
+      </header>
+
+      <!-- ===================== Contenido ===================== -->
+      <main class="panel__contenido" id="contenido" data-proyecto="P-0034">
+        <a class="volver" href="mis-proyectos.html">
+          <svg class="icono" viewBox="0 0 24 24" aria-hidden="true"><path d="M19 12H5M11 19l-7-7 7-7"/></svg>
+          Volver a mis proyectos
+        </a>
+
+        <div class="proyecto-cabecera aparecer">
+          <img class="proyecto-cabecera__imagen" src="../img/servicios/app-movil.webp" alt="" width="96" height="64">
+          <div>
+            <h1 class="proyecto-cabecera__titulo">App de reservas <span class="insignia insignia--pendiente" data-estado-proyecto>Por aprobar</span></h1>
+            <p class="proyecto-cabecera__subtitulo">P-0034 · Aplicación móvil</p>
+          </div>
+          <div class="proyecto-cabecera__acciones">
+            <a class="boton boton--contorno" href="mis-citas.html"><svg class="icono" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="4" width="18" height="17" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>Mis citas</a>
+          </div>
+        </div>
+
+        <!-- Datos clave -->
+        <ul class="datos-proyecto" aria-label="Datos del proyecto">
+          <li class="dato-proyecto dato-proyecto--general aparecer">
+            <span class="anillo" data-anillo-general style="--valor: 0" role="img" aria-label="Avance general 0 %"><span class="anillo__valor">0 %</span></span>
+            <span><span class="dato-proyecto__etiqueta">Avance general</span><span class="dato-proyecto__valor" data-general-fase>Fase 1 de 5</span><span class="dato-proyecto__detalle" data-general-detalle>Toma de requerimientos · esperando tu aprobación</span></span>
+          </li>
+          <li class="dato-proyecto aparecer" style="--retraso: 60ms"><span class="dato-proyecto__etiqueta">Entrega estimada</span><span class="dato-proyecto__valor">26 feb 2027</span><span class="dato-proyecto__detalle">Faltan 107 días</span></li>
+          <li class="dato-proyecto aparecer" style="--retraso: 120ms"><span class="dato-proyecto__etiqueta">Inicio del proyecto</span><span class="dato-proyecto__valor">6 nov 2026</span><span class="dato-proyecto__detalle">Hace 5 días</span></li>
+          <li class="dato-proyecto aparecer" style="--retraso: 180ms"><span class="dato-proyecto__etiqueta">Último paso hecho</span><span class="dato-proyecto__valor">10 nov 2026</span><span class="dato-proyecto__detalle">Requerimientos terminados</span></li>
+        </ul>
+
+        <div class="proyecto-detalle">
+          <div class="proyecto-detalle__cabecera">
+            <h2 class="proyecto-detalle__titulo" id="titulo-linea">Fases del proyecto</h2>
+            <p class="proyecto-detalle__nota">Tu proyecto tiene 5 fases y cada una vale 20 %. Tú apruebas Requerimientos, Diseño y Pruebas; Desarrollo y Despliegue los cierra el equipo. Abre cada fase para ver qué se ha hecho.</p>
+          </div>
+          <section class="proyecto-detalle__principal" aria-labelledby="titulo-linea">
+            <ol class="linea-tiempo">
+              <li class="fase fase--actual fase--revision aparecer" data-fase-numero="1" aria-current="step">
+                <span class="fase__marcador">1<span class="solo-lector">, fase actual</span></span>
+                <details class="fase__tarjeta" open>
+                  <summary class="fase__cabecera">
+                    <div><h3 class="fase__nombre">Toma de requerimientos</h3><span class="fase__fechas">6 nov → 10 nov · <span data-conteo-pasos>3 de 3 pasos hechos</span></span></div>
+                    <span class="fase__resumen"><span class="insignia insignia--pendiente">Esperando tu aprobación</span><span class="fase__valor" title="Lo que vale esta fase en el proyecto">20 %</span><svg class="icono fase__flecha" viewBox="0 0 24 24" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></span>
+                  </summary>
+                  <div class="fase__cuerpo">
+                    <p class="fase__que-es">Entendemos tu negocio y escribimos todo lo que necesitas. <span class="fase__quien-cierra">Esta fase la apruebas tú.</span></p>
+                    <div class="revision-fase" data-revision-fase data-siguiente="Análisis y diseño" data-rondas="2">
+                      <span class="revision-fase__icono"><svg class="icono icono--grande" viewBox="0 0 24 24" aria-hidden="true"><path d="M22 12h-6l-2 3h-4l-2-3H2"/><path d="M5.45 5.11 2 12v6a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-6l-3.45-6.89A2 2 0 0 0 16.76 4H7.24a2 2 0 0 0-1.79 1.11z"/></svg></span>
+                      <div class="revision-fase__texto">
+                        <strong>Andrés terminó esta fase el 10 nov. Falta tu aprobación.</strong>
+                        <p>Revisa lo que te envió por correo. Si está bien, apruébala: el proyecto suma 20 % y empieza <strong>Análisis y diseño</strong>. Si algo no te convence, pide cambios.</p>
+                        <ul class="revision-fase__datos">
+                          <li><svg class="icono" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg><span>Tienes hasta el <strong>viernes 13 nov</strong> para responder. Si no lo haces, te recordaremos y la fase se dará por aprobada.</span></li>
+                          <li><svg class="icono" viewBox="0 0 24 24" aria-hidden="true"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/><path d="M8 9h8M8 13h5"/></svg><span data-texto-rondas>Te quedan <strong>2 de 2</strong> rondas de ajustes incluidas en esta fase.</span></li>
+                        </ul>
+                      </div>
+                      <div class="revision-fase__acciones">
+                        <button type="button" class="boton boton--contorno" data-abrir-cambios><svg class="icono" viewBox="0 0 24 24" aria-hidden="true"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/><path d="M8 9h8M8 13h5"/></svg>Pedir cambios</button>
+                        <button type="button" class="boton boton--exito" data-abrir-aprobar><svg class="icono" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>Aprobar fase</button>
+                      </div>
+                    </div>
+                    <p class="pasos-fase__titulo">Pasos</p>
+                    <ol class="pasos-fase" aria-label="Pasos de la fase">
+                      <li class="paso-fase paso-fase--hecho" data-paso="1-1">
+                        <span class="paso-fase__marca" aria-hidden="true"><svg class="icono" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg></span>
+                        <div class="paso-fase__cuerpo">
+                          <p class="paso-fase__titulo">Reunión inicial<span class="solo-lector">, hecho</span></p>
+                          <p class="paso-fase__explicacion">Conversamos contigo para entender cómo funcionan las reservas en tu salón.</p>
+                          <p class="paso-fase__nota"><strong>Andrés:</strong> Definimos los servicios del salón, sus duraciones y quién atiende cada uno.</p><span class="paso-fase__estado">Hecho el 7 nov</span>
+                        </div>
+                      </li>
+                      <li class="paso-fase paso-fase--hecho" data-paso="1-2">
+                        <span class="paso-fase__marca" aria-hidden="true"><svg class="icono" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg></span>
+                        <div class="paso-fase__cuerpo">
+                          <p class="paso-fase__titulo">Lista de lo que hará la app<span class="solo-lector">, hecho</span></p>
+                          <p class="paso-fase__explicacion">Escribimos en palabras sencillas todo lo que podrán hacer tus clientes y tú.</p>
+                          <p class="paso-fase__nota"><strong>Andrés:</strong> Reservar por servicio, ver horarios libres, cancelar y recibir recordatorios por WhatsApp.</p><span class="paso-fase__estado">Hecho el 9 nov</span>
+                        </div>
+                      </li>
+                      <li class="paso-fase paso-fase--hecho" data-paso="1-3">
+                        <span class="paso-fase__marca" aria-hidden="true"><svg class="icono" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg></span>
+                        <div class="paso-fase__cuerpo">
+                          <p class="paso-fase__titulo">Documento para revisar<span class="solo-lector">, hecho</span></p>
+                          <p class="paso-fase__explicacion">Te enviamos la lista completa para que confirmes que no falta nada.</p>
+                          <p class="paso-fase__nota"><strong>Andrés:</strong> Te lo envié por correo. Revísalo y apruébalo aquí cuando estés de acuerdo.</p><span class="paso-fase__estado">Hecho el 10 nov</span>
+                        </div>
+                      </li>
+                    </ol>
+                    <!-- Hablar con el desarrollador: mensaje o reunión (RN-14: solo el dueño de un proyecto activo) -->
+                    <div class="solicitar-reunion" data-bloque-solicitar>
+                      <p class="solicitar-reunion__texto"><strong>¿Necesitas algo de tu equipo?</strong>Escríbele a Andrés, tu Product Owner, o solicita una reunión sobre lo que se está haciendo en Toma de requerimientos.</p>
+                      <div class="solicitar-reunion__acciones">
+                        <button type="button" class="boton boton--contorno" data-abrir-mensaje><svg class="icono" viewBox="0 0 24 24" aria-hidden="true"><path d="m22 2-7 20-4-9-9-4Z"/><path d="M22 2 11 13"/></svg>Enviar mensaje</button>
+                        <button type="button" class="boton boton--acento" data-abrir-reunion><svg class="icono" viewBox="0 0 24 24" aria-hidden="true"><rect x="2" y="6" width="14" height="12" rx="2"/><path d="m16 10 6-3v10l-6-3"/></svg>Solicitar reunión</button>
+                      </div>
+                    </div>
+                    <div class="alerta alerta--exito solicitud-enviada" data-solicitud-enviada hidden role="status">
+                      <svg class="icono" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>
+                      <div>
+                        <strong>Solicitud de reunión enviada · Esperando respuesta de Andrés Pérez</strong>
+                        <p>Andrés elegirá una de tus fechas o te escribirá. Solo puedes tener una solicitud abierta por proyecto.</p>
+                        <span class="solicitud-enviada__datos" data-resumen-solicitud></span>
+                      </div>
+                    </div>
+                  </div>
+                </details>
+              </li>
+              <li class="fase fase--pendiente aparecer" data-fase-numero="2">
+                <span class="fase__marcador">2<span class="solo-lector">, pendiente</span></span>
+                <details class="fase__tarjeta">
+                  <summary class="fase__cabecera">
+                    <div><h3 class="fase__nombre">Análisis y diseño</h3><span class="fase__fechas">3 pasos</span></div>
+                    <span class="fase__resumen"><span class="insignia insignia--neutra">Pendiente</span><span class="fase__valor" title="Lo que vale esta fase en el proyecto">20 %</span><svg class="icono fase__flecha" viewBox="0 0 24 24" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></span>
+                  </summary>
+                  <div class="fase__cuerpo">
+                    <p class="fase__que-es">Diseñamos cómo se verá y cómo funcionará, antes de construirlo. <span class="fase__quien-cierra">Esta fase la apruebas tú.</span></p>
+                    <p class="pasos-fase__titulo">Lo que haremos</p>
+                    <ol class="pasos-fase" aria-label="Pasos de la fase">
+                      <li class="paso-fase paso-fase--pendiente" data-paso="2-1">
+                        <span class="paso-fase__marca" aria-hidden="true"></span>
+                        <div class="paso-fase__cuerpo">
+                          <p class="paso-fase__titulo">Bocetos de las pantallas<span class="solo-lector">, pendiente</span></p>
+                          <p class="paso-fase__explicacion">Dibujamos cómo se verá cada pantalla de la app antes de construirla.</p>
+                          
+                        </div>
+                      </li>
+                      <li class="paso-fase paso-fase--pendiente" data-paso="2-2">
+                        <span class="paso-fase__marca" aria-hidden="true"></span>
+                        <div class="paso-fase__cuerpo">
+                          <p class="paso-fase__titulo">Organización de la información<span class="solo-lector">, pendiente</span></p>
+                          <p class="paso-fase__explicacion">Definimos cómo se guardarán tus servicios, horarios, clientes y reservas.</p>
+                          
+                        </div>
+                      </li>
+                      <li class="paso-fase paso-fase--pendiente" data-paso="2-3">
+                        <span class="paso-fase__marca" aria-hidden="true"></span>
+                        <div class="paso-fase__cuerpo">
+                          <p class="paso-fase__titulo">Prototipo para revisar<span class="solo-lector">, pendiente</span></p>
+                          <p class="paso-fase__explicacion">Te mostramos las pantallas para que las pruebes antes de construir.</p>
+                          
+                        </div>
+                      </li>
+                    </ol>
+                  </div>
+                </details>
+              </li>
+              <li class="fase fase--pendiente aparecer" data-fase-numero="3">
+                <span class="fase__marcador">3<span class="solo-lector">, pendiente</span></span>
+                <details class="fase__tarjeta">
+                  <summary class="fase__cabecera">
+                    <div><h3 class="fase__nombre">Desarrollo</h3><span class="fase__fechas">4 pasos</span></div>
+                    <span class="fase__resumen"><span class="insignia insignia--neutra">Pendiente</span><span class="fase__valor" title="Lo que vale esta fase en el proyecto">20 %</span><svg class="icono fase__flecha" viewBox="0 0 24 24" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></span>
+                  </summary>
+                  <div class="fase__cuerpo">
+                    <p class="fase__que-es">Construimos tu proyecto, paso a paso. <span class="fase__quien-cierra">Esta fase la cierra el equipo y te muestra lo hecho.</span></p>
+                    <p class="pasos-fase__titulo">Lo que haremos</p>
+                    <ol class="pasos-fase" aria-label="Pasos de la fase">
+                      <li class="paso-fase paso-fase--pendiente" data-paso="3-1">
+                        <span class="paso-fase__marca" aria-hidden="true"></span>
+                        <div class="paso-fase__cuerpo">
+                          <p class="paso-fase__titulo">Base de la app e inicio de sesión<span class="solo-lector">, pendiente</span></p>
+                          <p class="paso-fase__explicacion">Preparamos la app y la entrada con usuario y contraseña.</p>
+                          
+                        </div>
+                      </li>
+                      <li class="paso-fase paso-fase--pendiente" data-paso="3-2">
+                        <span class="paso-fase__marca" aria-hidden="true"></span>
+                        <div class="paso-fase__cuerpo">
+                          <p class="paso-fase__titulo">Reservas<span class="solo-lector">, pendiente</span></p>
+                          <p class="paso-fase__explicacion">Tus clientes eligen servicio, día y hora libre.</p>
+                          
+                        </div>
+                      </li>
+                      <li class="paso-fase paso-fase--pendiente" data-paso="3-3">
+                        <span class="paso-fase__marca" aria-hidden="true"></span>
+                        <div class="paso-fase__cuerpo">
+                          <p class="paso-fase__titulo">Recordatorios por WhatsApp<span class="solo-lector">, pendiente</span></p>
+                          <p class="paso-fase__explicacion">Tus clientes reciben un mensaje antes de su cita.</p>
+                          
+                        </div>
+                      </li>
+                      <li class="paso-fase paso-fase--pendiente" data-paso="3-4">
+                        <span class="paso-fase__marca" aria-hidden="true"></span>
+                        <div class="paso-fase__cuerpo">
+                          <p class="paso-fase__titulo">Tu panel del salón<span class="solo-lector">, pendiente</span></p>
+                          <p class="paso-fase__explicacion">Ves y organizas todas las reservas del día.</p>
+                          
+                        </div>
+                      </li>
+                    </ol>
+                  </div>
+                </details>
+              </li>
+              <li class="fase fase--pendiente aparecer" data-fase-numero="4">
+                <span class="fase__marcador">4<span class="solo-lector">, pendiente</span></span>
+                <details class="fase__tarjeta">
+                  <summary class="fase__cabecera">
+                    <div><h3 class="fase__nombre">Pruebas</h3><span class="fase__fechas">3 pasos</span></div>
+                    <span class="fase__resumen"><span class="insignia insignia--neutra">Pendiente</span><span class="fase__valor" title="Lo que vale esta fase en el proyecto">20 %</span><svg class="icono fase__flecha" viewBox="0 0 24 24" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></span>
+                  </summary>
+                  <div class="fase__cuerpo">
+                    <p class="fase__que-es">Revisamos que todo funcione bien antes de publicarlo. <span class="fase__quien-cierra">Esta fase la apruebas tú.</span></p>
+                    <p class="pasos-fase__titulo">Lo que haremos</p>
+                    <ol class="pasos-fase" aria-label="Pasos de la fase">
+                      <li class="paso-fase paso-fase--pendiente" data-paso="4-1">
+                        <span class="paso-fase__marca" aria-hidden="true"></span>
+                        <div class="paso-fase__cuerpo">
+                          <p class="paso-fase__titulo">Probar cada función<span class="solo-lector">, pendiente</span></p>
+                          <p class="paso-fase__explicacion">Hacemos reservas de prueba para encontrar errores.</p>
+                          
+                        </div>
+                      </li>
+                      <li class="paso-fase paso-fase--pendiente" data-paso="4-2">
+                        <span class="paso-fase__marca" aria-hidden="true"></span>
+                        <div class="paso-fase__cuerpo">
+                          <p class="paso-fase__titulo">Probar en Android y iPhone<span class="solo-lector">, pendiente</span></p>
+                          <p class="paso-fase__explicacion">Revisamos que la app funcione bien en distintos celulares.</p>
+                          
+                        </div>
+                      </li>
+                      <li class="paso-fase paso-fase--pendiente" data-paso="4-3">
+                        <span class="paso-fase__marca" aria-hidden="true"></span>
+                        <div class="paso-fase__cuerpo">
+                          <p class="paso-fase__titulo">Prueba contigo<span class="solo-lector">, pendiente</span></p>
+                          <p class="paso-fase__explicacion">Usas la app como si fueras un cliente y nos dices si todo está bien.</p>
+                          
+                        </div>
+                      </li>
+                    </ol>
+                  </div>
+                </details>
+              </li>
+              <li class="fase fase--pendiente aparecer" data-fase-numero="5">
+                <span class="fase__marcador">5<span class="solo-lector">, pendiente</span></span>
+                <details class="fase__tarjeta">
+                  <summary class="fase__cabecera">
+                    <div><h3 class="fase__nombre">Despliegue</h3><span class="fase__fechas">2 pasos</span></div>
+                    <span class="fase__resumen"><span class="insignia insignia--neutra">Pendiente</span><span class="fase__valor" title="Lo que vale esta fase en el proyecto">20 %</span><svg class="icono fase__flecha" viewBox="0 0 24 24" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></span>
+                  </summary>
+                  <div class="fase__cuerpo">
+                    <p class="fase__que-es">Lo publicamos en internet y te enseñamos a usarlo. <span class="fase__quien-cierra">Esta fase la cierra el equipo y te muestra lo hecho.</span></p>
+                    <p class="pasos-fase__titulo">Lo que haremos</p>
+                    <ol class="pasos-fase" aria-label="Pasos de la fase">
+                      <li class="paso-fase paso-fase--pendiente" data-paso="5-1">
+                        <span class="paso-fase__marca" aria-hidden="true"></span>
+                        <div class="paso-fase__cuerpo">
+                          <p class="paso-fase__titulo">Publicación en las tiendas<span class="solo-lector">, pendiente</span></p>
+                          <p class="paso-fase__explicacion">Subimos la app a Google Play y App Store.</p>
+                          
+                        </div>
+                      </li>
+                      <li class="paso-fase paso-fase--pendiente" data-paso="5-2">
+                        <span class="paso-fase__marca" aria-hidden="true"></span>
+                        <div class="paso-fase__cuerpo">
+                          <p class="paso-fase__titulo">Capacitación<span class="solo-lector">, pendiente</span></p>
+                          <p class="paso-fase__explicacion">Te enseñamos a manejar las reservas desde tu panel.</p>
+                          
+                        </div>
+                      </li>
+                    </ol>
+                  </div>
+                </details>
+              </li>
+            </ol>
+          </section>
+
+          <aside class="proyecto-detalle__lateral">
+            <section class="tarjeta aparecer" style="--retraso: 120ms" aria-labelledby="titulo-dev">
+              <h2 class="tarjeta__titulo" id="titulo-dev">Tu equipo</h2>
+              <div class="persona-contacto">
+                <span class="avatar" aria-hidden="true">AP</span>
+                <span><span class="persona-contacto__nombre">Andrés Pérez</span><span class="persona-contacto__rol">Product Owner · tu contacto</span></span>
+              </div>
+              <p class="equipo__nota">Andrés publica el avance de tu proyecto y responde tus mensajes en nombre del equipo.</p>
+              <p class="equipo__titulo">Equipo que trabaja en tu proyecto</p>
+              <ul class="equipo">
+                  <li class="equipo__miembro"><span class="avatar avatar--pequeno" aria-hidden="true">VR</span><span><span class="equipo__nombre">Valeria Rincón</span><span class="equipo__rol">Diseño de pantallas</span></span></li>
+                  <li class="equipo__miembro"><span class="avatar avatar--pequeno" aria-hidden="true">TR</span><span><span class="equipo__nombre">Tomás Rivera</span><span class="equipo__rol">Desarrollo de la app</span></span></li>
+                  <li class="equipo__miembro"><span class="avatar avatar--pequeno" aria-hidden="true">CS</span><span><span class="equipo__nombre">Camilo Suárez</span><span class="equipo__rol">Pruebas</span></span></li>
+              </ul>
+              <div class="conversacion">
+                <div class="conversacion__cabecera">
+                  <h3 class="conversacion__titulo" id="titulo-mensajes">Mensajes</h3>
+                  <button type="button" class="enlace conversacion__nuevo" data-abrir-mensaje><svg class="icono" viewBox="0 0 24 24" aria-hidden="true"><path d="m22 2-7 20-4-9-9-4Z"/><path d="M22 2 11 13"/></svg>Escribir</button>
+                </div>
+                <p class="conversacion__vacio" data-mensajes-vacio>Aún no hay mensajes. Escríbele a Andrés si tienes una duda o una idea.</p>
+                <ol class="conversacion__lista" data-lista-mensajes aria-live="polite">
+                </ol>
+                <p class="conversacion__correo">También puedes escribir a <a class="enlace" href="mailto:andres.perez@coretechsolutions.co">andres.perez@coretechsolutions.co</a></p>
+              </div>
+            </section>
+            <section class="tarjeta aparecer" style="--retraso: 180ms" aria-labelledby="titulo-datos">
+              <h2 class="tarjeta__titulo" id="titulo-datos">Datos del proyecto</h2>
+              <dl class="lista-datos">
+                <div class="lista-datos__fila"><dt class="lista-datos__dato">Código</dt><dd class="lista-datos__valor">P-0034</dd></div>
+                <div class="lista-datos__fila"><dt class="lista-datos__dato">Servicio</dt><dd class="lista-datos__valor">Aplicación móvil</dd></div>
+                <div class="lista-datos__fila"><dt class="lista-datos__dato">Cita de origen</dt><dd class="lista-datos__valor">C-0052</dd></div>
+                <div class="lista-datos__fila"><dt class="lista-datos__dato">Pasos hechos</dt><dd class="lista-datos__valor">3</dd></div>
+              </dl>
+            </section>
+          </aside>
+        </div>
+
+        <!-- Formulario para solicitar una reunión con el desarrollador -->
+        <dialog class="dialogo dialogo--ancho" id="dialogo-reunion" aria-labelledby="titulo-reunion">
+          <form class="dialogo__formulario" data-validar data-mensaje-error="Revisa los campos marcados en rojo.">
+            <div class="dialogo__cabecera">
+              <span class="dialogo__icono dialogo__icono--acento"><svg class="icono icono--grande" viewBox="0 0 24 24" aria-hidden="true"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/><path d="M8 9h8M8 13h5"/></svg></span>
+              <div>
+                <h2 class="dialogo__titulo" id="titulo-reunion">Solicitar reunión</h2>
+                <p class="dialogo__texto">Cuéntanos de qué quieres hablar y sugiere dos horarios.</p>
+              </div>
+              <button type="button" class="boton-icono boton-icono--pequeno" data-cerrar-dialogo aria-label="Cerrar"><svg class="icono" viewBox="0 0 24 24" aria-hidden="true"><path d="M18 6 6 18M6 6l12 12"/></svg></button>
+            </div>
+            <div class="dialogo__cuerpo">
+              <dl class="contexto-reunion">
+                <div><dt class="contexto-reunion__dato">Proyecto</dt><dd class="contexto-reunion__valor">App de reservas</dd></div>
+                <div><dt class="contexto-reunion__dato">Con</dt><dd class="contexto-reunion__valor">Andrés Pérez · Toma de requerimientos</dd></div>
+              </dl>
+
+              <div class="campo">
+                <label class="campo__etiqueta" for="reunion-motivo">Motivo</label>
+                <select class="campo__control select" id="reunion-motivo" name="motivo" required data-mensaje-vacio="Elige el motivo de la reunión." aria-describedby="reunion-motivo-mensaje">
+                  <option value="">Elige un motivo</option>
+                  <option>Revisar el avance</option>
+                  <option>Cambio en los requerimientos</option>
+                  <option>Duda técnica</option>
+                  <option>Reportar un error</option>
+                  <option>Otro</option>
+                </select>
+                <p class="campo__mensaje" id="reunion-motivo-mensaje" aria-live="polite"><svg class="icono" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M12 8v4M12 16h.01"/></svg><span class="campo__mensaje-texto"></span></p>
+              </div>
+
+              <div class="campo">
+                <label class="campo__etiqueta" for="reunion-razon">Razón de la reunión</label>
+                <textarea class="campo__control campo__control--area" id="reunion-razon" name="razon" required minlength="20" maxlength="500"
+                          placeholder="Ejemplo: quiero revisar el flujo de pago antes de que pase a Pruebas."
+                          data-mensaje-vacio="Cuéntanos la razón de la reunión." data-mensaje-corto="Escribe al menos 20 caracteres para que tu desarrollador se prepare."
+                          aria-describedby="reunion-razon-mensaje"></textarea>
+                <div class="campo__pie"><p class="campo__mensaje" id="reunion-razon-mensaje" aria-live="polite"><svg class="icono" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M12 8v4M12 16h.01"/></svg><span class="campo__mensaje-texto"></span></p><span class="campo__contador" data-contador-de="reunion-razon" aria-hidden="true">0 / 500</span></div>
+              </div>
+
+              <fieldset class="grupo-opciones campo">
+                <legend class="campo__etiqueta">Modalidad</legend>
+                <div class="opciones-en-linea">
+                  <label class="opcion-simple"><input type="radio" name="modalidad" value="Virtual" required data-mensaje-vacio="Elige la modalidad." aria-describedby="reunion-modalidad-mensaje"><svg class="icono" viewBox="0 0 24 24" aria-hidden="true"><rect x="2" y="6" width="14" height="12" rx="2"/><path d="m16 10 6-3v10l-6-3"/></svg>Virtual</label>
+                  <label class="opcion-simple"><input type="radio" name="modalidad" value="Presencial" required data-mensaje-vacio="Elige la modalidad." aria-describedby="reunion-modalidad-mensaje"><svg class="icono" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 21h18M5 21V7l7-4 7 4v14M9 21v-6h6v6"/></svg>Presencial</label>
+                </div>
+                <p class="campo__mensaje" id="reunion-modalidad-mensaje" aria-live="polite"><svg class="icono" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M12 8v4M12 16h.01"/></svg><span class="campo__mensaje-texto"></span></p>
+              </fieldset>
+
+              <p class="campo__etiqueta">Fechas que te sirven</p>
+              <div class="fecha-sugerida">
+                <div class="campo">
+                  <label class="campo__etiqueta" for="reunion-dia-1">Opción 1</label>
+                  <select class="campo__control select" id="reunion-dia-1" name="dia_1" required data-mensaje-vacio="Elige el día de la opción 1." aria-describedby="reunion-dia-1-mensaje"><option value="">Elige un día</option><option value="2026-11-13">Viernes 13 de noviembre</option><option value="2026-11-16">Lunes 16 de noviembre</option><option value="2026-11-17">Martes 17 de noviembre</option><option value="2026-11-18">Miércoles 18 de noviembre</option><option value="2026-11-19">Jueves 19 de noviembre</option><option value="2026-11-20">Viernes 20 de noviembre</option><option value="2026-11-23">Lunes 23 de noviembre</option><option value="2026-11-24">Martes 24 de noviembre</option><option value="2026-11-25">Miércoles 25 de noviembre</option><option value="2026-11-26">Jueves 26 de noviembre</option><option value="2026-11-27">Viernes 27 de noviembre</option></select>
+                  <p class="campo__mensaje" id="reunion-dia-1-mensaje" aria-live="polite"><svg class="icono" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M12 8v4M12 16h.01"/></svg><span class="campo__mensaje-texto"></span></p>
+                </div>
+                <div class="campo">
+                  <label class="campo__etiqueta" for="reunion-hora-1">Hora</label>
+                  <select class="campo__control select" id="reunion-hora-1" name="hora_1" required data-mensaje-vacio="Elige la hora de la opción 1." aria-describedby="reunion-hora-1-mensaje"><option value="">Elige una hora</option><option value="08:00">8:00 a. m.</option><option value="09:00">9:00 a. m.</option><option value="10:00">10:00 a. m.</option><option value="11:00">11:00 a. m.</option><option value="14:00">2:00 p. m.</option><option value="15:00">3:00 p. m.</option><option value="16:00">4:00 p. m.</option><option value="17:00">5:00 p. m.</option></select>
+                  <p class="campo__mensaje" id="reunion-hora-1-mensaje" aria-live="polite"><svg class="icono" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M12 8v4M12 16h.01"/></svg><span class="campo__mensaje-texto"></span></p>
+                </div>
+              </div>
+              <div class="fecha-sugerida">
+                <div class="campo">
+                  <label class="campo__etiqueta" for="reunion-dia-2">Opción 2 <span class="campo__opcional">(opcional)</span></label>
+                  <select class="campo__control select" id="reunion-dia-2" name="dia_2" aria-describedby="reunion-dia-2-mensaje"><option value="">Elige un día</option><option value="2026-11-13">Viernes 13 de noviembre</option><option value="2026-11-16">Lunes 16 de noviembre</option><option value="2026-11-17">Martes 17 de noviembre</option><option value="2026-11-18">Miércoles 18 de noviembre</option><option value="2026-11-19">Jueves 19 de noviembre</option><option value="2026-11-20">Viernes 20 de noviembre</option><option value="2026-11-23">Lunes 23 de noviembre</option><option value="2026-11-24">Martes 24 de noviembre</option><option value="2026-11-25">Miércoles 25 de noviembre</option><option value="2026-11-26">Jueves 26 de noviembre</option><option value="2026-11-27">Viernes 27 de noviembre</option></select>
+                  <p class="campo__mensaje" id="reunion-dia-2-mensaje" aria-live="polite"><svg class="icono" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M12 8v4M12 16h.01"/></svg><span class="campo__mensaje-texto"></span></p>
+                </div>
+                <div class="campo">
+                  <label class="campo__etiqueta" for="reunion-hora-2">Hora</label>
+                  <select class="campo__control select" id="reunion-hora-2" name="hora_2" aria-describedby="reunion-hora-2-mensaje"><option value="">Elige una hora</option><option value="08:00">8:00 a. m.</option><option value="09:00">9:00 a. m.</option><option value="10:00">10:00 a. m.</option><option value="11:00">11:00 a. m.</option><option value="14:00">2:00 p. m.</option><option value="15:00">3:00 p. m.</option><option value="16:00">4:00 p. m.</option><option value="17:00">5:00 p. m.</option></select>
+                  <p class="campo__mensaje" id="reunion-hora-2-mensaje" aria-live="polite"><svg class="icono" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M12 8v4M12 16h.01"/></svg><span class="campo__mensaje-texto"></span></p>
+                </div>
+              </div>
+            </div>
+            <div class="dialogo__acciones">
+              <button type="button" class="boton boton--contorno" data-cerrar-dialogo>Cancelar</button>
+              <button type="submit" class="boton boton--acento"><svg class="icono" viewBox="0 0 24 24" aria-hidden="true"><path d="m22 2-7 20-4-9-9-4Z"/><path d="M22 2 11 13"/></svg>Enviar solicitud</button>
+            </div>
+          </form>
+        </dialog>
+
+        <!-- Formulario para enviar un mensaje al desarrollador -->
+        <dialog class="dialogo dialogo--ancho" id="dialogo-mensaje" aria-labelledby="titulo-mensaje">
+          <form class="dialogo__formulario" data-validar data-mensaje-error="Revisa los campos marcados en rojo.">
+            <div class="dialogo__cabecera">
+              <span class="dialogo__icono dialogo__icono--acento"><svg class="icono icono--grande" viewBox="0 0 24 24" aria-hidden="true"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/><path d="M8 9h8M8 13h5"/></svg></span>
+              <div>
+                <h2 class="dialogo__titulo" id="titulo-mensaje">Mensaje para Andrés Pérez</h2>
+                <p class="dialogo__texto">Suele responder en menos de un día hábil. Te avisaremos cuando lo haga.</p>
+              </div>
+              <button type="button" class="boton-icono boton-icono--pequeno" data-cerrar-dialogo aria-label="Cerrar"><svg class="icono" viewBox="0 0 24 24" aria-hidden="true"><path d="M18 6 6 18M6 6l12 12"/></svg></button>
+            </div>
+            <div class="dialogo__cuerpo">
+              <dl class="contexto-reunion">
+                <div><dt class="contexto-reunion__dato">Proyecto</dt><dd class="contexto-reunion__valor">App de reservas</dd></div>
+                <div><dt class="contexto-reunion__dato">Fase actual</dt><dd class="contexto-reunion__valor">Toma de requerimientos</dd></div>
+              </dl>
+
+              <div class="campo">
+                <label class="campo__etiqueta" for="mensaje-tema">Tema</label>
+                <select class="campo__control select" id="mensaje-tema" name="tema" required data-mensaje-vacio="Elige el tema del mensaje." aria-describedby="mensaje-tema-mensaje">
+                  <option value="">Elige un tema</option>
+                  <option>Pregunta sobre el avance</option>
+                  <option>Idea o cambio para el proyecto</option>
+                  <option>Envío de información</option>
+                  <option>Reportar un problema</option>
+                  <option>Otro</option>
+                </select>
+                <p class="campo__mensaje" id="mensaje-tema-mensaje" aria-live="polite"><svg class="icono" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M12 8v4M12 16h.01"/></svg><span class="campo__mensaje-texto"></span></p>
+              </div>
+
+              <div class="campo">
+                <label class="campo__etiqueta" for="mensaje-texto">Mensaje</label>
+                <textarea class="campo__control campo__control--area" id="mensaje-texto" name="mensaje" required minlength="10" maxlength="1000" rows="5"
+                          placeholder="Ejemplo: ¿podemos agregar la opción de pago contra entrega en el carrito?"
+                          data-mensaje-vacio="Escribe tu mensaje." data-mensaje-corto="Escribe al menos 10 caracteres."
+                          aria-describedby="mensaje-texto-mensaje"></textarea>
+                <div class="campo__pie"><p class="campo__mensaje" id="mensaje-texto-mensaje" aria-live="polite"><svg class="icono" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M12 8v4M12 16h.01"/></svg><span class="campo__mensaje-texto"></span></p><span class="campo__contador" data-contador-de="mensaje-texto" aria-hidden="true">0 / 1000</span></div>
+              </div>
+            </div>
+            <div class="dialogo__acciones">
+              <button type="button" class="boton boton--contorno" data-cerrar-dialogo>Cancelar</button>
+              <button type="submit" class="boton boton--acento"><svg class="icono" viewBox="0 0 24 24" aria-hidden="true"><path d="m22 2-7 20-4-9-9-4Z"/><path d="M22 2 11 13"/></svg>Enviar mensaje</button>
+            </div>
+          </form>
+        </dialog>
+
+        <!-- Aprobar la fase entregada -->
+        <dialog class="dialogo" id="dialogo-aprobar" aria-labelledby="titulo-aprobar" aria-describedby="texto-aprobar">
+          <div class="dialogo__cuerpo">
+            <span class="dialogo__icono dialogo__icono--exito"><svg class="icono icono--grande" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg></span>
+            <h2 class="dialogo__titulo" id="titulo-aprobar">¿Aprobar Toma de requerimientos?</h2>
+            <p class="dialogo__texto" id="texto-aprobar">Confirmas que lo entregado cumple con lo que necesitas. El proyecto suma 20 % y empieza <strong>Análisis y diseño</strong>. Esta aprobación queda registrada.</p>
+          </div>
+          <div class="dialogo__acciones">
+            <button type="button" class="boton boton--contorno" data-cerrar-dialogo>Volver</button>
+            <button type="button" class="boton boton--exito" data-confirmar-aprobar>Sí, aprobar</button>
+          </div>
+        </dialog>
+
+        <!-- Pedir cambios sobre la fase entregada -->
+        <dialog class="dialogo dialogo--ancho" id="dialogo-cambios" aria-labelledby="titulo-cambios">
+          <form class="dialogo__formulario" data-validar data-mensaje-error="Cuéntanos qué hay que cambiar.">
+            <div class="dialogo__cabecera">
+              <span class="dialogo__icono dialogo__icono--advertencia"><svg class="icono icono--grande" viewBox="0 0 24 24" aria-hidden="true"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/><path d="M8 9h8M8 13h5"/></svg></span>
+              <div>
+                <h2 class="dialogo__titulo" id="titulo-cambios">Pedir cambios en Toma de requerimientos</h2>
+                <p class="dialogo__texto">Cuéntanos qué quieres cambiar. Andrés lo revisará y te entregará la fase de nuevo.</p>
+              </div>
+              <button type="button" class="boton-icono boton-icono--pequeno" data-cerrar-dialogo aria-label="Cerrar"><svg class="icono" viewBox="0 0 24 24" aria-hidden="true"><path d="M18 6 6 18M6 6l12 12"/></svg></button>
+            </div>
+            <div class="dialogo__cuerpo">
+              <fieldset class="grupo-opciones campo tipo-cambio">
+                <legend class="campo__etiqueta">¿Qué tipo de cambio es?</legend>
+                <label class="tipo-cambio__opcion">
+                  <input type="radio" name="tipo_cambio" value="ajuste" required data-mensaje-vacio="Elige el tipo de cambio." aria-describedby="tipo-cambio-mensaje">
+                  <span><strong>Ajuste a lo entregado</strong>
+                  <small data-texto-ajuste>Algo no te convence o no quedó como lo acordamos. Incluido: te quedan 2 de 2 rondas.</small></span>
+                </label>
+                <label class="tipo-cambio__opcion">
+                  <input type="radio" name="tipo_cambio" value="alcance" required data-mensaje-vacio="Elige el tipo de cambio." aria-describedby="tipo-cambio-mensaje">
+                  <span><strong>Algo nuevo que no estaba acordado</strong>
+                  <small>Es un cambio de alcance: antes de hacerlo, Andrés te envía el costo y cuántos días agrega a la entrega. Puedes aprobar la fase mientras tanto.</small></span>
+                </label>
+                <p class="campo__mensaje grupo-opciones__mensaje" id="tipo-cambio-mensaje" aria-live="polite"><svg class="icono" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M12 8v4M12 16h.01"/></svg><span class="campo__mensaje-texto"></span></p>
+              </fieldset>
+              <div class="campo">
+                <label class="campo__etiqueta" for="cambios-texto">Describe el cambio</label>
+                <textarea class="campo__control campo__control--area" id="cambios-texto" name="cambios" required minlength="20" maxlength="800" rows="4"
+                          placeholder="Ejemplo: falta que los clientes puedan elegir con qué estilista reservar."
+                          data-mensaje-vacio="Describe qué quieres cambiar." data-mensaje-corto="Escribe al menos 20 caracteres para que Andrés entienda el cambio."
+                          aria-describedby="cambios-texto-ayuda cambios-texto-mensaje"></textarea>
+                <div class="campo__pie"><p class="campo__mensaje" id="cambios-texto-mensaje" aria-live="polite"><svg class="icono" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M12 8v4M12 16h.01"/></svg><span class="campo__mensaje-texto"></span></p><span class="campo__contador" data-contador-de="cambios-texto" aria-hidden="true">0 / 800</span></div>
+                <p class="campo__ayuda" id="cambios-texto-ayuda">Sé concreto: qué falta, qué sobra o qué no funciona como esperabas.</p>
+              </div>
+            </div>
+            <div class="dialogo__acciones">
+              <button type="button" class="boton boton--contorno" data-cerrar-dialogo>Cancelar</button>
+              <button type="submit" class="boton boton--acento"><svg class="icono" viewBox="0 0 24 24" aria-hidden="true"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/><path d="M8 9h8M8 13h5"/></svg>Enviar</button>
+            </div>
+          </form>
+        </dialog>
+      </main>
+    </div>
+  </div>
+
+  <script src="../js/principal.js"></script>
+  <script src="../js/vistas/proyecto-detalle.js"></script>
+  <script src="../js/vistas/galeria-bocetos.js"></script>
+</body>
+</html>

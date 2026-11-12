@@ -1,0 +1,33 @@
+/* ==========================================================================
+   Vista: Proyectos del administrador (admin/proyectos.html)
+   Requiere: global.css, plantillas/panel.css, plantillas/tarjetas.css
+   (selector de desarrollador) y plantillas/tabla.css
+   ========================================================================== */
+
+/* 1. Avance dentro de la tabla ============================================= */
+.avance-tabla { display: grid; gap: 6px; min-width: 130px; }
+.avance-tabla__texto { display: grid; gap: 0; }
+.avance-tabla__texto strong { color: var(--color-tinta); font-variant-numeric: tabular-nums; white-space: nowrap; }
+.celda-proyecto { min-width: 220px; }
+.tabla-datos .celda-fecha small { white-space: normal; }
+.avance-tabla__texto small { font-size: .75rem; color: var(--color-texto-suave); white-space: nowrap; }
+.avance-tabla__barra { height: 6px; border-radius: var(--radio-pildora); background: var(--color-borde-suave); overflow: hidden; }
+.avance-tabla__barra span { display: block; width: var(--valor); height: 100%; border-radius: inherit; background: var(--color-acento); }
+.fila--apagada .avance-tabla__barra span { background: var(--color-texto-tenue); }
+tr[data-estado~="finalizado"] .avance-tabla__barra span { background: var(--color-exito); }
+
+/* 2. Plazo de entrega ====================================================== */
+.plazo--vencido { color: var(--color-error) !important; font-weight: 600; }
+.plazo--aviso { color: var(--color-advertencia) !important; font-weight: 600; }
+.celda-acciones small { display: inline-flex; align-items: center; gap: 4px; }
+.celda-acciones small .icono { width: 12px; height: 12px; }
+
+/* 3. Selector de responsable: quien no tiene cupo queda deshabilitado ====== */
+.opcion-persona:has(input:disabled) { opacity: .6; cursor: not-allowed; background: var(--color-fondo-suave); }
+
+/* 4. Diseño adaptable ====================================================== */
+@media (max-width: 900px) {
+  .avance-tabla { min-width: 0; }
+  .avance-tabla__texto { flex-wrap: wrap; }
+  .avance-tabla__texto small { white-space: normal; }
+}

@@ -1,0 +1,76 @@
+/* ==========================================================================
+   Vista: Roles y permisos (admin/roles-permisos.html)
+   Requiere: global.css y plantillas/panel.css
+   ========================================================================== */
+
+/* 1. Resumen de roles ====================================================== */
+.roles-resumen { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: var(--espacio-4); margin: 0 0 var(--espacio-6); padding: 0; list-style: none; }
+.rol-resumen { display: grid; grid-template-columns: auto minmax(0, 1fr); gap: 2px var(--espacio-4); align-content: start; padding: var(--espacio-5); border: 1px solid var(--color-borde); border-radius: var(--radio-tarjeta); background: var(--color-fondo); }
+.rol-resumen__icono { grid-row: span 3; width: 44px; height: 44px; display: grid; place-items: center; border-radius: var(--radio-caja); background: var(--color-acento-suave); color: var(--color-acento); }
+.rol-resumen--fijo .rol-resumen__icono { background: var(--color-tinta); color: #fff; }
+.rol-resumen__nombre { font-family: var(--fuente-titulos); font-size: 1.0625rem; font-weight: 800; color: var(--color-tinta); }
+.rol-resumen__dato { font-size: .8125rem; color: var(--color-texto-suave); }
+.rol-resumen__dato strong { color: var(--color-tinta); font-variant-numeric: tabular-nums; }
+.rol-resumen__dato strong.esta-actualizado { animation: destello-numero .6s var(--curva); }
+@keyframes destello-numero { 0% { color: var(--color-acento); } }
+.rol-resumen__texto { grid-column: 1 / -1; margin-top: var(--espacio-3); font-size: .8125rem; color: var(--color-texto); }
+
+/* 2. Matriz de permisos ==================================================== */
+.matriz-contenedor { border: 1px solid var(--color-borde); border-radius: var(--radio-tarjeta); background: var(--color-fondo); box-shadow: var(--sombra-baja); overflow: clip; } /* clip (no hidden) para que la cabecera fija funcione */
+.matriz { width: 100%; border-collapse: collapse; font-size: .875rem; }
+.matriz thead th { position: sticky; top: 68px; z-index: 2; padding: 14px var(--espacio-4); background: var(--color-fondo-suave); border-bottom: 1px solid var(--color-borde); font-size: .75rem; font-weight: 700; letter-spacing: .04em; text-transform: uppercase; color: var(--color-texto-suave); text-align: center; white-space: nowrap; }
+.matriz thead th .icono { display: inline-block; width: 13px; height: 13px; margin-left: 2px; vertical-align: -2px; }
+.matriz thead th.matriz__permiso { text-align: left; }
+.matriz__grupo th { padding: var(--espacio-5) var(--espacio-4) var(--espacio-2); font-size: .6875rem; font-weight: 800; letter-spacing: .08em; text-transform: uppercase; color: var(--color-acento); text-align: left; }
+.matriz__fila { transition: background-color var(--duracion-rapida); }
+.matriz__fila:hover { background: #fafaff; }
+.matriz__fila.esta-cambiada { background: #fffbeb; }
+.matriz__fila > * { border-bottom: 1px solid var(--color-borde-suave); }
+.matriz__permiso { width: 52%; padding: var(--espacio-3) var(--espacio-4); text-align: left; font-weight: 400; }
+.matriz__nombre { display: flex; flex-wrap: wrap; align-items: center; gap: var(--espacio-2); font-weight: 600; color: var(--color-tinta); }
+.matriz__permiso small { display: block; margin-top: 2px; font-size: .75rem; color: var(--color-texto-suave); }
+.matriz__regla { padding: 1px 7px; border-radius: var(--radio-pildora); background: var(--color-fondo-suave); font-size: .6875rem; font-weight: 600; color: var(--color-texto-suave); }
+.matriz__celda { padding: var(--espacio-3) var(--espacio-2); text-align: center; }
+
+/* Interruptor (casilla con apariencia de interruptor) */
+.interruptor-permiso { position: relative; display: inline-flex; cursor: pointer; }
+.interruptor-permiso input { position: absolute; inset: 0; width: 100%; height: 100%; margin: 0; opacity: 0; cursor: pointer; }
+.interruptor-permiso__pista { position: relative; width: 40px; height: 22px; border-radius: var(--radio-pildora); background: #d5d8e0; transition: background-color var(--duracion-rapida); }
+.interruptor-permiso__pista::after { content: ""; position: absolute; top: 3px; left: 3px; width: 16px; height: 16px; border-radius: 50%; background: #fff; box-shadow: 0 1px 3px rgba(0, 0, 0, .25); transition: transform var(--duracion-media) var(--curva); }
+.interruptor-permiso input:checked + .interruptor-permiso__pista { background: var(--color-acento); }
+.interruptor-permiso input:checked + .interruptor-permiso__pista::after { transform: translateX(18px); }
+.interruptor-permiso input:focus-visible + .interruptor-permiso__pista { box-shadow: var(--anillo-foco); }
+.interruptor-permiso:hover .interruptor-permiso__pista { filter: brightness(.95); }
+
+/* Permiso fijo por una regla del negocio */
+.permiso-fijo { display: inline-grid; place-items: center; width: 28px; height: 28px; border-radius: 50%; background: var(--color-fondo-suave); color: var(--color-texto-tenue); cursor: help; }
+.permiso-fijo .icono { width: 14px; height: 14px; }
+.permiso-fijo--si { background: var(--color-acento-suave); color: var(--color-acento); }
+.permiso-fijo--si .icono { stroke-width: 3; }
+
+.nota-matriz { display: flex; gap: var(--espacio-2); margin: var(--espacio-4) 0 0; font-size: .8125rem; color: var(--color-texto-suave); }
+.nota-matriz .icono { width: 16px; height: 16px; flex: none; margin-top: 2px; }
+.nota-matriz a { color: var(--color-acento); font-weight: 600; }
+
+/* 3. Diseño adaptable ====================================================== */
+@media (max-width: 1080px) {
+  .roles-resumen { grid-template-columns: minmax(0, 1fr); }
+}
+@media (max-width: 640px) {
+  .matriz { table-layout: fixed; }
+  .matriz th, .matriz td { overflow-wrap: anywhere; }
+  .matriz thead th:not(.matriz__permiso) { width: 19%; }
+  .matriz thead th { top: 60px; padding: 10px 4px; font-size: .625rem; letter-spacing: 0; white-space: normal; }
+  .matriz__permiso { width: auto; padding: var(--espacio-3); }
+  .matriz__celda { padding: var(--espacio-3) 2px; }
+  .interruptor-permiso__pista { width: 34px; height: 20px; }
+  .interruptor-permiso__pista::after { width: 14px; height: 14px; }
+  .interruptor-permiso input:checked + .interruptor-permiso__pista::after { transform: translateX(14px); }
+}
+
+/* Encabezados cortos en pantallas pequeñas */
+.texto-corto { display: none; text-decoration: none; }
+@media (max-width: 640px) {
+  .texto-largo { display: none; }
+  .texto-corto { display: inline; }
+}

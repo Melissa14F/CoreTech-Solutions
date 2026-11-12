@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html lang="es" class="sin-js">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Usuarios · CoreTech Solutions</title>
+  <link rel="icon" href="../img/logo.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap">
+  <link rel="stylesheet" href="../css/global.css">
+  <link rel="stylesheet" href="../css/plantillas/panel.css">
+  <link rel="stylesheet" href="../css/plantillas/tarjetas.css">
+  <link rel="stylesheet" href="../css/plantillas/tabla.css">
+  <link rel="stylesheet" href="../css/vistas/admin-usuarios.css">
+  <script src="../js/accesibilidad.js"></script>
+</head>
+<body>
+  <a class="saltar-contenido" href="#contenido">Saltar al contenido</a>
+
+  <div class="panel">
+    <!-- ===================== Menú lateral del cliente ===================== -->
+    <aside class="panel__lateral superficie-noche" aria-label="Menú del administrador">
+      <a class="marca" href="../index.html" aria-label="CoreTech Solutions, ir al sitio público">
+        <img class="marca__logo" src="../img/logo.svg" alt="" width="30" height="30">
+        <span>CoreTech</span>
+      </a>
+      <p class="panel__rol"><strong>Panel de administración</strong>Gestión de CoreTech</p>
+
+      <nav aria-label="Secciones del administrador: Gestión">
+        <p class="navegacion-panel__titulo">Gestión</p>
+        <ul class="navegacion-panel__lista">
+          <li>
+            <a class="navegacion-panel__enlace" href="dashboard.html">
+              <svg class="icono" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="7" height="9" rx="1.5"/><rect x="14" y="3" width="7" height="5" rx="1.5"/><rect x="14" y="12" width="7" height="9" rx="1.5"/><rect x="3" y="16" width="7" height="5" rx="1.5"/></svg>
+              Dashboard
+              
+            </a>
+          </li>
+          <li>
+            <a class="navegacion-panel__enlace" href="citas.html">
+              <svg class="icono" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="4" width="18" height="17" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>
+              Citas
+              <span class="navegacion-panel__contador navegacion-panel__contador--aviso" aria-label="1 sin asignar">1</span>
+            </a>
+          </li>
+          <li>
+            <a class="navegacion-panel__enlace" href="proyectos.html">
+              <svg class="icono" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 7a2 2 0 0 1 2-2h4l2 2h8a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2Z"/></svg>
+              Proyectos
+              
+            </a>
+          </li>
+          <li>
+            <a class="navegacion-panel__enlace" href="solicitudes.html">
+              <svg class="icono" viewBox="0 0 24 24" aria-hidden="true"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/><path d="M8 9h8M8 13h5"/></svg>
+              Solicitudes de reunión
+              
+            </a>
+          </li>
+        </ul>
+      </nav>
+
+      <nav aria-label="Secciones del administrador: Sitio web">
+        <p class="navegacion-panel__titulo">Sitio web</p>
+        <ul class="navegacion-panel__lista">
+          <li>
+            <a class="navegacion-panel__enlace" href="servicios.html">
+              <svg class="icono" viewBox="0 0 24 24" aria-hidden="true"><path d="m12 2 10 5-10 5L2 7l10-5Z"/><path d="m2 17 10 5 10-5M2 12l10 5 10-5"/></svg>
+              Servicios
+              
+            </a>
+          </li>
+          <li>
+            <a class="navegacion-panel__enlace" href="contenido.html">
+              <svg class="icono" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>
+              Contenido del sitio
+              
+            </a>
+          </li>
+        </ul>
+      </nav>
+
+      <nav aria-label="Secciones del administrador: Seguridad">
+        <p class="navegacion-panel__titulo">Seguridad</p>
+        <ul class="navegacion-panel__lista">
+          <li>
+            <a class="navegacion-panel__enlace" href="usuarios.html" aria-current="page">
+              <svg class="icono" viewBox="0 0 24 24" aria-hidden="true"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+              Usuarios
+              
+            </a>
+          </li>
+          <li>
+            <a class="navegacion-panel__enlace" href="roles-permisos.html">
+              <svg class="icono" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10Z"/><path d="m9 12 2 2 4-4"/></svg>
+              Roles y permisos
+              
+            </a>
+          </li>
+          <li>
+            <a class="navegacion-panel__enlace" href="auditoria.html">
+              <svg class="icono" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 5H7a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2h-2"/><rect x="9" y="3" width="6" height="4" rx="1"/><path d="M9 12h6M9 16h4"/></svg>
+              Auditoría
+              
+            </a>
+          </li>
+        </ul>
+      </nav>
+
+      <div class="panel__usuario">
+        <span class="avatar avatar--gris" aria-hidden="true">PL</span>
+        <span class="panel__usuario-datos">
+          <span class="panel__usuario-nombre">Patricia León</span>
+          <span class="panel__usuario-correo">patricia.leon@coretechsolutions.co</span>
+        </span>
+        <a class="panel__salir" href="../index.html" data-accion data-mensaje-exito="Cerraste sesión." aria-label="Cerrar sesión" title="Cerrar sesión">
+          <svg class="icono" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4M16 17l5-5-5-5M21 12H9"/></svg>
+        </a>
+      </div>
+    </aside>
+
+    <div class="panel__cuerpo">
+      <!-- ===================== Barra superior ===================== -->
+      <header class="panel__barra">
+        <button type="button" class="boton-icono boton-icono--pequeno boton-menu-panel" aria-expanded="false" aria-label="Abrir menú">
+          <svg class="icono" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+        </button>
+        <nav class="ruta" aria-label="Ruta de navegación">
+          <a href="dashboard.html">Administración</a>
+          <svg class="icono" viewBox="0 0 24 24" aria-hidden="true"><path d="m9 6 6 6-6 6"/></svg>
+          <span aria-current="page">Usuarios</span>
+        </nav>
+        <div class="panel__barra-acciones">
+          <a class="boton-icono boton-icono--pequeno campana" href="dashboard.html#alertas" aria-label="Notificaciones: 4 nuevas">
+            <svg class="icono" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9"/><path d="M10.3 21a1.94 1.94 0 0 0 3.4 0"/></svg>
+            <span class="campana__punto" aria-hidden="true"></span>
+          </a>
+          <div class="panel__perfil">
+            <span class="avatar avatar--gris" aria-hidden="true">PL</span>
+            <span class="panel__perfil-nombre">Patricia León<small>Administradora</small></span>
+          </div>
+        </div>
+      </header>
+
+      <!-- ===================== Contenido ===================== -->
+      <main class="panel__contenido" id="contenido">
+        <div class="encabezado-vista aparecer">
+          <div>
+            <h1 class="encabezado-vista__titulo">Usuarios</h1>
+            <p class="encabezado-vista__texto">Crea las cuentas de los equipos (las usa su Product Owner) y gestiona las de todos los usuarios. Los clientes se registran solos desde el sitio.</p>
+          </div>
+          <button type="button" class="boton boton--acento" data-abrir-crear><svg class="icono" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4 21a8 8 0 0 1 16 0"/><path d="M19 8v6M16 11h6"/></svg>Crear cuenta de equipo</button>
+        </div>
+
+        <div data-tabla>
+          <div class="herramientas aparecer">
+            <div class="filtros" role="group" aria-label="Filtrar por rol"><button type="button" class="filtro" data-filtro-estado="todas" aria-pressed="true">Todos <span class="filtro__cantidad" data-cantidad-estado="todas">0</span></button><button type="button" class="filtro" data-filtro-estado="desarrollador" aria-pressed="false">Equipos <span class="filtro__cantidad" data-cantidad-estado="desarrollador">0</span></button><button type="button" class="filtro" data-filtro-estado="cliente" aria-pressed="false">Clientes <span class="filtro__cantidad" data-cantidad-estado="cliente">0</span></button><button type="button" class="filtro" data-filtro-estado="administrador" aria-pressed="false">Administradores <span class="filtro__cantidad" data-cantidad-estado="administrador">0</span></button><button type="button" class="filtro" data-filtro-estado="inactivo" aria-pressed="false">Inactivos <span class="filtro__cantidad" data-cantidad-estado="inactivo">0</span></button></div>
+            <div class="herramientas__derecha">
+              <label class="buscador">
+                <span class="solo-lector">Buscar usuario</span>
+                <svg class="icono" viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+                <input class="campo__control" type="search" placeholder="Buscar nombre o correo" data-buscar>
+              </label>
+            </div>
+          </div>
+
+          <div class="tabla-contenedor aparecer">
+            <table class="tabla-datos">
+              <caption class="solo-lector">Usuarios del sistema</caption>
+              <thead>
+                <tr><th scope="col">Usuario</th><th scope="col">Rol</th><th scope="col">Actividad</th><th scope="col">Último acceso</th><th scope="col">Estado</th><th scope="col"><span class="solo-lector">Acciones</span></th></tr>
+              </thead>
+              <tbody data-cuerpo-tabla>
+              <tr data-fila data-estado="administrador activo" data-tipo="administrador" data-nombre="Patricia León" data-correo="patricia.leon@coretechsolutions.co" data-telefono="3157781200" data-especialidad="" data-activos="0">
+                <td data-etiqueta="Usuario" class="celda--ancha"><span class="celda-usuario"><span class="avatar avatar--gris" aria-hidden="true" data-celda-iniciales>PL</span><span class="celda-principal"><strong data-celda-nombre>Patricia León</strong><small data-celda-correo>patricia.leon@coretechsolutions.co</small></span></span></td>
+                <td data-etiqueta="Rol"><span class="insignia insignia--oscuro" data-celda-rol>Administrador</span></td>
+                <td data-etiqueta="Actividad" data-celda-actividad><span class="celda-actividad"><span class="celda-principal"><small>Gestiona todo el sistema</small></span></span></td>
+                <td data-etiqueta="Último acceso"><span class="celda-principal"><small>Ahora</small></span></td>
+                <td data-etiqueta="Estado"><span class="insignia insignia--atendida" data-insignia-estado>Activo</span></td>
+                <td><div class="celda-acciones" data-acciones><button type="button" class="boton boton--contorno boton--pequeno" data-abrir="editar"><svg class="icono" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 20h9"/><path d="M16.5 3.5a2.12 2.12 0 0 1 3 3L7 19l-4 1 1-4Z"/></svg>Editar</button><span class="etiqueta-tu">Tu cuenta</span></div></td>
+              </tr>
+              <tr data-fila data-estado="desarrollador activo" data-tipo="desarrollador" data-nombre="Andrés Pérez" data-correo="andres.perez@coretechsolutions.co" data-telefono="3204459021" data-especialidad="Full stack" data-activos="2">
+                <td data-etiqueta="Usuario" class="celda--ancha"><span class="celda-usuario"><span class="avatar" aria-hidden="true" data-celda-iniciales>AP</span><span class="celda-principal"><strong data-celda-nombre>Andrés Pérez</strong><small data-celda-correo>andres.perez@coretechsolutions.co</small></span></span></td>
+                <td data-etiqueta="Rol"><span class="insignia insignia--activo" data-celda-rol>Equipo · Product Owner</span></td>
+                <td data-etiqueta="Actividad" data-celda-actividad><span class="celda-actividad"><span class="celda-principal"><strong>Full stack</strong><small>2 de 3 proyectos activos</small></span><span class="carga" role="img" aria-label="2 de 3 proyectos activos"><span class="carga__unidad carga__unidad--ocupada"></span><span class="carga__unidad carga__unidad--ocupada"></span><span class="carga__unidad"></span></span></span></td>
+                <td data-etiqueta="Último acceso"><span class="celda-principal"><small>Hoy, 11:20 a. m.</small></span></td>
+                <td data-etiqueta="Estado"><span class="insignia insignia--atendida" data-insignia-estado>Activo</span></td>
+                <td><div class="celda-acciones" data-acciones><button type="button" class="boton boton--contorno boton--pequeno" data-abrir="editar"><svg class="icono" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 20h9"/><path d="M16.5 3.5a2.12 2.12 0 0 1 3 3L7 19l-4 1 1-4Z"/></svg>Editar</button><details class="menu-acciones"><summary class="boton-icono boton-icono--pequeno" aria-label="Más acciones para Andrés Pérez" title="Más acciones"><svg class="icono" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="5" r="1.5"/><circle cx="12" cy="12" r="1.5"/><circle cx="12" cy="19" r="1.5"/></svg></summary><div class="menu-acciones__lista" role="menu"><a class="menu-acciones__opcion" role="menuitem" href="proyectos.html?buscar=Andrés"><svg class="icono" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 7a2 2 0 0 1 2-2h4l2 2h8a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2Z"/></svg>Ver sus proyectos</a><button type="button" class="menu-acciones__opcion" role="menuitem" data-abrir="clave"><svg class="icono" viewBox="0 0 24 24" aria-hidden="true"><circle cx="7.5" cy="15.5" r="5.5"/><path d="m21 2-9.6 9.6M15.5 7.5l3 3L22 7l-3-3"/></svg>Restablecer contraseña</button><button type="button" class="menu-acciones__opcion menu-acciones__opcion--peligro" role="menuitem" data-abrir="desactivar"><svg class="icono" viewBox="0 0 24 24" aria-hidden="true"><path d="M18.36 6.64a9 9 0 1 1-12.73 0M12 2v10"/></svg>Desactivar cuenta</button></div></details></div></td>
+              </tr>
+              <tr data-fila data-estado="desarrollador activo" data-tipo="desarrollador" data-nombre="María Ruiz" data-correo="maria.ruiz@coretechsolutions.co" data-telefono="3118802344" data-especialidad="Frontend" data-activos="3">
+                <td data-etiqueta="Usuario" class="celda--ancha"><span class="celda-usuario"><span class="avatar" aria-hidden="true" data-celda-iniciales>MR</span><span class="celda-principal"><strong data-celda-nombre>María Ruiz</strong><small data-celda-correo>maria.ruiz@coretechsolutions.co</small></span></span></td>
+                <td data-etiqueta="Rol"><span class="insignia insignia--activo" data-celda-rol>Equipo · Product Owner</span></td>
+                <td data-etiqueta="Actividad" data-celda-actividad><span class="celda-actividad"><span class="celda-principal"><strong>Frontend</strong><small>3 de 3 proyectos activos</small></span><span class="carga" role="img" aria-label="3 de 3 proyectos activos"><span class="carga__unidad carga__unidad--ocupada"></span><span class="carga__unidad carga__unidad--ocupada"></span><span class="carga__unidad carga__unidad--ocupada"></span></span></span></td>
+                <td data-etiqueta="Último acceso"><span class="celda-principal"><small>Hoy, 8:47 a. m.</small></span></td>
+                <td data-etiqueta="Estado"><span class="insignia insignia--atendida" data-insignia-estado>Activo</span></td>
+                <td><div class="celda-acciones" data-acciones><button type="button" class="boton boton--contorno boton--pequeno" data-abrir="editar"><svg class="icono" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 20h9"/><path d="M16.5 3.5a2.12 2.12 0 0 1 3 3L7 19l-4 1 1-4Z"/></svg>Editar</button><details class="menu-acciones"><summary class="boton-icono boton-icono--pequeno" aria-label="Más acciones para María Ruiz" title="Más acciones"><svg class="icono" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="5" r="1.5"/><circle cx="12" cy="12" r="1.5"/><circle cx="12" cy="19" r="1.5"/></svg></summary><div class="menu-acciones__lista" role="menu"><a class="menu-acciones__opcion" role="menuitem" href="proyectos.html?buscar=María"><svg class="icono" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 7a2 2 0 0 1 2-2h4l2 2h8a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2Z"/></svg>Ver sus proyectos</a><button type="button" class="menu-acciones__opcion" role="menuitem" data-abrir="clave"><svg class="icono" viewBox="0 0 24 24" aria-hidden="true"><circle cx="7.5" cy="15.5" r="5.5"/><path d="m21 2-9.6 9.6M15.5 7.5l3 3L22 7l-3-3"/></svg>Restablecer contraseña</button><button type="button" class="menu-acciones__opcion menu-acciones__opcion--peligro" role="menuitem" data-abrir="desactivar"><svg class="icono" viewBox="0 0 24 24" aria-hidden="true"><path d="M18.36 6.64a9 9 0 1 1-12.73 0M12 2v10"/></svg>Desactivar cuenta</button></div></details></div></td>
+              </tr>
+              <tr data-fila data-estado="desarrollador activo" data-tipo="desarrollador" data-nombre="Sebastián Mora" data-correo="sebastian.mora@coretechsolutions.co" data-telefono="3009917366" data-especialidad="Backend" data-activos="1">
+                <td data-etiqueta="Usuario" class="celda--ancha"><span class="celda-usuario"><span class="avatar" aria-hidden="true" data-celda-iniciales>SM</span><span class="celda-principal"><strong data-celda-nombre>Sebastián Mora</strong><small data-celda-correo>sebastian.mora@coretechsolutions.co</small></span></span></td>
+                <td data-etiqueta="Rol"><span class="insignia insignia--activo" data-celda-rol>Equipo · Product Owner</span></td>
+                <td data-etiqueta="Actividad" data-celda-actividad><span class="celda-actividad"><span class="celda-principal"><strong>Backend</strong><small>1 de 3 proyectos activos</small></span><span class="carga" role="img" aria-label="1 de 3 proyectos activos"><span class="carga__unidad carga__unidad--ocupada"></span><span class="carga__unidad"></span><span class="carga__unidad"></span></span></span></td>
+                <td data-etiqueta="Último acceso"><span class="celda-principal"><small>Hace 6 días</small></span></td>
+                <td data-etiqueta="Estado"><span class="insignia insignia--atendida" data-insignia-estado>Activo</span></td>
+                <td><div class="celda-acciones" data-acciones><button type="button" class="boton boton--contorno boton--pequeno" data-abrir="editar"><svg class="icono" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 20h9"/><path d="M16.5 3.5a2.12 2.12 0 0 1 3 3L7 19l-4 1 1-4Z"/></svg>Editar</button><details class="menu-acciones"><summary class="boton-icono boton-icono--pequeno" aria-label="Más acciones para Sebastián Mora" title="Más acciones"><svg class="icono" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="5" r="1.5"/><circle cx="12" cy="12" r="1.5"/><circle cx="12" cy="19" r="1.5"/></svg></summary><div class="menu-acciones__lista" role="menu"><a class="menu-acciones__opcion" role="menuitem" href="proyectos.html?buscar=Sebastián"><svg class="icono" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 7a2 2 0 0 1 2-2h4l2 2h8a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2Z"/></svg>Ver sus proyectos</a><button type="button" class="menu-acciones__opcion" role="menuitem" data-abrir="clave"><svg class="icono" viewBox="0 0 24 24" aria-hidden="true"><circle cx="7.5" cy="15.5" r="5.5"/><path d="m21 2-9.6 9.6M15.5 7.5l3 3L22 7l-3-3"/></svg>Restablecer contraseña</button><button type="button" class="menu-acciones__opcion menu-acciones__opcion--peligro" role="menuitem" data-abrir="desactivar"><svg class="icono" viewBox="0 0 24 24" aria-hidden="true"><path d="M18.36 6.64a9 9 0 1 1-12.73 0M12 2v10"/></svg>Desactivar cuenta</button></div></details></div></td>
+              </tr>
+              <tr data-fila data-estado="desarrollador activo" data-tipo="desarrollador" data-nombre="Camila Jaimes" data-correo="camila.jaimes@coretechsolutions.co" data-telefono="3175520918" data-especialidad="Móvil" data-activos="0">
+                <td data-etiqueta="Usuario" class="celda--ancha"><span class="celda-usuario"><span class="avatar" aria-hidden="true" data-celda-iniciales>CJ</span><span class="celda-principal"><strong data-celda-nombre>Camila Jaimes</strong><small data-celda-correo>camila.jaimes@coretechsolutions.co</small></span></span></td>
+                <td data-etiqueta="Rol"><span class="insignia insignia--activo" data-celda-rol>Equipo · Product Owner</span></td>
+                <td data-etiqueta="Actividad" data-celda-actividad><span class="celda-actividad"><span class="celda-principal"><strong>Móvil</strong><small>0 de 3 proyectos activos</small></span><span class="carga" role="img" aria-label="0 de 3 proyectos activos"><span class="carga__unidad"></span><span class="carga__unidad"></span><span class="carga__unidad"></span></span></span></td>
+                <td data-etiqueta="Último acceso"><span class="celda-principal"><small>Ayer, 5:02 p. m.</small></span></td>
+                <td data-etiqueta="Estado"><span class="insignia insignia--atendida" data-insignia-estado>Activo</span></td>
+                <td><div class="celda-acciones" data-acciones><button type="button" class="boton boton--contorno boton--pequeno" data-abrir="editar"><svg class="icono" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 20h9"/><path d="M16.5 3.5a2.12 2.12 0 0 1 3 3L7 19l-4 1 1-4Z"/></svg>Editar</button><details class="menu-acciones"><summary class="boton-icono boton-icono--pequeno" aria-label="Más acciones para Camila Jaimes" title="Más acciones"><svg class="icono" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="5" r="1.5"/><circle cx="12" cy="12" r="1.5"/><circle cx="12" cy="19" r="1.5"/></svg></summary><div class="menu-acciones__lista" role="menu"><a class="menu-acciones__opcion" role="menuitem" href="proyectos.html?buscar=Camila"><svg class="icono" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 7a2 2 0 0 1 2-2h4l2 2h8a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2Z"/></svg>Ver sus proyectos</a><button type="button" class="menu-acciones__opcion" role="menuitem" data-abrir="clave"><svg class="icono" viewBox="0 0 24 24" aria-hidden="true"><circle cx="7.5" cy="15.5" r="5.5"/><path d="m21 2-9.6 9.6M15.5 7.5l3 3L22 7l-3-3"/></svg>Restablecer contraseña</button><button type="button" class="menu-acciones__opcion menu-acciones__opcion--peligro" role="menuitem" data-abrir="desactivar"><svg class="icono" viewBox="0 0 24 24" aria-hidden="true"><path d="M18.36 6.64a9 9 0 1 1-12.73 0M12 2v10"/></svg>Desactivar cuenta</button></div></details></div></td>
+              </tr>
+              <tr class="fila--apagada" data-fila data-estado="desarrollador inactivo" data-tipo="desarrollador" data-nombre="Diego Ramírez" data-correo="diego.ramirez@coretechsolutions.co" data-telefono="3016643275" data-especialidad="Backend" data-activos="0">
+                <td data-etiqueta="Usuario" class="celda--ancha"><span class="celda-usuario"><span class="avatar" aria-hidden="true" data-celda-iniciales>DR</span><span class="celda-principal"><strong data-celda-nombre>Diego Ramírez</strong><small data-celda-correo>diego.ramirez@coretechsolutions.co</small></span></span></td>
+                <td data-etiqueta="Rol"><span class="insignia insignia--activo" data-celda-rol>Equipo · Product Owner</span></td>
+                <td data-etiqueta="Actividad" data-celda-actividad><span class="celda-actividad"><span class="celda-principal"><strong>Backend</strong><small>0 de 3 proyectos activos</small></span><span class="carga" role="img" aria-label="0 de 3 proyectos activos"><span class="carga__unidad"></span><span class="carga__unidad"></span><span class="carga__unidad"></span></span></span></td>
+                <td data-etiqueta="Último acceso"><span class="celda-principal"><small>15 sep 2026</small></span></td>
+                <td data-etiqueta="Estado"><span class="insignia insignia--cancelada" data-insignia-estado>Inactivo</span></td>
+                <td><div class="celda-acciones" data-acciones><button type="button" class="boton boton--contorno boton--pequeno" data-abrir="editar"><svg class="icono" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 20h9"/><path d="M16.5 3.5a2.12 2.12 0 0 1 3 3L7 19l-4 1 1-4Z"/></svg>Editar</button><details class="menu-acciones"><summary class="boton-icono boton-icono--pequeno" aria-label="Más acciones para Diego Ramírez" title="Más acciones"><svg class="icono" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="5" r="1.5"/><circle cx="12" cy="12" r="1.5"/><circle cx="12" cy="19" r="1.5"/></svg></summary><div class="menu-acciones__lista" role="menu"><a class="menu-acciones__opcion" role="menuitem" href="proyectos.html?buscar=Diego"><svg class="icono" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 7a2 2 0 0 1 2-2h4l2 2h8a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2Z"/></svg>Ver sus proyectos</a><button type="button" class="menu-acciones__opcion" role="menuitem" data-abrir="clave"><svg class="icono" viewBox="0 0 24 24" aria-hidden="true"><circle cx="7.5" cy="15.5" r="5.5"/><path d="m21 2-9.6 9.6M15.5 7.5l3 3L22 7l-3-3"/></svg>Restablecer contraseña</button><button type="button" class="menu-acciones__opcion" role="menuitem" data-abrir="activar"><svg class="icono" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>Activar cuenta</button></div></details></div></td>
+              </tr>
+              <tr data-fila data-estado="cliente activo" data-tipo="cliente" data-nombre="Laura Gómez" data-correo="laura.gomez@correo.com" data-telefono="3142208815" data-especialidad="" data-activos="0">
+                <td data-etiqueta="Usuario" class="celda--ancha"><span class="celda-usuario"><span class="avatar avatar--acento" aria-hidden="true" data-celda-iniciales>LG</span><span class="celda-principal"><strong data-celda-nombre>Laura Gómez</strong><small data-celda-correo>laura.gomez@correo.com</small></span></span></td>
+                <td data-etiqueta="Rol"><span class="insignia insignia--cliente" data-celda-rol>Cliente</span></td>
+                <td data-etiqueta="Actividad" data-celda-actividad><span class="celda-actividad"><span class="celda-principal"><small>2 proyectos · 1 cita pendiente</small></span></span></td>
+                <td data-etiqueta="Último acceso"><span class="celda-principal"><small>Ayer, 4:12 p. m.</small></span></td>
+                <td data-etiqueta="Estado"><span class="insignia insignia--atendida" data-insignia-estado>Activo</span></td>
+                <td><div class="celda-acciones" data-acciones><button type="button" class="boton boton--contorno boton--pequeno" data-abrir="editar"><svg class="icono" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 20h9"/><path d="M16.5 3.5a2.12 2.12 0 0 1 3 3L7 19l-4 1 1-4Z"/></svg>Editar</button><details class="menu-acciones"><summary class="boton-icono boton-icono--pequeno" aria-label="Más acciones para Laura Gómez" title="Más acciones"><svg class="icono" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="5" r="1.5"/><circle cx="12" cy="12" r="1.5"/><circle cx="12" cy="19" r="1.5"/></svg></summary><div class="menu-acciones__lista" role="menu"><a class="menu-acciones__opcion" role="menuitem" href="citas.html?buscar=Laura%20Gómez"><svg class="icono" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="4" width="18" height="17" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>Ver sus citas</a><button type="button" class="menu-acciones__opcion" role="menuitem" data-abrir="clave"><svg class="icono" viewBox="0 0 24 24" aria-hidden="true"><circle cx="7.5" cy="15.5" r="5.5"/><path d="m21 2-9.6 9.6M15.5 7.5l3 3L22 7l-3-3"/></svg>Restablecer contraseña</button><button type="button" class="menu-acciones__opcion menu-acciones__opcion--peligro" role="menuitem" data-abrir="desactivar"><svg class="icono" viewBox="0 0 24 24" aria-hidden="true"><path d="M18.36 6.64a9 9 0 1 1-12.73 0M12 2v10"/></svg>Desactivar cuenta</button></div></details></div></td>
+              </tr>
+              <tr data-fila data-estado="cliente activo" data-tipo="cliente" data-nombre="Felipe Ortega" data-correo="felipe.ortega@correo.com" data-telefono="3187734410" data-especialidad="" data-activos="0">
+                <td data-etiqueta="Usuario" class="celda--ancha"><span class="celda-usuario"><span class="avatar avatar--acento" aria-hidden="true" data-celda-iniciales>FO</span><span class="celda-principal"><strong data-celda-nombre>Felipe Ortega</strong><small data-celda-correo>felipe.ortega@correo.com</small></span></span></td>
+                <td data-etiqueta="Rol"><span class="insignia insignia--cliente" data-celda-rol>Cliente</span></td>
+                <td data-etiqueta="Actividad" data-celda-actividad><span class="celda-actividad"><span class="celda-principal"><small>1 proyecto · 1 cita confirmada</small></span></span></td>
+                <td data-etiqueta="Último acceso"><span class="celda-principal"><small>Hace 3 días</small></span></td>
+                <td data-etiqueta="Estado"><span class="insignia insignia--atendida" data-insignia-estado>Activo</span></td>
+                <td><div class="celda-acciones" data-acciones><button type="button" class="boton boton--contorno boton--pequeno" data-abrir="editar"><svg class="icono" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 20h9"/><path d="M16.5 3.5a2.12 2.12 0 0 1 3 3L7 19l-4 1 1-4Z"/></svg>Editar</button><details class="menu-acciones"><summary class="boton-icono boton-icono--pequeno" aria-label="Más acciones para Felipe Ortega" title="Más acciones"><svg class="icono" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="5" r="1.5"/><circle cx="12" cy="12" r="1.5"/><circle cx="12" cy="19" r="1.5"/></svg></summary><div class="menu-acciones__lista" role="menu"><a class="menu-acciones__opcion" role="menuitem" href="citas.html?buscar=Felipe%20Ortega"><svg class="icono" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="4" width="18" height="17" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>Ver sus citas</a><button type="button" class="menu-acciones__opcion" role="menuitem" data-abrir="clave"><svg class="icono" viewBox="0 0 24 24" aria-hidden="true"><circle cx="7.5" cy="15.5" r="5.5"/><path d="m21 2-9.6 9.6M15.5 7.5l3 3L22 7l-3-3"/></svg>Restablecer contraseña</button><button type="button" class="menu-acciones__opcion menu-acciones__opcion--peligro" role="menuitem" data-abrir="desactivar"><svg class="icono" viewBox="0 0 24 24" aria-hidden="true"><path d="M18.36 6.64a9 9 0 1 1-12.73 0M12 2v10"/></svg>Desactivar cuenta</button></div></details></div></td>
+              </tr>
+              <tr data-fila data-estado="cliente activo" data-tipo="cliente" data-nombre="Ricardo Peñaranda" data-correo="ricardo.penaranda@correo.com" data-telefono="3125569031" data-especialidad="" data-activos="0">
+                <td data-etiqueta="Usuario" class="celda--ancha"><span class="celda-usuario"><span class="avatar avatar--acento" aria-hidden="true" data-celda-iniciales>RP</span><span class="celda-principal"><strong data-celda-nombre>Ricardo Peñaranda</strong><small data-celda-correo>ricardo.penaranda@correo.com</small></span></span></td>
+                <td data-etiqueta="Rol"><span class="insignia insignia--cliente" data-celda-rol>Cliente</span></td>
+                <td data-etiqueta="Actividad" data-celda-actividad><span class="celda-actividad"><span class="celda-principal"><small>1 proyecto</small></span></span></td>
+                <td data-etiqueta="Último acceso"><span class="celda-principal"><small>Hace 2 días</small></span></td>
+                <td data-etiqueta="Estado"><span class="insignia insignia--atendida" data-insignia-estado>Activo</span></td>
+                <td><div class="celda-acciones" data-acciones><button type="button" class="boton boton--contorno boton--pequeno" data-abrir="editar"><svg class="icono" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 20h9"/><path d="M16.5 3.5a2.12 2.12 0 0 1 3 3L7 19l-4 1 1-4Z"/></svg>Editar</button><details class="menu-acciones"><summary class="boton-icono boton-icono--pequeno" aria-label="Más acciones para Ricardo Peñaranda" title="Más acciones"><svg class="icono" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="5" r="1.5"/><circle cx="12" cy="12" r="1.5"/><circle cx="12" cy="19" r="1.5"/></svg></summary><div class="menu-acciones__lista" role="menu"><a class="menu-acciones__opcion" role="menuitem" href="citas.html?buscar=Ricardo%20Peñaranda"><svg class="icono" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="4" width="18" height="17" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>Ver sus citas</a><button type="button" class="menu-acciones__opcion" role="menuitem" data-abrir="clave"><svg class="icono" viewBox="0 0 24 24" aria-hidden="true"><circle cx="7.5" cy="15.5" r="5.5"/><path d="m21 2-9.6 9.6M15.5 7.5l3 3L22 7l-3-3"/></svg>Restablecer contraseña</button><button type="button" class="menu-acciones__opcion menu-acciones__opcion--peligro" role="menuitem" data-abrir="desactivar"><svg class="icono" viewBox="0 0 24 24" aria-hidden="true"><path d="M18.36 6.64a9 9 0 1 1-12.73 0M12 2v10"/></svg>Desactivar cuenta</button></div></details></div></td>
+              </tr>
+              <tr data-fila data-estado="cliente activo" data-tipo="cliente" data-nombre="Carlos Díaz" data-correo="carlos.diaz@correo.com" data-telefono="3008841277" data-especialidad="" data-activos="0">
+                <td data-etiqueta="Usuario" class="celda--ancha"><span class="celda-usuario"><span class="avatar avatar--acento" aria-hidden="true" data-celda-iniciales>CD</span><span class="celda-principal"><strong data-celda-nombre>Carlos Díaz</strong><small data-celda-correo>carlos.diaz@correo.com</small></span></span></td>
+                <td data-etiqueta="Rol"><span class="insignia insignia--cliente" data-celda-rol>Cliente</span></td>
+                <td data-etiqueta="Actividad" data-celda-actividad><span class="celda-actividad"><span class="celda-principal"><small>1 proyecto</small></span></span></td>
+                <td data-etiqueta="Último acceso"><span class="celda-principal"><small>Hace 5 días</small></span></td>
+                <td data-etiqueta="Estado"><span class="insignia insignia--atendida" data-insignia-estado>Activo</span></td>
+                <td><div class="celda-acciones" data-acciones><button type="button" class="boton boton--contorno boton--pequeno" data-abrir="editar"><svg class="icono" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 20h9"/><path d="M16.5 3.5a2.12 2.12 0 0 1 3 3L7 19l-4 1 1-4Z"/></svg>Editar</button><details class="menu-acciones"><summary class="boton-icono boton-icono--pequeno" aria-label="Más acciones para Carlos Díaz" title="Más acciones"><svg class="icono" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="5" r="1.5"/><circle cx="12" cy="12" r="1.5"/><circle cx="12" cy="19" r="1.5"/></svg></summary><div class="menu-acciones__lista" role="menu"><a class="menu-acciones__opcion" role="menuitem" href="citas.html?buscar=Carlos%20Díaz"><svg class="icono" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="4" width="18" height="17" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>Ver sus citas</a><button type="button" class="menu-acciones__opcion" role="menuitem" data-abrir="clave"><svg class="icono" viewBox="0 0 24 24" aria-hidden="true"><circle cx="7.5" cy="15.5" r="5.5"/><path d="m21 2-9.6 9.6M15.5 7.5l3 3L22 7l-3-3"/></svg>Restablecer contraseña</button><button type="button" class="menu-acciones__opcion menu-acciones__opcion--peligro" role="menuitem" data-abrir="desactivar"><svg class="icono" viewBox="0 0 24 24" aria-hidden="true"><path d="M18.36 6.64a9 9 0 1 1-12.73 0M12 2v10"/></svg>Desactivar cuenta</button></div></details></div></td>
+              </tr>
+              <tr data-fila data-estado="cliente activo" data-tipo="cliente" data-nombre="Valentina Ortiz" data-correo="valentina.ortiz@correo.com" data-telefono="3162290458" data-especialidad="" data-activos="0">
+                <td data-etiqueta="Usuario" class="celda--ancha"><span class="celda-usuario"><span class="avatar avatar--acento" aria-hidden="true" data-celda-iniciales>VO</span><span class="celda-principal"><strong data-celda-nombre>Valentina Ortiz</strong><small data-celda-correo>valentina.ortiz@correo.com</small></span></span></td>
+                <td data-etiqueta="Rol"><span class="insignia insignia--cliente" data-celda-rol>Cliente</span></td>
+                <td data-etiqueta="Actividad" data-celda-actividad><span class="celda-actividad"><span class="celda-principal"><small>1 proyecto</small></span></span></td>
+                <td data-etiqueta="Último acceso"><span class="celda-principal"><small>Hace 16 días</small></span></td>
+                <td data-etiqueta="Estado"><span class="insignia insignia--atendida" data-insignia-estado>Activo</span></td>
+                <td><div class="celda-acciones" data-acciones><button type="button" class="boton boton--contorno boton--pequeno" data-abrir="editar"><svg class="icono" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 20h9"/><path d="M16.5 3.5a2.12 2.12 0 0 1 3 3L7 19l-4 1 1-4Z"/></svg>Editar</button><details class="menu-acciones"><summary class="boton-icono boton-icono--pequeno" aria-label="Más acciones para Valentina Ortiz" title="Más acciones"><svg class="icono" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="5" r="1.5"/><circle cx="12" cy="12" r="1.5"/><circle cx="12" cy="19" r="1.5"/></svg></summary><div class="menu-acciones__lista" role="menu"><a class="menu-acciones__opcion" role="menuitem" href="citas.html?buscar=Valentina%20Ortiz"><svg class="icono" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="4" width="18" height="17" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>Ver sus citas</a><button type="button" class="menu-acciones__opcion" role="menuitem" data-abrir="clave"><svg class="icono" viewBox="0 0 24 24" aria-hidden="true"><circle cx="7.5" cy="15.5" r="5.5"/><path d="m21 2-9.6 9.6M15.5 7.5l3 3L22 7l-3-3"/></svg>Restablecer contraseña</button><button type="button" class="menu-acciones__opcion menu-acciones__opcion--peligro" role="menuitem" data-abrir="desactivar"><svg class="icono" viewBox="0 0 24 24" aria-hidden="true"><path d="M18.36 6.64a9 9 0 1 1-12.73 0M12 2v10"/></svg>Desactivar cuenta</button></div></details></div></td>
+              </tr>
+              <tr data-fila data-estado="cliente activo" data-tipo="cliente" data-nombre="Natalia Suárez" data-correo="natalia.suarez@correo.com" data-telefono="3215547780" data-especialidad="" data-activos="0">
+                <td data-etiqueta="Usuario" class="celda--ancha"><span class="celda-usuario"><span class="avatar avatar--acento" aria-hidden="true" data-celda-iniciales>NS</span><span class="celda-principal"><strong data-celda-nombre>Natalia Suárez</strong><small data-celda-correo>natalia.suarez@correo.com</small></span></span></td>
+                <td data-etiqueta="Rol"><span class="insignia insignia--cliente" data-celda-rol>Cliente</span></td>
+                <td data-etiqueta="Actividad" data-celda-actividad><span class="celda-actividad"><span class="celda-principal"><small>1 proyecto finalizado · 1 cita pendiente</small></span></span></td>
+                <td data-etiqueta="Último acceso"><span class="celda-principal"><small>Hace 4 días</small></span></td>
+                <td data-etiqueta="Estado"><span class="insignia insignia--atendida" data-insignia-estado>Activo</span></td>
+                <td><div class="celda-acciones" data-acciones><button type="button" class="boton boton--contorno boton--pequeno" data-abrir="editar"><svg class="icono" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 20h9"/><path d="M16.5 3.5a2.12 2.12 0 0 1 3 3L7 19l-4 1 1-4Z"/></svg>Editar</button><details class="menu-acciones"><summary class="boton-icono boton-icono--pequeno" aria-label="Más acciones para Natalia Suárez" title="Más acciones"><svg class="icono" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="5" r="1.5"/><circle cx="12" cy="12" r="1.5"/><circle cx="12" cy="19" r="1.5"/></svg></summary><div class="menu-acciones__lista" role="menu"><a class="menu-acciones__opcion" role="menuitem" href="citas.html?buscar=Natalia%20Suárez"><svg class="icono" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="4" width="18" height="17" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>Ver sus citas</a><button type="button" class="menu-acciones__opcion" role="menuitem" data-abrir="clave"><svg class="icono" viewBox="0 0 24 24" aria-hidden="true"><circle cx="7.5" cy="15.5" r="5.5"/><path d="m21 2-9.6 9.6M15.5 7.5l3 3L22 7l-3-3"/></svg>Restablecer contraseña</button><button type="button" class="menu-acciones__opcion menu-acciones__opcion--peligro" role="menuitem" data-abrir="desactivar"><svg class="icono" viewBox="0 0 24 24" aria-hidden="true"><path d="M18.36 6.64a9 9 0 1 1-12.73 0M12 2v10"/></svg>Desactivar cuenta</button></div></details></div></td>
+              </tr>
+              <tr data-fila data-estado="cliente activo" data-tipo="cliente" data-nombre="Andrea Villamizar" data-correo="andrea.villamizar@correo.com" data-telefono="3109924516" data-especialidad="" data-activos="0">
+                <td data-etiqueta="Usuario" class="celda--ancha"><span class="celda-usuario"><span class="avatar avatar--acento" aria-hidden="true" data-celda-iniciales>AV</span><span class="celda-principal"><strong data-celda-nombre>Andrea Villamizar</strong><small data-celda-correo>andrea.villamizar@correo.com</small></span></span></td>
+                <td data-etiqueta="Rol"><span class="insignia insignia--cliente" data-celda-rol>Cliente</span></td>
+                <td data-etiqueta="Actividad" data-celda-actividad><span class="celda-actividad"><span class="celda-principal"><small>1 cita pendiente</small></span></span></td>
+                <td data-etiqueta="Último acceso"><span class="celda-principal"><small>Hace 2 días</small></span></td>
+                <td data-etiqueta="Estado"><span class="insignia insignia--atendida" data-insignia-estado>Activo</span></td>
+                <td><div class="celda-acciones" data-acciones><button type="button" class="boton boton--contorno boton--pequeno" data-abrir="editar"><svg class="icono" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 20h9"/><path d="M16.5 3.5a2.12 2.12 0 0 1 3 3L7 19l-4 1 1-4Z"/></svg>Editar</button><details class="menu-acciones"><summary class="boton-icono boton-icono--pequeno" aria-label="Más acciones para Andrea Villamizar" title="Más acciones"><svg class="icono" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="5" r="1.5"/><circle cx="12" cy="12" r="1.5"/><circle cx="12" cy="19" r="1.5"/></svg></summary><div class="menu-acciones__lista" role="menu"><a class="menu-acciones__opcion" role="menuitem" href="citas.html?buscar=Andrea%20Villamizar"><svg class="icono" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="4" width="18" height="17" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>Ver sus citas</a><button type="button" class="menu-acciones__opcion" role="menuitem" data-abrir="clave"><svg class="icono" viewBox="0 0 24 24" aria-hidden="true"><circle cx="7.5" cy="15.5" r="5.5"/><path d="m21 2-9.6 9.6M15.5 7.5l3 3L22 7l-3-3"/></svg>Restablecer contraseña</button><button type="button" class="menu-acciones__opcion menu-acciones__opcion--peligro" role="menuitem" data-abrir="desactivar"><svg class="icono" viewBox="0 0 24 24" aria-hidden="true"><path d="M18.36 6.64a9 9 0 1 1-12.73 0M12 2v10"/></svg>Desactivar cuenta</button></div></details></div></td>
+              </tr>
+              <tr data-fila data-estado="cliente activo" data-tipo="cliente" data-nombre="Miguel Ángel Duarte" data-correo="miguel.duarte@correo.com" data-telefono="3014418863" data-especialidad="" data-activos="0">
+                <td data-etiqueta="Usuario" class="celda--ancha"><span class="celda-usuario"><span class="avatar avatar--acento" aria-hidden="true" data-celda-iniciales>MÁ</span><span class="celda-principal"><strong data-celda-nombre>Miguel Ángel Duarte</strong><small data-celda-correo>miguel.duarte@correo.com</small></span></span></td>
+                <td data-etiqueta="Rol"><span class="insignia insignia--cliente" data-celda-rol>Cliente</span></td>
+                <td data-etiqueta="Actividad" data-celda-actividad><span class="celda-actividad"><span class="celda-principal"><small>1 cita atendida</small></span></span></td>
+                <td data-etiqueta="Último acceso"><span class="celda-principal"><small>Hace 6 días</small></span></td>
+                <td data-etiqueta="Estado"><span class="insignia insignia--atendida" data-insignia-estado>Activo</span></td>
+                <td><div class="celda-acciones" data-acciones><button type="button" class="boton boton--contorno boton--pequeno" data-abrir="editar"><svg class="icono" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 20h9"/><path d="M16.5 3.5a2.12 2.12 0 0 1 3 3L7 19l-4 1 1-4Z"/></svg>Editar</button><details class="menu-acciones"><summary class="boton-icono boton-icono--pequeno" aria-label="Más acciones para Miguel Ángel Duarte" title="Más acciones"><svg class="icono" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="5" r="1.5"/><circle cx="12" cy="12" r="1.5"/><circle cx="12" cy="19" r="1.5"/></svg></summary><div class="menu-acciones__lista" role="menu"><a class="menu-acciones__opcion" role="menuitem" href="citas.html?buscar=Miguel%20Ángel"><svg class="icono" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="4" width="18" height="17" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>Ver sus citas</a><button type="button" class="menu-acciones__opcion" role="menuitem" data-abrir="clave"><svg class="icono" viewBox="0 0 24 24" aria-hidden="true"><circle cx="7.5" cy="15.5" r="5.5"/><path d="m21 2-9.6 9.6M15.5 7.5l3 3L22 7l-3-3"/></svg>Restablecer contraseña</button><button type="button" class="menu-acciones__opcion menu-acciones__opcion--peligro" role="menuitem" data-abrir="desactivar"><svg class="icono" viewBox="0 0 24 24" aria-hidden="true"><path d="M18.36 6.64a9 9 0 1 1-12.73 0M12 2v10"/></svg>Desactivar cuenta</button></div></details></div></td>
+              </tr>
+              <tr class="fila--apagada" data-fila data-estado="cliente inactivo" data-tipo="cliente" data-nombre="Sofía Navarro" data-correo="sofia.navarro@correo.com" data-telefono="3193307742" data-especialidad="" data-activos="0">
+                <td data-etiqueta="Usuario" class="celda--ancha"><span class="celda-usuario"><span class="avatar avatar--acento" aria-hidden="true" data-celda-iniciales>SN</span><span class="celda-principal"><strong data-celda-nombre>Sofía Navarro</strong><small data-celda-correo>sofia.navarro@correo.com</small></span></span></td>
+                <td data-etiqueta="Rol"><span class="insignia insignia--cliente" data-celda-rol>Cliente</span></td>
+                <td data-etiqueta="Actividad" data-celda-actividad><span class="celda-actividad"><span class="celda-principal"><small>Sin actividad: canceló su cita</small></span></span></td>
+                <td data-etiqueta="Último acceso"><span class="celda-principal"><small>3 nov 2026</small></span></td>
+                <td data-etiqueta="Estado"><span class="insignia insignia--cancelada" data-insignia-estado>Inactivo</span></td>
+                <td><div class="celda-acciones" data-acciones><button type="button" class="boton boton--contorno boton--pequeno" data-abrir="editar"><svg class="icono" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 20h9"/><path d="M16.5 3.5a2.12 2.12 0 0 1 3 3L7 19l-4 1 1-4Z"/></svg>Editar</button><details class="menu-acciones"><summary class="boton-icono boton-icono--pequeno" aria-label="Más acciones para Sofía Navarro" title="Más acciones"><svg class="icono" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="5" r="1.5"/><circle cx="12" cy="12" r="1.5"/><circle cx="12" cy="19" r="1.5"/></svg></summary><div class="menu-acciones__lista" role="menu"><a class="menu-acciones__opcion" role="menuitem" href="citas.html?buscar=Sofía%20Navarro"><svg class="icono" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="4" width="18" height="17" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>Ver sus citas</a><button type="button" class="menu-acciones__opcion" role="menuitem" data-abrir="clave"><svg class="icono" viewBox="0 0 24 24" aria-hidden="true"><circle cx="7.5" cy="15.5" r="5.5"/><path d="m21 2-9.6 9.6M15.5 7.5l3 3L22 7l-3-3"/></svg>Restablecer contraseña</button><button type="button" class="menu-acciones__opcion" role="menuitem" data-abrir="activar"><svg class="icono" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>Activar cuenta</button></div></details></div></td>
+              </tr>
+              <tr class="tabla-datos__vacio" data-sin-resultados hidden>
+                <td colspan="6">
+                  <div class="sin-resultados">
+                    <span class="sin-resultados__icono"><svg class="icono icono--grande" viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5M8 11h6"/></svg></span>
+                    <h2 class="sin-resultados__titulo">No hay usuarios con estos filtros</h2>
+                    <p>Prueba con otro rol u otra búsqueda.</p>
+                    <button type="button" class="boton boton--contorno boton--pequeno" data-limpiar-filtros>Limpiar filtros</button>
+                  </div>
+                </td>
+              </tr>
+              </tbody>
+            </table>
+          </div>
+          <p class="pie-tabla" aria-live="polite"><span data-total-visible>15 resultados</span></p>
+        </div>
+
+        <dialog class="dialogo dialogo--ancho" id="dialogo-usuario" aria-labelledby="titulo-usuario">
+          <form class="dialogo__formulario" data-validar>
+            <div class="dialogo__cabecera">
+              <span class="dialogo__icono dialogo__icono--acento"><svg class="icono icono--grande" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4 21a8 8 0 0 1 16 0"/><path d="M19 8v6M16 11h6"/></svg></span>
+              <div>
+                <h2 class="dialogo__titulo" id="titulo-usuario" data-titulo-usuario>Crear cuenta de equipo</h2>
+                <p class="dialogo__texto" data-texto-usuario>Las cuentas de equipo no se registran solas: tú las creas para su Product Owner y les llega un correo con sus datos de acceso.</p>
+              </div>
+              <button type="button" class="boton-icono boton-icono--pequeno" data-cerrar-dialogo aria-label="Cerrar"><svg class="icono" viewBox="0 0 24 24" aria-hidden="true"><path d="M18 6 6 18M6 6l12 12"/></svg></button>
+            </div>
+            <div class="dialogo__cuerpo">
+              <div class="fila-campos">
+                <div class="campo">
+                  <label class="campo__etiqueta" for="usuario-nombre" data-etiqueta-nombre>Nombre del Product Owner</label>
+                  <input class="campo__control" id="usuario-nombre" name="nombre" type="text" autocomplete="off" required minlength="5" maxlength="60" placeholder="Ejemplo: Daniela Castro"
+                         data-mensaje-vacio="Escribe el nombre completo." data-mensaje-corto="Escribe nombre y apellido." aria-describedby="usuario-nombre-mensaje">
+                  <p class="campo__mensaje" id="usuario-nombre-mensaje" aria-live="polite"><svg class="icono" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M12 8v4M12 16h.01"/></svg><span class="campo__mensaje-texto"></span></p>
+                </div>
+                <div class="campo">
+                  <label class="campo__etiqueta" for="usuario-telefono">Celular</label>
+                  <input class="campo__control" id="usuario-telefono" name="telefono" type="tel" inputmode="numeric" autocomplete="off" required pattern="3[0-9]{9}" maxlength="10" placeholder="3001234567"
+                         data-mensaje-vacio="Escribe el número de celular." data-mensaje-formato="Escribe un celular de 10 dígitos que empiece por 3." aria-describedby="usuario-telefono-mensaje">
+                  <p class="campo__mensaje" id="usuario-telefono-mensaje" aria-live="polite"><svg class="icono" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M12 8v4M12 16h.01"/></svg><span class="campo__mensaje-texto"></span></p>
+                </div>
+              </div>
+              <div class="campo">
+                <label class="campo__etiqueta" for="usuario-correo">Correo</label>
+                <input class="campo__control" id="usuario-correo" name="correo" type="email" autocomplete="off" required placeholder="nombre.apellido@coretechsolutions.co"
+                       pattern="[^@\s]+@coretechsolutions\.co" data-patron-equipo="[^@\s]+@coretechsolutions\.co"
+                       data-mensaje-vacio="Escribe el correo." data-mensaje-formato="Usa el correo corporativo que termina en @coretechsolutions.co."
+                       aria-describedby="usuario-correo-ayuda usuario-correo-mensaje">
+                <p class="campo__ayuda" id="usuario-correo-ayuda" data-ayuda-correo>Será su usuario para iniciar sesión.</p>
+                <p class="campo__mensaje" id="usuario-correo-mensaje" aria-live="polite"><svg class="icono" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M12 8v4M12 16h.01"/></svg><span class="campo__mensaje-texto"></span></p>
+              </div>
+              <div data-solo-equipo>
+                <fieldset class="grupo-opciones campo">
+                  <legend class="campo__etiqueta">Rol</legend>
+                  <div class="opciones-en-linea">
+                    <label class="opcion-simple"><input type="radio" name="rol" value="desarrollador" checked>Equipo (Product Owner)</label>
+                    <label class="opcion-simple"><input type="radio" name="rol" value="administrador">Administrador</label>
+                  </div>
+                  <p class="campo__ayuda">Los permisos de cada rol se ajustan en <a href="roles-permisos.html">Roles y permisos</a>.</p>
+                </fieldset>
+                <div class="campo" data-campo-especialidad>
+                  <label class="campo__etiqueta" for="usuario-especialidad">Especialidad del equipo</label>
+                  <select class="campo__control select" id="usuario-especialidad" name="especialidad" required data-mensaje-vacio="Elige la especialidad." aria-describedby="usuario-especialidad-mensaje">
+                    <option value="">Elige una especialidad</option><option>Full stack</option><option>Frontend</option><option>Backend</option><option>Móvil</option>
+                  </select>
+                  <p class="campo__mensaje" id="usuario-especialidad-mensaje" aria-live="polite"><svg class="icono" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M12 8v4M12 16h.01"/></svg><span class="campo__mensaje-texto"></span></p>
+                </div>
+                <div class="campo" data-campo-integrantes>
+                  <label class="campo__etiqueta" for="usuario-integrantes">Integrantes del equipo <span class="campo__opcional">(opcional)</span></label>
+                  <textarea class="campo__control campo__control--area" id="usuario-integrantes" name="integrantes" rows="3" maxlength="400"
+                            placeholder="Un integrante por línea. Ejemplo: Valeria Rincón · Diseño de pantallas" aria-describedby="usuario-integrantes-ayuda"></textarea>
+                  <p class="campo__ayuda" id="usuario-integrantes-ayuda">El cliente verá estos nombres en su proyecto. La cuenta la usa solo el Product Owner.</p>
+                </div>
+              </div>
+              <div class="clave-temporal" data-clave-temporal>
+                <div>
+                  <p class="clave-temporal__titulo">Contraseña temporal</p>
+                  <code class="clave-temporal__valor" data-clave>Ct-7kQ2-mx9R</code>
+                  <p class="clave-temporal__ayuda">Le llegará por correo y deberá cambiarla al iniciar sesión por primera vez.</p>
+                </div>
+                <button type="button" class="boton boton--contorno boton--pequeno" data-generar-clave><svg class="icono" viewBox="0 0 24 24" aria-hidden="true"><path d="M21 12a9 9 0 1 1-3-6.7L21 8"/><path d="M21 3v5h-5"/></svg>Generar otra</button>
+              </div>
+            </div>
+            <div class="dialogo__acciones">
+              <button type="button" class="boton boton--contorno" data-cerrar-dialogo>Volver</button>
+              <button type="submit" class="boton boton--acento" data-boton-usuario>Crear cuenta</button>
+            </div>
+          </form>
+        </dialog>
+
+        <dialog class="dialogo" id="dialogo-desactivar" aria-labelledby="titulo-desactivar" aria-describedby="texto-desactivar">
+          <div class="dialogo__cuerpo">
+            <span class="dialogo__icono dialogo__icono--peligro"><svg class="icono icono--grande" viewBox="0 0 24 24" aria-hidden="true"><path d="M18.36 6.64a9 9 0 1 1-12.73 0M12 2v10"/></svg></span>
+            <h2 class="dialogo__titulo" id="titulo-desactivar">Desactivar cuenta</h2>
+            <p class="dialogo__texto" id="texto-desactivar" data-texto></p>
+            <div class="alerta alerta--advertencia aviso-proyectos" data-aviso-proyectos hidden>
+              <svg class="icono" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M12 8v4M12 16h.01"/></svg>
+              <div><strong data-aviso-titulo></strong><p>Reasígnalos antes de desactivar la cuenta, para que ningún proyecto quede sin responsable.</p><a class="boton boton--oscuro boton--pequeno" href="proyectos.html" data-enlace-proyectos>Ir a sus proyectos</a></div>
+            </div>
+          </div>
+          <div class="dialogo__acciones">
+            <button type="button" class="boton boton--contorno" data-cerrar-dialogo>Volver</button>
+            <button type="button" class="boton boton--peligro" data-confirmar>Desactivar</button>
+          </div>
+        </dialog>
+
+        <dialog class="dialogo" id="dialogo-activar" aria-labelledby="titulo-activar" aria-describedby="texto-activar">
+          <div class="dialogo__cuerpo">
+            <span class="dialogo__icono dialogo__icono--acento"><svg class="icono icono--grande" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg></span>
+            <h2 class="dialogo__titulo" id="titulo-activar">Activar cuenta</h2>
+            <p class="dialogo__texto" id="texto-activar" data-texto></p>
+            <div class="alerta alerta--advertencia aviso-proyectos" data-aviso-proyectos hidden>
+              <svg class="icono" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M12 8v4M12 16h.01"/></svg>
+              <div><strong data-aviso-titulo></strong><p>Reasígnalos antes de desactivar la cuenta, para que ningún proyecto quede sin responsable.</p><a class="boton boton--oscuro boton--pequeno" href="proyectos.html" data-enlace-proyectos>Ir a sus proyectos</a></div>
+            </div>
+          </div>
+          <div class="dialogo__acciones">
+            <button type="button" class="boton boton--contorno" data-cerrar-dialogo>Volver</button>
+            <button type="button" class="boton boton--acento" data-confirmar>Activar</button>
+          </div>
+        </dialog>
+
+        <dialog class="dialogo" id="dialogo-clave" aria-labelledby="titulo-clave" aria-describedby="texto-clave">
+          <div class="dialogo__cuerpo">
+            <span class="dialogo__icono dialogo__icono--acento"><svg class="icono icono--grande" viewBox="0 0 24 24" aria-hidden="true"><circle cx="7.5" cy="15.5" r="5.5"/><path d="m21 2-9.6 9.6M15.5 7.5l3 3L22 7l-3-3"/></svg></span>
+            <h2 class="dialogo__titulo" id="titulo-clave">Restablecer contraseña</h2>
+            <p class="dialogo__texto" id="texto-clave" data-texto></p>
+            <div class="alerta alerta--advertencia aviso-proyectos" data-aviso-proyectos hidden>
+              <svg class="icono" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M12 8v4M12 16h.01"/></svg>
+              <div><strong data-aviso-titulo></strong><p>Reasígnalos antes de desactivar la cuenta, para que ningún proyecto quede sin responsable.</p><a class="boton boton--oscuro boton--pequeno" href="proyectos.html" data-enlace-proyectos>Ir a sus proyectos</a></div>
+            </div>
+          </div>
+          <div class="dialogo__acciones">
+            <button type="button" class="boton boton--contorno" data-cerrar-dialogo>Volver</button>
+            <button type="button" class="boton boton--acento" data-confirmar>Enviar enlace</button>
+          </div>
+        </dialog>
+      </main>
+    </div>
+  </div>
+
+  <script src="../js/principal.js"></script>
+  <script src="../js/tabla.js"></script>
+  <script src="../js/vistas/admin-usuarios.js"></script>
+</body>
+</html>

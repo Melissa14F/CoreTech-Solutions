@@ -1,0 +1,83 @@
+/* ==========================================================================
+   Vista: Detalle del proyecto del cliente
+   (cliente/proyecto-tienda-en-linea.html y cliente/proyecto-app-de-reservas.html)
+   Requiere: global.css, plantillas/panel.css, plantillas/linea-tiempo.css
+   y plantillas/proyecto.css
+   ========================================================================== */
+
+/* 1. Encabezado del proyecto =============================================== */
+
+/* 2. Franja de datos clave ================================================= */
+.datos-proyecto { display: grid; grid-template-columns: 1.4fr repeat(3, minmax(0, 1fr)); gap: var(--espacio-4); margin-bottom: var(--espacio-8); }
+.dato-proyecto { padding: var(--espacio-5); border: 1px solid var(--color-borde); border-radius: var(--radio-tarjeta); background: var(--color-fondo); }
+.dato-proyecto__etiqueta { display: block; margin-bottom: 4px; font-size: .75rem; color: var(--color-texto-suave); }
+.dato-proyecto__valor { font-family: var(--fuente-titulos); font-size: 1.25rem; font-weight: 800; line-height: 1.25; }
+.dato-proyecto__detalle { display: block; margin-top: 2px; font-size: .75rem; color: var(--color-texto-suave); }
+/* Avance general con anillo */
+.dato-proyecto--general { display: flex; align-items: center; gap: var(--espacio-4); background: var(--color-noche); border-color: var(--color-noche); color: #fff; }
+.dato-proyecto--general .dato-proyecto__etiqueta, .dato-proyecto--general .dato-proyecto__detalle { color: var(--color-texto-noche); }
+.anillo { --valor: 0; position: relative; width: 64px; height: 64px; flex: none; border-radius: 50%; background: conic-gradient(var(--color-indigo-claro) calc(var(--valor) * 1%), rgba(255, 255, 255, .12) 0); }
+.anillo::after { content: ""; position: absolute; inset: 7px; border-radius: 50%; background: var(--color-noche); }
+.anillo__valor { position: absolute; inset: 0; z-index: 1; display: grid; place-items: center; font-size: .875rem; font-weight: 700; }
+
+/* 3. Distribución ========================================================== */
+.proyecto-detalle { display: grid; grid-template-columns: minmax(0, 1fr) 320px; gap: var(--espacio-4) var(--espacio-6); align-items: start; }
+/* El título va en su propia fila: la línea de tiempo y la tarjeta lateral empiezan a la misma altura */
+.proyecto-detalle > .proyecto-detalle__cabecera { grid-column: 1; }
+.proyecto-detalle__cabecera .proyecto-detalle__titulo { margin: 0; }
+.proyecto-detalle__nota { margin: 2px 0 0; font-size: .8125rem; color: var(--color-texto-suave); }
+.proyecto-detalle__principal { grid-column: 1; }
+.proyecto-detalle > .proyecto-detalle__lateral { grid-column: 2; grid-row: 2; }
+.proyecto-detalle__lateral { display: grid; gap: var(--espacio-5); position: sticky; top: 92px; }
+
+/* Bloque "Enviar mensaje / Solicitar reunión" dentro de la fase actual */
+.solicitar-reunion { display: flex; align-items: center; gap: var(--espacio-4); flex-wrap: wrap; margin-top: var(--espacio-5); padding: var(--espacio-4); border: 1px dashed #c7c9f6; border-radius: var(--radio-caja); background: #fbfbff; }
+.solicitar-reunion__texto { flex: 1; min-width: 200px; margin: 0; font-size: .875rem; color: var(--color-texto); }
+.solicitar-reunion__texto strong { display: block; color: var(--color-tinta); }
+.solicitar-reunion__acciones { display: flex; flex-wrap: wrap; gap: var(--espacio-2); }
+@media (max-width: 480px) {
+  .solicitar-reunion__acciones { width: 100%; }
+  .solicitar-reunion__acciones .boton { flex: 1 1 100%; justify-content: center; }
+}
+
+/* Conversación con el desarrollador (tarjeta lateral) */
+.conversacion { margin-top: var(--espacio-4); padding-top: var(--espacio-4); border-top: 1px solid var(--color-borde-suave); }
+.conversacion__cabecera { display: flex; align-items: center; justify-content: space-between; gap: var(--espacio-3); margin-bottom: var(--espacio-3); }
+.conversacion__titulo { margin: 0; font-size: .875rem; font-weight: 700; }
+.conversacion__nuevo { display: inline-flex; align-items: center; gap: 6px; padding: 0; border: 0; background: none; cursor: pointer; font-size: .8125rem; }
+.conversacion__nuevo .icono { width: 15px; height: 15px; }
+.conversacion__vacio { margin: 0; padding: var(--espacio-4); border-radius: var(--radio-caja); background: var(--color-fondo-suave); font-size: .8125rem; color: var(--color-texto-suave); }
+.conversacion__lista { display: grid; gap: var(--espacio-2); max-height: 320px; margin: 0; padding: 0; overflow-y: auto; list-style: none; }
+.conversacion__lista:empty { display: none; }
+.mensaje { max-width: 92%; padding: 10px 12px; border-radius: 12px 12px 12px 4px; background: var(--color-fondo-suave); }
+.mensaje--tuyo { justify-self: end; border-radius: 12px 12px 4px 12px; background: var(--color-acento-suave); }
+.mensaje__meta { display: flex; gap: var(--espacio-2); margin: 0 0 2px; font-size: .6875rem; color: var(--color-texto-suave); }
+.mensaje__autor { font-weight: 700; color: var(--color-texto); }
+.mensaje__texto { margin: 0; font-size: .8125rem; line-height: 1.5; color: var(--color-texto); overflow-wrap: anywhere; white-space: pre-line; }
+.mensaje--nuevo { animation: aparecer-arriba var(--duracion-media) var(--curva); }
+.conversacion__correo { margin: var(--espacio-3) 0 0; font-size: .75rem; color: var(--color-texto-suave); overflow-wrap: anywhere; }
+
+/* Estado de la solicitud enviada (RN-15: una abierta por proyecto) */
+.solicitud-enviada { margin-top: var(--espacio-5); }
+.solicitud-enviada__datos { display: grid; gap: 2px; margin-top: var(--espacio-2); font-size: .8125rem; }
+
+
+/* 4. Formulario "Solicitar reunión": solo el contexto y la fecha sugerida
+      (los estilos del formulario en diálogo están en global.css) ========= */
+.contexto-reunion { display: grid; grid-template-columns: 1fr 1fr; gap: var(--espacio-3); margin-bottom: var(--espacio-4); padding: var(--espacio-4); border-radius: var(--radio-caja); background: var(--color-fondo-suave); font-size: .8125rem; }
+.contexto-reunion__dato { display: block; color: var(--color-texto-suave); }
+.contexto-reunion__valor { font-weight: 600; }
+.fecha-sugerida { display: grid; grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr); gap: var(--espacio-3); }
+
+/* 5. Diseño adaptable ====================================================== */
+@media (max-width: 1180px) {
+  .datos-proyecto { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .proyecto-detalle { grid-template-columns: minmax(0, 1fr); }
+  .proyecto-detalle > .proyecto-detalle__lateral { position: static; grid-column: 1; grid-row: auto; margin-top: var(--espacio-2); grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+@media (max-width: 640px) {
+  .datos-proyecto, .proyecto-detalle > .proyecto-detalle__lateral { grid-template-columns: minmax(0, 1fr); }
+  .contexto-reunion, .opciones-en-linea, .fecha-sugerida { grid-template-columns: minmax(0, 1fr); }
+  .dialogo__acciones { flex-direction: column-reverse; }
+  .dialogo__acciones .boton { width: 100%; }
+}

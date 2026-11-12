@@ -1,0 +1,31 @@
+/* ==========================================================================
+   Plantilla: páginas de documentación (mapa.html y guia-estilos.html)
+   Portada oscura bajo el encabezado y contenido con índice lateral.
+   Requiere: global.css
+   ========================================================================== */
+
+/* 1. Portada =============================================================== */
+.documento-portada { margin-top: -72px; padding: calc(72px + var(--espacio-16)) 0 var(--espacio-12); }
+.documento-portada__titulo { max-width: 20ch; margin: var(--espacio-5) 0 var(--espacio-4); font-size: clamp(2rem, 4vw, 3rem); font-weight: 800; letter-spacing: -.03em; }
+.documento-portada__texto { max-width: 60ch; margin: 0; font-size: 1.0625rem; }
+.documento-portada__texto code { padding: 1px 6px; border-radius: 4px; background: rgba(255, 255, 255, .1); color: #fff; }
+
+/* 2. Contenido ============================================================= */
+.documento { padding: var(--espacio-12) 0 var(--espacio-20); }
+.documento--con-indice { display: grid; grid-template-columns: 220px minmax(0, 1fr); gap: var(--espacio-12); }
+.documento__indice { position: sticky; top: 96px; align-self: start; display: grid; gap: var(--espacio-4); }
+.documento__indice-titulo { margin: 0; font-size: .75rem; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--color-tinta); }
+.documento__indice ol { display: grid; gap: var(--espacio-2); margin: 0; padding-left: var(--espacio-4); border-left: 2px solid var(--color-borde); list-style: none; }
+.documento__indice a { font-size: .875rem; color: var(--color-texto-suave); transition: color var(--duracion-rapida); }
+.documento__indice a:hover { color: var(--color-acento); }
+.documento__indice .boton { justify-self: start; }
+.documento__atajos { display: flex; flex-wrap: wrap; gap: var(--espacio-2); margin-bottom: var(--espacio-8); }
+.pildora-enlace { padding: 8px 14px; border: 1px solid var(--color-borde); border-radius: var(--radio-pildora); background: var(--color-fondo); font-size: .875rem; font-weight: 600; color: var(--color-tinta); transition: border-color var(--duracion-rapida), color var(--duracion-rapida); }
+.pildora-enlace:hover { border-color: var(--color-acento); color: var(--color-acento); }
+
+/* 3. Diseño adaptable ====================================================== */
+@media (max-width: 960px) {
+  .documento--con-indice { grid-template-columns: minmax(0, 1fr); gap: var(--espacio-8); }
+  .documento__indice { position: static; }
+  .documento__indice ol { display: flex; flex-wrap: wrap; gap: var(--espacio-2) var(--espacio-4); padding: 0; border: 0; }
+}

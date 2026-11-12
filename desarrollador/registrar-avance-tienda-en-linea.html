@@ -1,0 +1,549 @@
+<!DOCTYPE html>
+<html lang="es" class="sin-js">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Registrar avance · Tienda en línea Laura · CoreTech Solutions</title>
+  <link rel="icon" href="../img/logo.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap">
+  <link rel="stylesheet" href="../css/global.css">
+  <link rel="stylesheet" href="../css/plantillas/panel.css">
+  <link rel="stylesheet" href="../css/plantillas/linea-tiempo.css">
+  <link rel="stylesheet" href="../css/plantillas/proyecto.css">
+  <link rel="stylesheet" href="../css/vistas/registrar-avance.css">
+  <script src="../js/accesibilidad.js"></script>
+</head>
+<body>
+  <a class="saltar-contenido" href="#contenido">Saltar al contenido</a>
+
+  <div class="panel">
+    <!-- ===================== Menú lateral del cliente ===================== -->
+    <aside class="panel__lateral superficie-noche" aria-label="Menú del equipo">
+      <a class="marca" href="../index.html" aria-label="CoreTech Solutions, ir al sitio público">
+        <img class="marca__logo" src="../img/logo.svg" alt="" width="30" height="30">
+        <span>CoreTech</span>
+      </a>
+      <p class="panel__rol"><strong>Panel del equipo</strong>Tus proyectos y reuniones</p>
+
+      <nav aria-label="Secciones del equipo">
+        <p class="navegacion-panel__titulo">Mi trabajo</p>
+        <ul class="navegacion-panel__lista">
+          <li>
+            <a class="navegacion-panel__enlace" href="proyectos.html" aria-current="page">
+              <svg class="icono" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 7a2 2 0 0 1 2-2h4l2 2h8a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2Z"/></svg>
+              Mis proyectos
+              <span class="navegacion-panel__contador" aria-label="2 proyectos">2</span>
+            </a>
+          </li>
+          <li>
+            <a class="navegacion-panel__enlace" href="citas-reuniones.html">
+              <svg class="icono" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="4" width="18" height="17" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>
+              Citas y reuniones
+              <span class="navegacion-panel__contador navegacion-panel__contador--aviso" aria-label="3 pendientes">3</span>
+            </a>
+          </li>
+        </ul>
+      </nav>
+
+      <div class="panel__usuario">
+        <span class="avatar " aria-hidden="true">AP</span>
+        <span class="panel__usuario-datos">
+          <span class="panel__usuario-nombre">Andrés Pérez</span>
+          <span class="panel__usuario-correo">andres.perez@coretechsolutions.co</span>
+        </span>
+        <a class="panel__salir" href="../index.html" data-accion data-mensaje-exito="Cerraste sesión." aria-label="Cerrar sesión" title="Cerrar sesión">
+          <svg class="icono" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4M16 17l5-5-5-5M21 12H9"/></svg>
+        </a>
+      </div>
+    </aside>
+
+    <div class="panel__cuerpo">
+      <!-- ===================== Barra superior ===================== -->
+      <header class="panel__barra">
+        <button type="button" class="boton-icono boton-icono--pequeno boton-menu-panel" aria-expanded="false" aria-label="Abrir menú">
+          <svg class="icono" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+        </button>
+        <nav class="ruta" aria-label="Ruta de navegación">
+          <a href="proyectos.html">Panel</a>
+          <svg class="icono" viewBox="0 0 24 24" aria-hidden="true"><path d="m9 6 6 6-6 6"/></svg>
+          <a href="proyectos.html">Mis proyectos</a>
+          <svg class="icono" viewBox="0 0 24 24" aria-hidden="true"><path d="m9 6 6 6-6 6"/></svg>
+          <span aria-current="page">Tienda en línea Laura</span>
+        </nav>
+        <div class="panel__barra-acciones">
+          <a class="boton-icono boton-icono--pequeno campana" href="citas-reuniones.html" aria-label="Notificaciones: 3 nuevas">
+            <svg class="icono" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9"/><path d="M10.3 21a1.94 1.94 0 0 0 3.4 0"/></svg>
+            <span class="campana__punto" aria-hidden="true"></span>
+          </a>
+          <div class="panel__perfil">
+            <span class="avatar " aria-hidden="true">AP</span>
+            <span class="panel__perfil-nombre">Andrés Pérez<small>Product Owner</small></span>
+          </div>
+        </div>
+      </header>
+
+      <!-- ===================== Contenido ===================== -->
+      <main class="panel__contenido" id="contenido">
+        <a class="volver" href="proyectos.html">
+          <svg class="icono" viewBox="0 0 24 24" aria-hidden="true"><path d="M19 12H5M11 19l-7-7 7-7"/></svg>
+          Volver a mis proyectos
+        </a>
+
+        <div class="proyecto-cabecera aparecer">
+          <img class="proyecto-cabecera__imagen" src="../img/servicios/tienda-en-linea.webp" alt="" width="96" height="64">
+          <div>
+            <h1 class="proyecto-cabecera__titulo">Registrar avance</h1>
+            <p class="proyecto-cabecera__subtitulo"><strong>Tienda en línea Laura</strong> · P-0031 · Desarrollo de tienda en línea</p>
+          </div>
+        </div>
+
+        <div class="registro-avance" data-registro-avance data-fase="3" data-cliente="Laura" data-total="40" data-valor="20" data-aprueba="1,2,4" data-plazo="3">
+          <div class="registro-avance__principal">
+            <!-- ===================== Formulario del avance ===================== -->
+            <section class="tarjeta formulario-avance aparecer" aria-labelledby="titulo-nuevo">
+              <div class="formulario-avance__cabecera">
+                <h2 class="tarjeta__titulo" id="titulo-nuevo">Registrar trabajo</h2>
+                <span class="fase-bloqueada" title="Las fases avanzan en orden (RN-08)"><svg class="icono" viewBox="0 0 24 24" aria-hidden="true"><rect x="4" y="11" width="16" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg><span>Fase <span data-fase-actual-numero>3</span> de 5 · <strong data-fase-nombre>Desarrollo</strong></span></span>
+              </div>
+
+              <section class="correcciones-abiertas" aria-labelledby="titulo-abiertas" data-correcciones-abiertas hidden>
+                <h3 class="correcciones-abiertas__titulo" id="titulo-abiertas"><svg class="icono" viewBox="0 0 24 24" aria-hidden="true"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>Correcciones en fases aprobadas <span data-cantidad-abiertas>0</span></h3>
+                <p class="correcciones-abiertas__nota">Cada fase en corrección deja de sumar su 20 % hasta que la termines. No podrás entregar Desarrollo mientras haya alguna abierta.</p>
+                <ul class="correcciones-abiertas__lista" data-lista-abiertas></ul>
+              </section>
+
+              <!-- Sin JavaScript el formulario envía a "Mis proyectos"; con JavaScript se confirma y se publica aquí. -->
+              <form action="proyectos.html" method="get" data-validar data-formulario-avance>
+                <fieldset class="tipo-registro grupo-opciones">
+                  <legend class="campo__etiqueta">¿Qué quieres registrar?</legend>
+                  <div class="tipo-registro__opciones">
+                    <label class="tipo-registro__opcion"><input type="radio" name="tipo" value="paso" checked data-tipo-registro>
+                      <span><strong>Paso hecho</strong><small data-texto-tipo-paso>Marca con ✓ un paso de Desarrollo.</small></span></label>
+                    <label class="tipo-registro__opcion"><input type="radio" name="tipo" value="correccion" data-tipo-registro>
+                      <span><strong>Corrección</strong><small>Algo de esta fase o de una aprobada hay que arreglar.</small></span></label>
+                  </div>
+                </fieldset>
+
+                <div class="campo" data-solo-paso>
+                  <label class="campo__etiqueta" for="registro-paso">Paso terminado</label>
+                  <select class="campo__control select" id="registro-paso" name="paso" required data-mensaje-vacio="Elige el paso que terminaste." aria-describedby="registro-paso-mensaje">
+                    <option value="3-4">Pedidos y correos de confirmación (en curso)</option><option value="3-5">Pago contra entrega</option>
+                  </select>
+                  <p class="campo__mensaje" id="registro-paso-mensaje" aria-live="polite"><svg class="icono" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M12 8v4M12 16h.01"/></svg><span class="campo__mensaje-texto"></span></p>
+                </div>
+
+                <div data-solo-correccion hidden>
+                  <div class="fila-campos">
+                    <div class="campo">
+                      <label class="campo__etiqueta" for="correccion-fase">Fase que se corrige</label>
+                      <select class="campo__control select" id="correccion-fase" name="fase_corregida" aria-describedby="correccion-fase-mensaje">
+                        <option value="1">Toma de requerimientos (aprobada)</option><option value="2">Análisis y diseño (aprobada)</option><option value="3">Desarrollo (actual)</option>
+                      </select>
+                      <p class="campo__mensaje" id="correccion-fase-mensaje" aria-live="polite"><svg class="icono" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M12 8v4M12 16h.01"/></svg><span class="campo__mensaje-texto"></span></p>
+                    </div>
+                    <div class="campo">
+                      <label class="campo__etiqueta" for="avance-motivo">¿De dónde sale?</label>
+                      <select class="campo__control select" id="avance-motivo" name="motivo" data-mensaje-vacio="Elige de dónde sale la corrección." aria-describedby="avance-motivo-mensaje">
+                        <option value="">Elige una opción</option>
+                        <option value="Lo pidió Laura">Lo pidió Laura</option>
+                        <option value="La encontramos al construir">La encontramos al construir</option>
+                        <option value="La encontramos en pruebas">La encontramos en pruebas</option>
+                      </select>
+                      <p class="campo__mensaje" id="avance-motivo-mensaje" aria-live="polite"><svg class="icono" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M12 8v4M12 16h.01"/></svg><span class="campo__mensaje-texto"></span></p>
+                    </div>
+                  </div>
+                  <div class="campo">
+                    <label class="campo__etiqueta" for="correccion-titulo">Nombre corto de la corrección</label>
+                    <input class="campo__control" id="correccion-titulo" name="titulo" maxlength="70"
+                           placeholder="Ejemplo: Mostrar el costo del envío antes de pagar"
+                           data-mensaje-vacio="Escribe un nombre corto." aria-describedby="correccion-titulo-mensaje">
+                    <p class="campo__mensaje" id="correccion-titulo-mensaje" aria-live="polite"><svg class="icono" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M12 8v4M12 16h.01"/></svg><span class="campo__mensaje-texto"></span></p>
+                  </div>
+                </div>
+
+                <p class="impacto-proyecto" data-impacto aria-live="polite"></p>
+
+                <div class="campo">
+                  <label class="campo__etiqueta" for="avance-descripcion" data-etiqueta-descripcion>Nota para Laura: ¿qué se hizo?</label>
+                  <textarea class="campo__control campo__control--area" id="avance-descripcion" name="descripcion" required minlength="20" maxlength="400"
+                            placeholder="Ejemplo: ya recibes cada pedido en tu panel y tu cliente recibe un correo con el resumen de su compra."
+                            data-mensaje-vacio="Escribe la nota para que Laura sepa qué cambió."
+                            data-mensaje-corto="Escribe al menos 20 caracteres."
+                            aria-describedby="avance-descripcion-ayuda avance-descripcion-mensaje"></textarea>
+                  <div class="campo__pie">
+                    <p class="campo__ayuda" id="avance-descripcion-ayuda">Escríbelo como se lo dirías en persona, sin términos técnicos.</p>
+                    <span class="campo__contador" data-contador-de="avance-descripcion" aria-hidden="true">0 / 400</span>
+                  </div>
+                  <p class="campo__mensaje" id="avance-descripcion-mensaje" aria-live="polite"><svg class="icono" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M12 8v4M12 16h.01"/></svg><span class="campo__mensaje-texto"></span></p>
+                </div>
+
+                <div class="formulario-avance__pie">
+                  <p class="formulario-avance__nota"><svg class="icono" viewBox="0 0 24 24" aria-hidden="true"><rect x="4" y="11" width="16" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg>Lo que publiques no se puede editar ni borrar.</p>
+                  <button type="submit" class="boton boton--acento" data-boton-publicar><svg class="icono" viewBox="0 0 24 24" aria-hidden="true"><path d="m22 2-7 20-4-9-9-4Z"/><path d="M22 2 11 13"/></svg><span>Marcar como hecho</span></button>
+                </div>
+              </form>
+
+              <div class="entrega-fase" data-entrega-fase>
+                <div>
+                  <strong data-titulo-entrega>Cerrar Desarrollo</strong>
+                  <p data-texto-entrega>Faltan 2 pasos por terminar.</p>
+                </div>
+                <button type="button" class="boton boton--exito" data-entregar disabled><svg class="icono" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span>Cerrar fase</span></button>
+              </div>
+            </section>
+
+            <!-- ===================== Línea de tiempo ===================== -->
+            <section aria-labelledby="titulo-linea">
+              <h2 class="proyecto-detalle__titulo" id="titulo-linea">Fases del proyecto</h2>
+              <ol class="linea-tiempo">
+              <li class="fase fase--completa aparecer" data-fase-numero="1">
+                <span class="fase__marcador"><svg class="icono" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span class="solo-lector">Fase 1 aprobada</span></span>
+                <details class="fase__tarjeta">
+                  <summary class="fase__cabecera">
+                    <div><h3 class="fase__nombre">Toma de requerimientos</h3><span class="fase__fechas">29 sep → 6 oct · 3 de 3 pasos hechos</span></div>
+                    <span class="fase__resumen"><span class="insignia insignia--finalizado">Aprobada</span><span class="fase__valor" title="Lo que vale esta fase en el proyecto">20 %</span><svg class="icono fase__flecha" viewBox="0 0 24 24" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></span>
+                  </summary>
+                  <div class="fase__cuerpo">
+                    <p class="fase__que-es">Entendemos tu negocio y escribimos todo lo que necesitas. <span class="fase__quien-cierra">Esta fase la aprueba Laura.</span></p>
+                    <p class="pasos-fase__titulo">Pasos</p>
+                    <ol class="pasos-fase" aria-label="Pasos de la fase">
+                      <li class="paso-fase paso-fase--hecho" data-paso="1-1">
+                        <span class="paso-fase__marca" aria-hidden="true"><svg class="icono" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg></span>
+                        <div class="paso-fase__cuerpo">
+                          <p class="paso-fase__titulo">Reunión inicial<span class="solo-lector">, hecho</span></p>
+                          <p class="paso-fase__explicacion">Conversamos contigo para entender tu negocio y lo que quieres lograr con la tienda.</p>
+                          <p class="paso-fase__nota"><strong>Tu nota:</strong> Hablamos de los accesorios que vendes, de tus clientes y de cómo entregas los pedidos.</p><span class="paso-fase__estado">Hecho el 30 sep</span>
+                        </div>
+                      </li>
+                      <li class="paso-fase paso-fase--hecho" data-paso="1-2">
+                        <span class="paso-fase__marca" aria-hidden="true"><svg class="icono" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg></span>
+                        <div class="paso-fase__cuerpo">
+                          <p class="paso-fase__titulo">Lista de lo que hará la tienda<span class="solo-lector">, hecho</span></p>
+                          <p class="paso-fase__explicacion">Escribimos en palabras sencillas todo lo que podrán hacer tus clientes y tú.</p>
+                          <p class="paso-fase__nota"><strong>Tu nota:</strong> Quedaron 14 funciones: ver productos, buscar, agregar al carrito, pagar y recibir confirmación, entre otras.</p><span class="paso-fase__estado">Hecho el 2 oct</span>
+                        </div>
+                      </li>
+                      <li class="paso-fase paso-fase--hecho" data-paso="1-3">
+                        <span class="paso-fase__marca" aria-hidden="true"><svg class="icono" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg></span>
+                        <div class="paso-fase__cuerpo">
+                          <p class="paso-fase__titulo">Documento para revisar<span class="solo-lector">, hecho</span></p>
+                          <p class="paso-fase__explicacion">Te enviamos la lista completa para que confirmes que no falta nada.</p>
+                          <p class="paso-fase__nota"><strong>Tu nota:</strong> Te lo envié por correo para que lo revisaras con calma.</p><span class="paso-fase__estado">Hecho el 5 oct</span>
+                        </div>
+                      </li>
+                    </ol>
+                    <p class="fase__aprobacion"><svg class="icono" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>Laura aprobó esta fase el 6 oct.</p>
+                  </div>
+                </details>
+              </li>
+              <li class="fase fase--completa aparecer" data-fase-numero="2">
+                <span class="fase__marcador"><svg class="icono" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span class="solo-lector">Fase 2 aprobada</span></span>
+                <details class="fase__tarjeta">
+                  <summary class="fase__cabecera">
+                    <div><h3 class="fase__nombre">Análisis y diseño</h3><span class="fase__fechas">7 oct → 23 oct · 4 de 4 pasos hechos</span></div>
+                    <span class="fase__resumen"><span class="insignia insignia--finalizado">Aprobada</span><span class="fase__valor" title="Lo que vale esta fase en el proyecto">20 %</span><svg class="icono fase__flecha" viewBox="0 0 24 24" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></span>
+                  </summary>
+                  <div class="fase__cuerpo">
+                    <p class="fase__que-es">Diseñamos cómo se verá y cómo funcionará, antes de construirlo. <span class="fase__quien-cierra">Esta fase la aprueba Laura.</span></p>
+                    <p class="pasos-fase__titulo">Pasos</p>
+                    <ol class="pasos-fase" aria-label="Pasos de la fase">
+                      <li class="paso-fase paso-fase--hecho" data-paso="2-1">
+                        <span class="paso-fase__marca" aria-hidden="true"><svg class="icono" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg></span>
+                        <div class="paso-fase__cuerpo">
+                          <p class="paso-fase__titulo">Bocetos de las pantallas<span class="solo-lector">, hecho</span></p>
+                          <p class="paso-fase__explicacion">Dibujamos cómo se verá cada página antes de construirla, para que la imagines.</p>
+                          <p class="paso-fase__nota"><strong>Tu nota:</strong> Diseñé la página de inicio, el catálogo, el producto y el carrito. Toca cada imagen para verla en grande.</p><ul class="bocetos" aria-label="Bocetos de las pantallas">
+                            <li><a class="boceto" href="../img/bocetos/tienda-inicio.svg" data-boceto data-titulo="Página de inicio">
+                              <img src="../img/bocetos/tienda-inicio.svg" alt="Boceto: Página de inicio" width="200" height="140" loading="lazy">
+                              <span class="boceto__titulo">Página de inicio</span>
+                            </a></li>
+                            <li><a class="boceto" href="../img/bocetos/tienda-catalogo.svg" data-boceto data-titulo="Catálogo con filtros">
+                              <img src="../img/bocetos/tienda-catalogo.svg" alt="Boceto: Catálogo con filtros" width="200" height="140" loading="lazy">
+                              <span class="boceto__titulo">Catálogo con filtros</span>
+                            </a></li>
+                            <li><a class="boceto" href="../img/bocetos/tienda-producto.svg" data-boceto data-titulo="Página de producto">
+                              <img src="../img/bocetos/tienda-producto.svg" alt="Boceto: Página de producto" width="200" height="140" loading="lazy">
+                              <span class="boceto__titulo">Página de producto</span>
+                            </a></li>
+                            <li><a class="boceto" href="../img/bocetos/tienda-carrito.svg" data-boceto data-titulo="Carrito y pago">
+                              <img src="../img/bocetos/tienda-carrito.svg" alt="Boceto: Carrito y pago" width="200" height="140" loading="lazy">
+                              <span class="boceto__titulo">Carrito y pago</span>
+                            </a></li>
+                          </ul>
+                          <span class="paso-fase__estado">Hecho el 10 oct</span>
+                        </div>
+                      </li>
+                      <li class="paso-fase paso-fase--hecho" data-paso="2-2">
+                        <span class="paso-fase__marca" aria-hidden="true"><svg class="icono" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg></span>
+                        <div class="paso-fase__cuerpo">
+                          <p class="paso-fase__titulo">Organización de la información<span class="solo-lector">, hecho</span></p>
+                          <p class="paso-fase__explicacion">Definimos cómo se guardarán tus productos, clientes y pedidos para que nada se pierda.</p>
+                          <p class="paso-fase__nota"><strong>Tu nota:</strong> Quedó listo cómo se guardan productos, precios, clientes y pedidos.</p><span class="paso-fase__estado">Hecho el 14 oct</span>
+                        </div>
+                      </li>
+                      <li class="paso-fase paso-fase--hecho paso-fase--correccion" data-paso="2-3">
+                        <span class="paso-fase__marca" aria-hidden="true"><svg class="icono" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg></span>
+                        <div class="paso-fase__cuerpo">
+                          <span class="paso-fase__etiqueta"><svg class="icono" viewBox="0 0 24 24" aria-hidden="true"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>Corrección · Lo pidió Laura el 16 oct</span><p class="paso-fase__titulo">Elegir talla y color en la página de producto<span class="solo-lector">, hecho</span></p>
+                          <p class="paso-fase__explicacion">Tus clientes podrán escoger la talla y el color antes de comprar.</p>
+                          <p class="paso-fase__nota"><strong>Tu nota:</strong> Así quedó la página de producto: ya se puede elegir talla y color.</p><ul class="bocetos" aria-label="Bocetos de las pantallas">
+                            <li><a class="boceto" href="../img/bocetos/tienda-producto-talla-color.svg" data-boceto data-titulo="Página de producto con talla y color">
+                              <img src="../img/bocetos/tienda-producto-talla-color.svg" alt="Boceto: Página de producto con talla y color" width="200" height="140" loading="lazy">
+                              <span class="boceto__titulo">Página de producto con talla y color</span>
+                            </a></li>
+                          </ul>
+                          <span class="paso-fase__estado">Hecho el 21 oct</span>
+                        </div>
+                      </li>
+                      <li class="paso-fase paso-fase--hecho paso-fase--correccion" data-paso="2-4">
+                        <span class="paso-fase__marca" aria-hidden="true"><svg class="icono" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg></span>
+                        <div class="paso-fase__cuerpo">
+                          <span class="paso-fase__etiqueta"><svg class="icono" viewBox="0 0 24 24" aria-hidden="true"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>Corrección · La encontramos al construir el catálogo, el 5 nov</span><p class="paso-fase__titulo">Guardar existencias por talla y color<span class="solo-lector">, hecho</span></p>
+                          <p class="paso-fase__explicacion">Así sabrás cuántas unidades te quedan de cada talla y color, y no venderás algo que no tienes.</p>
+                          <p class="paso-fase__nota"><strong>Tu nota:</strong> Corregido. Mientras lo arreglaba (5 al 8 nov) esta fase no sumó su 20 %.</p><span class="paso-fase__estado">Hecho el 8 nov</span>
+                        </div>
+                      </li>
+                    </ol>
+                    <p class="fase__aprobacion"><svg class="icono" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>Laura aprobó esta fase el 23 oct. Usó 1 de 2 rondas de ajustes.</p>
+                  </div>
+                </details>
+              </li>
+              <li class="fase fase--actual aparecer" data-fase-numero="3" aria-current="step">
+                <span class="fase__marcador">3<span class="solo-lector">, fase actual</span></span>
+                <details class="fase__tarjeta" open>
+                  <summary class="fase__cabecera">
+                    <div><h3 class="fase__nombre">Desarrollo</h3><span class="fase__fechas">Desde el 24 oct · <span data-conteo-pasos>3 de 5 pasos hechos</span></span></div>
+                    <span class="fase__resumen"><span class="insignia insignia--activo">En curso</span><span class="fase__valor" title="Lo que vale esta fase en el proyecto">20 %</span><svg class="icono fase__flecha" viewBox="0 0 24 24" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></span>
+                  </summary>
+                  <div class="fase__cuerpo">
+                    <p class="fase__que-es">Construimos tu proyecto, paso a paso. <span class="fase__quien-cierra">Esta fase la cierras tú; Laura ve lo hecho.</span></p>
+                    <p class="pasos-fase__titulo">Pasos</p>
+                    <ol class="pasos-fase" aria-label="Pasos de la fase">
+                      <li class="paso-fase paso-fase--hecho" data-paso="3-1">
+                        <span class="paso-fase__marca" aria-hidden="true"><svg class="icono" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg></span>
+                        <div class="paso-fase__cuerpo">
+                          <p class="paso-fase__titulo">Base de la tienda e inicio de sesión<span class="solo-lector">, hecho</span></p>
+                          <p class="paso-fase__explicacion">Preparamos el lugar en internet donde vivirá tu tienda y la entrada con usuario y contraseña.</p>
+                          <p class="paso-fase__nota"><strong>Tu nota:</strong> Tus clientes ya pueden crear su cuenta e iniciar sesión.</p><span class="paso-fase__estado">Hecho el 28 oct</span>
+                        </div>
+                      </li>
+                      <li class="paso-fase paso-fase--hecho" data-paso="3-2">
+                        <span class="paso-fase__marca" aria-hidden="true"><svg class="icono" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg></span>
+                        <div class="paso-fase__cuerpo">
+                          <p class="paso-fase__titulo">Catálogo de productos<span class="solo-lector">, hecho</span></p>
+                          <p class="paso-fase__explicacion">Las páginas donde tus clientes ven tus productos y los buscan por categoría, talla y color.</p>
+                          <p class="paso-fase__nota"><strong>Tu nota:</strong> El catálogo ya muestra los productos con sus filtros.</p><span class="paso-fase__estado">Hecho el 3 nov</span>
+                        </div>
+                      </li>
+                      <li class="paso-fase paso-fase--hecho" data-paso="3-3">
+                        <span class="paso-fase__marca" aria-hidden="true"><svg class="icono" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg></span>
+                        <div class="paso-fase__cuerpo">
+                          <p class="paso-fase__titulo">Carrito y pagos en línea<span class="solo-lector">, hecho</span></p>
+                          <p class="paso-fase__explicacion">Tus clientes agregan productos al carrito y pagan con PSE o tarjeta, de forma segura.</p>
+                          <p class="paso-fase__nota"><strong>Tu nota:</strong> Ya se puede pagar con PSE y con tarjeta.</p><span class="paso-fase__estado">Hecho el 9 nov</span>
+                        </div>
+                      </li>
+                      <li class="paso-fase paso-fase--en-curso" data-paso="3-4">
+                        <span class="paso-fase__marca" aria-hidden="true"></span>
+                        <div class="paso-fase__cuerpo">
+                          <p class="paso-fase__titulo">Pedidos y correos de confirmación<span class="solo-lector">, en curso</span></p>
+                          <p class="paso-fase__explicacion">Recibes cada pedido en tu panel y tu cliente recibe un correo con el resumen de su compra.</p>
+                          <span class="paso-fase__estado">En curso</span>
+                        </div>
+                      </li>
+                      <li class="paso-fase paso-fase--pendiente" data-paso="3-5">
+                        <span class="paso-fase__marca" aria-hidden="true"></span>
+                        <div class="paso-fase__cuerpo">
+                          <p class="paso-fase__titulo">Pago contra entrega<span class="solo-lector">, pendiente</span></p>
+                          <p class="paso-fase__explicacion">Tus clientes de Cúcuta podrán pagar en efectivo cuando reciban el pedido.</p>
+                          
+                        </div>
+                      </li>
+                    </ol>
+                  </div>
+                </details>
+              </li>
+              <li class="fase fase--pendiente aparecer" data-fase-numero="4">
+                <span class="fase__marcador">4<span class="solo-lector">, pendiente</span></span>
+                <details class="fase__tarjeta">
+                  <summary class="fase__cabecera">
+                    <div><h3 class="fase__nombre">Pruebas</h3><span class="fase__fechas">3 pasos</span></div>
+                    <span class="fase__resumen"><span class="insignia insignia--neutra">Pendiente</span><span class="fase__valor" title="Lo que vale esta fase en el proyecto">20 %</span><svg class="icono fase__flecha" viewBox="0 0 24 24" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></span>
+                  </summary>
+                  <div class="fase__cuerpo">
+                    <p class="fase__que-es">Revisamos que todo funcione bien antes de publicarlo. <span class="fase__quien-cierra">Esta fase la aprueba Laura.</span></p>
+                    <p class="pasos-fase__titulo">Lo que haremos</p>
+                    <ol class="pasos-fase" aria-label="Pasos de la fase">
+                      <li class="paso-fase paso-fase--pendiente" data-paso="4-1">
+                        <span class="paso-fase__marca" aria-hidden="true"></span>
+                        <div class="paso-fase__cuerpo">
+                          <p class="paso-fase__titulo">Probar cada función<span class="solo-lector">, pendiente</span></p>
+                          <p class="paso-fase__explicacion">Revisamos cada botón y hacemos compras de prueba para encontrar errores.</p>
+                          
+                        </div>
+                      </li>
+                      <li class="paso-fase paso-fase--pendiente" data-paso="4-2">
+                        <span class="paso-fase__marca" aria-hidden="true"></span>
+                        <div class="paso-fase__cuerpo">
+                          <p class="paso-fase__titulo">Probar en celulares y computadores<span class="solo-lector">, pendiente</span></p>
+                          <p class="paso-fase__explicacion">Revisamos que la tienda se vea y funcione bien en cualquier pantalla.</p>
+                          
+                        </div>
+                      </li>
+                      <li class="paso-fase paso-fase--pendiente" data-paso="4-3">
+                        <span class="paso-fase__marca" aria-hidden="true"></span>
+                        <div class="paso-fase__cuerpo">
+                          <p class="paso-fase__titulo">Prueba contigo<span class="solo-lector">, pendiente</span></p>
+                          <p class="paso-fase__explicacion">Usas la tienda como si fueras un cliente y nos dices si todo está bien.</p>
+                          
+                        </div>
+                      </li>
+                    </ol>
+                  </div>
+                </details>
+              </li>
+              <li class="fase fase--pendiente aparecer" data-fase-numero="5">
+                <span class="fase__marcador">5<span class="solo-lector">, pendiente</span></span>
+                <details class="fase__tarjeta">
+                  <summary class="fase__cabecera">
+                    <div><h3 class="fase__nombre">Despliegue</h3><span class="fase__fechas">3 pasos</span></div>
+                    <span class="fase__resumen"><span class="insignia insignia--neutra">Pendiente</span><span class="fase__valor" title="Lo que vale esta fase en el proyecto">20 %</span><svg class="icono fase__flecha" viewBox="0 0 24 24" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></span>
+                  </summary>
+                  <div class="fase__cuerpo">
+                    <p class="fase__que-es">Lo publicamos en internet y te enseñamos a usarlo. <span class="fase__quien-cierra">Esta fase la cierras tú; Laura ve lo hecho.</span></p>
+                    <p class="pasos-fase__titulo">Lo que haremos</p>
+                    <ol class="pasos-fase" aria-label="Pasos de la fase">
+                      <li class="paso-fase paso-fase--pendiente" data-paso="5-1">
+                        <span class="paso-fase__marca" aria-hidden="true"></span>
+                        <div class="paso-fase__cuerpo">
+                          <p class="paso-fase__titulo">Dirección en internet<span class="solo-lector">, pendiente</span></p>
+                          <p class="paso-fase__explicacion">Dejamos tu tienda en su propia dirección web (por ejemplo, tutienda.com).</p>
+                          
+                        </div>
+                      </li>
+                      <li class="paso-fase paso-fase--pendiente" data-paso="5-2">
+                        <span class="paso-fase__marca" aria-hidden="true"></span>
+                        <div class="paso-fase__cuerpo">
+                          <p class="paso-fase__titulo">Publicación<span class="solo-lector">, pendiente</span></p>
+                          <p class="paso-fase__explicacion">La tienda queda abierta para que cualquier persona pueda comprar.</p>
+                          
+                        </div>
+                      </li>
+                      <li class="paso-fase paso-fase--pendiente" data-paso="5-3">
+                        <span class="paso-fase__marca" aria-hidden="true"></span>
+                        <div class="paso-fase__cuerpo">
+                          <p class="paso-fase__titulo">Capacitación<span class="solo-lector">, pendiente</span></p>
+                          <p class="paso-fase__explicacion">Te enseñamos a subir productos, cambiar precios y ver tus pedidos.</p>
+                          
+                        </div>
+                      </li>
+                    </ol>
+                  </div>
+                </details>
+              </li>
+            </ol>
+            </section>
+          </div>
+
+          <!-- ===================== Lateral ===================== -->
+          <aside class="registro-avance__lateral">
+            <section class="tarjeta aparecer" aria-labelledby="titulo-cliente">
+              <h2 class="tarjeta__titulo" id="titulo-cliente">Cliente</h2>
+              <div class="persona-contacto">
+                <span class="avatar avatar--acento" aria-hidden="true">LG</span>
+                <span><span class="persona-contacto__nombre">Laura Gómez</span><span class="persona-contacto__rol">Recibe un correo con cada avance</span></span>
+              </div>
+              <a class="boton boton--contorno boton--bloque" href="mailto:laura.gomez@correo.com"><svg class="icono" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg>Escribir a Laura</a>
+            </section>
+
+            <section class="tarjeta aparecer" style="--retraso: 30ms" aria-labelledby="titulo-equipo">
+              <h2 class="tarjeta__titulo" id="titulo-equipo">Equipo</h2>
+              <div class="persona-contacto">
+                <span class="avatar" aria-hidden="true">AP</span>
+                <span><span class="persona-contacto__nombre">Tú · Andrés Pérez</span><span class="persona-contacto__rol">Product Owner</span></span>
+              </div>
+              <p class="equipo__nota">Registras el avance de todo el equipo y eres quien habla con Laura.</p>
+              <p class="equipo__titulo">Tu equipo en este proyecto</p>
+              <ul class="equipo">
+                  <li class="equipo__miembro"><span class="avatar avatar--pequeno" aria-hidden="true">VR</span><span><span class="equipo__nombre">Valeria Rincón</span><span class="equipo__rol">Diseño de pantallas</span></span></li>
+                  <li class="equipo__miembro"><span class="avatar avatar--pequeno" aria-hidden="true">SH</span><span><span class="equipo__nombre">Sofía Herrera</span><span class="equipo__rol">Desarrollo · lo que ves</span></span></li>
+                  <li class="equipo__miembro"><span class="avatar avatar--pequeno" aria-hidden="true">DC</span><span><span class="equipo__nombre">Diego Castro</span><span class="equipo__rol">Desarrollo · pagos y datos</span></span></li>
+                  <li class="equipo__miembro"><span class="avatar avatar--pequeno" aria-hidden="true">CS</span><span><span class="equipo__nombre">Camilo Suárez</span><span class="equipo__rol">Pruebas</span></span></li>
+              </ul>
+            </section>
+
+            <section class="tarjeta aparecer" style="--retraso: 60ms" aria-labelledby="titulo-datos">
+              <h2 class="tarjeta__titulo" id="titulo-datos">Estado del proyecto</h2>
+              <dl class="lista-datos">
+                <div class="lista-datos__fila"><dt class="lista-datos__dato">Avance del proyecto</dt><dd class="lista-datos__valor" data-dato-general>40 %</dd></div>
+                <div class="lista-datos__fila"><dt class="lista-datos__dato">Fase actual</dt><dd class="lista-datos__valor" data-dato-fase>Desarrollo · 3 de 5 pasos</dd></div>
+                <div class="lista-datos__fila"><dt class="lista-datos__dato">Entrega estimada</dt><dd class="lista-datos__valor">18 dic 2026</dd></div>
+                <div class="lista-datos__fila"><dt class="lista-datos__dato">Pasos hechos</dt><dd class="lista-datos__valor" data-dato-cantidad>10</dd></div>
+              </dl>
+            </section>
+
+            <section class="tarjeta reglas-avance aparecer" style="--retraso: 120ms" aria-labelledby="titulo-reglas">
+              <h2 class="tarjeta__titulo" id="titulo-reglas">Antes de publicar</h2>
+              <ul class="reglas-avance__lista">
+                <li>Cada una de las 5 fases vale 20 %. Laura aprueba Requerimientos, Diseño y Pruebas (tiene 3 días hábiles); Desarrollo y Despliegue los cierras tú.</li>
+                <li>Cada fase que aprueba el cliente incluye 2 rondas de ajustes. Lo que pida de más, o algo nuevo que no estaba acordado, se cotiza antes de hacerlo.</li>
+                <li>Marca cada paso cuando esté hecho y deja una nota sencilla: Laura no es programadora.</li>
+                <li>Si hay que arreglar algo, agrega una corrección en esa fase. Si ya estaba aprobada, deja de sumar su 20 % hasta que la termines; tú sigues avanzando.</li>
+                <li>Entregas o cierras la fase cuando todos sus pasos están hechos y no hay correcciones abiertas.</li>
+                <li>Lo publicado no se edita ni se borra: queda en la auditoría.</li>
+              </ul>
+            </section>
+          </aside>
+        </div>
+
+        <!-- ===================== Confirmación ===================== -->
+        <dialog class="dialogo" id="dialogo-publicar" aria-labelledby="titulo-publicar" aria-describedby="texto-publicar">
+          <div class="dialogo__cuerpo">
+            <span class="dialogo__icono dialogo__icono--acento"><svg class="icono icono--grande" viewBox="0 0 24 24" aria-hidden="true"><path d="m22 2-7 20-4-9-9-4Z"/><path d="M22 2 11 13"/></svg></span>
+            <h2 class="dialogo__titulo" id="titulo-publicar" data-titulo-publicar>¿Publicar?</h2>
+            <p class="dialogo__texto" id="texto-publicar" data-texto-publicar></p>
+          </div>
+          <div class="dialogo__acciones">
+            <button type="button" class="boton boton--contorno" data-cerrar-dialogo>Revisar de nuevo</button>
+            <button type="button" class="boton boton--acento" data-confirmar-publicar>Sí, publicar</button>
+          </div>
+        </dialog>
+
+        <!-- Resolver una corrección abierta -->
+        <dialog class="dialogo dialogo--ancho" id="dialogo-resolver" aria-labelledby="titulo-resolver">
+          <form class="dialogo__formulario" data-validar data-mensaje-error="Describe qué se corrigió.">
+            <div class="dialogo__cabecera">
+              <span class="dialogo__icono dialogo__icono--exito"><svg class="icono icono--grande" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg></span>
+              <div>
+                <h2 class="dialogo__titulo" id="titulo-resolver">Terminar corrección</h2>
+                <p class="dialogo__texto" data-texto-resolver></p>
+              </div>
+              <button type="button" class="boton-icono boton-icono--pequeno" data-cerrar-dialogo aria-label="Cerrar"><svg class="icono" viewBox="0 0 24 24" aria-hidden="true"><path d="M18 6 6 18M6 6l12 12"/></svg></button>
+            </div>
+            <div class="dialogo__cuerpo">
+              <div class="campo">
+                <label class="campo__etiqueta" for="resolver-texto">Nota para el cliente: ¿qué se corrigió?</label>
+                <textarea class="campo__control campo__control--area" id="resolver-texto" name="resuelto" required minlength="20" maxlength="500" rows="4"
+                          placeholder="Ejemplo: el modelo de datos ya guarda las existencias por talla y color."
+                          data-mensaje-vacio="Describe qué se corrigió." data-mensaje-corto="Escribe al menos 20 caracteres."
+                          aria-describedby="resolver-texto-mensaje"></textarea>
+                <p class="campo__mensaje" id="resolver-texto-mensaje" aria-live="polite"><svg class="icono" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M12 8v4M12 16h.01"/></svg><span class="campo__mensaje-texto"></span></p>
+              </div>
+            </div>
+            <div class="dialogo__acciones">
+              <button type="button" class="boton boton--contorno" data-cerrar-dialogo>Cancelar</button>
+              <button type="submit" class="boton boton--exito"><svg class="icono" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>Marcar corregida</button>
+            </div>
+          </form>
+        </dialog>
+      </main>
+    </div>
+  </div>
+
+  <script src="../js/principal.js"></script>
+  <script src="../js/vistas/registrar-avance.js"></script>
+  <script src="../js/vistas/galeria-bocetos.js"></script>
+</body>
+</html>

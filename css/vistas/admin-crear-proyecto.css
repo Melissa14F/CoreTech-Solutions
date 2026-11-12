@@ -1,0 +1,43 @@
+/* ==========================================================================
+   Vista: Crear proyecto (admin/crear-proyecto.html)
+   Requiere: global.css, plantillas/panel.css, plantillas/tarjetas.css
+   (selector de desarrollador) y plantillas/proyecto.css (lista de datos)
+   ========================================================================== */
+
+/* 1. Distribución ========================================================== */
+.crear-proyecto { display: grid; grid-template-columns: minmax(0, 1fr) 340px; gap: var(--espacio-6); align-items: start; }
+.crear-proyecto__principal { display: grid; gap: var(--espacio-5); min-width: 0; }
+.crear-proyecto__resumen { position: sticky; top: 92px; }
+
+/* 2. Secciones numeradas del formulario ==================================== */
+.seccion-formulario__titulo { display: flex; align-items: center; gap: var(--espacio-3); margin: 0 0 var(--espacio-5); font-size: 1.0625rem; }
+.seccion-formulario .campo:last-child, .seccion-formulario .grupo-opciones { margin-bottom: 0; }
+.campo__ayuda--arriba { margin: 0 0 var(--espacio-3); }
+
+/* Datos de la cita elegida */
+.datos-cita { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: var(--espacio-4); padding: var(--espacio-4); border-radius: var(--radio-caja); background: var(--color-fondo-suave); font-size: .8125rem; animation: entrar var(--duracion-media) var(--curva); }
+.datos-cita dt { color: var(--color-texto-suave); }
+.datos-cita dd { font-weight: 600; color: var(--color-tinta); overflow-wrap: anywhere; }
+
+.fechas-proyecto { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--espacio-4); }
+
+/* 3. Resumen en vivo ======================================================= */
+.resumen-proyecto__nombre { margin: 0 0 var(--espacio-4); font-family: var(--fuente-titulos); font-size: 1.25rem; font-weight: 800; line-height: 1.25; color: var(--color-tinta); overflow-wrap: anywhere; }
+.resumen-proyecto__nombre.esta-vacio { color: var(--color-texto-tenue); }
+.resumen-proyecto .lista-datos { margin-bottom: var(--espacio-5); }
+.resumen-proyecto__fase, .resumen-proyecto__aviso { display: flex; gap: var(--espacio-2); margin: 0 0 var(--espacio-3); font-size: .8125rem; color: var(--color-texto); }
+.resumen-proyecto__fase .icono, .resumen-proyecto__aviso .icono { width: 16px; height: 16px; flex: none; margin-top: 2px; color: var(--color-texto-suave); }
+.resumen-proyecto__aviso { margin-bottom: var(--espacio-5); }
+.resumen-proyecto .boton + .boton { margin-top: var(--espacio-2); }
+.lista-datos__valor.esta-actualizado { animation: destello .8s var(--curva); }
+@keyframes destello { 0% { color: var(--color-acento); } }
+
+/* 4. Diseño adaptable ====================================================== */
+@media (max-width: 1180px) {
+  .crear-proyecto { grid-template-columns: minmax(0, 1fr); }
+  .crear-proyecto__resumen { position: static; }
+  .datos-cita { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+@media (max-width: 640px) {
+  .fechas-proyecto, .datos-cita { grid-template-columns: minmax(0, 1fr); }
+}
