@@ -1,0 +1,76 @@
+/* ==========================================================================
+   Vista: Guía de estilos (guia-estilos.html)
+   Requiere: global.css, plantillas/documento.css, plantillas/tarjeta-servicio.css
+   y plantillas/tarjetas.css (indicadores)
+   ========================================================================== */
+
+/* 1. Secciones ============================================================= */
+.guia { display: grid; grid-template-columns: minmax(0, 1fr); gap: var(--espacio-12); min-width: 0; }
+.guia__seccion { min-width: 0; scroll-margin-top: 96px; }
+.guia__titulo { margin: 0 0 var(--espacio-2); font-size: 1.5rem; }
+.guia__texto { max-width: 70ch; margin: 0 0 var(--espacio-6); color: var(--color-texto); }
+.guia__subtitulo { margin: var(--espacio-6) 0 var(--espacio-3); font-size: .75rem; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--color-texto-suave); }
+.guia__subtitulo:first-child { margin-top: 0; }
+.guia code { overflow-wrap: anywhere; padding: 1px 6px; border-radius: 4px; background: var(--color-fondo-suave); font-size: .8125em; color: var(--color-tinta); }
+
+/* 2. Colores =============================================================== */
+.paleta { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: var(--espacio-3); margin: 0; padding: 0; list-style: none; }
+.color { overflow: hidden; border: 1px solid var(--color-borde); border-radius: var(--radio-caja); background: var(--color-fondo); }
+.color__muestra { display: block; height: 72px; border-bottom: 1px solid var(--color-borde); }
+.color__datos { display: grid; gap: 2px; padding: var(--espacio-3); font-size: .8125rem; }
+.color__datos strong { color: var(--color-tinta); }
+.color__datos code { justify-self: start; }
+.color__datos small { color: var(--color-texto-suave); }
+
+/* 3. Tipografía ============================================================ */
+.tipos { display: grid; border: 1px solid var(--color-borde); border-radius: var(--radio-tarjeta); background: var(--color-fondo); }
+.tipo { display: grid; gap: var(--espacio-1); padding: var(--espacio-4) var(--espacio-5); }
+.tipo + .tipo { border-top: 1px solid var(--color-borde-suave); }
+.tipo__etiqueta { font-size: .75rem; color: var(--color-texto-suave); }
+.tipo__muestra { margin: 0; color: var(--color-tinta); }
+.tipo__muestra--h1 { font-family: var(--fuente-titulos); font-size: clamp(1.75rem, 4vw, 2.75rem); font-weight: 800; letter-spacing: -.03em; line-height: 1.1; }
+.tipo__muestra--h2 { font-family: var(--fuente-titulos); font-size: 1.75rem; font-weight: 800; letter-spacing: -.02em; }
+.tipo__muestra--h3 { font-family: var(--fuente-titulos); font-size: 1.25rem; font-weight: 700; }
+.tipo__muestra--pequena { font-size: .8125rem; color: var(--color-texto-suave); }
+.tipo__muestra--etiqueta { font-size: .75rem; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; color: var(--color-texto-suave); }
+
+/* 4. Espaciado y formas ==================================================== */
+.formas { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--espacio-8); }
+.espacios, .radios, .sombras { display: grid; gap: var(--espacio-3); margin: 0; padding: 0; list-style: none; }
+.espacio { display: grid; grid-template-columns: 80px auto 1fr; align-items: center; gap: var(--espacio-3); font-size: .8125rem; }
+.espacio__barra { height: 12px; border-radius: 3px; background: var(--color-acento); }
+.espacio small, .radio-muestra small, .sombra-muestra small { color: var(--color-texto-suave); }
+.radios { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+.radio-muestra { display: grid; gap: 4px; font-size: .8125rem; }
+.radio-muestra span { width: 64px; height: 40px; border: 2px solid var(--color-acento); background: var(--color-acento-suave); }
+.sombras { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+.sombra-muestra { display: grid; gap: 2px; padding: var(--espacio-4); border-radius: var(--radio-caja); background: var(--color-fondo); font-size: .75rem; }
+
+/* 5. Muestras de componentes =============================================== */
+.muestra { display: grid; gap: var(--espacio-4); padding: var(--espacio-6); border: 1px solid var(--color-borde); border-radius: var(--radio-tarjeta); background: var(--color-fondo); }
+.muestra__fila { display: flex; flex-wrap: wrap; align-items: center; gap: var(--espacio-3); }
+.muestra__fila--oscura { padding: var(--espacio-5); border-radius: var(--radio-caja); }
+.muestra__columna { display: grid; gap: var(--espacio-3); align-content: start; }
+.muestra--formulario { max-width: 560px; }
+.muestra--formulario .campo { margin-bottom: 0; }
+.muestra--tarjetas { grid-template-columns: minmax(0, 320px) minmax(0, 1fr); align-items: start; background: var(--color-fondo-suave); }
+.codigo-ejemplo { margin: var(--espacio-3) 0 0; padding: var(--espacio-4); overflow-x: auto; border-radius: var(--radio-caja); background: var(--color-noche); color: #c7d2fe; font-size: .8125rem; }
+.codigo-ejemplo code { background: none; color: inherit; padding: 0; }
+
+/* 6. Íconos y pautas ======================================================= */
+.iconos { display: grid; grid-template-columns: repeat(auto-fill, minmax(110px, 1fr)); gap: var(--espacio-3); margin: 0; padding: 0; list-style: none; }
+.icono-muestra { display: grid; justify-items: center; gap: var(--espacio-2); padding: var(--espacio-4); border: 1px solid var(--color-borde); border-radius: var(--radio-caja); background: var(--color-fondo); font-size: .75rem; color: var(--color-texto-suave); }
+.icono-muestra .icono { color: var(--color-tinta); }
+.pautas { display: grid; gap: var(--espacio-3); max-width: 75ch; margin: 0; padding: 0; list-style: none; }
+.pautas li { position: relative; padding-left: var(--espacio-6); color: var(--color-texto); line-height: 1.7; }
+.pautas li::before { content: ""; position: absolute; left: 4px; top: .7em; width: 8px; height: 8px; border-radius: 50%; background: var(--color-acento); }
+.pautas strong { color: var(--color-tinta); }
+
+/* 7. Diseño adaptable ====================================================== */
+@media (max-width: 860px) {
+  .formas, .muestra--tarjetas { grid-template-columns: minmax(0, 1fr); }
+}
+@media (max-width: 480px) {
+  .muestra { padding: var(--espacio-4); }
+  .sombras, .radios { grid-template-columns: minmax(0, 1fr); }
+}

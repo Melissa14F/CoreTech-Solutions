@@ -1,0 +1,9 @@
+/* ==========================================================================
+   Vista: Mis proyectos (cliente/mis-proyectos.html)
+   Pantalla de inicio del cliente: sus proyectos y sus próximos encuentros.
+   La distribución, el resumen de proyecto y la agenda están en
+   plantillas/tarjetas.css porque también los usa el inicio del desarrollador.
+   Requiere: global.css, plantillas/panel.css y plantillas/tarjetas.css
+   ========================================================================== */
+
+/* Esta vista no necesita estilos propios por ahora. */

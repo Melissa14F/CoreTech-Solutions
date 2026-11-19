@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="es" class="sin-js">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Cambiar contraseña · CoreTech Solutions</title>
+  <meta name="description" content="Crea tu propia contraseña para reemplazar la contraseña temporal de tu cuenta de CoreTech Solutions.">
+  <link rel="icon" href="img/logo.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap">
+  <link rel="stylesheet" href="css/global.css">
+  <link rel="stylesheet" href="css/plantillas/acceso.css">
+  <link rel="stylesheet" href="css/vistas/registro.css"><!-- requisitos de la contraseña -->
+  <script src="js/accesibilidad.js"></script>
+</head>
+<body>
+  <a class="saltar-contenido" href="#contenido">Saltar al formulario</a>
+
+  <!-- HU-06 · RF-05: primer ingreso de una cuenta creada por el administrador
+       (administrador o desarrollador (Product Owner)) con la contraseña temporal
+       que recibió por correo. Hasta cambiarla, cualquier otra pantalla lo trae aquí. -->
+  <div class="acceso">
+    <!-- ===================== Formulario ===================== -->
+    <div class="acceso__principal">
+      <header class="acceso__superior">
+        <a class="marca" href="index.html" aria-label="CoreTech Solutions, ir al inicio">
+          <img class="marca__logo" src="img/logo.svg" alt="" width="30" height="30">
+          <span>CoreTech</span>
+        </a>
+        <a class="enlace-flecha" href="login.html" style="font-size: .875rem">
+          <svg class="icono" viewBox="0 0 24 24" aria-hidden="true"><path d="M19 12H5M11 19l-7-7 7-7"/></svg>
+          Cerrar sesión
+        </a>
+      </header>
+
+      <main class="acceso__caja" id="contenido">
+        <h1 class="acceso__titulo aparecer">Cambiar contraseña</h1>
+        <p class="acceso__texto aparecer" style="--retraso: 80ms">Hola, Andrés. Es tu primer ingreso: reemplaza la contraseña temporal que te llegó al correo por una que solo tú conozcas.</p>
+
+        <form class="aparecer" style="--retraso: 160ms" data-validar
+              data-mensaje-error="Revisa los campos marcados en rojo."
+              data-mensaje-exito="Listo, tu contraseña quedó cambiada.">
+
+          <div class="campo">
+            <label class="campo__etiqueta" for="cambio-actual">Contraseña actual</label>
+            <div class="campo__envoltura">
+              <input class="campo__control" id="cambio-actual" name="clave_actual" type="password"
+                     autocomplete="current-password" required
+                     data-mensaje-vacio="Escribe la contraseña temporal que te llegó al correo." aria-describedby="cambio-actual-ayuda cambio-actual-mensaje">
+              <button type="button" class="campo__accion" data-mostrar-clave="cambio-actual" aria-label="Mostrar contraseña" aria-pressed="false">
+                <svg class="icono" viewBox="0 0 24 24" aria-hidden="true"><path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7-10-7-10-7Z"/><circle cx="12" cy="12" r="3"/></svg>
+              </button>
+            </div>
+            <p class="campo__ayuda" id="cambio-actual-ayuda">Es la contraseña temporal del correo de bienvenida.</p>
+            <p class="campo__mensaje" id="cambio-actual-mensaje" aria-live="polite">
+              <svg class="icono" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M12 8v4M12 16h.01"/></svg>
+              <span class="campo__mensaje-texto"></span>
+            </p>
+          </div>
+
+          <div class="campo">
+            <label class="campo__etiqueta" for="cambio-nueva">Nueva contraseña</label>
+            <div class="campo__envoltura">
+              <input class="campo__control" id="cambio-nueva" name="clave_nueva" type="password"
+                     autocomplete="new-password" required data-clave-segura
+                     data-distinto-de="cambio-actual" data-mensaje-distinto="La nueva contraseña debe ser distinta de la temporal."
+                     data-mensaje-vacio="Crea tu nueva contraseña." aria-describedby="cambio-nueva-requisitos cambio-nueva-mensaje">
+              <button type="button" class="campo__accion" data-mostrar-clave="cambio-nueva" aria-label="Mostrar contraseña" aria-pressed="false">
+                <svg class="icono" viewBox="0 0 24 24" aria-hidden="true"><path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7-10-7-10-7Z"/><circle cx="12" cy="12" r="3"/></svg>
+              </button>
+            </div>
+            <ul class="requisitos" id="cambio-nueva-requisitos" data-requisitos-de="cambio-nueva" aria-label="Requisitos de la contraseña">
+              <li class="requisitos__item" data-regla="largo">Mínimo 8 caracteres</li>
+              <li class="requisitos__item" data-regla="mayuscula">Una letra mayúscula</li>
+              <li class="requisitos__item" data-regla="numero">Un número</li>
+              <li class="requisitos__item" data-regla="simbolo">Un símbolo (!, #, @…)</li>
+            </ul>
+            <p class="campo__mensaje" id="cambio-nueva-mensaje" aria-live="polite">
+              <svg class="icono" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M12 8v4M12 16h.01"/></svg>
+              <span class="campo__mensaje-texto"></span>
+            </p>
+          </div>
+
+          <div class="campo">
+            <label class="campo__etiqueta" for="cambio-confirmar">Confirma la nueva contraseña</label>
+            <input class="campo__control" id="cambio-confirmar" name="confirmar_clave" type="password"
+                   autocomplete="new-password" required data-igual-a="cambio-nueva"
+                   data-mensaje-vacio="Escribe de nuevo la nueva contraseña." aria-describedby="cambio-confirmar-mensaje">
+            <p class="campo__mensaje" id="cambio-confirmar-mensaje" aria-live="polite">
+              <svg class="icono" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M12 8v4M12 16h.01"/></svg>
+              <span class="campo__mensaje-texto"></span>
+            </p>
+          </div>
+
+          <!-- Botón de envío como enlace <a>: sin JavaScript también lleva al panel -->
+          <a class="boton boton--acento boton--grande boton--bloque" href="desarrollador/proyectos.html" data-enviar>
+            Cambiar contraseña
+            <svg class="icono icono--mover" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+          </a>
+        </form>
+
+        <p class="acceso__pie acceso__pie--mapa">¿Revisando el prototipo? <a class="enlace" href="mapa.html">Ver todas las interfaces</a></p>
+      </main>
+    </div>
+
+    <!-- ===================== Lateral informativo ===================== -->
+    <aside class="acceso__lateral superficie-noche" aria-label="Por qué cambiar la contraseña">
+      <div class="acceso__lateral-contenido aparecer" style="--retraso: 200ms">
+        <span class="pildora">Tu cuenta</span>
+        <h2>Una contraseña que solo tú conozcas</h2>
+        <p>La contraseña temporal la generó el sistema y viajó por correo. Cámbiala ahora: después entrarás siempre con la tuya.</p>
+      </div>
+    </aside>
+  </div>
+
+  <script src="js/principal.js"></script>
+</body>
+</html>

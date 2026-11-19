@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="es" class="sin-js">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Propuesta · Inventario del salón · CoreTech Solutions</title>
+  <link rel="icon" href="../img/logo.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap">
+  <link rel="stylesheet" href="../css/global.css">
+  <link rel="stylesheet" href="../css/plantillas/panel.css">
+  <link rel="stylesheet" href="../css/vistas/plan-trabajo.css">
+  <script src="../js/accesibilidad.js"></script>
+</head>
+<body>
+  <a class="saltar-contenido" href="#contenido">Saltar al contenido</a>
+
+  <div class="panel">
+    <!-- ===================== Menú lateral del cliente ===================== -->
+    <aside class="panel__lateral superficie-noche" aria-label="Menú del cliente">
+      <a class="marca" href="../index.html" aria-label="CoreTech Solutions, ir al sitio público">
+        <img class="marca__logo" src="../img/logo.svg" alt="" width="30" height="30">
+        <span>CoreTech</span>
+      </a>
+      <p class="panel__rol"><strong>Panel del cliente</strong>Tus citas y proyectos</p>
+
+      <nav aria-label="Secciones del cliente">
+        <p class="navegacion-panel__titulo">Mi cuenta</p>
+        <ul class="navegacion-panel__lista">
+          <li>
+            <a class="navegacion-panel__enlace" href="mis-proyectos.html" aria-current="page">
+              <svg class="icono" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 7a2 2 0 0 1 2-2h4l2 2h8a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2Z"/></svg>
+              Mis proyectos
+              <span class="navegacion-panel__contador" aria-label="3 proyectos">3</span>
+            </a>
+          </li>
+          <li>
+            <a class="navegacion-panel__enlace" href="mis-citas.html">
+              <svg class="icono" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="4" width="18" height="17" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>
+              Mis citas
+              
+            </a>
+          </li>
+          <li>
+            <a class="navegacion-panel__enlace" href="agendar-servicio.html">
+              <svg class="icono" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="4" width="18" height="17" rx="2"/><path d="M16 2v4M8 2v4M3 10h18M12 13v5M9.5 15.5h5"/></svg>
+              Agendar cita
+              
+            </a>
+          </li>
+        </ul>
+      </nav>
+
+      <div class="panel__usuario">
+        <span class="avatar avatar--acento" aria-hidden="true">LG</span>
+        <span class="panel__usuario-datos">
+          <span class="panel__usuario-nombre">Laura Gómez</span>
+          <span class="panel__usuario-correo">laura.gomez@correo.com</span>
+        </span>
+        <a class="panel__salir" href="../index.html" data-accion data-mensaje-exito="Cerraste sesión." aria-label="Cerrar sesión" title="Cerrar sesión">
+          <svg class="icono" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4M16 17l5-5-5-5M21 12H9"/></svg>
+        </a>
+      </div>
+    </aside>
+
+    <div class="panel__cuerpo">
+      <!-- ===================== Barra superior ===================== -->
+      <header class="panel__barra">
+        <button type="button" class="boton-icono boton-icono--pequeno boton-menu-panel" aria-expanded="false" aria-label="Abrir menú">
+          <svg class="icono" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+        </button>
+        <nav class="ruta" aria-label="Ruta de navegación">
+          <a href="mis-proyectos.html">Panel</a>
+          <svg class="icono" viewBox="0 0 24 24" aria-hidden="true"><path d="m9 6 6 6-6 6"/></svg>
+          <a href="mis-proyectos.html">Mis proyectos</a>
+          <svg class="icono" viewBox="0 0 24 24" aria-hidden="true"><path d="m9 6 6 6-6 6"/></svg>
+          <span aria-current="page">Inventario del salón</span>
+        </nav>
+        <div class="panel__barra-acciones">
+          <a class="boton-icono boton-icono--pequeno campana" href="mis-citas.html" aria-label="Notificaciones: 2 nuevas">
+            <svg class="icono" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9"/><path d="M10.3 21a1.94 1.94 0 0 0 3.4 0"/></svg>
+            <span class="campana__punto" aria-hidden="true"></span>
+          </a>
+          <div class="panel__perfil">
+            <span class="avatar avatar--acento" aria-hidden="true">LG</span>
+            <span class="panel__perfil-nombre">Laura Gómez<small>Cliente</small></span>
+          </div>
+        </div>
+      </header>
+
+      <!-- ===================== Contenido ===================== -->
+      <main class="panel__contenido" id="contenido">
+        <div class="encabezado-vista aparecer">
+          <div>
+            <h1 class="encabezado-vista__titulo">Inventario del salón <span class="insignia insignia--plan">Propuesta por aprobar</span></h1>
+            <p class="encabezado-vista__texto">P-0035 · Sistema de inventario · Andrés Pérez te envió el plan de trabajo y la cotización el 11 nov. Revísalos y apruébalos o pide ajustes antes del <strong>martes 17 nov</strong>.</p>
+          </div>
+        </div>
+
+        <div class="propuesta">
+          <div class="propuesta__principal">
+            <section class="tarjeta plan-seccion aparecer" aria-labelledby="titulo-plan-cliente">
+              <div class="plan-seccion__cabecera">
+                <div>
+                  <h2 class="plan-seccion__titulo" id="titulo-plan-cliente">Plan de trabajo: 6 fases</h2>
+                  <p class="plan-seccion__texto">Así vamos a trabajar. Cada fase vale lo mismo (16,7 %) y el avance de tu proyecto sube cuando se completa. Tú apruebas Toma de requerimientos, Análisis y diseño, Pruebas y Carga de datos y capacitación; las demás las cierra el equipo.</p>
+                </div>
+              </div>
+              <ol class="fases-propuesta">
+                <li class="fase-propuesta fase-propuesta--cliente">
+                  <div>
+                    <div class="fase-propuesta__cabecera"><h3 class="fase-propuesta__titulo">Toma de requerimientos</h3><span class="insignia insignia--aprueba"><svg class="icono" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4 21a8 8 0 0 1 16 0"/></svg>Tú la apruebas</span></div>
+                    <p class="fase-propuesta__que-es">Conocemos tus bodegas, productos y cómo controlas hoy el inventario. Vale 16,7 % del proyecto.</p>
+                    <ul class="fase-propuesta__pasos"><li><span><strong>Visita al salón.</strong> <span>Vemos cómo registras hoy los productos que vendes y los que usas en los servicios.</span></span></li><li><span><strong>Lista de lo que hará el sistema.</strong> <span>Escribimos las funciones y los reportes que necesitas.</span></span></li></ul>
+                  </div>
+                </li>
+                <li class="fase-propuesta fase-propuesta--cliente">
+                  <div>
+                    <div class="fase-propuesta__cabecera"><h3 class="fase-propuesta__titulo">Análisis y diseño</h3><span class="insignia insignia--aprueba"><svg class="icono" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4 21a8 8 0 0 1 16 0"/></svg>Tú la apruebas</span></div>
+                    <p class="fase-propuesta__que-es">Diseñamos las pantallas, los reportes y cómo se guardará la información. Vale 16,7 % del proyecto.</p>
+                    <ul class="fase-propuesta__pasos"><li><span><strong>Bocetos de las pantallas.</strong> <span>Dibujamos cada pantalla antes de construirla.</span></span></li><li><span><strong>Organización de la información.</strong> <span>Definimos productos, bodegas, movimientos y usuarios.</span></span></li></ul>
+                  </div>
+                </li>
+                <li class="fase-propuesta">
+                  <div>
+                    <div class="fase-propuesta__cabecera"><h3 class="fase-propuesta__titulo">Desarrollo</h3><span class="insignia insignia--neutra">La cierra el equipo</span></div>
+                    <p class="fase-propuesta__que-es">Construimos el sistema. Vale 16,7 % del proyecto.</p>
+                    <ul class="fase-propuesta__pasos"><li><span><strong>Productos y bodegas.</strong> <span>Registro de productos con código y existencias por bodega.</span></span></li><li><span><strong>Entradas y salidas.</strong> <span>Movimientos con responsable y fecha.</span></span></li><li><span><strong>Productos usados en los servicios.</strong> <span>Cada tinte o tratamiento que se usa en un servicio se descuenta del inventario.</span></span></li><li><span><strong>Alertas y reportes.</strong> <span>Avisos de existencias bajas y reportes descargables.</span></span></li><li><span><strong>Conexión con la tienda en línea.</strong> <span>Lo que vendes en tu tienda en línea también se descuenta del inventario.</span></span></li></ul>
+                  </div>
+                </li>
+                <li class="fase-propuesta fase-propuesta--cliente">
+                  <div>
+                    <div class="fase-propuesta__cabecera"><h3 class="fase-propuesta__titulo">Pruebas</h3><span class="insignia insignia--aprueba"><svg class="icono" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4 21a8 8 0 0 1 16 0"/></svg>Tú la apruebas</span></div>
+                    <p class="fase-propuesta__que-es">Revisamos que los cálculos de existencias sean correctos. Vale 16,7 % del proyecto.</p>
+                    <ul class="fase-propuesta__pasos"><li><span><strong>Probar cada función.</strong> <span>Registramos movimientos de prueba y revisamos los saldos.</span></span></li><li><span><strong>Prueba contigo.</strong> <span>Tu equipo lo usa con datos de ejemplo.</span></span></li></ul>
+                  </div>
+                </li>
+                <li class="fase-propuesta fase-propuesta--cliente">
+                  <div>
+                    <div class="fase-propuesta__cabecera"><h3 class="fase-propuesta__titulo">Carga de datos y capacitación</h3><span class="insignia insignia--aprueba"><svg class="icono" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4 21a8 8 0 0 1 16 0"/></svg>Tú la apruebas</span></div>
+                    <p class="fase-propuesta__que-es">Cargamos tus productos y existencias reales y capacitamos a tu equipo. Vale 16,7 % del proyecto.</p>
+                    <ul class="fase-propuesta__pasos"><li><span><strong>Carga de datos.</strong> <span>Pasamos tus productos y existencias desde tus hojas de cálculo.</span></span></li><li><span><strong>Verificación del inventario inicial.</strong> <span>Comparas las existencias cargadas con el conteo físico.</span></span></li><li><span><strong>Manuales.</strong> <span>Te entregamos los manuales de uso y la documentación técnica.</span></span></li><li><span><strong>Capacitación.</strong> <span>Te enseñamos a usarlo y resolvemos tus dudas.</span></span></li></ul>
+                  </div>
+                </li>
+                <li class="fase-propuesta">
+                  <div>
+                    <div class="fase-propuesta__cabecera"><h3 class="fase-propuesta__titulo">Puesta en marcha</h3><span class="insignia insignia--neutra">La cierra el equipo</span></div>
+                    <p class="fase-propuesta__que-es">Dejamos el sistema funcionando en tu negocio. Vale 16,7 % del proyecto.</p>
+                    <ul class="fase-propuesta__pasos"><li><span><strong>Instalación.</strong> <span>Publicamos el sistema y configuramos los usuarios.</span></span></li><li><span><strong>Acompañamiento la primera semana.</strong> <span>Resolvemos dudas mientras tu equipo empieza a usarlo.</span></span></li></ul>
+                  </div>
+                </li>
+              </ol>
+            </section>
+
+          </div>
+
+          <aside class="propuesta__lateral">
+            <section class="tarjeta propuesta-valor aparecer" style="--retraso: 90ms" aria-labelledby="titulo-cotizacion-cliente">
+              <h2 class="propuesta-valor__etiqueta" id="titulo-cotizacion-cliente">Cotización</h2>
+              <p class="propuesta-valor__cifra">$7.800.000 <small>COP</small></p>
+              <dl>
+                <div><dt>Entrega estimada</dt><dd>12 feb 2027</dd></div>
+                <div><dt>Fases</dt><dd>6</dd></div>
+                <div><dt>Tú apruebas</dt><dd>4 fases</dd></div>
+                <div><dt>Garantía</dt><dd>30 días</dd></div>
+              </dl>
+              <p class="cotizacion__nota" style="margin: 0 0 var(--espacio-5)">Incluye 2 rondas de ajustes en cada fase que apruebas y 30 días de garantía después de la entrega. Lo que no esté en este plan se cotiza aparte. No incluye lectores de código de barras ni el hosting.</p>
+              <div class="propuesta-valor__acciones">
+                <button type="button" class="boton boton--exito boton--bloque" data-abrir-dialogo="dialogo-aprobar"><svg class="icono" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>Aprobar plan y cotización</button>
+                <button type="button" class="boton boton--contorno boton--bloque" data-abrir-dialogo="dialogo-ajustes"><svg class="icono" viewBox="0 0 24 24" aria-hidden="true"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/><path d="M8 9h8M8 13h5"/></svg>Pedir ajustes</button>
+                <button type="button" class="boton boton--fantasma boton--bloque boton--rechazar" data-abrir-dialogo="dialogo-rechazar"><svg class="icono" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="m15 9-6 6M9 9l6 6"/></svg>Rechazar propuesta</button>
+              </div>
+              <p class="propuesta-valor__plazo">Tienes hasta el martes 17 nov. Si no respondes, te lo recordamos; el jueves 26 nov la propuesta vence, el proyecto queda en pausa y el equipo queda libre para otros proyectos. Si después de eso no respondes en 30 días, el proyecto se cancela. Podrás pedir que te la envíen de nuevo.</p>
+            </section>
+          </aside>
+        </div>
+        <div class="barra-accion-movil barra-accion-movil--tres" role="group" aria-label="Responder la propuesta">
+          <button type="button" class="boton boton--exito barra-accion-movil__principal" data-abrir-dialogo="dialogo-aprobar"><svg class="icono" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>Aprobar</button>
+          <button type="button" class="boton boton--contorno" data-abrir-dialogo="dialogo-ajustes"><svg class="icono" viewBox="0 0 24 24" aria-hidden="true"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/><path d="M8 9h8M8 13h5"/></svg>Pedir ajustes</button>
+          <button type="button" class="boton boton--fantasma boton--rechazar" data-abrir-dialogo="dialogo-rechazar"><svg class="icono" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="m15 9-6 6M9 9l6 6"/></svg>Rechazar</button>
+        </div>
+        <dialog class="dialogo" id="dialogo-aprobar" aria-labelledby="dialogo-aprobar-titulo">
+          <form class="dialogo__formulario" data-validar data-mensaje-error="Revisa los campos marcados.">
+            <div class="dialogo__cabecera">
+              <span class="dialogo__icono dialogo__icono--exito"><svg class="icono icono--grande" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg></span>
+              <div>
+                <h2 class="dialogo__titulo" id="dialogo-aprobar-titulo">Aprobar plan y cotización</h2>
+                <p class="dialogo__texto">Al aprobar, el plan queda fijo y Andrés Pérez empieza la fase 1: Toma de requerimientos.</p>
+              </div>
+              <button type="button" class="boton-icono boton-icono--pequeno" data-cerrar-dialogo aria-label="Cerrar"><svg class="icono" viewBox="0 0 24 24" aria-hidden="true"><path d="M18 6 6 18M6 6l12 12"/></svg></button>
+            </div>
+            <div class="dialogo__cuerpo">
+              <dl class="cotizacion__resumen">
+                <div><dt>Valor</dt><dd>$7.800.000 COP</dd></div>
+                <div><dt>Entrega estimada</dt><dd>12 feb 2027</dd></div>
+                <div><dt>Fases</dt><dd>6 · 16,7 % cada una</dd></div>
+              </dl>
+              <div class="campo">
+                <label class="casilla"><input type="checkbox" id="aprobar-acepto" name="acepto" required data-mensaje-vacio="Confirma que leíste el plan y la cotización." aria-describedby="aprobar-acepto-mensaje"><span>Leí el plan de trabajo y la cotización, y estoy de acuerdo.</span></label>
+                <p class="campo__mensaje" id="aprobar-acepto-mensaje" aria-live="polite"><svg class="icono" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M12 8v4M12 16h.01"/></svg><span class="campo__mensaje-texto"></span></p>
+              </div>
+            </div>
+            <div class="dialogo__acciones">
+              <button type="button" class="boton boton--contorno" data-cerrar-dialogo>Volver</button>
+              <button type="submit" class="boton boton--exito"><svg class="icono" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>Aprobar</button>
+            </div>
+          </form>
+        </dialog>
+        <dialog class="dialogo" id="dialogo-ajustes" aria-labelledby="dialogo-ajustes-titulo">
+          <form class="dialogo__formulario" data-validar data-mensaje-error="Revisa los campos marcados.">
+            <div class="dialogo__cabecera">
+              <span class="dialogo__icono dialogo__icono--acento"><svg class="icono icono--grande" viewBox="0 0 24 24" aria-hidden="true"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/><path d="M8 9h8M8 13h5"/></svg></span>
+              <div>
+                <h2 class="dialogo__titulo" id="dialogo-ajustes-titulo">Pedir ajustes</h2>
+                <p class="dialogo__texto">Andrés Pérez ajustará el plan y te lo enviará de nuevo.</p>
+              </div>
+              <button type="button" class="boton-icono boton-icono--pequeno" data-cerrar-dialogo aria-label="Cerrar"><svg class="icono" viewBox="0 0 24 24" aria-hidden="true"><path d="M18 6 6 18M6 6l12 12"/></svg></button>
+            </div>
+            <div class="dialogo__cuerpo">
+              <div class="campo">
+                  <label class="campo__etiqueta" for="ajustes-texto">Qué quieres cambiar</label>
+                  <textarea class="campo__control campo__control--area" id="ajustes-texto" name="ajustes-texto" maxlength="600" minlength="20" required aria-describedby="ajustes-texto-ayuda ajustes-texto-mensaje" placeholder="Escribe tus comentarios para Andrés" data-mensaje-vacio="Cuéntanos qué quieres cambiar." data-mensaje-corto="Escribe al menos 20 caracteres para que Andrés te entienda." rows="3"></textarea>
+                  <p class="campo__ayuda" id="ajustes-texto-ayuda">Por ejemplo: una fase que falta, un paso que no necesitas, la fecha o el valor.</p>
+                  <p class="campo__mensaje" id="ajustes-texto-mensaje" aria-live="polite"><svg class="icono" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M12 8v4M12 16h.01"/></svg><span class="campo__mensaje-texto"></span></p>
+                </div>
+            </div>
+            <div class="dialogo__acciones">
+              <button type="button" class="boton boton--contorno" data-cerrar-dialogo>Volver</button>
+              <button type="submit" class="boton boton--acento"><svg class="icono" viewBox="0 0 24 24" aria-hidden="true"><path d="m22 2-7 20-4-9-9-4Z"/><path d="M22 2 11 13"/></svg>Enviar comentarios</button>
+            </div>
+          </form>
+        </dialog>
+        <!-- RN-29: el cliente rechaza plan y cotización → plan RECHAZADO, proyecto en pausa; si no responde en 30 días calendario, el administrador lo cancela -->
+        <dialog class="dialogo" id="dialogo-rechazar" aria-labelledby="dialogo-rechazar-titulo">
+          <form class="dialogo__formulario" data-validar data-mensaje-error="Revisa los campos marcados.">
+            <div class="dialogo__cabecera">
+              <span class="dialogo__icono dialogo__icono--peligro"><svg class="icono icono--grande" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="m15 9-6 6M9 9l6 6"/></svg></span>
+              <div>
+                <h2 class="dialogo__titulo" id="dialogo-rechazar-titulo">Rechazar la propuesta</h2>
+                <p class="dialogo__texto">El proyecto quedará en pausa y el administrador te contactará. Si no respondes en 30 días, el proyecto se cancelará. Si solo quieres cambiar algo del plan, mejor pide ajustes.</p>
+              </div>
+              <button type="button" class="boton-icono boton-icono--pequeno" data-cerrar-dialogo aria-label="Cerrar"><svg class="icono" viewBox="0 0 24 24" aria-hidden="true"><path d="M18 6 6 18M6 6l12 12"/></svg></button>
+            </div>
+            <div class="dialogo__cuerpo">
+              <div class="campo">
+                  <label class="campo__etiqueta" for="rechazo-motivo">Por qué la rechazas</label>
+                  <textarea class="campo__control campo__control--area" id="rechazo-motivo" name="rechazo-motivo" maxlength="600" minlength="20" required aria-describedby="rechazo-motivo-ayuda rechazo-motivo-mensaje" placeholder="Cuéntanos el motivo" data-mensaje-vacio="Cuéntanos por qué rechazas la propuesta." data-mensaje-corto="Cuéntanos por qué la rechazas (mínimo 20 caracteres)." rows="3"></textarea>
+                  <p class="campo__ayuda" id="rechazo-motivo-ayuda">Por ejemplo: el valor supera tu presupuesto o ya no necesitas el sistema.</p>
+                  <p class="campo__mensaje" id="rechazo-motivo-mensaje" aria-live="polite"><svg class="icono" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M12 8v4M12 16h.01"/></svg><span class="campo__mensaje-texto"></span></p>
+                </div>
+            </div>
+            <div class="dialogo__acciones">
+              <button type="button" class="boton boton--contorno" data-cerrar-dialogo>Volver</button>
+              <button type="submit" class="boton boton--peligro"><svg class="icono" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="m15 9-6 6M9 9l6 6"/></svg>Sí, rechazar</button>
+            </div>
+          </form>
+        </dialog>
+
+      </main>
+    </div>
+  </div>
+
+  <script src="../js/principal.js"></script>
+  <script src="../js/vistas/plan-cliente.js"></script>
+</body>
+</html>

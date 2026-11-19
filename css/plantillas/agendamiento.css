@@ -1,0 +1,63 @@
+/* ==========================================================================
+   Plantilla: Agendamiento de citas (los 3 pasos y la confirmación)
+   Requiere: css/global.css y css/plantillas/panel.css
+   Contenido: indicador de pasos, distribución con resumen lateral y
+   barra de acciones (Atrás / Continuar).
+   ========================================================================== */
+
+/* 1. Indicador de pasos ==================================================== */
+.pasos-cita { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--espacio-3); margin-bottom: var(--espacio-8); counter-reset: paso-cita; }
+.pasos-cita__paso {
+  position: relative; display: flex; align-items: center; gap: var(--espacio-3); padding: var(--espacio-3) var(--espacio-4);
+  border: 1px solid var(--color-borde); border-radius: var(--radio-caja); background: var(--color-fondo);
+  font-size: .875rem; color: var(--color-texto-suave);
+}
+.pasos-cita__paso::before {
+  counter-increment: paso-cita; content: counter(paso-cita);
+  width: 28px; height: 28px; flex: none; display: grid; place-items: center; border-radius: 50%;
+  background: var(--color-borde-suave); color: var(--color-texto-suave); font-size: .8125rem; font-weight: 700;
+}
+.pasos-cita__paso small { display: block; font-size: .75rem; color: var(--color-texto-tenue); }
+.pasos-cita__paso--actual { border-color: var(--color-acento); color: var(--color-tinta); font-weight: 600; box-shadow: 0 0 0 3px rgba(79, 70, 229, .12); }
+.pasos-cita__paso--actual::before { background: var(--color-acento); color: #fff; }
+.pasos-cita__paso--hecho { color: var(--color-exito); }
+.pasos-cita__paso--hecho::before { content: "✓"; background: var(--color-exito); color: #fff; }
+/* Barra de progreso bajo los pasos */
+.pasos-cita__progreso { grid-column: 1 / -1; height: 4px; border-radius: var(--radio-pildora); background: var(--color-borde-suave); overflow: hidden; }
+.pasos-cita__progreso span { display: block; height: 100%; width: var(--avance, 33%); border-radius: inherit; background: linear-gradient(90deg, #6366f1, var(--color-acento)); transition: width 800ms var(--curva); }
+
+/* 2. Distribución: formulario + resumen lateral ============================ */
+.agendamiento { display: grid; grid-template-columns: minmax(0, 1fr) 320px; gap: var(--espacio-6); align-items: start; }
+.agendamiento__principal { display: grid; gap: var(--espacio-6); }
+.agendamiento__titulo-bloque { margin: 0 0 var(--espacio-1); font-size: 1.125rem; }
+.agendamiento__ayuda { margin: 0 0 var(--espacio-5); font-size: .875rem; }
+
+/* Resumen de la cita (se va llenando en cada paso) */
+.resumen-cita { position: sticky; top: 92px; }
+.resumen-cita__lista { display: grid; margin: 0 0 var(--espacio-5); }
+.resumen-cita__fila { display: flex; justify-content: space-between; gap: var(--espacio-4); padding: var(--espacio-3) 0; border-bottom: 1px dashed var(--color-borde); font-size: .875rem; }
+.resumen-cita__fila:last-child { border-bottom: 0; }
+.resumen-cita__dato { color: var(--color-texto-suave); }
+.resumen-cita__valor { font-weight: 600; text-align: right; }
+.resumen-cita__valor--pendiente { color: var(--color-texto-tenue); font-weight: 500; }
+.resumen-cita__nota { display: grid; gap: var(--espacio-2); padding: var(--espacio-4); border-radius: var(--radio-caja); background: var(--color-fondo-suave); font-size: .8125rem; color: var(--color-texto-suave); }
+.resumen-cita__nota li { display: flex; gap: var(--espacio-2); }
+.resumen-cita__nota .icono { width: 16px; height: 16px; margin-top: 2px; color: var(--color-acento); }
+
+/* 3. Barra de acciones ===================================================== */
+.acciones-paso { display: flex; align-items: center; justify-content: space-between; gap: var(--espacio-3); flex-wrap: wrap; padding-top: var(--espacio-6); border-top: 1px solid var(--color-borde); }
+.acciones-paso__derecha { display: flex; gap: var(--espacio-3); margin-left: auto; }
+
+/* 4. Diseño adaptable ====================================================== */
+@media (max-width: 1100px) {
+  .agendamiento { grid-template-columns: minmax(0, 1fr); }
+  .resumen-cita { position: static; }
+}
+@media (max-width: 640px) {
+  .pasos-cita { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: var(--espacio-2); }
+  .pasos-cita__paso { justify-content: center; padding: var(--espacio-2); }
+  .pasos-cita__texto { display: none; } /* en celular solo se ven los números */
+  .acciones-paso { flex-direction: column-reverse; align-items: stretch; }
+  .acciones-paso__derecha { margin-left: 0; }
+  .acciones-paso .boton { width: 100%; }
+}

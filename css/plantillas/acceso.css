@@ -1,0 +1,34 @@
+/* ==========================================================================
+   Plantilla: Acceso (la usan registro.html y login.html)
+   Requiere: css/global.css
+   Estructura de dos columnas: formulario a la izquierda y lateral informativo
+   a la derecha (se oculta en celular).
+   ========================================================================== */
+
+/* 1. Estructura de dos columnas ============================================= */
+.acceso { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); min-height: 100vh; }
+.acceso__principal { display: flex; flex-direction: column; padding: var(--espacio-8) var(--espacio-10); }
+.acceso__superior { display: flex; align-items: center; justify-content: space-between; gap: var(--espacio-4); }
+.acceso__caja { width: min(400px, 100%); margin: auto; padding: var(--espacio-12) 0; }
+.acceso__titulo { margin-bottom: var(--espacio-2); font-size: 1.875rem; }
+.acceso__texto { margin-bottom: var(--espacio-8); }
+.acceso__pie { margin-top: var(--espacio-6); text-align: center; font-size: .875rem; color: var(--color-texto-suave); }
+.acceso__lateral { display: flex; align-items: center; justify-content: center; padding: var(--espacio-10); }
+.acceso__lateral-contenido { width: min(420px, 100%); }
+.acceso__lateral-contenido h2 { margin-top: var(--espacio-5); font-size: clamp(1.75rem, 3vw, 2.25rem); font-weight: 800; letter-spacing: -.03em; }
+.acceso__lateral-contenido .vista-previa { margin-top: var(--espacio-8); }
+.acceso__nota { margin-top: var(--espacio-6); font-size: .8125rem; }
+
+.servicio-elegido { display: flex; align-items: center; gap: var(--espacio-3); margin-bottom: var(--espacio-6); padding: var(--espacio-3) var(--espacio-4); border: 1px solid var(--color-borde); border-radius: var(--radio-caja); background: var(--color-fondo-suave); }
+.servicio-elegido img { width: 52px; height: 36px; border-radius: 6px; object-fit: cover; }
+.servicio-elegido__dato { display: block; font-size: .75rem; color: var(--color-texto-suave); }
+.servicio-elegido__nombre { font-size: .875rem; }
+.servicio-elegido__cambiar { margin-left: auto; font-size: .8125rem; }
+
+/* 2. Diseño adaptable ======================================================= */
+@media (max-width: 860px) {
+  .acceso { grid-template-columns: 1fr; }
+  .acceso__lateral { display: none; }
+  .acceso__principal { padding: var(--espacio-5); }
+}
+.acceso__pie--mapa { margin-top: var(--espacio-2); }

@@ -1,0 +1,489 @@
+<!DOCTYPE html>
+<html lang="es" class="sin-js">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Desarrolladores · CoreTech Solutions</title>
+  <link rel="icon" href="../img/logo.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap">
+  <link rel="stylesheet" href="../css/global.css">
+  <link rel="stylesheet" href="../css/plantillas/panel.css">
+  <link rel="stylesheet" href="../css/plantillas/tarjetas.css">
+  <link rel="stylesheet" href="../css/plantillas/tabla.css">
+  <link rel="stylesheet" href="../css/vistas/admin-usuarios.css">
+  <link rel="stylesheet" href="../css/vistas/admin-desarrolladores.css">
+  <script src="../js/accesibilidad.js"></script>
+</head>
+<body>
+  <a class="saltar-contenido" href="#contenido">Saltar al contenido</a>
+
+  <div class="panel">
+    <!-- ===================== Menú lateral del cliente ===================== -->
+    <aside class="panel__lateral superficie-noche" aria-label="Menú del administrador">
+      <a class="marca" href="../index.html" aria-label="CoreTech Solutions, ir al sitio público">
+        <img class="marca__logo" src="../img/logo.svg" alt="" width="30" height="30">
+        <span>CoreTech</span>
+      </a>
+      <p class="panel__rol"><strong>Panel de administración</strong>Gestión de CoreTech</p>
+
+      <nav aria-label="Secciones del administrador: Gestión">
+        <p class="navegacion-panel__titulo">Gestión</p>
+        <ul class="navegacion-panel__lista">
+          <li>
+            <a class="navegacion-panel__enlace" href="dashboard.html">
+              <svg class="icono" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="7" height="9" rx="1.5"/><rect x="14" y="3" width="7" height="5" rx="1.5"/><rect x="14" y="12" width="7" height="9" rx="1.5"/><rect x="3" y="16" width="7" height="5" rx="1.5"/></svg>
+              Dashboard
+              
+            </a>
+          </li>
+          <li>
+            <a class="navegacion-panel__enlace" href="citas.html">
+              <svg class="icono" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="4" width="18" height="17" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>
+              Citas
+              <span class="navegacion-panel__contador navegacion-panel__contador--aviso" aria-label="1 sin asignar">1</span>
+            </a>
+          </li>
+          <li>
+            <a class="navegacion-panel__enlace" href="proyectos.html">
+              <svg class="icono" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 7a2 2 0 0 1 2-2h4l2 2h8a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2Z"/></svg>
+              Proyectos
+              
+            </a>
+          </li>
+          <li>
+            <a class="navegacion-panel__enlace" href="plantillas-fases.html">
+              <svg class="icono" viewBox="0 0 24 24" aria-hidden="true"><path d="M10 6h10M10 12h10M10 18h10"/><path d="m3.5 6 1.2 1.2L7 5M3.5 12l1.2 1.2L7 11M3.5 18l1.2 1.2L7 17"/></svg>
+              Plantillas de fases
+              
+            </a>
+          </li>
+          <li>
+            <a class="navegacion-panel__enlace" href="solicitudes.html">
+              <svg class="icono" viewBox="0 0 24 24" aria-hidden="true"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/><path d="M8 9h8M8 13h5"/></svg>
+              Solicitudes de reunión
+              
+            </a>
+          </li>
+        </ul>
+      </nav>
+
+      <nav aria-label="Secciones del administrador: Especialidad">
+        <p class="navegacion-panel__titulo">Especialidad</p>
+        <ul class="navegacion-panel__lista">
+          <li>
+            <a class="navegacion-panel__enlace" href="desarrolladores.html" aria-current="page">
+              <svg class="icono" viewBox="0 0 24 24" aria-hidden="true"><path d="m8 9-3 3 3 3M16 9l3 3-3 3M13.5 6l-3 12"/></svg>
+              Desarrolladores
+              
+            </a>
+          </li>
+          <li>
+            <a class="navegacion-panel__enlace" href="equipos.html">
+              <svg class="icono" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="7" r="3"/><circle cx="5" cy="10" r="2.2"/><circle cx="19" cy="10" r="2.2"/><path d="M7 20a5 5 0 0 1 10 0M1.5 19a3.5 3.5 0 0 1 5.5-2.9M22.5 19a3.5 3.5 0 0 0-5.5-2.9"/></svg>
+              Equipos
+              
+            </a>
+          </li>
+        </ul>
+      </nav>
+
+      <nav aria-label="Secciones del administrador: Sitio web">
+        <p class="navegacion-panel__titulo">Sitio web</p>
+        <ul class="navegacion-panel__lista">
+          <li>
+            <a class="navegacion-panel__enlace" href="servicios.html">
+              <svg class="icono" viewBox="0 0 24 24" aria-hidden="true"><path d="m12 2 10 5-10 5L2 7l10-5Z"/><path d="m2 17 10 5 10-5M2 12l10 5 10-5"/></svg>
+              Servicios
+              
+            </a>
+          </li>
+          <li>
+            <a class="navegacion-panel__enlace" href="contenido.html">
+              <svg class="icono" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>
+              Contenido del sitio
+              
+            </a>
+          </li>
+        </ul>
+      </nav>
+
+      <nav aria-label="Secciones del administrador: Seguridad">
+        <p class="navegacion-panel__titulo">Seguridad</p>
+        <ul class="navegacion-panel__lista">
+          <li>
+            <a class="navegacion-panel__enlace" href="usuarios.html">
+              <svg class="icono" viewBox="0 0 24 24" aria-hidden="true"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+              Usuarios
+              
+            </a>
+          </li>
+          <li>
+            <a class="navegacion-panel__enlace" href="roles-permisos.html">
+              <svg class="icono" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10Z"/><path d="m9 12 2 2 4-4"/></svg>
+              Roles y permisos
+              
+            </a>
+          </li>
+          <li>
+            <a class="navegacion-panel__enlace" href="auditoria.html">
+              <svg class="icono" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 5H7a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2h-2"/><rect x="9" y="3" width="6" height="4" rx="1"/><path d="M9 12h6M9 16h4"/></svg>
+              Auditoría
+              
+            </a>
+          </li>
+        </ul>
+      </nav>
+
+      <div class="panel__usuario">
+        <span class="avatar avatar--gris" aria-hidden="true">PL</span>
+        <span class="panel__usuario-datos">
+          <span class="panel__usuario-nombre">Patricia León</span>
+          <span class="panel__usuario-correo">patricia.leon@coretechsolutions.co</span>
+        </span>
+        <a class="panel__salir" href="../index.html" data-accion data-mensaje-exito="Cerraste sesión." aria-label="Cerrar sesión" title="Cerrar sesión">
+          <svg class="icono" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4M16 17l5-5-5-5M21 12H9"/></svg>
+        </a>
+      </div>
+    </aside>
+
+    <div class="panel__cuerpo">
+      <!-- ===================== Barra superior ===================== -->
+      <header class="panel__barra">
+        <button type="button" class="boton-icono boton-icono--pequeno boton-menu-panel" aria-expanded="false" aria-label="Abrir menú">
+          <svg class="icono" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+        </button>
+        <nav class="ruta" aria-label="Ruta de navegación">
+          <a href="dashboard.html">Administración</a>
+          <svg class="icono" viewBox="0 0 24 24" aria-hidden="true"><path d="m9 6 6 6-6 6"/></svg>
+          <span aria-current="page">Desarrolladores</span>
+        </nav>
+        <div class="panel__barra-acciones">
+          <a class="boton-icono boton-icono--pequeno campana" href="dashboard.html#alertas" aria-label="Notificaciones: 4 nuevas">
+            <svg class="icono" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9"/><path d="M10.3 21a1.94 1.94 0 0 0 3.4 0"/></svg>
+            <span class="campana__punto" aria-hidden="true"></span>
+          </a>
+          <div class="panel__perfil">
+            <span class="avatar avatar--gris" aria-hidden="true">PL</span>
+            <span class="panel__perfil-nombre">Patricia León<small>Administradora</small></span>
+          </div>
+        </div>
+      </header>
+
+      <!-- ===================== Contenido ===================== -->
+      <main class="panel__contenido" id="contenido">
+        <div class="encabezado-vista aparecer">
+          <div>
+            <h1 class="encabezado-vista__titulo">Desarrolladores</h1>
+            <p class="encabezado-vista__texto">Registro de todo el personal técnico con su especialidad. Con ellos armas los <a href="equipos.html">equipos</a>; solo el Product Owner de cada equipo tiene cuenta en la plataforma.</p>
+          </div>
+          <button type="button" class="boton boton--acento" data-abrir-crear><svg class="icono" viewBox="0 0 24 24" aria-hidden="true"><path d="m8 9-3 3 3 3M16 9l3 3-3 3M13.5 6l-3 12"/></svg>Registrar desarrollador</button>
+        </div>
+
+        <section class="tarjeta resumen-especialidad aparecer" aria-labelledby="titulo-resumen">
+          <div class="resumen-especialidad__cabecera">
+            <h2 class="tarjeta__titulo" id="titulo-resumen">Desarrolladores activos por especialidad</h2>
+            <a class="enlace-flecha" href="?estado=sin-equipo" data-ver-sin-equipo><span data-total-sin-equipo>2</span>&nbsp;disponibles sin equipo</a>
+          </div>
+          <ul class="resumen-especialidad__lista"><li class="resumen-especialidad__item"><span class="resumen-especialidad__numero" data-conteo-especialidad="Frontend">3</span><span class="resumen-especialidad__texto">Frontend</span></li><li class="resumen-especialidad__item"><span class="resumen-especialidad__numero" data-conteo-especialidad="Backend">3</span><span class="resumen-especialidad__texto">Backend</span></li><li class="resumen-especialidad__item"><span class="resumen-especialidad__numero" data-conteo-especialidad="Full stack">2</span><span class="resumen-especialidad__texto">Full stack</span></li><li class="resumen-especialidad__item"><span class="resumen-especialidad__numero" data-conteo-especialidad="Móvil">3</span><span class="resumen-especialidad__texto">Móvil</span></li><li class="resumen-especialidad__item"><span class="resumen-especialidad__numero" data-conteo-especialidad="QA">4</span><span class="resumen-especialidad__texto">QA</span></li><li class="resumen-especialidad__item"><span class="resumen-especialidad__numero" data-conteo-especialidad="UX/UI">3</span><span class="resumen-especialidad__texto">UX/UI</span></li></ul>
+        </section>
+
+        <div data-tabla>
+          <div class="herramientas aparecer">
+            <div class="filtros" role="group" aria-label="Filtrar desarrolladores"><button type="button" class="filtro" data-filtro-estado="todas" aria-pressed="true">Todos <span class="filtro__cantidad" data-cantidad-estado="todas">0</span></button><button type="button" class="filtro" data-filtro-estado="product-owner" aria-pressed="false">Product Owners <span class="filtro__cantidad" data-cantidad-estado="product-owner">0</span></button><button type="button" class="filtro" data-filtro-estado="con-equipo" aria-pressed="false">En un equipo <span class="filtro__cantidad" data-cantidad-estado="con-equipo">0</span></button><button type="button" class="filtro" data-filtro-estado="sin-equipo" aria-pressed="false">Sin equipo <span class="filtro__cantidad" data-cantidad-estado="sin-equipo">0</span></button><button type="button" class="filtro" data-filtro-estado="inactivo" aria-pressed="false">Inactivos <span class="filtro__cantidad" data-cantidad-estado="inactivo">0</span></button></div>
+            <div class="herramientas__derecha">
+              <label><span class="solo-lector">Filtrar por especialidad</span>
+                <select class="campo__control select" data-filtro-por="especialidad"><option value="">Todas las especialidades</option><option>Frontend</option><option>Backend</option><option>Full stack</option><option>Móvil</option><option>QA</option><option>UX/UI</option></select>
+              </label>
+              <label class="buscador">
+                <span class="solo-lector">Buscar desarrollador</span>
+                <svg class="icono" viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+                <input class="campo__control" type="search" placeholder="Buscar nombre o correo" data-buscar>
+              </label>
+            </div>
+          </div>
+
+          <div class="tabla-contenedor aparecer">
+            <table class="tabla-datos">
+              <caption class="solo-lector">Registro de desarrolladores</caption>
+              <thead>
+                <tr><th scope="col">Desarrollador</th><th scope="col">Especialidad</th><th scope="col">Equipo y rol</th><th scope="col">Contacto</th><th scope="col">Estado</th><th scope="col"><span class="solo-lector">Acciones</span></th></tr>
+              </thead>
+              <tbody data-cuerpo-tabla>
+              <tr data-fila data-estado="activo con-equipo product-owner" data-id="andres-perez" data-nombre="Andrés Pérez" data-correo="andres.perez@coretechsolutions.co" data-telefono="3204459021" data-especialidad="Full stack" data-equipo="Equipo de Andrés Pérez" data-rol="Product Owner">
+                <td data-etiqueta="Desarrollador" class="celda--ancha"><span class="celda-usuario"><span class="avatar" aria-hidden="true" data-celda-iniciales>AP</span><span class="celda-principal"><strong data-celda-nombre>Andrés Pérez</strong><small data-celda-correo>andres.perez@coretechsolutions.co</small></span></span></td>
+                <td data-etiqueta="Especialidad"><span class="insignia insignia--especialidad" data-celda-especialidad>Full stack</span></td>
+                <td data-etiqueta="Equipo y rol" data-celda-equipo><span class="celda-principal celda-equipo"><strong>Equipo de Andrés Pérez</strong><small data-celda-rol><span class="rol-cuenta"><svg class="icono" viewBox="0 0 24 24" aria-hidden="true"><circle cx="7.5" cy="15.5" r="5.5"/><path d="m21 2-9.6 9.6M15.5 7.5l3 3L22 7l-3-3"/></svg>Product Owner · tiene cuenta</span></small></span></td>
+                <td data-etiqueta="Contacto"><span class="celda-principal"><small data-celda-telefono>3204459021</small><small class="texto-tenue">Ingresó en feb 2024</small></span></td>
+                <td data-etiqueta="Estado"><span class="insignia insignia--atendida" data-insignia-estado>Activo</span></td>
+                <td><div class="celda-acciones"><button type="button" class="boton boton--contorno boton--pequeno" data-abrir="editar"><svg class="icono" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 20h9"/><path d="M16.5 3.5a2.12 2.12 0 0 1 3 3L7 19l-4 1 1-4Z"/></svg>Editar</button>
+                  <details class="menu-acciones"><summary class="boton-icono boton-icono--pequeno" aria-label="Más acciones para Andrés Pérez" title="Más acciones"><svg class="icono" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="5" r="1.5"/><circle cx="12" cy="12" r="1.5"/><circle cx="12" cy="19" r="1.5"/></svg></summary>
+                  <div class="menu-acciones__lista" role="menu"><a class="menu-acciones__opcion" role="menuitem" href="equipos.html#equipo-andres-perez"><svg class="icono" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="7" r="3"/><circle cx="5" cy="10" r="2.2"/><circle cx="19" cy="10" r="2.2"/><path d="M7 20a5 5 0 0 1 10 0M1.5 19a3.5 3.5 0 0 1 5.5-2.9M22.5 19a3.5 3.5 0 0 0-5.5-2.9"/></svg>Ver su equipo</a><button type="button" class="menu-acciones__opcion menu-acciones__opcion--peligro" role="menuitem" data-abrir="desactivar"><svg class="icono" viewBox="0 0 24 24" aria-hidden="true"><path d="M18.36 6.64a9 9 0 1 1-12.73 0M12 2v10"/></svg>Desactivar</button></div></details></div></td>
+              </tr>
+              <tr data-fila data-estado="activo con-equipo" data-id="camilo-suarez" data-nombre="Camilo Suárez" data-correo="camilo.suarez@coretechsolutions.co" data-telefono="3184479203" data-especialidad="QA" data-equipo="Equipo de Andrés Pérez" data-rol="QA">
+                <td data-etiqueta="Desarrollador" class="celda--ancha"><span class="celda-usuario"><span class="avatar" aria-hidden="true" data-celda-iniciales>CS</span><span class="celda-principal"><strong data-celda-nombre>Camilo Suárez</strong><small data-celda-correo>camilo.suarez@coretechsolutions.co</small></span></span></td>
+                <td data-etiqueta="Especialidad"><span class="insignia insignia--especialidad" data-celda-especialidad>QA</span></td>
+                <td data-etiqueta="Equipo y rol" data-celda-equipo><span class="celda-principal celda-equipo"><strong>Equipo de Andrés Pérez</strong><small data-celda-rol>Rol: QA</small></span></td>
+                <td data-etiqueta="Contacto"><span class="celda-principal"><small data-celda-telefono>3184479203</small><small class="texto-tenue">Ingresó en jul 2025</small></span></td>
+                <td data-etiqueta="Estado"><span class="insignia insignia--atendida" data-insignia-estado>Activo</span></td>
+                <td><div class="celda-acciones"><button type="button" class="boton boton--contorno boton--pequeno" data-abrir="editar"><svg class="icono" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 20h9"/><path d="M16.5 3.5a2.12 2.12 0 0 1 3 3L7 19l-4 1 1-4Z"/></svg>Editar</button>
+                  <details class="menu-acciones"><summary class="boton-icono boton-icono--pequeno" aria-label="Más acciones para Camilo Suárez" title="Más acciones"><svg class="icono" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="5" r="1.5"/><circle cx="12" cy="12" r="1.5"/><circle cx="12" cy="19" r="1.5"/></svg></summary>
+                  <div class="menu-acciones__lista" role="menu"><a class="menu-acciones__opcion" role="menuitem" href="equipos.html#equipo-andres-perez"><svg class="icono" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="7" r="3"/><circle cx="5" cy="10" r="2.2"/><circle cx="19" cy="10" r="2.2"/><path d="M7 20a5 5 0 0 1 10 0M1.5 19a3.5 3.5 0 0 1 5.5-2.9M22.5 19a3.5 3.5 0 0 0-5.5-2.9"/></svg>Ver su equipo</a><button type="button" class="menu-acciones__opcion menu-acciones__opcion--peligro" role="menuitem" data-abrir="desactivar"><svg class="icono" viewBox="0 0 24 24" aria-hidden="true"><path d="M18.36 6.64a9 9 0 1 1-12.73 0M12 2v10"/></svg>Desactivar</button></div></details></div></td>
+              </tr>
+              <tr data-fila data-estado="activo con-equipo" data-id="diego-castro" data-nombre="Diego Castro" data-correo="diego.castro@coretechsolutions.co" data-telefono="3168834021" data-especialidad="Backend" data-equipo="Equipo de Andrés Pérez" data-rol="Backend">
+                <td data-etiqueta="Desarrollador" class="celda--ancha"><span class="celda-usuario"><span class="avatar" aria-hidden="true" data-celda-iniciales>DC</span><span class="celda-principal"><strong data-celda-nombre>Diego Castro</strong><small data-celda-correo>diego.castro@coretechsolutions.co</small></span></span></td>
+                <td data-etiqueta="Especialidad"><span class="insignia insignia--especialidad" data-celda-especialidad>Backend</span></td>
+                <td data-etiqueta="Equipo y rol" data-celda-equipo><span class="celda-principal celda-equipo"><strong>Equipo de Andrés Pérez</strong><small data-celda-rol>Rol: Backend</small></span></td>
+                <td data-etiqueta="Contacto"><span class="celda-principal"><small data-celda-telefono>3168834021</small><small class="texto-tenue">Ingresó en mar 2025</small></span></td>
+                <td data-etiqueta="Estado"><span class="insignia insignia--atendida" data-insignia-estado>Activo</span></td>
+                <td><div class="celda-acciones"><button type="button" class="boton boton--contorno boton--pequeno" data-abrir="editar"><svg class="icono" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 20h9"/><path d="M16.5 3.5a2.12 2.12 0 0 1 3 3L7 19l-4 1 1-4Z"/></svg>Editar</button>
+                  <details class="menu-acciones"><summary class="boton-icono boton-icono--pequeno" aria-label="Más acciones para Diego Castro" title="Más acciones"><svg class="icono" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="5" r="1.5"/><circle cx="12" cy="12" r="1.5"/><circle cx="12" cy="19" r="1.5"/></svg></summary>
+                  <div class="menu-acciones__lista" role="menu"><a class="menu-acciones__opcion" role="menuitem" href="equipos.html#equipo-andres-perez"><svg class="icono" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="7" r="3"/><circle cx="5" cy="10" r="2.2"/><circle cx="19" cy="10" r="2.2"/><path d="M7 20a5 5 0 0 1 10 0M1.5 19a3.5 3.5 0 0 1 5.5-2.9M22.5 19a3.5 3.5 0 0 0-5.5-2.9"/></svg>Ver su equipo</a><button type="button" class="menu-acciones__opcion menu-acciones__opcion--peligro" role="menuitem" data-abrir="desactivar"><svg class="icono" viewBox="0 0 24 24" aria-hidden="true"><path d="M18.36 6.64a9 9 0 1 1-12.73 0M12 2v10"/></svg>Desactivar</button></div></details></div></td>
+              </tr>
+              <tr data-fila data-estado="activo con-equipo" data-id="sofia-herrera" data-nombre="Sofía Herrera" data-correo="sofia.herrera@coretechsolutions.co" data-telefono="3057723190" data-especialidad="Frontend" data-equipo="Equipo de Andrés Pérez" data-rol="Frontend">
+                <td data-etiqueta="Desarrollador" class="celda--ancha"><span class="celda-usuario"><span class="avatar" aria-hidden="true" data-celda-iniciales>SH</span><span class="celda-principal"><strong data-celda-nombre>Sofía Herrera</strong><small data-celda-correo>sofia.herrera@coretechsolutions.co</small></span></span></td>
+                <td data-etiqueta="Especialidad"><span class="insignia insignia--especialidad" data-celda-especialidad>Frontend</span></td>
+                <td data-etiqueta="Equipo y rol" data-celda-equipo><span class="celda-principal celda-equipo"><strong>Equipo de Andrés Pérez</strong><small data-celda-rol>Rol: Frontend</small></span></td>
+                <td data-etiqueta="Contacto"><span class="celda-principal"><small data-celda-telefono>3057723190</small><small class="texto-tenue">Ingresó en ago 2024</small></span></td>
+                <td data-etiqueta="Estado"><span class="insignia insignia--atendida" data-insignia-estado>Activo</span></td>
+                <td><div class="celda-acciones"><button type="button" class="boton boton--contorno boton--pequeno" data-abrir="editar"><svg class="icono" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 20h9"/><path d="M16.5 3.5a2.12 2.12 0 0 1 3 3L7 19l-4 1 1-4Z"/></svg>Editar</button>
+                  <details class="menu-acciones"><summary class="boton-icono boton-icono--pequeno" aria-label="Más acciones para Sofía Herrera" title="Más acciones"><svg class="icono" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="5" r="1.5"/><circle cx="12" cy="12" r="1.5"/><circle cx="12" cy="19" r="1.5"/></svg></summary>
+                  <div class="menu-acciones__lista" role="menu"><a class="menu-acciones__opcion" role="menuitem" href="equipos.html#equipo-andres-perez"><svg class="icono" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="7" r="3"/><circle cx="5" cy="10" r="2.2"/><circle cx="19" cy="10" r="2.2"/><path d="M7 20a5 5 0 0 1 10 0M1.5 19a3.5 3.5 0 0 1 5.5-2.9M22.5 19a3.5 3.5 0 0 0-5.5-2.9"/></svg>Ver su equipo</a><button type="button" class="menu-acciones__opcion menu-acciones__opcion--peligro" role="menuitem" data-abrir="desactivar"><svg class="icono" viewBox="0 0 24 24" aria-hidden="true"><path d="M18.36 6.64a9 9 0 1 1-12.73 0M12 2v10"/></svg>Desactivar</button></div></details></div></td>
+              </tr>
+              <tr data-fila data-estado="activo con-equipo" data-id="tomas-rivera" data-nombre="Tomás Rivera" data-correo="tomas.rivera@coretechsolutions.co" data-telefono="3012280935" data-especialidad="Móvil" data-equipo="Equipo de Andrés Pérez" data-rol="Móvil">
+                <td data-etiqueta="Desarrollador" class="celda--ancha"><span class="celda-usuario"><span class="avatar" aria-hidden="true" data-celda-iniciales>TR</span><span class="celda-principal"><strong data-celda-nombre>Tomás Rivera</strong><small data-celda-correo>tomas.rivera@coretechsolutions.co</small></span></span></td>
+                <td data-etiqueta="Especialidad"><span class="insignia insignia--especialidad" data-celda-especialidad>Móvil</span></td>
+                <td data-etiqueta="Equipo y rol" data-celda-equipo><span class="celda-principal celda-equipo"><strong>Equipo de Andrés Pérez</strong><small data-celda-rol>Rol: Móvil</small></span></td>
+                <td data-etiqueta="Contacto"><span class="celda-principal"><small data-celda-telefono>3012280935</small><small class="texto-tenue">Ingresó en may 2025</small></span></td>
+                <td data-etiqueta="Estado"><span class="insignia insignia--atendida" data-insignia-estado>Activo</span></td>
+                <td><div class="celda-acciones"><button type="button" class="boton boton--contorno boton--pequeno" data-abrir="editar"><svg class="icono" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 20h9"/><path d="M16.5 3.5a2.12 2.12 0 0 1 3 3L7 19l-4 1 1-4Z"/></svg>Editar</button>
+                  <details class="menu-acciones"><summary class="boton-icono boton-icono--pequeno" aria-label="Más acciones para Tomás Rivera" title="Más acciones"><svg class="icono" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="5" r="1.5"/><circle cx="12" cy="12" r="1.5"/><circle cx="12" cy="19" r="1.5"/></svg></summary>
+                  <div class="menu-acciones__lista" role="menu"><a class="menu-acciones__opcion" role="menuitem" href="equipos.html#equipo-andres-perez"><svg class="icono" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="7" r="3"/><circle cx="5" cy="10" r="2.2"/><circle cx="19" cy="10" r="2.2"/><path d="M7 20a5 5 0 0 1 10 0M1.5 19a3.5 3.5 0 0 1 5.5-2.9M22.5 19a3.5 3.5 0 0 0-5.5-2.9"/></svg>Ver su equipo</a><button type="button" class="menu-acciones__opcion menu-acciones__opcion--peligro" role="menuitem" data-abrir="desactivar"><svg class="icono" viewBox="0 0 24 24" aria-hidden="true"><path d="M18.36 6.64a9 9 0 1 1-12.73 0M12 2v10"/></svg>Desactivar</button></div></details></div></td>
+              </tr>
+              <tr data-fila data-estado="activo con-equipo" data-id="valeria-rincon" data-nombre="Valeria Rincón" data-correo="valeria.rincon@coretechsolutions.co" data-telefono="3126610482" data-especialidad="UX/UI" data-equipo="Equipo de Andrés Pérez" data-rol="UX/UI">
+                <td data-etiqueta="Desarrollador" class="celda--ancha"><span class="celda-usuario"><span class="avatar" aria-hidden="true" data-celda-iniciales>VR</span><span class="celda-principal"><strong data-celda-nombre>Valeria Rincón</strong><small data-celda-correo>valeria.rincon@coretechsolutions.co</small></span></span></td>
+                <td data-etiqueta="Especialidad"><span class="insignia insignia--especialidad" data-celda-especialidad>UX/UI</span></td>
+                <td data-etiqueta="Equipo y rol" data-celda-equipo><span class="celda-principal celda-equipo"><strong>Equipo de Andrés Pérez</strong><small data-celda-rol>Rol: UX/UI</small></span></td>
+                <td data-etiqueta="Contacto"><span class="celda-principal"><small data-celda-telefono>3126610482</small><small class="texto-tenue">Ingresó en jun 2024</small></span></td>
+                <td data-etiqueta="Estado"><span class="insignia insignia--atendida" data-insignia-estado>Activo</span></td>
+                <td><div class="celda-acciones"><button type="button" class="boton boton--contorno boton--pequeno" data-abrir="editar"><svg class="icono" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 20h9"/><path d="M16.5 3.5a2.12 2.12 0 0 1 3 3L7 19l-4 1 1-4Z"/></svg>Editar</button>
+                  <details class="menu-acciones"><summary class="boton-icono boton-icono--pequeno" aria-label="Más acciones para Valeria Rincón" title="Más acciones"><svg class="icono" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="5" r="1.5"/><circle cx="12" cy="12" r="1.5"/><circle cx="12" cy="19" r="1.5"/></svg></summary>
+                  <div class="menu-acciones__lista" role="menu"><a class="menu-acciones__opcion" role="menuitem" href="equipos.html#equipo-andres-perez"><svg class="icono" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="7" r="3"/><circle cx="5" cy="10" r="2.2"/><circle cx="19" cy="10" r="2.2"/><path d="M7 20a5 5 0 0 1 10 0M1.5 19a3.5 3.5 0 0 1 5.5-2.9M22.5 19a3.5 3.5 0 0 0-5.5-2.9"/></svg>Ver su equipo</a><button type="button" class="menu-acciones__opcion menu-acciones__opcion--peligro" role="menuitem" data-abrir="desactivar"><svg class="icono" viewBox="0 0 24 24" aria-hidden="true"><path d="M18.36 6.64a9 9 0 1 1-12.73 0M12 2v10"/></svg>Desactivar</button></div></details></div></td>
+              </tr>
+              <tr data-fila data-estado="activo con-equipo product-owner" data-id="maria-ruiz" data-nombre="María Ruiz" data-correo="maria.ruiz@coretechsolutions.co" data-telefono="3118802344" data-especialidad="Frontend" data-equipo="Equipo de María Ruiz" data-rol="Product Owner">
+                <td data-etiqueta="Desarrollador" class="celda--ancha"><span class="celda-usuario"><span class="avatar" aria-hidden="true" data-celda-iniciales>MR</span><span class="celda-principal"><strong data-celda-nombre>María Ruiz</strong><small data-celda-correo>maria.ruiz@coretechsolutions.co</small></span></span></td>
+                <td data-etiqueta="Especialidad"><span class="insignia insignia--especialidad" data-celda-especialidad>Frontend</span></td>
+                <td data-etiqueta="Equipo y rol" data-celda-equipo><span class="celda-principal celda-equipo"><strong>Equipo de María Ruiz</strong><small data-celda-rol><span class="rol-cuenta"><svg class="icono" viewBox="0 0 24 24" aria-hidden="true"><circle cx="7.5" cy="15.5" r="5.5"/><path d="m21 2-9.6 9.6M15.5 7.5l3 3L22 7l-3-3"/></svg>Product Owner · tiene cuenta</span></small></span></td>
+                <td data-etiqueta="Contacto"><span class="celda-principal"><small data-celda-telefono>3118802344</small><small class="texto-tenue">Ingresó en nov 2023</small></span></td>
+                <td data-etiqueta="Estado"><span class="insignia insignia--atendida" data-insignia-estado>Activo</span></td>
+                <td><div class="celda-acciones"><button type="button" class="boton boton--contorno boton--pequeno" data-abrir="editar"><svg class="icono" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 20h9"/><path d="M16.5 3.5a2.12 2.12 0 0 1 3 3L7 19l-4 1 1-4Z"/></svg>Editar</button>
+                  <details class="menu-acciones"><summary class="boton-icono boton-icono--pequeno" aria-label="Más acciones para María Ruiz" title="Más acciones"><svg class="icono" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="5" r="1.5"/><circle cx="12" cy="12" r="1.5"/><circle cx="12" cy="19" r="1.5"/></svg></summary>
+                  <div class="menu-acciones__lista" role="menu"><a class="menu-acciones__opcion" role="menuitem" href="equipos.html#equipo-maria-ruiz"><svg class="icono" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="7" r="3"/><circle cx="5" cy="10" r="2.2"/><circle cx="19" cy="10" r="2.2"/><path d="M7 20a5 5 0 0 1 10 0M1.5 19a3.5 3.5 0 0 1 5.5-2.9M22.5 19a3.5 3.5 0 0 0-5.5-2.9"/></svg>Ver su equipo</a><button type="button" class="menu-acciones__opcion menu-acciones__opcion--peligro" role="menuitem" data-abrir="desactivar"><svg class="icono" viewBox="0 0 24 24" aria-hidden="true"><path d="M18.36 6.64a9 9 0 1 1-12.73 0M12 2v10"/></svg>Desactivar</button></div></details></div></td>
+              </tr>
+              <tr data-fila data-estado="activo con-equipo" data-id="juan-gil" data-nombre="Juan Esteban Gil" data-correo="juan.gil@coretechsolutions.co" data-telefono="3009126648" data-especialidad="QA" data-equipo="Equipo de María Ruiz" data-rol="QA">
+                <td data-etiqueta="Desarrollador" class="celda--ancha"><span class="celda-usuario"><span class="avatar" aria-hidden="true" data-celda-iniciales>JE</span><span class="celda-principal"><strong data-celda-nombre>Juan Esteban Gil</strong><small data-celda-correo>juan.gil@coretechsolutions.co</small></span></span></td>
+                <td data-etiqueta="Especialidad"><span class="insignia insignia--especialidad" data-celda-especialidad>QA</span></td>
+                <td data-etiqueta="Equipo y rol" data-celda-equipo><span class="celda-principal celda-equipo"><strong>Equipo de María Ruiz</strong><small data-celda-rol>Rol: QA</small></span></td>
+                <td data-etiqueta="Contacto"><span class="celda-principal"><small data-celda-telefono>3009126648</small><small class="texto-tenue">Ingresó en sep 2025</small></span></td>
+                <td data-etiqueta="Estado"><span class="insignia insignia--atendida" data-insignia-estado>Activo</span></td>
+                <td><div class="celda-acciones"><button type="button" class="boton boton--contorno boton--pequeno" data-abrir="editar"><svg class="icono" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 20h9"/><path d="M16.5 3.5a2.12 2.12 0 0 1 3 3L7 19l-4 1 1-4Z"/></svg>Editar</button>
+                  <details class="menu-acciones"><summary class="boton-icono boton-icono--pequeno" aria-label="Más acciones para Juan Esteban Gil" title="Más acciones"><svg class="icono" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="5" r="1.5"/><circle cx="12" cy="12" r="1.5"/><circle cx="12" cy="19" r="1.5"/></svg></summary>
+                  <div class="menu-acciones__lista" role="menu"><a class="menu-acciones__opcion" role="menuitem" href="equipos.html#equipo-maria-ruiz"><svg class="icono" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="7" r="3"/><circle cx="5" cy="10" r="2.2"/><circle cx="19" cy="10" r="2.2"/><path d="M7 20a5 5 0 0 1 10 0M1.5 19a3.5 3.5 0 0 1 5.5-2.9M22.5 19a3.5 3.5 0 0 0-5.5-2.9"/></svg>Ver su equipo</a><button type="button" class="menu-acciones__opcion menu-acciones__opcion--peligro" role="menuitem" data-abrir="desactivar"><svg class="icono" viewBox="0 0 24 24" aria-hidden="true"><path d="M18.36 6.64a9 9 0 1 1-12.73 0M12 2v10"/></svg>Desactivar</button></div></details></div></td>
+              </tr>
+              <tr data-fila data-estado="activo con-equipo" data-id="kevin-rojas" data-nombre="Kevin Rojas" data-correo="kevin.rojas@coretechsolutions.co" data-telefono="3137765012" data-especialidad="Full stack" data-equipo="Equipo de María Ruiz" data-rol="Backend">
+                <td data-etiqueta="Desarrollador" class="celda--ancha"><span class="celda-usuario"><span class="avatar" aria-hidden="true" data-celda-iniciales>KR</span><span class="celda-principal"><strong data-celda-nombre>Kevin Rojas</strong><small data-celda-correo>kevin.rojas@coretechsolutions.co</small></span></span></td>
+                <td data-etiqueta="Especialidad"><span class="insignia insignia--especialidad" data-celda-especialidad>Full stack</span></td>
+                <td data-etiqueta="Equipo y rol" data-celda-equipo><span class="celda-principal celda-equipo"><strong>Equipo de María Ruiz</strong><small data-celda-rol>Rol: Backend</small></span></td>
+                <td data-etiqueta="Contacto"><span class="celda-principal"><small data-celda-telefono>3137765012</small><small class="texto-tenue">Ingresó en abr 2024</small></span></td>
+                <td data-etiqueta="Estado"><span class="insignia insignia--atendida" data-insignia-estado>Activo</span></td>
+                <td><div class="celda-acciones"><button type="button" class="boton boton--contorno boton--pequeno" data-abrir="editar"><svg class="icono" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 20h9"/><path d="M16.5 3.5a2.12 2.12 0 0 1 3 3L7 19l-4 1 1-4Z"/></svg>Editar</button>
+                  <details class="menu-acciones"><summary class="boton-icono boton-icono--pequeno" aria-label="Más acciones para Kevin Rojas" title="Más acciones"><svg class="icono" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="5" r="1.5"/><circle cx="12" cy="12" r="1.5"/><circle cx="12" cy="19" r="1.5"/></svg></summary>
+                  <div class="menu-acciones__lista" role="menu"><a class="menu-acciones__opcion" role="menuitem" href="equipos.html#equipo-maria-ruiz"><svg class="icono" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="7" r="3"/><circle cx="5" cy="10" r="2.2"/><circle cx="19" cy="10" r="2.2"/><path d="M7 20a5 5 0 0 1 10 0M1.5 19a3.5 3.5 0 0 1 5.5-2.9M22.5 19a3.5 3.5 0 0 0-5.5-2.9"/></svg>Ver su equipo</a><button type="button" class="menu-acciones__opcion menu-acciones__opcion--peligro" role="menuitem" data-abrir="desactivar"><svg class="icono" viewBox="0 0 24 24" aria-hidden="true"><path d="M18.36 6.64a9 9 0 1 1-12.73 0M12 2v10"/></svg>Desactivar</button></div></details></div></td>
+              </tr>
+              <tr data-fila data-estado="activo con-equipo" data-id="paula-mendez" data-nombre="Paula Méndez" data-correo="paula.mendez@coretechsolutions.co" data-telefono="3205531877" data-especialidad="UX/UI" data-equipo="Equipo de María Ruiz" data-rol="UX/UI">
+                <td data-etiqueta="Desarrollador" class="celda--ancha"><span class="celda-usuario"><span class="avatar" aria-hidden="true" data-celda-iniciales>PM</span><span class="celda-principal"><strong data-celda-nombre>Paula Méndez</strong><small data-celda-correo>paula.mendez@coretechsolutions.co</small></span></span></td>
+                <td data-etiqueta="Especialidad"><span class="insignia insignia--especialidad" data-celda-especialidad>UX/UI</span></td>
+                <td data-etiqueta="Equipo y rol" data-celda-equipo><span class="celda-principal celda-equipo"><strong>Equipo de María Ruiz</strong><small data-celda-rol>Rol: UX/UI</small></span></td>
+                <td data-etiqueta="Contacto"><span class="celda-principal"><small data-celda-telefono>3205531877</small><small class="texto-tenue">Ingresó en ene 2025</small></span></td>
+                <td data-etiqueta="Estado"><span class="insignia insignia--atendida" data-insignia-estado>Activo</span></td>
+                <td><div class="celda-acciones"><button type="button" class="boton boton--contorno boton--pequeno" data-abrir="editar"><svg class="icono" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 20h9"/><path d="M16.5 3.5a2.12 2.12 0 0 1 3 3L7 19l-4 1 1-4Z"/></svg>Editar</button>
+                  <details class="menu-acciones"><summary class="boton-icono boton-icono--pequeno" aria-label="Más acciones para Paula Méndez" title="Más acciones"><svg class="icono" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="5" r="1.5"/><circle cx="12" cy="12" r="1.5"/><circle cx="12" cy="19" r="1.5"/></svg></summary>
+                  <div class="menu-acciones__lista" role="menu"><a class="menu-acciones__opcion" role="menuitem" href="equipos.html#equipo-maria-ruiz"><svg class="icono" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="7" r="3"/><circle cx="5" cy="10" r="2.2"/><circle cx="19" cy="10" r="2.2"/><path d="M7 20a5 5 0 0 1 10 0M1.5 19a3.5 3.5 0 0 1 5.5-2.9M22.5 19a3.5 3.5 0 0 0-5.5-2.9"/></svg>Ver su equipo</a><button type="button" class="menu-acciones__opcion menu-acciones__opcion--peligro" role="menuitem" data-abrir="desactivar"><svg class="icono" viewBox="0 0 24 24" aria-hidden="true"><path d="M18.36 6.64a9 9 0 1 1-12.73 0M12 2v10"/></svg>Desactivar</button></div></details></div></td>
+              </tr>
+              <tr data-fila data-estado="activo con-equipo product-owner" data-id="sebastian-mora" data-nombre="Sebastián Mora" data-correo="sebastian.mora@coretechsolutions.co" data-telefono="3009917366" data-especialidad="Backend" data-equipo="Equipo de Sebastián Mora" data-rol="Product Owner">
+                <td data-etiqueta="Desarrollador" class="celda--ancha"><span class="celda-usuario"><span class="avatar" aria-hidden="true" data-celda-iniciales>SM</span><span class="celda-principal"><strong data-celda-nombre>Sebastián Mora</strong><small data-celda-correo>sebastian.mora@coretechsolutions.co</small></span></span></td>
+                <td data-etiqueta="Especialidad"><span class="insignia insignia--especialidad" data-celda-especialidad>Backend</span></td>
+                <td data-etiqueta="Equipo y rol" data-celda-equipo><span class="celda-principal celda-equipo"><strong>Equipo de Sebastián Mora</strong><small data-celda-rol><span class="rol-cuenta"><svg class="icono" viewBox="0 0 24 24" aria-hidden="true"><circle cx="7.5" cy="15.5" r="5.5"/><path d="m21 2-9.6 9.6M15.5 7.5l3 3L22 7l-3-3"/></svg>Product Owner · tiene cuenta</span></small></span></td>
+                <td data-etiqueta="Contacto"><span class="celda-principal"><small data-celda-telefono>3009917366</small><small class="texto-tenue">Ingresó en mar 2024</small></span></td>
+                <td data-etiqueta="Estado"><span class="insignia insignia--atendida" data-insignia-estado>Activo</span></td>
+                <td><div class="celda-acciones"><button type="button" class="boton boton--contorno boton--pequeno" data-abrir="editar"><svg class="icono" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 20h9"/><path d="M16.5 3.5a2.12 2.12 0 0 1 3 3L7 19l-4 1 1-4Z"/></svg>Editar</button>
+                  <details class="menu-acciones"><summary class="boton-icono boton-icono--pequeno" aria-label="Más acciones para Sebastián Mora" title="Más acciones"><svg class="icono" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="5" r="1.5"/><circle cx="12" cy="12" r="1.5"/><circle cx="12" cy="19" r="1.5"/></svg></summary>
+                  <div class="menu-acciones__lista" role="menu"><a class="menu-acciones__opcion" role="menuitem" href="equipos.html#equipo-sebastian-mora"><svg class="icono" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="7" r="3"/><circle cx="5" cy="10" r="2.2"/><circle cx="19" cy="10" r="2.2"/><path d="M7 20a5 5 0 0 1 10 0M1.5 19a3.5 3.5 0 0 1 5.5-2.9M22.5 19a3.5 3.5 0 0 0-5.5-2.9"/></svg>Ver su equipo</a><button type="button" class="menu-acciones__opcion menu-acciones__opcion--peligro" role="menuitem" data-abrir="desactivar"><svg class="icono" viewBox="0 0 24 24" aria-hidden="true"><path d="M18.36 6.64a9 9 0 1 1-12.73 0M12 2v10"/></svg>Desactivar</button></div></details></div></td>
+              </tr>
+              <tr data-fila data-estado="activo con-equipo" data-id="daniel-quintero" data-nombre="Daniel Quintero" data-correo="daniel.quintero@coretechsolutions.co" data-telefono="3152204779" data-especialidad="Frontend" data-equipo="Equipo de Sebastián Mora" data-rol="Frontend">
+                <td data-etiqueta="Desarrollador" class="celda--ancha"><span class="celda-usuario"><span class="avatar" aria-hidden="true" data-celda-iniciales>DQ</span><span class="celda-principal"><strong data-celda-nombre>Daniel Quintero</strong><small data-celda-correo>daniel.quintero@coretechsolutions.co</small></span></span></td>
+                <td data-etiqueta="Especialidad"><span class="insignia insignia--especialidad" data-celda-especialidad>Frontend</span></td>
+                <td data-etiqueta="Equipo y rol" data-celda-equipo><span class="celda-principal celda-equipo"><strong>Equipo de Sebastián Mora</strong><small data-celda-rol>Rol: Frontend</small></span></td>
+                <td data-etiqueta="Contacto"><span class="celda-principal"><small data-celda-telefono>3152204779</small><small class="texto-tenue">Ingresó en oct 2025</small></span></td>
+                <td data-etiqueta="Estado"><span class="insignia insignia--atendida" data-insignia-estado>Activo</span></td>
+                <td><div class="celda-acciones"><button type="button" class="boton boton--contorno boton--pequeno" data-abrir="editar"><svg class="icono" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 20h9"/><path d="M16.5 3.5a2.12 2.12 0 0 1 3 3L7 19l-4 1 1-4Z"/></svg>Editar</button>
+                  <details class="menu-acciones"><summary class="boton-icono boton-icono--pequeno" aria-label="Más acciones para Daniel Quintero" title="Más acciones"><svg class="icono" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="5" r="1.5"/><circle cx="12" cy="12" r="1.5"/><circle cx="12" cy="19" r="1.5"/></svg></summary>
+                  <div class="menu-acciones__lista" role="menu"><a class="menu-acciones__opcion" role="menuitem" href="equipos.html#equipo-sebastian-mora"><svg class="icono" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="7" r="3"/><circle cx="5" cy="10" r="2.2"/><circle cx="19" cy="10" r="2.2"/><path d="M7 20a5 5 0 0 1 10 0M1.5 19a3.5 3.5 0 0 1 5.5-2.9M22.5 19a3.5 3.5 0 0 0-5.5-2.9"/></svg>Ver su equipo</a><button type="button" class="menu-acciones__opcion menu-acciones__opcion--peligro" role="menuitem" data-abrir="desactivar"><svg class="icono" viewBox="0 0 24 24" aria-hidden="true"><path d="M18.36 6.64a9 9 0 1 1-12.73 0M12 2v10"/></svg>Desactivar</button></div></details></div></td>
+              </tr>
+              <tr data-fila data-estado="activo con-equipo" data-id="mariana-pena" data-nombre="Mariana Peña" data-correo="mariana.pena@coretechsolutions.co" data-telefono="3176648120" data-especialidad="QA" data-equipo="Equipo de Sebastián Mora" data-rol="QA">
+                <td data-etiqueta="Desarrollador" class="celda--ancha"><span class="celda-usuario"><span class="avatar" aria-hidden="true" data-celda-iniciales>MP</span><span class="celda-principal"><strong data-celda-nombre>Mariana Peña</strong><small data-celda-correo>mariana.pena@coretechsolutions.co</small></span></span></td>
+                <td data-etiqueta="Especialidad"><span class="insignia insignia--especialidad" data-celda-especialidad>QA</span></td>
+                <td data-etiqueta="Equipo y rol" data-celda-equipo><span class="celda-principal celda-equipo"><strong>Equipo de Sebastián Mora</strong><small data-celda-rol>Rol: QA</small></span></td>
+                <td data-etiqueta="Contacto"><span class="celda-principal"><small data-celda-telefono>3176648120</small><small class="texto-tenue">Ingresó en feb 2026</small></span></td>
+                <td data-etiqueta="Estado"><span class="insignia insignia--atendida" data-insignia-estado>Activo</span></td>
+                <td><div class="celda-acciones"><button type="button" class="boton boton--contorno boton--pequeno" data-abrir="editar"><svg class="icono" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 20h9"/><path d="M16.5 3.5a2.12 2.12 0 0 1 3 3L7 19l-4 1 1-4Z"/></svg>Editar</button>
+                  <details class="menu-acciones"><summary class="boton-icono boton-icono--pequeno" aria-label="Más acciones para Mariana Peña" title="Más acciones"><svg class="icono" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="5" r="1.5"/><circle cx="12" cy="12" r="1.5"/><circle cx="12" cy="19" r="1.5"/></svg></summary>
+                  <div class="menu-acciones__lista" role="menu"><a class="menu-acciones__opcion" role="menuitem" href="equipos.html#equipo-sebastian-mora"><svg class="icono" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="7" r="3"/><circle cx="5" cy="10" r="2.2"/><circle cx="19" cy="10" r="2.2"/><path d="M7 20a5 5 0 0 1 10 0M1.5 19a3.5 3.5 0 0 1 5.5-2.9M22.5 19a3.5 3.5 0 0 0-5.5-2.9"/></svg>Ver su equipo</a><button type="button" class="menu-acciones__opcion menu-acciones__opcion--peligro" role="menuitem" data-abrir="desactivar"><svg class="icono" viewBox="0 0 24 24" aria-hidden="true"><path d="M18.36 6.64a9 9 0 1 1-12.73 0M12 2v10"/></svg>Desactivar</button></div></details></div></td>
+              </tr>
+              <tr data-fila data-estado="activo con-equipo product-owner" data-id="camila-jaimes" data-nombre="Camila Jaimes" data-correo="camila.jaimes@coretechsolutions.co" data-telefono="3175520918" data-especialidad="Móvil" data-equipo="Equipo de Camila Jaimes" data-rol="Product Owner">
+                <td data-etiqueta="Desarrollador" class="celda--ancha"><span class="celda-usuario"><span class="avatar" aria-hidden="true" data-celda-iniciales>CJ</span><span class="celda-principal"><strong data-celda-nombre>Camila Jaimes</strong><small data-celda-correo>camila.jaimes@coretechsolutions.co</small></span></span></td>
+                <td data-etiqueta="Especialidad"><span class="insignia insignia--especialidad" data-celda-especialidad>Móvil</span></td>
+                <td data-etiqueta="Equipo y rol" data-celda-equipo><span class="celda-principal celda-equipo"><strong>Equipo de Camila Jaimes</strong><small data-celda-rol><span class="rol-cuenta"><svg class="icono" viewBox="0 0 24 24" aria-hidden="true"><circle cx="7.5" cy="15.5" r="5.5"/><path d="m21 2-9.6 9.6M15.5 7.5l3 3L22 7l-3-3"/></svg>Product Owner · tiene cuenta</span></small></span></td>
+                <td data-etiqueta="Contacto"><span class="celda-principal"><small data-celda-telefono>3175520918</small><small class="texto-tenue">Ingresó en jun 2025</small></span></td>
+                <td data-etiqueta="Estado"><span class="insignia insignia--atendida" data-insignia-estado>Activo</span></td>
+                <td><div class="celda-acciones"><button type="button" class="boton boton--contorno boton--pequeno" data-abrir="editar"><svg class="icono" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 20h9"/><path d="M16.5 3.5a2.12 2.12 0 0 1 3 3L7 19l-4 1 1-4Z"/></svg>Editar</button>
+                  <details class="menu-acciones"><summary class="boton-icono boton-icono--pequeno" aria-label="Más acciones para Camila Jaimes" title="Más acciones"><svg class="icono" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="5" r="1.5"/><circle cx="12" cy="12" r="1.5"/><circle cx="12" cy="19" r="1.5"/></svg></summary>
+                  <div class="menu-acciones__lista" role="menu"><a class="menu-acciones__opcion" role="menuitem" href="equipos.html#equipo-camila-jaimes"><svg class="icono" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="7" r="3"/><circle cx="5" cy="10" r="2.2"/><circle cx="19" cy="10" r="2.2"/><path d="M7 20a5 5 0 0 1 10 0M1.5 19a3.5 3.5 0 0 1 5.5-2.9M22.5 19a3.5 3.5 0 0 0-5.5-2.9"/></svg>Ver su equipo</a><button type="button" class="menu-acciones__opcion menu-acciones__opcion--peligro" role="menuitem" data-abrir="desactivar"><svg class="icono" viewBox="0 0 24 24" aria-hidden="true"><path d="M18.36 6.64a9 9 0 1 1-12.73 0M12 2v10"/></svg>Desactivar</button></div></details></div></td>
+              </tr>
+              <tr data-fila data-estado="activo con-equipo" data-id="isabela-caceres" data-nombre="Isabela Cáceres" data-correo="isabela.caceres@coretechsolutions.co" data-telefono="3218804361" data-especialidad="UX/UI" data-equipo="Equipo de Camila Jaimes" data-rol="UX/UI">
+                <td data-etiqueta="Desarrollador" class="celda--ancha"><span class="celda-usuario"><span class="avatar" aria-hidden="true" data-celda-iniciales>IC</span><span class="celda-principal"><strong data-celda-nombre>Isabela Cáceres</strong><small data-celda-correo>isabela.caceres@coretechsolutions.co</small></span></span></td>
+                <td data-etiqueta="Especialidad"><span class="insignia insignia--especialidad" data-celda-especialidad>UX/UI</span></td>
+                <td data-etiqueta="Equipo y rol" data-celda-equipo><span class="celda-principal celda-equipo"><strong>Equipo de Camila Jaimes</strong><small data-celda-rol>Rol: UX/UI</small></span></td>
+                <td data-etiqueta="Contacto"><span class="celda-principal"><small data-celda-telefono>3218804361</small><small class="texto-tenue">Ingresó en mar 2026</small></span></td>
+                <td data-etiqueta="Estado"><span class="insignia insignia--atendida" data-insignia-estado>Activo</span></td>
+                <td><div class="celda-acciones"><button type="button" class="boton boton--contorno boton--pequeno" data-abrir="editar"><svg class="icono" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 20h9"/><path d="M16.5 3.5a2.12 2.12 0 0 1 3 3L7 19l-4 1 1-4Z"/></svg>Editar</button>
+                  <details class="menu-acciones"><summary class="boton-icono boton-icono--pequeno" aria-label="Más acciones para Isabela Cáceres" title="Más acciones"><svg class="icono" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="5" r="1.5"/><circle cx="12" cy="12" r="1.5"/><circle cx="12" cy="19" r="1.5"/></svg></summary>
+                  <div class="menu-acciones__lista" role="menu"><a class="menu-acciones__opcion" role="menuitem" href="equipos.html#equipo-camila-jaimes"><svg class="icono" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="7" r="3"/><circle cx="5" cy="10" r="2.2"/><circle cx="19" cy="10" r="2.2"/><path d="M7 20a5 5 0 0 1 10 0M1.5 19a3.5 3.5 0 0 1 5.5-2.9M22.5 19a3.5 3.5 0 0 0-5.5-2.9"/></svg>Ver su equipo</a><button type="button" class="menu-acciones__opcion menu-acciones__opcion--peligro" role="menuitem" data-abrir="desactivar"><svg class="icono" viewBox="0 0 24 24" aria-hidden="true"><path d="M18.36 6.64a9 9 0 1 1-12.73 0M12 2v10"/></svg>Desactivar</button></div></details></div></td>
+              </tr>
+              <tr data-fila data-estado="activo con-equipo" data-id="oscar-lozano" data-nombre="Óscar Lozano" data-correo="oscar.lozano@coretechsolutions.co" data-telefono="3049917254" data-especialidad="Móvil" data-equipo="Equipo de Camila Jaimes" data-rol="Móvil">
+                <td data-etiqueta="Desarrollador" class="celda--ancha"><span class="celda-usuario"><span class="avatar" aria-hidden="true" data-celda-iniciales>ÓL</span><span class="celda-principal"><strong data-celda-nombre>Óscar Lozano</strong><small data-celda-correo>oscar.lozano@coretechsolutions.co</small></span></span></td>
+                <td data-etiqueta="Especialidad"><span class="insignia insignia--especialidad" data-celda-especialidad>Móvil</span></td>
+                <td data-etiqueta="Equipo y rol" data-celda-equipo><span class="celda-principal celda-equipo"><strong>Equipo de Camila Jaimes</strong><small data-celda-rol>Rol: Móvil</small></span></td>
+                <td data-etiqueta="Contacto"><span class="celda-principal"><small data-celda-telefono>3049917254</small><small class="texto-tenue">Ingresó en ago 2025</small></span></td>
+                <td data-etiqueta="Estado"><span class="insignia insignia--atendida" data-insignia-estado>Activo</span></td>
+                <td><div class="celda-acciones"><button type="button" class="boton boton--contorno boton--pequeno" data-abrir="editar"><svg class="icono" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 20h9"/><path d="M16.5 3.5a2.12 2.12 0 0 1 3 3L7 19l-4 1 1-4Z"/></svg>Editar</button>
+                  <details class="menu-acciones"><summary class="boton-icono boton-icono--pequeno" aria-label="Más acciones para Óscar Lozano" title="Más acciones"><svg class="icono" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="5" r="1.5"/><circle cx="12" cy="12" r="1.5"/><circle cx="12" cy="19" r="1.5"/></svg></summary>
+                  <div class="menu-acciones__lista" role="menu"><a class="menu-acciones__opcion" role="menuitem" href="equipos.html#equipo-camila-jaimes"><svg class="icono" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="7" r="3"/><circle cx="5" cy="10" r="2.2"/><circle cx="19" cy="10" r="2.2"/><path d="M7 20a5 5 0 0 1 10 0M1.5 19a3.5 3.5 0 0 1 5.5-2.9M22.5 19a3.5 3.5 0 0 0-5.5-2.9"/></svg>Ver su equipo</a><button type="button" class="menu-acciones__opcion menu-acciones__opcion--peligro" role="menuitem" data-abrir="desactivar"><svg class="icono" viewBox="0 0 24 24" aria-hidden="true"><path d="M18.36 6.64a9 9 0 1 1-12.73 0M12 2v10"/></svg>Desactivar</button></div></details></div></td>
+              </tr>
+              <tr data-fila data-estado="activo sin-equipo" data-id="ana-vera" data-nombre="Ana María Vera" data-correo="ana.vera@coretechsolutions.co" data-telefono="3195562013" data-especialidad="QA" data-equipo="" data-rol="">
+                <td data-etiqueta="Desarrollador" class="celda--ancha"><span class="celda-usuario"><span class="avatar" aria-hidden="true" data-celda-iniciales>AM</span><span class="celda-principal"><strong data-celda-nombre>Ana María Vera</strong><small data-celda-correo>ana.vera@coretechsolutions.co</small></span></span></td>
+                <td data-etiqueta="Especialidad"><span class="insignia insignia--especialidad" data-celda-especialidad>QA</span></td>
+                <td data-etiqueta="Equipo y rol" data-celda-equipo><span class="celda-principal"><small class="texto-tenue">Sin equipo</small></span></td>
+                <td data-etiqueta="Contacto"><span class="celda-principal"><small data-celda-telefono>3195562013</small><small class="texto-tenue">Ingresó en oct 2026</small></span></td>
+                <td data-etiqueta="Estado"><span class="insignia insignia--atendida" data-insignia-estado>Activo</span></td>
+                <td><div class="celda-acciones"><button type="button" class="boton boton--contorno boton--pequeno" data-abrir="editar"><svg class="icono" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 20h9"/><path d="M16.5 3.5a2.12 2.12 0 0 1 3 3L7 19l-4 1 1-4Z"/></svg>Editar</button>
+                  <details class="menu-acciones"><summary class="boton-icono boton-icono--pequeno" aria-label="Más acciones para Ana María Vera" title="Más acciones"><svg class="icono" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="5" r="1.5"/><circle cx="12" cy="12" r="1.5"/><circle cx="12" cy="19" r="1.5"/></svg></summary>
+                  <div class="menu-acciones__lista" role="menu"><button type="button" class="menu-acciones__opcion menu-acciones__opcion--peligro" role="menuitem" data-abrir="desactivar"><svg class="icono" viewBox="0 0 24 24" aria-hidden="true"><path d="M18.36 6.64a9 9 0 1 1-12.73 0M12 2v10"/></svg>Desactivar</button></div></details></div></td>
+              </tr>
+              <tr data-fila data-estado="activo sin-equipo" data-id="jhon-pabon" data-nombre="Jhon Pabón" data-correo="jhon.pabon@coretechsolutions.co" data-telefono="3103348857" data-especialidad="Backend" data-equipo="" data-rol="">
+                <td data-etiqueta="Desarrollador" class="celda--ancha"><span class="celda-usuario"><span class="avatar" aria-hidden="true" data-celda-iniciales>JP</span><span class="celda-principal"><strong data-celda-nombre>Jhon Pabón</strong><small data-celda-correo>jhon.pabon@coretechsolutions.co</small></span></span></td>
+                <td data-etiqueta="Especialidad"><span class="insignia insignia--especialidad" data-celda-especialidad>Backend</span></td>
+                <td data-etiqueta="Equipo y rol" data-celda-equipo><span class="celda-principal"><small class="texto-tenue">Sin equipo</small></span></td>
+                <td data-etiqueta="Contacto"><span class="celda-principal"><small data-celda-telefono>3103348857</small><small class="texto-tenue">Ingresó en oct 2026</small></span></td>
+                <td data-etiqueta="Estado"><span class="insignia insignia--atendida" data-insignia-estado>Activo</span></td>
+                <td><div class="celda-acciones"><button type="button" class="boton boton--contorno boton--pequeno" data-abrir="editar"><svg class="icono" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 20h9"/><path d="M16.5 3.5a2.12 2.12 0 0 1 3 3L7 19l-4 1 1-4Z"/></svg>Editar</button>
+                  <details class="menu-acciones"><summary class="boton-icono boton-icono--pequeno" aria-label="Más acciones para Jhon Pabón" title="Más acciones"><svg class="icono" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="5" r="1.5"/><circle cx="12" cy="12" r="1.5"/><circle cx="12" cy="19" r="1.5"/></svg></summary>
+                  <div class="menu-acciones__lista" role="menu"><button type="button" class="menu-acciones__opcion menu-acciones__opcion--peligro" role="menuitem" data-abrir="desactivar"><svg class="icono" viewBox="0 0 24 24" aria-hidden="true"><path d="M18.36 6.64a9 9 0 1 1-12.73 0M12 2v10"/></svg>Desactivar</button></div></details></div></td>
+              </tr>
+              <tr class="fila--apagada" data-fila data-estado="inactivo sin-equipo" data-id="diego-ramirez" data-nombre="Diego Ramírez" data-correo="diego.ramirez@coretechsolutions.co" data-telefono="3016643275" data-especialidad="Backend" data-equipo="" data-rol="">
+                <td data-etiqueta="Desarrollador" class="celda--ancha"><span class="celda-usuario"><span class="avatar" aria-hidden="true" data-celda-iniciales>DR</span><span class="celda-principal"><strong data-celda-nombre>Diego Ramírez</strong><small data-celda-correo>diego.ramirez@coretechsolutions.co</small></span></span></td>
+                <td data-etiqueta="Especialidad"><span class="insignia insignia--especialidad" data-celda-especialidad>Backend</span></td>
+                <td data-etiqueta="Equipo y rol" data-celda-equipo><span class="celda-principal"><small class="texto-tenue">Sin equipo</small></span></td>
+                <td data-etiqueta="Contacto"><span class="celda-principal"><small data-celda-telefono>3016643275</small><small class="texto-tenue">Ingresó en jul 2023</small></span></td>
+                <td data-etiqueta="Estado"><span class="insignia insignia--cancelada" data-insignia-estado>Inactivo</span></td>
+                <td><div class="celda-acciones"><button type="button" class="boton boton--contorno boton--pequeno" data-abrir="editar"><svg class="icono" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 20h9"/><path d="M16.5 3.5a2.12 2.12 0 0 1 3 3L7 19l-4 1 1-4Z"/></svg>Editar</button>
+                  <details class="menu-acciones"><summary class="boton-icono boton-icono--pequeno" aria-label="Más acciones para Diego Ramírez" title="Más acciones"><svg class="icono" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="5" r="1.5"/><circle cx="12" cy="12" r="1.5"/><circle cx="12" cy="19" r="1.5"/></svg></summary>
+                  <div class="menu-acciones__lista" role="menu"><button type="button" class="menu-acciones__opcion" role="menuitem" data-abrir="activar"><svg class="icono" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>Activar</button></div></details></div></td>
+              </tr>
+              <tr class="tabla-datos__vacio" data-sin-resultados hidden>
+                <td colspan="6">
+                  <div class="sin-resultados">
+                    <span class="sin-resultados__icono"><svg class="icono icono--grande" viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5M8 11h6"/></svg></span>
+                    <h2 class="sin-resultados__titulo">No hay desarrolladores con estos filtros</h2>
+                    <p>Prueba con otra especialidad u otra búsqueda.</p>
+                    <button type="button" class="boton boton--contorno boton--pequeno" data-limpiar-filtros>Limpiar filtros</button>
+                  </div>
+                </td>
+              </tr>
+              </tbody>
+            </table>
+          </div>
+          <p class="pie-tabla" aria-live="polite"><span data-total-visible>19 resultados</span></p>
+        </div>
+
+        <dialog class="dialogo dialogo--ancho" id="dialogo-desarrollador" aria-labelledby="titulo-desarrollador">
+          <form class="dialogo__formulario" data-validar>
+            <div class="dialogo__cabecera">
+              <span class="dialogo__icono dialogo__icono--acento"><svg class="icono icono--grande" viewBox="0 0 24 24" aria-hidden="true"><path d="m8 9-3 3 3 3M16 9l3 3-3 3M13.5 6l-3 12"/></svg></span>
+              <div>
+                <h2 class="dialogo__titulo" id="titulo-desarrollador" data-titulo>Registrar desarrollador</h2>
+                <p class="dialogo__texto" data-texto>Queda en el registro de CoreTech. Sin cuenta en la plataforma: solo el Product Owner de cada equipo entra a la plataforma.</p>
+              </div>
+              <button type="button" class="boton-icono boton-icono--pequeno" data-cerrar-dialogo aria-label="Cerrar"><svg class="icono" viewBox="0 0 24 24" aria-hidden="true"><path d="M18 6 6 18M6 6l12 12"/></svg></button>
+            </div>
+            <div class="dialogo__cuerpo">
+              <div class="fila-campos">
+                <div class="campo">
+                  <label class="campo__etiqueta" for="dev-nombre">Nombre completo</label>
+                  <input class="campo__control" id="dev-nombre" name="nombre" type="text" autocomplete="off" required minlength="5" maxlength="60" placeholder="Ejemplo: Daniela Castro"
+                         data-mensaje-vacio="Escribe el nombre completo." data-mensaje-corto="Escribe nombre y apellido." aria-describedby="dev-nombre-mensaje">
+                  <p class="campo__mensaje" id="dev-nombre-mensaje" aria-live="polite"><svg class="icono" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M12 8v4M12 16h.01"/></svg><span class="campo__mensaje-texto"></span></p>
+                </div>
+                <div class="campo">
+                  <label class="campo__etiqueta" for="dev-telefono">Celular</label>
+                  <input class="campo__control" id="dev-telefono" name="telefono" type="tel" inputmode="numeric" autocomplete="off" required pattern="3[0-9]{9}" maxlength="10" placeholder="3001234567"
+                         data-mensaje-vacio="Escribe el número de celular." data-mensaje-formato="Escribe un celular de 10 dígitos que empiece por 3." aria-describedby="dev-telefono-mensaje">
+                  <p class="campo__mensaje" id="dev-telefono-mensaje" aria-live="polite"><svg class="icono" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M12 8v4M12 16h.01"/></svg><span class="campo__mensaje-texto"></span></p>
+                </div>
+              </div>
+              <div class="campo">
+                <label class="campo__etiqueta" for="dev-correo">Correo corporativo</label>
+                <input class="campo__control" id="dev-correo" name="correo" type="email" autocomplete="off" required placeholder="nombre.apellido@coretechsolutions.co"
+                       pattern="[^@\s]+@coretechsolutions\.co" data-mensaje-vacio="Escribe el correo." data-mensaje-formato="Usa el correo corporativo que termina en @coretechsolutions.co."
+                       aria-describedby="dev-correo-mensaje">
+                <p class="campo__mensaje" id="dev-correo-mensaje" aria-live="polite"><svg class="icono" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M12 8v4M12 16h.01"/></svg><span class="campo__mensaje-texto"></span></p>
+              </div>
+              <div class="campo">
+                <label class="campo__etiqueta" for="dev-especialidad">Especialidad</label>
+                <select class="campo__control select" id="dev-especialidad" name="especialidad" required data-mensaje-vacio="Elige la especialidad." aria-describedby="dev-especialidad-ayuda dev-especialidad-mensaje">
+                  <option value="">Elige una especialidad</option><option>Frontend</option><option>Backend</option><option>Full stack</option><option>Móvil</option><option>QA</option><option>UX/UI</option>
+                </select>
+                <p class="campo__ayuda" id="dev-especialidad-ayuda">Define qué rol puede tener en un equipo. Un Full stack puede ser Frontend, Backend o Full stack.</p>
+                <p class="campo__mensaje" id="dev-especialidad-mensaje" aria-live="polite"><svg class="icono" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M12 8v4M12 16h.01"/></svg><span class="campo__mensaje-texto"></span></p>
+              </div>
+              <div class="alerta alerta--info aviso-rol" data-aviso-rol hidden><svg class="icono" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M12 8v4M12 16h.01"/></svg><p data-aviso-rol-texto></p></div>
+            </div>
+            <div class="dialogo__acciones">
+              <button type="button" class="boton boton--contorno" data-cerrar-dialogo>Volver</button>
+              <button type="submit" class="boton boton--acento" data-boton>Registrar</button>
+            </div>
+          </form>
+        </dialog>
+
+        <dialog class="dialogo" id="dialogo-estado" aria-labelledby="titulo-estado" aria-describedby="texto-estado">
+          <div class="dialogo__cuerpo">
+            <span class="dialogo__icono dialogo__icono--peligro" data-estado-icono><svg class="icono icono--grande" viewBox="0 0 24 24" aria-hidden="true"><path d="M18.36 6.64a9 9 0 1 1-12.73 0M12 2v10"/></svg></span>
+            <h2 class="dialogo__titulo" id="titulo-estado" data-estado-titulo>Desactivar desarrollador</h2>
+            <p class="dialogo__texto" id="texto-estado" data-estado-texto></p>
+            <div class="alerta alerta--advertencia aviso-proyectos" data-estado-bloqueo hidden><svg class="icono" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M12 8v4M12 16h.01"/></svg><div><strong data-estado-bloqueo-titulo></strong><p>Elige otro Product Owner para su equipo antes de desactivarlo, para que ningún proyecto quede sin responsable.</p><a class="boton boton--oscuro boton--pequeno" href="equipos.html" data-estado-enlace>Ir a su equipo</a></div></div>
+          </div>
+          <div class="dialogo__acciones">
+            <button type="button" class="boton boton--contorno" data-cerrar-dialogo>Volver</button>
+            <button type="button" class="boton boton--peligro" data-confirmar-estado>Desactivar</button>
+          </div>
+        </dialog>
+      </main>
+    </div>
+  </div>
+
+  <script src="../js/principal.js"></script>
+  <script src="../js/tabla.js"></script>
+  <script src="../js/vistas/admin-desarrolladores.js"></script>
+</body>
+</html>

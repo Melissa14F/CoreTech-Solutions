@@ -1,0 +1,79 @@
+/* ==========================================================================
+   Vista: Equipos (admin/equipos.html)
+   Tarjetas de equipo con su Product Owner e integrantes, y formulario para
+   armar o editar un equipo.
+   Requiere: global.css, plantillas/panel.css, plantillas/tarjetas.css (barra
+   de carga), vistas/admin-usuarios.css (contraseña temporal) y
+   vistas/admin-desarrolladores.css (insignia de especialidad)
+   ========================================================================== */
+
+/* 1. Distribución ========================================================== */
+.equipos { display: grid; grid-template-columns: minmax(0, 1fr) 280px; gap: var(--espacio-5); align-items: start; }
+.equipos__rejilla { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--espacio-5); align-items: start; }
+
+/* 2. Tarjeta de equipo ===================================================== */
+.tarjeta-equipo { display: flex; flex-direction: column; gap: var(--espacio-4); padding: var(--espacio-5); scroll-margin-top: 90px; }
+.tarjeta-equipo:target, .tarjeta-equipo.esta-resaltada { border-color: #c7c9f6; box-shadow: 0 0 0 4px rgba(79, 70, 229, .1); }
+.tarjeta-equipo__cabecera { display: grid; gap: var(--espacio-3); }
+.tarjeta-equipo__titulo { margin: 0; font-size: 1.0625rem; }
+.tarjeta-equipo__subtitulo { margin: 2px 0 0; font-size: .8125rem; color: var(--color-texto-suave); }
+.tarjeta-equipo__carga { display: flex; align-items: center; gap: var(--espacio-3); }
+.tarjeta-equipo__carga .carga { margin: 0; }
+.tarjeta-equipo__carga small { font-size: .75rem; color: var(--color-texto-suave); }
+.tarjeta-equipo__lista { display: grid; gap: 2px; margin: 0; padding: 0; list-style: none; }
+.tarjeta-equipo__miembro { display: grid; grid-template-columns: auto minmax(0, 1fr) auto; align-items: center; gap: var(--espacio-3); padding: var(--espacio-2) var(--espacio-3); border-radius: var(--radio-caja); }
+.tarjeta-equipo__miembro--po { background: var(--color-fondo-suave); }
+.tarjeta-equipo__miembro .celda-principal { min-width: 0; }
+.tarjeta-equipo__miembro strong { font-size: .875rem; }
+.tarjeta-equipo__miembro small { font-size: .75rem; }
+.tarjeta-equipo__miembro .insignia { white-space: nowrap; }
+.tarjeta-equipo__pie { display: flex; align-items: center; justify-content: space-between; gap: var(--espacio-3); flex-wrap: wrap; margin-top: auto; padding-top: var(--espacio-4); border-top: 1px solid var(--color-borde-suave); }
+.tarjeta-equipo__pie .enlace-flecha .icono { width: 16px; height: 16px; }
+
+/* 3. Disponibles sin equipo ================================================ */
+.disponibles { padding: var(--espacio-5); position: sticky; top: 88px; }
+.disponibles__texto { margin: calc(var(--espacio-4) * -1 + 4px) 0 var(--espacio-4); font-size: .8125rem; }
+.disponibles__lista { display: grid; gap: var(--espacio-3); margin: 0 0 var(--espacio-4); padding: 0; list-style: none; }
+.disponibles__item { display: flex; align-items: center; gap: var(--espacio-3); }
+.disponibles__item strong { font-size: .875rem; }
+.disponibles__vacio { font-size: .8125rem; color: var(--color-texto-suave); }
+
+/* 4. Formulario del equipo ================================================= */
+.dialogo-equipo { max-width: 680px; }
+.aviso-cambio-po { margin-bottom: var(--espacio-4); }
+.aviso-cambio-po p { margin: 0; }
+.dialogo-equipo .clave-temporal { margin-bottom: var(--espacio-5); }
+.integrantes { margin: 0; padding: 0; border: 0; min-width: 0; }
+.integrantes .campo__ayuda { margin: 0 0 var(--espacio-3); }
+.integrantes__encabezado { display: grid; grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr) 36px; gap: var(--espacio-3); padding: 0 var(--espacio-2) 6px; font-size: .75rem; font-weight: 600; color: var(--color-texto-suave); }
+.integrantes__lista { display: grid; gap: var(--espacio-2); margin: 0 0 var(--espacio-3); padding: 0; list-style: none; }
+.integrantes__fila { display: grid; grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr) 36px; gap: var(--espacio-3); align-items: center; padding: var(--espacio-2); border: 1px solid var(--color-borde-suave); border-radius: var(--radio-caja); background: var(--color-fondo-suave); }
+.integrantes__campo { display: grid; gap: 4px; min-width: 0; }
+.integrantes__etiqueta { font-size: .75rem; font-weight: 600; color: var(--color-texto-suave); }
+.integrantes__fila .campo__control { background-color: var(--color-fondo); }
+.integrantes__fila.es-invalida { border-color: var(--color-error); }
+.integrantes__quitar { justify-self: center; }
+.integrantes--invalido .campo__mensaje { display: flex; color: var(--color-error); }
+
+/* 5. Diseño adaptable ====================================================== */
+@media (max-width: 1280px) {
+  .equipos { grid-template-columns: minmax(0, 1fr); }
+  .disponibles { position: static; }
+}
+@media (max-width: 900px) {
+  .equipos__rejilla { grid-template-columns: minmax(0, 1fr); }
+}
+@media (max-width: 520px) {
+  .integrantes__encabezado { display: none; }
+  .integrantes__fila { grid-template-columns: minmax(0, 1fr) 36px; }
+  .integrantes__fila .integrantes__campo:nth-child(2) { grid-column: 1; }
+  .integrantes__quitar { grid-row: 1 / span 2; grid-column: 2; }
+  .tarjeta-equipo__miembro { grid-template-columns: auto minmax(0, 1fr); }
+  .tarjeta-equipo__miembro .insignia { grid-column: 2; justify-self: start; }
+}
+
+/* 6. Nombre y detalle apilados (sin la plantilla de tablas) ================ */
+.tarjeta-equipo .celda-principal, .disponibles .celda-principal { display: grid; gap: 1px; line-height: 1.3; }
+.tarjeta-equipo .celda-principal small, .disponibles .celda-principal small { color: var(--color-texto-suave); }
+.tarjeta-equipo .insignia--oscuro::before { display: none; }
+.tarjeta-equipo .insignia .icono { width: 13px; height: 13px; }

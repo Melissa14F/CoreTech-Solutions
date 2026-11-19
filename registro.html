@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="es" class="sin-js">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Crear cuenta · CoreTech Solutions</title>
+  <meta name="description" content="Crea tu cuenta de cliente en CoreTech Solutions para agendar tu cita.">
+  <link rel="icon" href="img/logo.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@600;700&display=swap">
+  <link rel="stylesheet" href="css/global.css">
+  <link rel="stylesheet" href="css/plantillas/acceso.css">
+  <link rel="stylesheet" href="css/vistas/registro.css">
+  <script src="js/accesibilidad.js"></script>
+</head>
+<body>
+  <a class="saltar-contenido" href="#contenido">Saltar al formulario</a>
+
+  <div class="acceso">
+    <!-- ===================== Formulario ===================== -->
+    <div class="acceso__principal">
+      <header class="acceso__superior">
+        <a class="marca" href="index.html" aria-label="CoreTech Solutions, ir al inicio">
+          <img class="marca__logo" src="img/logo.svg" alt="" width="30" height="30">
+          <span>CoreTech</span>
+        </a>
+        <a class="enlace-flecha" href="index.html" style="font-size: .875rem">
+          <svg class="icono" viewBox="0 0 24 24" aria-hidden="true"><path d="M19 12H5M11 19l-7-7 7-7"/></svg>
+          Volver al inicio
+        </a>
+      </header>
+
+      <main class="acceso__caja" id="contenido">
+        <h1 class="acceso__titulo aparecer">Crea tu cuenta</h1>
+        <p class="acceso__texto aparecer" style="--retraso: 80ms">Con tu cuenta agendas la cita y después sigues el avance de tu proyecto.</p>
+
+        <!-- Se muestra solo si el usuario viene de un servicio del catálogo -->
+        <div class="servicio-elegido aparecer" data-servicio-elegido="" hidden>
+          <img src="img/servicios/tienda-en-linea.webp" alt="" width="52" height="36">
+          <div>
+            <span class="servicio-elegido__dato">Vas a agendar</span>
+            <strong class="servicio-elegido__nombre">Desarrollo de tienda en línea</strong>
+          </div>
+          <a class="servicio-elegido__cambiar enlace" href="index.html#servicios">Cambiar</a>
+        </div>
+
+        <form class="aparecer" style="--retraso: 160ms" data-validar
+              data-mensaje-error="Revisa los campos marcados en rojo."
+              data-mensaje-exito="Cuenta creada. Ahora elige el servicio y la fecha de tu cita.">
+
+          <div class="campo">
+            <label class="campo__etiqueta" for="registro-nombre">Nombre completo</label>
+            <input class="campo__control" id="registro-nombre" name="nombre" type="text"
+                   autocomplete="name" required minlength="3" placeholder="Laura Gómez"
+                   data-mensaje-vacio="Escribe tu nombre completo." aria-describedby="registro-nombre-mensaje">
+            <p class="campo__mensaje" id="registro-nombre-mensaje" aria-live="polite">
+              <svg class="icono" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M12 8v4M12 16h.01"/></svg>
+              <span class="campo__mensaje-texto"></span>
+            </p>
+          </div>
+
+          <div class="campo">
+            <label class="campo__etiqueta" for="registro-correo">Correo electrónico</label>
+            <input class="campo__control" id="registro-correo" name="correo" type="email"
+                   autocomplete="email" required placeholder="laura.gomez@correo.com"
+                   data-mensaje-vacio="Escribe tu correo; ahí te enviaremos la confirmación de la cita." aria-describedby="registro-correo-mensaje">
+            <p class="campo__mensaje" id="registro-correo-mensaje" aria-live="polite">
+              <svg class="icono" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M12 8v4M12 16h.01"/></svg>
+              <span class="campo__mensaje-texto"></span>
+            </p>
+          </div>
+
+          <div class="fila-campos">
+            <div class="campo">
+              <label class="campo__etiqueta" for="registro-celular">Celular</label>
+              <input class="campo__control" id="registro-celular" name="celular" type="tel" inputmode="numeric"
+                     autocomplete="tel-national" required pattern="3[0-9]{9}" maxlength="10" placeholder="3001234567"
+                     data-mensaje-vacio="Escribe tu número de celular."
+                     data-mensaje-formato="Escribe 10 dígitos que empiecen por 3."
+                     aria-describedby="registro-celular-mensaje">
+              <p class="campo__mensaje" id="registro-celular-mensaje" aria-live="polite">
+                <svg class="icono" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M12 8v4M12 16h.01"/></svg>
+                <span class="campo__mensaje-texto"></span>
+              </p>
+            </div>
+            <div class="campo">
+              <label class="campo__etiqueta" for="registro-empresa">Empresa <span class="campo__opcional">(opcional)</span></label>
+              <input class="campo__control" id="registro-empresa" name="empresa" type="text"
+                     autocomplete="organization" placeholder="Nombre de tu negocio">
+            </div>
+          </div>
+
+          <div class="campo">
+            <label class="campo__etiqueta" for="registro-clave">Contraseña</label>
+            <div class="campo__envoltura">
+              <input class="campo__control" id="registro-clave" name="clave" type="password"
+                     autocomplete="new-password" required data-clave-segura
+                     data-mensaje-vacio="Crea una contraseña." aria-describedby="registro-clave-requisitos registro-clave-mensaje">
+              <button type="button" class="campo__accion" data-mostrar-clave="registro-clave" aria-label="Mostrar contraseña" aria-pressed="false">
+                <svg class="icono" viewBox="0 0 24 24" aria-hidden="true"><path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7-10-7-10-7Z"/><circle cx="12" cy="12" r="3"/></svg>
+              </button>
+            </div>
+            <ul class="requisitos" id="registro-clave-requisitos" data-requisitos-de="registro-clave" aria-label="Requisitos de la contraseña">
+              <li class="requisitos__item" data-regla="largo">Mínimo 8 caracteres</li>
+              <li class="requisitos__item" data-regla="mayuscula">Una letra mayúscula</li>
+              <li class="requisitos__item" data-regla="numero">Un número</li>
+              <li class="requisitos__item" data-regla="simbolo">Un símbolo (!, #, @…)</li>
+            </ul>
+            <p class="campo__mensaje" id="registro-clave-mensaje" aria-live="polite">
+              <svg class="icono" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M12 8v4M12 16h.01"/></svg>
+              <span class="campo__mensaje-texto"></span>
+            </p>
+          </div>
+
+          <div class="campo">
+            <label class="campo__etiqueta" for="registro-confirmar-clave">Confirma la contraseña</label>
+            <input class="campo__control" id="registro-confirmar-clave" name="confirmar_clave" type="password"
+                   autocomplete="new-password" required data-igual-a="registro-clave"
+                   data-mensaje-vacio="Escribe de nuevo la contraseña." aria-describedby="registro-confirmar-clave-mensaje">
+            <p class="campo__mensaje" id="registro-confirmar-clave-mensaje" aria-live="polite">
+              <svg class="icono" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M12 8v4M12 16h.01"/></svg>
+              <span class="campo__mensaje-texto"></span>
+            </p>
+          </div>
+
+          <div class="campo">
+            <label class="casilla" for="registro-terminos">
+              <input id="registro-terminos" name="terminos" type="checkbox" required
+                     data-mensaje-vacio="Debes aceptar la política de datos para crear la cuenta." aria-describedby="registro-terminos-mensaje">
+              <span>Acepto la <a class="enlace" href="legal.html#datos" target="_blank" rel="noopener">política de tratamiento de datos personales</a> (Ley 1581 de 2012).</span>
+            </label>
+            <p class="campo__mensaje" id="registro-terminos-mensaje" aria-live="polite">
+              <svg class="icono" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M12 8v4M12 16h.01"/></svg>
+              <span class="campo__mensaje-texto"></span>
+            </p>
+          </div>
+
+          <!-- Botón de envío como enlace <a>: sin JavaScript también lleva al siguiente paso -->
+          <a class="boton boton--acento boton--grande boton--bloque" href="cliente/agendar-servicio.html" data-enviar data-conservar-servicio>
+            Crear cuenta y agendar
+            <svg class="icono icono--mover" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+          </a>
+        </form>
+
+        <p class="acceso__pie">¿Ya tienes cuenta? <a class="enlace" href="login.html" data-conservar-servicio>Inicia sesión</a></p>
+      </main>
+    </div>
+
+    <!-- ===================== Lateral informativo ===================== -->
+    <aside class="acceso__lateral superficie-noche" aria-label="Cómo funciona el agendamiento">
+      <div class="acceso__lateral-contenido aparecer" style="--retraso: 200ms">
+        <span class="pildora">Agendamiento</span>
+        <h2>Así agendas tu cita</h2>
+        <p>Después de crear la cuenta pasas directo al formulario de agendamiento.</p>
+        <ol class="lista-fases vista-previa vista-previa--vidrio">
+          <li class="lista-fases__item lista-fases__item--actual">
+            <span class="lista-fases__punto"></span>Crear tu cuenta <span class="solo-lector">(paso actual)</span>
+          </li>
+          <li class="lista-fases__item lista-fases__item--pendiente"><span class="lista-fases__punto"></span>Elegir el servicio</li>
+          <li class="lista-fases__item lista-fases__item--pendiente"><span class="lista-fases__punto"></span>Fecha, hora y modalidad</li>
+          <li class="lista-fases__item lista-fases__item--pendiente"><span class="lista-fases__punto"></span>Confirmar la cita</li>
+        </ol>
+        <p class="acceso__nota">
+          Tus datos solo los ven tú, el equipo que te asignemos y la administración de CoreTech.
+        </p>
+      </div>
+    </aside>
+  </div>
+
+  <script src="js/principal.js"></script>
+</body>
+</html>

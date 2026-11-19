@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="es" class="sin-js">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Plan de trabajo · Inventario del salón · CoreTech Solutions</title>
+  <link rel="icon" href="../img/logo.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap">
+  <link rel="stylesheet" href="../css/global.css">
+  <link rel="stylesheet" href="../css/plantillas/panel.css">
+  <link rel="stylesheet" href="../css/vistas/plan-trabajo.css">
+  <script src="../js/accesibilidad.js"></script>
+</head>
+<body>
+  <a class="saltar-contenido" href="#contenido">Saltar al contenido</a>
+
+  <div class="panel">
+    <!-- ===================== Menú lateral del cliente ===================== -->
+    <aside class="panel__lateral superficie-noche" aria-label="Menú del equipo">
+      <a class="marca" href="../index.html" aria-label="CoreTech Solutions, ir al sitio público">
+        <img class="marca__logo" src="../img/logo.svg" alt="" width="30" height="30">
+        <span>CoreTech</span>
+      </a>
+      <p class="panel__rol"><strong>Panel del equipo</strong>Tus proyectos y reuniones</p>
+
+      <nav aria-label="Secciones del equipo">
+        <p class="navegacion-panel__titulo">Mi trabajo</p>
+        <ul class="navegacion-panel__lista">
+          <li>
+            <a class="navegacion-panel__enlace" href="proyectos.html" aria-current="page">
+              <svg class="icono" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 7a2 2 0 0 1 2-2h4l2 2h8a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2Z"/></svg>
+              Mis proyectos
+              <span class="navegacion-panel__contador" aria-label="3 proyectos">3</span>
+            </a>
+          </li>
+          <li>
+            <a class="navegacion-panel__enlace" href="citas-reuniones.html">
+              <svg class="icono" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="4" width="18" height="17" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>
+              Citas y reuniones
+              <span class="navegacion-panel__contador navegacion-panel__contador--aviso" aria-label="3 pendientes">3</span>
+            </a>
+          </li>
+        </ul>
+      </nav>
+
+      <div class="panel__usuario">
+        <span class="avatar " aria-hidden="true">AP</span>
+        <span class="panel__usuario-datos">
+          <span class="panel__usuario-nombre">Andrés Pérez</span>
+          <span class="panel__usuario-correo">andres.perez@coretechsolutions.co</span>
+        </span>
+        <a class="panel__salir" href="../index.html" data-accion data-mensaje-exito="Cerraste sesión." aria-label="Cerrar sesión" title="Cerrar sesión">
+          <svg class="icono" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4M16 17l5-5-5-5M21 12H9"/></svg>
+        </a>
+      </div>
+    </aside>
+
+    <div class="panel__cuerpo">
+      <!-- ===================== Barra superior ===================== -->
+      <header class="panel__barra">
+        <button type="button" class="boton-icono boton-icono--pequeno boton-menu-panel" aria-expanded="false" aria-label="Abrir menú">
+          <svg class="icono" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+        </button>
+        <nav class="ruta" aria-label="Ruta de navegación">
+          <a href="proyectos.html">Panel</a>
+          <svg class="icono" viewBox="0 0 24 24" aria-hidden="true"><path d="m9 6 6 6-6 6"/></svg>
+          <a href="proyectos.html">Mis proyectos</a>
+          <svg class="icono" viewBox="0 0 24 24" aria-hidden="true"><path d="m9 6 6 6-6 6"/></svg>
+          <span aria-current="page">Plan de trabajo · P-0035</span>
+        </nav>
+        <div class="panel__barra-acciones">
+          <a class="boton-icono boton-icono--pequeno campana" href="citas-reuniones.html" aria-label="Notificaciones: 3 nuevas">
+            <svg class="icono" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9"/><path d="M10.3 21a1.94 1.94 0 0 0 3.4 0"/></svg>
+            <span class="campana__punto" aria-hidden="true"></span>
+          </a>
+          <div class="panel__perfil">
+            <span class="avatar " aria-hidden="true">AP</span>
+            <span class="panel__perfil-nombre">Andrés Pérez<small>Product Owner</small></span>
+          </div>
+        </div>
+      </header>
+
+      <!-- ===================== Contenido ===================== -->
+      <main class="panel__contenido" id="contenido">
+        <div class="encabezado-vista aparecer">
+          <div>
+            <h1 class="encabezado-vista__titulo">Plan de trabajo <span class="insignia insignia--plan">Enviado</span></h1>
+            <p class="encabezado-vista__texto"><strong>Inventario del salón</strong> · P-0035 · Laura Gómez · Sistema de inventario · Equipo de Andrés Pérez</p>
+          </div>
+          <div class="encabezado-vista__acciones">
+            <a class="boton boton--contorno" href="proyectos.html" data-accion data-mensaje-exito="Le recordamos a Laura por correo que tiene el plan por responder."><svg class="icono" viewBox="0 0 24 24" aria-hidden="true"><path d="m22 2-7 20-4-9-9-4Z"/><path d="M22 2 11 13"/></svg>Recordar a Laura</a>
+          </div>
+        </div>
+
+        <ol class="estado-plan aparecer" aria-label="Estado del plan">
+          <li class="estado-plan__paso estado-plan__paso--hecho"><span><strong>Borrador</strong>Ajusta fases, pasos y cotización</span></li>
+          <li class="estado-plan__paso estado-plan__paso--actual" aria-current="step"><span><strong>Enviado a Laura</strong>3 días hábiles para responder</span></li>
+          <li class="estado-plan__paso"><span><strong>Aprobado</strong>El plan queda fijo y empieza la fase 1</span></li>
+        </ol>
+
+        <div class="alerta alerta--info plan-aviso aparecer"><svg class="icono" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4M12 8h.01"/></svg><p>Enviaste el plan y la cotización a Laura el 11 nov. Tiene hasta el <strong>martes 17 nov</strong> para aprobarlos o pedir ajustes. Si no responde antes del <strong>jueves 26 nov</strong>, la propuesta vence, el proyecto pasa a Pausado y tu equipo libera el cupo. Mientras Laura responde, el plan no se edita; si pide ajustes, vuelve a ti como borrador.</p></div>
+
+        <div class="plan">
+          <div class="plan__principal">
+            <section class="tarjeta plan-seccion aparecer" style="--retraso: 60ms" aria-labelledby="titulo-fases">
+              <div class="plan-seccion__cabecera">
+                <div>
+                  <h2 class="plan-seccion__titulo" id="titulo-fases">Fases y pasos que recibió Laura</h2>
+                  <p class="plan-seccion__texto">6 fases; cada una vale 16,7 %. Laura aprueba 4 y el equipo cierra las demás.</p>
+                </div>
+              </div>
+              <ol class="fases-propuesta">
+                <li class="fase-propuesta fase-propuesta--cliente">
+                  <div>
+                    <div class="fase-propuesta__cabecera"><h3 class="fase-propuesta__titulo">Toma de requerimientos</h3><span class="insignia insignia--aprueba"><svg class="icono" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4 21a8 8 0 0 1 16 0"/></svg>La aprueba Laura</span></div>
+                    <p class="fase-propuesta__que-es">Conocemos tus bodegas, productos y cómo controlas hoy el inventario. Vale 16,7 % del proyecto.</p>
+                    <ul class="fase-propuesta__pasos"><li><span><strong>Visita al salón.</strong> <span>Vemos cómo registras hoy los productos que vendes y los que usas en los servicios.</span></span></li><li><span><strong>Lista de lo que hará el sistema.</strong> <span>Escribimos las funciones y los reportes que necesitas.</span></span></li></ul>
+                  </div>
+                </li>
+                <li class="fase-propuesta fase-propuesta--cliente">
+                  <div>
+                    <div class="fase-propuesta__cabecera"><h3 class="fase-propuesta__titulo">Análisis y diseño</h3><span class="insignia insignia--aprueba"><svg class="icono" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4 21a8 8 0 0 1 16 0"/></svg>La aprueba Laura</span></div>
+                    <p class="fase-propuesta__que-es">Diseñamos las pantallas, los reportes y cómo se guardará la información. Vale 16,7 % del proyecto.</p>
+                    <ul class="fase-propuesta__pasos"><li><span><strong>Bocetos de las pantallas.</strong> <span>Dibujamos cada pantalla antes de construirla.</span></span></li><li><span><strong>Organización de la información.</strong> <span>Definimos productos, bodegas, movimientos y usuarios.</span></span></li></ul>
+                  </div>
+                </li>
+                <li class="fase-propuesta">
+                  <div>
+                    <div class="fase-propuesta__cabecera"><h3 class="fase-propuesta__titulo">Desarrollo</h3><span class="insignia insignia--neutra">La cierra el equipo</span></div>
+                    <p class="fase-propuesta__que-es">Construimos el sistema. Vale 16,7 % del proyecto.</p>
+                    <ul class="fase-propuesta__pasos"><li><span><strong>Productos y bodegas.</strong> <span>Registro de productos con código y existencias por bodega.</span></span></li><li><span><strong>Entradas y salidas.</strong> <span>Movimientos con responsable y fecha.</span></span></li><li><span><strong>Productos usados en los servicios.</strong> <span>Cada tinte o tratamiento que se usa en un servicio se descuenta del inventario.</span></span></li><li><span><strong>Alertas y reportes.</strong> <span>Avisos de existencias bajas y reportes descargables.</span></span></li><li><span><strong>Conexión con la tienda en línea.</strong> <span>Lo que vendes en tu tienda en línea también se descuenta del inventario.</span></span></li></ul>
+                  </div>
+                </li>
+                <li class="fase-propuesta fase-propuesta--cliente">
+                  <div>
+                    <div class="fase-propuesta__cabecera"><h3 class="fase-propuesta__titulo">Pruebas</h3><span class="insignia insignia--aprueba"><svg class="icono" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4 21a8 8 0 0 1 16 0"/></svg>La aprueba Laura</span></div>
+                    <p class="fase-propuesta__que-es">Revisamos que los cálculos de existencias sean correctos. Vale 16,7 % del proyecto.</p>
+                    <ul class="fase-propuesta__pasos"><li><span><strong>Probar cada función.</strong> <span>Registramos movimientos de prueba y revisamos los saldos.</span></span></li><li><span><strong>Prueba contigo.</strong> <span>Tu equipo lo usa con datos de ejemplo.</span></span></li></ul>
+                  </div>
+                </li>
+                <li class="fase-propuesta fase-propuesta--cliente">
+                  <div>
+                    <div class="fase-propuesta__cabecera"><h3 class="fase-propuesta__titulo">Carga de datos y capacitación</h3><span class="insignia insignia--aprueba"><svg class="icono" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4 21a8 8 0 0 1 16 0"/></svg>La aprueba Laura</span></div>
+                    <p class="fase-propuesta__que-es">Cargamos tus productos y existencias reales y capacitamos a tu equipo. Vale 16,7 % del proyecto.</p>
+                    <ul class="fase-propuesta__pasos"><li><span><strong>Carga de datos.</strong> <span>Pasamos tus productos y existencias desde tus hojas de cálculo.</span></span></li><li><span><strong>Verificación del inventario inicial.</strong> <span>Comparas las existencias cargadas con el conteo físico.</span></span></li><li><span><strong>Manuales.</strong> <span>Te entregamos los manuales de uso y la documentación técnica.</span></span></li><li><span><strong>Capacitación.</strong> <span>Te enseñamos a usarlo y resolvemos tus dudas.</span></span></li></ul>
+                  </div>
+                </li>
+                <li class="fase-propuesta">
+                  <div>
+                    <div class="fase-propuesta__cabecera"><h3 class="fase-propuesta__titulo">Puesta en marcha</h3><span class="insignia insignia--neutra">La cierra el equipo</span></div>
+                    <p class="fase-propuesta__que-es">Dejamos el sistema funcionando en tu negocio. Vale 16,7 % del proyecto.</p>
+                    <ul class="fase-propuesta__pasos"><li><span><strong>Instalación.</strong> <span>Publicamos el sistema y configuramos los usuarios.</span></span></li><li><span><strong>Acompañamiento la primera semana.</strong> <span>Resolvemos dudas mientras tu equipo empieza a usarlo.</span></span></li></ul>
+                  </div>
+                </li>
+              </ol>
+            </section>
+          </div>
+
+          <aside class="plan__lateral">
+            <section class="tarjeta propuesta-valor aparecer" style="--retraso: 90ms" aria-labelledby="titulo-cotizacion">
+              <h2 class="propuesta-valor__etiqueta" id="titulo-cotizacion">Cotización enviada</h2>
+              <p class="propuesta-valor__cifra">$7.800.000 <small>COP</small></p>
+              <dl>
+                <div><dt>Entrega estimada</dt><dd>12 feb 2027</dd></div>
+                <div><dt>Fases</dt><dd>6</dd></div>
+                <div><dt>Las aprueba Laura</dt><dd>4</dd></div>
+                <div><dt>Responde hasta</dt><dd>martes 17 nov</dd></div>
+                <div><dt>Vence</dt><dd>jueves 26 nov</dd></div>
+              </dl>
+              <p class="cotizacion__nota">Incluye 2 rondas de ajustes en cada fase que apruebas y 30 días de garantía después de la entrega. Lo que no esté en este plan se cotiza aparte. No incluye lectores de código de barras ni el hosting.</p>
+            </section>
+          </aside>
+        </div>
+
+      </main>
+    </div>
+  </div>
+
+  <script src="../js/principal.js"></script>
+</body>
+</html>

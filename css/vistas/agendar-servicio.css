@@ -1,0 +1,44 @@
+/* ==========================================================================
+   Vista: Agendar cita · Paso 1, elegir el servicio (cliente/agendar-servicio.html)
+   Requiere: global.css, plantillas/panel.css y plantillas/agendamiento.css
+   ========================================================================== */
+
+/* 1. Grupo de opciones (sin borde de fieldset) ============================= */
+.grupo-servicios { margin: 0; padding: 0; border: 0; min-width: 0; }
+.grupo-servicios legend { padding: 0; }
+.grupo-servicios__mensaje { margin-top: var(--espacio-3); }
+
+/* 2. Tarjetas de servicio seleccionables =================================== */
+.opciones-servicio { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--espacio-4); }
+.opcion-servicio {
+  position: relative; display: grid; grid-template-columns: 96px minmax(0, 1fr) auto; align-items: center; gap: var(--espacio-4);
+  padding: var(--espacio-3); border: 1.5px solid var(--color-borde); border-radius: var(--radio-tarjeta); background: var(--color-fondo); cursor: pointer;
+  transition: border-color var(--duracion-rapida), box-shadow var(--duracion-media) var(--curva), transform var(--duracion-media) var(--curva);
+}
+.opcion-servicio:hover { border-color: #c7c9f6; transform: translateY(-2px); box-shadow: var(--sombra-media); }
+/* El radio real queda oculto a la vista pero sigue siendo accesible por teclado */
+.opcion-servicio__control { position: absolute; opacity: 0; pointer-events: none; }
+.opcion-servicio__imagen { width: 96px; height: 64px; border-radius: var(--radio-control); object-fit: cover; background: var(--color-fondo-suave); }
+.opcion-servicio__nombre { display: block; font-weight: 700; font-size: .9375rem; }
+.opcion-servicio__descripcion { display: block; margin-top: 2px; font-size: .8125rem; color: var(--color-texto-suave); line-height: 1.45; }
+.opcion-servicio__marca {
+  width: 22px; height: 22px; flex: none; display: grid; place-items: center; margin-right: var(--espacio-2);
+  border: 2px solid var(--color-borde); border-radius: 50%; transition: all var(--duracion-rapida);
+}
+/* Seleccionada */
+.opcion-servicio:has(:checked) { border-color: var(--color-acento); background: #fbfbff; box-shadow: 0 0 0 4px rgba(79, 70, 229, .12); }
+.opcion-servicio:has(:checked) .opcion-servicio__marca { border-color: var(--color-acento); background: var(--color-acento); }
+.opcion-servicio:has(:checked) .opcion-servicio__marca::after { content: ""; width: 8px; height: 8px; border-radius: 50%; background: #fff; }
+/* Foco con teclado */
+.opcion-servicio:has(:focus-visible) { outline: 2px solid var(--color-acento); outline-offset: 3px; }
+/* Error: no se eligió ningún servicio */
+.campo--invalido .opcion-servicio { border-color: #f5c6c1; }
+
+/* 3. Diseño adaptable ====================================================== */
+@media (max-width: 760px) {
+  .opciones-servicio { grid-template-columns: minmax(0, 1fr); }
+}
+@media (max-width: 420px) {
+  .opcion-servicio { grid-template-columns: 72px minmax(0, 1fr) auto; gap: var(--espacio-3); }
+  .opcion-servicio__imagen { width: 72px; height: 48px; }
+}

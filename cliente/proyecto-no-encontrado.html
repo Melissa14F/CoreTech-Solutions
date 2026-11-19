@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="es" class="sin-js">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex">
+  <title>Proyecto no encontrado · CoreTech Solutions</title>
+  <link rel="icon" href="../img/logo.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap">
+  <link rel="stylesheet" href="../css/global.css">
+  <link rel="stylesheet" href="../css/plantillas/panel.css">
+  <link rel="stylesheet" href="../css/vistas/proyecto-no-encontrado.css">
+  <script src="../js/accesibilidad.js"></script>
+</head>
+<body>
+  <a class="saltar-contenido" href="#contenido">Saltar al contenido</a>
+
+  <div class="panel">
+    <!-- ===================== Menú lateral del cliente ===================== -->
+    <aside class="panel__lateral superficie-noche" aria-label="Menú del cliente">
+      <a class="marca" href="../index.html" aria-label="CoreTech Solutions, ir al sitio público">
+        <img class="marca__logo" src="../img/logo.svg" alt="" width="30" height="30">
+        <span>CoreTech</span>
+      </a>
+      <p class="panel__rol"><strong>Panel del cliente</strong>Tus citas y proyectos</p>
+
+      <nav aria-label="Secciones del cliente">
+        <p class="navegacion-panel__titulo">Mi cuenta</p>
+        <ul class="navegacion-panel__lista">
+          <li>
+            <a class="navegacion-panel__enlace" href="mis-proyectos.html" aria-current="page">
+              <svg class="icono" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 7a2 2 0 0 1 2-2h4l2 2h8a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2Z"/></svg>
+              Mis proyectos
+              <span class="navegacion-panel__contador" aria-label="2 proyectos">2</span>
+            </a>
+          </li>
+          <li>
+            <a class="navegacion-panel__enlace" href="mis-citas.html">
+              <svg class="icono" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="4" width="18" height="17" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>
+              Mis citas
+              
+            </a>
+          </li>
+          <li>
+            <a class="navegacion-panel__enlace" href="agendar-servicio.html">
+              <svg class="icono" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="4" width="18" height="17" rx="2"/><path d="M16 2v4M8 2v4M3 10h18M12 13v5M9.5 15.5h5"/></svg>
+              Agendar cita
+              
+            </a>
+          </li>
+        </ul>
+      </nav>
+
+      <div class="panel__usuario">
+        <span class="avatar avatar--acento" aria-hidden="true">LG</span>
+        <span class="panel__usuario-datos">
+          <span class="panel__usuario-nombre">Laura Gómez</span>
+          <span class="panel__usuario-correo">laura.gomez@correo.com</span>
+        </span>
+        <a class="panel__salir" href="../index.html" data-accion data-mensaje-exito="Cerraste sesión." aria-label="Cerrar sesión" title="Cerrar sesión">
+          <svg class="icono" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4M16 17l5-5-5-5M21 12H9"/></svg>
+        </a>
+      </div>
+    </aside>
+
+    <div class="panel__cuerpo">
+      <!-- ===================== Barra superior ===================== -->
+      <header class="panel__barra">
+        <button type="button" class="boton-icono boton-icono--pequeno boton-menu-panel" aria-expanded="false" aria-label="Abrir menú">
+          <svg class="icono" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+        </button>
+        <nav class="ruta" aria-label="Ruta de navegación">
+          <a href="mis-proyectos.html">Panel</a>
+          <svg class="icono" viewBox="0 0 24 24" aria-hidden="true"><path d="m9 6 6 6-6 6"/></svg>
+          <a href="mis-proyectos.html">Mis proyectos</a>
+          <svg class="icono" viewBox="0 0 24 24" aria-hidden="true"><path d="m9 6 6 6-6 6"/></svg>
+          <span aria-current="page">No encontrado</span>
+        </nav>
+        <div class="panel__barra-acciones">
+          <a class="boton-icono boton-icono--pequeno campana" href="mis-citas.html" aria-label="Notificaciones: 2 nuevas">
+            <svg class="icono" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9"/><path d="M10.3 21a1.94 1.94 0 0 0 3.4 0"/></svg>
+            <span class="campana__punto" aria-hidden="true"></span>
+          </a>
+          <div class="panel__perfil">
+            <span class="avatar avatar--acento" aria-hidden="true">LG</span>
+            <span class="panel__perfil-nombre">Laura Gómez<small>Cliente</small></span>
+          </div>
+        </div>
+      </header>
+
+      <!-- ===================== Contenido ===================== -->
+      <main class="panel__contenido" id="contenido">
+        <!-- Respuesta del sistema cuando el proyecto no existe o no pertenece al cliente.
+             No muestra el código, el nombre ni el dueño del proyecto solicitado. -->
+        <div class="no-encontrado">
+          <p class="no-encontrado__codigo aparecer" aria-hidden="true">404</p>
+          <span class="no-encontrado__icono aparecer" aria-hidden="true">
+            <svg class="icono icono--grande" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3M8.5 11h5"/></svg>
+          </span>
+          <h1 class="no-encontrado__titulo aparecer">Proyecto no encontrado</h1>
+          <p class="no-encontrado__texto aparecer" style="--retraso: 80ms">No encontramos este proyecto en tu cuenta. Revisa que la dirección esté bien escrita o vuelve a tus proyectos.</p>
+          <div class="no-encontrado__acciones aparecer" style="--retraso: 160ms">
+            <a class="boton boton--acento boton--grande" href="mis-proyectos.html">
+              <svg class="icono" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 7a2 2 0 0 1 2-2h4l2 2h8a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2Z"/></svg>
+              Ir a mis proyectos
+            </a>
+            <a class="boton boton--contorno boton--grande" href="mis-citas.html">Ver mis citas</a>
+          </div>
+          <p class="no-encontrado__ayuda">¿Crees que es un error? Escríbenos a <a class="enlace" href="mailto:contacto@coretechsolutions.co">contacto@coretechsolutions.co</a>.</p>
+        </div>
+      </main>
+    </div>
+  </div>
+
+  <script src="../js/principal.js"></script>
+</body>
+</html>

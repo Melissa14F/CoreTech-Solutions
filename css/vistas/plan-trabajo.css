@@ -1,0 +1,228 @@
+/* ==========================================================================
+   Plan de trabajo y plantillas de fases
+   - Editor de fases y pasos (js/plan-editor.js): plantillas-fases.html y
+     plan-de-trabajo-*.html (administrador y desarrollador)
+   - Cotización y plan enviado (solo lectura)
+   - Propuesta del plan para el cliente (cliente/plan-*.html)
+   - Propuestas de cambio de fases
+   Requiere: global.css y plantillas/panel.css
+   ========================================================================== */
+
+/* 1. Distribución ========================================================== */
+.plan { display: grid; grid-template-columns: minmax(0, 1fr) 340px; gap: var(--espacio-5); align-items: start; }
+.plan__principal { display: grid; gap: var(--espacio-5); min-width: 0; }
+.plan__lateral { display: grid; gap: var(--espacio-5); min-width: 0; align-self: start; }
+/* La cotización solo se queda fija si cabe completa en la pantalla */
+@media (min-height: 1000px) { .plan__lateral { position: sticky; top: 88px; } }
+.plan-seccion { padding: var(--espacio-6); }
+.plan-seccion__cabecera { display: flex; align-items: flex-start; justify-content: space-between; gap: var(--espacio-4); flex-wrap: wrap; margin-bottom: var(--espacio-5); }
+.plan-seccion__titulo { margin: 0; font-size: 1.125rem; }
+.plan-seccion__texto { margin: 4px 0 0; font-size: .875rem; color: var(--color-texto-suave); max-width: 62ch; }
+
+/* Estado del plan: Borrador → Enviado → Aprobado */
+.estado-plan { display: flex; gap: 0; margin: 0 0 var(--espacio-5); padding: 0; list-style: none; counter-reset: estado; }
+.estado-plan__paso { position: relative; flex: 1; display: flex; align-items: center; gap: var(--espacio-3); padding: var(--espacio-3) var(--espacio-4); border: 1px solid var(--color-borde-suave); background: var(--color-fondo); font-size: .8125rem; color: var(--color-texto-suave); counter-increment: estado; }
+.estado-plan__paso:first-child { border-radius: var(--radio-caja) 0 0 var(--radio-caja); }
+.estado-plan__paso:last-child { border-radius: 0 var(--radio-caja) var(--radio-caja) 0; }
+.estado-plan__paso + .estado-plan__paso { border-left: 0; }
+.estado-plan__paso::before { content: counter(estado); display: grid; place-items: center; flex: none; width: 24px; height: 24px; border-radius: 50%; background: var(--color-fondo-suave); font-weight: 700; font-size: .75rem; }
+.estado-plan__paso strong { display: block; color: var(--color-texto); font-size: .875rem; }
+.estado-plan__paso--hecho::before { content: "✓"; background: var(--color-exito-fondo); color: var(--color-exito-texto); }
+.estado-plan__paso--actual { background: var(--color-acento-suave); border-color: #c7c9f6; color: var(--color-texto); }
+.estado-plan__paso--actual::before { background: var(--color-acento); color: #fff; }
+
+/* 2. Editor de fases ======================================================= */
+.editor-plan { display: grid; gap: var(--espacio-4); }
+.editor-plan .campo { margin-bottom: 0; }
+.editor-plan__resumen { display: flex; flex-wrap: wrap; align-items: center; gap: var(--espacio-2) var(--espacio-5); padding: var(--espacio-3) var(--espacio-4); border-radius: var(--radio-caja); background: var(--color-fondo-suave); font-size: .8125rem; color: var(--color-texto-suave); }
+.editor-plan__dato strong { color: var(--color-texto); font-size: .9375rem; }
+.editor-plan__dato--error, .editor-plan__dato--error strong { color: var(--color-error-texto); }
+.editor-plan__barra { display: flex; gap: 3px; flex: 1 1 160px; min-width: 120px; height: 8px; }
+.editor-plan__segmento { flex: 1; border-radius: 3px; background: var(--color-borde); }
+.editor-plan__segmento--cliente { background: var(--color-acento); }
+.editor-plan__errores ul { margin: 4px 0 0; padding-left: 18px; }
+.editor-plan__errores-titulo { margin: 0; font-weight: 600; }
+.editor-plan__fases { display: grid; gap: var(--espacio-3); margin: 0; padding: 0; list-style: none; }
+.editor-plan__pie { display: flex; align-items: center; gap: var(--espacio-4); flex-wrap: wrap; }
+.editor-plan__limite { margin: 0; font-size: .8125rem; color: var(--color-texto-suave); }
+
+.fase-editor { border: 1px solid var(--color-borde); border-radius: var(--radio-caja); background: var(--color-fondo); transition: border-color var(--duracion-rapida), box-shadow var(--duracion-rapida); }
+.fase-editor:focus-within { border-color: #c7c9f6; }
+.fase-editor--cliente { border-left: 4px solid var(--color-acento); }
+.fase-editor--invalida { border-color: var(--color-error); }
+.fase-editor__resumen { display: grid; grid-template-columns: auto minmax(0, 1fr) auto auto; align-items: center; gap: var(--espacio-3); padding: var(--espacio-3) var(--espacio-4); cursor: pointer; list-style: none; border-radius: var(--radio-caja); }
+.fase-editor__resumen::-webkit-details-marker { display: none; }
+.fase-editor__resumen:focus-visible { outline: 3px solid var(--anillo-foco, var(--color-acento)); outline-offset: 2px; }
+.fase-editor__numero { display: grid; place-items: center; width: 30px; height: 30px; border-radius: 50%; background: var(--color-tinta); color: #fff; font-weight: 700; font-size: .8125rem; }
+.fase-editor__titulo { display: grid; min-width: 0; }
+.fase-editor__titulo strong { font-size: .9375rem; overflow-wrap: anywhere; }
+.fase-editor__titulo small { font-size: .75rem; color: var(--color-texto-suave); }
+.fase-editor__flecha { width: 18px; height: 18px; color: var(--color-texto-suave); transition: transform var(--duracion-media) var(--curva); }
+.fase-editor__detalle[open] .fase-editor__flecha { transform: rotate(180deg); }
+.fase-editor__cuerpo { display: grid; gap: var(--espacio-4); padding: var(--espacio-2) var(--espacio-4) var(--espacio-4); border-top: 1px solid var(--color-borde-suave); }
+.fase-editor__fila { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 240px); gap: var(--espacio-4); align-items: start; padding-top: var(--espacio-3); }
+.fase-editor__aprueba { margin-top: 30px; }
+.fase-editor__aprueba small { display: block; font-size: .75rem; color: var(--color-texto-suave); }
+.fase-editor__acciones { display: flex; flex-wrap: wrap; gap: var(--espacio-2); padding-top: var(--espacio-3); border-top: 1px dashed var(--color-borde-suave); }
+.boton--texto-peligro { color: var(--color-error-texto); }
+.boton--texto-peligro:not(:disabled):hover { border-color: var(--color-error); background: var(--color-error-fondo); }
+
+.insignia--aprueba { background: var(--color-acento-suave); color: var(--color-acento); white-space: nowrap; }
+.insignia--aprueba::before { display: none; }
+.insignia--aprueba .icono { width: 13px; height: 13px; }
+.insignia--plan { background: var(--color-advertencia-fondo); color: var(--color-advertencia-texto); }
+.insignia--borrador { background: var(--color-fondo-suave); color: var(--color-texto-suave); border: 1px dashed var(--color-borde); }
+.insignia--garantia { background: var(--color-exito-fondo); color: var(--color-exito-texto); }
+
+.pasos-editor { margin: 0; padding: 0; border: 0; min-width: 0; }
+.pasos-editor__lista { display: grid; gap: var(--espacio-2); margin: var(--espacio-2) 0; padding: 0; list-style: none; }
+.paso-editor { display: grid; grid-template-columns: 24px minmax(0, 1fr) auto; gap: var(--espacio-3); align-items: start; padding: var(--espacio-2) var(--espacio-3); border-radius: var(--radio-caja); background: var(--color-fondo-suave); }
+.paso-editor__numero { display: grid; place-items: center; width: 24px; height: 24px; margin-top: 8px; border-radius: 50%; background: var(--color-fondo); border: 1px solid var(--color-borde); font-size: .75rem; font-weight: 600; }
+.paso-editor__campos { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.25fr); gap: var(--espacio-2); }
+.paso-editor .campo__control { background-color: var(--color-fondo); }
+.paso-editor__acciones { display: flex; gap: 2px; margin-top: 7px; }
+.campo--compacto { gap: 4px; }
+.campo--compacto .campo__control { padding-top: 8px; padding-bottom: 8px; font-size: .875rem; }
+.pasos-editor__mensaje.es-visible { display: flex; color: var(--color-error); }
+.boton-icono--mini { width: 32px; height: 32px; border-radius: 8px; }
+.boton-icono--mini .icono { width: 14px; height: 14px; }
+.boton-icono--mini:disabled { opacity: .3; cursor: not-allowed; }
+
+/* 3. Plantillas por servicio =============================================== */
+.plantillas { display: grid; grid-template-columns: 280px minmax(0, 1fr); gap: var(--espacio-5); align-items: start; }
+.lista-servicios-plantilla { position: sticky; top: 88px; display: grid; gap: 2px; margin: 0; padding: var(--espacio-3); list-style: none; }
+.servicio-plantilla { display: grid; grid-template-columns: 48px minmax(0, 1fr); align-items: center; gap: var(--espacio-3); width: 100%; padding: var(--espacio-2) var(--espacio-3); border: 1px solid transparent; border-radius: var(--radio-caja); background: none; font: inherit; text-align: left; color: var(--color-texto); cursor: pointer; }
+.servicio-plantilla:hover { background: var(--color-fondo-suave); }
+.servicio-plantilla[aria-current="true"] { background: var(--color-acento-suave); border-color: #c7c9f6; }
+.servicio-plantilla img, .servicio-plantilla__sin-imagen { width: 48px; height: 32px; border-radius: 6px; object-fit: cover; background: var(--color-fondo-suave); }
+.servicio-plantilla__sin-imagen { display: grid; place-items: center; color: var(--color-texto-tenue); }
+.servicio-plantilla strong { display: block; font-size: .8125rem; line-height: 1.3; }
+.servicio-plantilla small { font-size: .75rem; color: var(--color-texto-suave); }
+.plantilla-aviso { margin-bottom: var(--espacio-5); }
+.plantilla-aviso p { margin: 0; }
+.plantilla-pie { display: flex; justify-content: flex-end; gap: var(--espacio-3); flex-wrap: wrap; margin-top: var(--espacio-5); padding-top: var(--espacio-5); border-top: 1px solid var(--color-borde-suave); }
+
+/* 4. Cotización ============================================================ */
+.cotizacion { padding: var(--espacio-5); }
+.cotizacion__titulo { margin: 0 0 var(--espacio-4); font-size: 1rem; }
+.cotizacion .campo { margin-bottom: var(--espacio-4); }
+.campo-moneda { position: relative; }
+.campo-moneda__simbolo { position: absolute; left: 14px; top: 50%; transform: translateY(-50%); font-weight: 600; color: var(--color-texto-suave); pointer-events: none; }
+.campo-moneda .campo__control { padding-left: 30px; font-variant-numeric: tabular-nums; }
+.cotizacion__resumen { display: grid; gap: 6px; margin: var(--espacio-5) 0; padding: var(--espacio-4); border-radius: var(--radio-caja); background: var(--color-fondo-suave); font-size: .8125rem; }
+.cotizacion__resumen div { display: flex; justify-content: space-between; gap: var(--espacio-3); }
+.cotizacion__resumen dt { color: var(--color-texto-suave); }
+.cotizacion__resumen dd { margin: 0; font-weight: 600; text-align: right; }
+.cotizacion__nota { margin: var(--espacio-3) 0 0; font-size: .75rem; color: var(--color-texto-suave); }
+
+/* 5. Propuesta del plan (cliente) y plan enviado ========================================== */
+.propuesta { display: grid; grid-template-columns: minmax(0, 1fr) 340px; gap: var(--espacio-5); align-items: start; }
+.propuesta__principal { display: grid; gap: var(--espacio-5); min-width: 0; }
+.propuesta__lateral { position: sticky; top: 88px; display: grid; gap: var(--espacio-4); }
+.propuesta-valor { padding: var(--espacio-6); }
+.propuesta-valor__etiqueta { margin: 0; font-size: .8125rem; color: var(--color-texto-suave); }
+.propuesta-valor__cifra { margin: 4px 0 var(--espacio-4); color: var(--color-texto); font-family: var(--fuente-titulos); font-size: 2rem; font-weight: 800; letter-spacing: -.02em; font-variant-numeric: tabular-nums; }
+.propuesta-valor__cifra small { font-size: .875rem; font-weight: 600; color: var(--color-texto-suave); }
+.propuesta-valor dl { display: grid; gap: var(--espacio-3); margin: 0 0 var(--espacio-5); font-size: .875rem; }
+.propuesta-valor dl div { display: flex; justify-content: space-between; gap: var(--espacio-3); }
+.propuesta-valor dt { color: var(--color-texto-suave); }
+.propuesta-valor dd { margin: 0; font-weight: 600; text-align: right; }
+.propuesta-valor__acciones { display: grid; gap: var(--espacio-2); }
+.propuesta-valor__plazo { margin: var(--espacio-3) 0 0; font-size: .75rem; text-align: center; color: var(--color-texto-suave); }
+.fases-propuesta { display: grid; gap: var(--espacio-3); margin: 0; padding: 0; list-style: none; counter-reset: fase; }
+.fase-propuesta { display: grid; grid-template-columns: 34px minmax(0, 1fr); gap: var(--espacio-4); padding: var(--espacio-4); border: 1px solid var(--color-borde-suave); border-radius: var(--radio-caja); counter-increment: fase; }
+.fase-propuesta::before { content: counter(fase); display: grid; place-items: center; width: 34px; height: 34px; border-radius: 50%; background: var(--color-tinta); color: #fff; font-weight: 700; }
+.fase-propuesta--cliente { border-left: 4px solid var(--color-acento); }
+.fase-propuesta__cabecera { display: flex; align-items: center; justify-content: space-between; gap: var(--espacio-3); flex-wrap: wrap; }
+.fase-propuesta__titulo { margin: 0; font-size: 1rem; }
+.fase-propuesta__que-es { margin: 4px 0 var(--espacio-3); font-size: .875rem; color: var(--color-texto-suave); }
+.fase-propuesta__pasos { display: grid; gap: 6px; margin: 0; padding: 0; list-style: none; font-size: .8125rem; }
+.fase-propuesta__pasos li { display: grid; grid-template-columns: 16px minmax(0, 1fr); gap: var(--espacio-2); }
+.fase-propuesta__pasos li::before { content: ""; width: 7px; height: 7px; margin-top: 7px; border-radius: 50%; border: 2px solid var(--color-borde); }
+.fase-propuesta__pasos strong { font-weight: 600; }
+.fase-propuesta__pasos span { color: var(--color-texto-suave); }
+
+/* 6. Cambio de fases (propuesta, autorización y aceptación) ================ */
+.cambio-fases { display: grid; gap: var(--espacio-4); margin-bottom: var(--espacio-6); padding: var(--espacio-5); border: 1px solid #f5d48b; border-radius: var(--radio-tarjeta); background: var(--color-advertencia-fondo); }
+.cambio-fases--cliente { border-color: #c7c9f6; background: var(--color-acento-suave); }
+.cambio-fases__cabecera { display: flex; align-items: flex-start; gap: var(--espacio-3); }
+.cambio-fases__cabecera .icono { flex: none; width: 22px; height: 22px; margin-top: 2px; }
+.cambio-fases__titulo { margin: 0; font-size: 1rem; }
+.cambio-fases__texto { margin: 2px 0 0; font-size: .875rem; color: var(--color-texto-suave); }
+.cambio-fases__comparacion { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: var(--espacio-3); margin: 0; }
+.cambio-fases__dato { padding: var(--espacio-3); border-radius: var(--radio-caja); background: var(--color-fondo); }
+.cambio-fases__dato dt { font-size: .75rem; color: var(--color-texto-suave); }
+.cambio-fases__dato dd { display: flex; align-items: center; flex-wrap: wrap; gap: 6px; margin: 4px 0 0; font-size: .9375rem; font-weight: 700; font-variant-numeric: tabular-nums; }
+.cambio-fases__dato del { font-weight: 500; color: var(--color-texto-tenue); }
+.cambio-fases__dato .icono { width: 14px; height: 14px; color: var(--color-texto-tenue); }
+.cambio-fases__fases { display: flex; flex-wrap: wrap; gap: 6px; margin: 0; padding: 0; list-style: none; }
+.cambio-fases__fase { padding: 4px 10px; border-radius: var(--radio-pildora); background: var(--color-fondo); border: 1px solid var(--color-borde-suave); font-size: .75rem; }
+.cambio-fases__fase--hecha { color: var(--color-exito-texto); background: var(--color-exito-fondo); border-color: transparent; }
+.cambio-fases__fase--nueva { border: 1px dashed var(--color-acento); color: var(--color-acento); font-weight: 700; }
+.cambio-fases__fase--quitada { text-decoration: line-through; color: var(--color-texto-tenue); }
+.cambio-fases__motivo { margin: 0; font-size: .875rem; }
+.cambio-fases__acciones { display: flex; flex-wrap: wrap; gap: var(--espacio-2); justify-content: flex-end; }
+.vista-previa-cambio { display: grid; gap: var(--espacio-3); padding: var(--espacio-4); border-radius: var(--radio-caja); background: var(--color-fondo-suave); font-size: .8125rem; }
+.vista-previa-cambio p { margin: 0; }
+.vista-previa-cambio[hidden] { display: none; }
+
+/* 7. Diseño adaptable ====================================================== */
+@media (max-width: 1280px) {
+  .plan, .propuesta { grid-template-columns: minmax(0, 1fr); }
+  .plan__lateral, .propuesta__lateral { position: static; }
+}
+@media (max-width: 1024px) {
+  .plantillas { grid-template-columns: minmax(0, 1fr); }
+  .lista-servicios-plantilla { position: static; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); }
+}
+@media (max-width: 720px) {
+  .plan-seccion { padding: var(--espacio-4); }
+  .estado-plan { flex-direction: column; }
+  .estado-plan__paso, .estado-plan__paso:first-child, .estado-plan__paso:last-child { border-radius: 0; border-left: 1px solid var(--color-borde-suave); }
+  .estado-plan__paso + .estado-plan__paso { border-top: 0; }
+  .estado-plan__paso:first-child { border-radius: var(--radio-caja) var(--radio-caja) 0 0; }
+  .estado-plan__paso:last-child { border-radius: 0 0 var(--radio-caja) var(--radio-caja); }
+  .fase-editor__resumen { grid-template-columns: auto minmax(0, 1fr) auto; }
+  .fase-editor__resumen .insignia { grid-column: 2 / 3; grid-row: 2; justify-self: start; }
+  .fase-editor__aprueba { margin-top: 0; }
+  .paso-editor { grid-template-columns: minmax(0, 1fr); }
+  .paso-editor__campos, .fase-editor__fila { grid-template-columns: minmax(0, 1fr); }
+  .campo--compacto .campo__control { font-size: 16px; } /* sin zoom en iPhone */
+  .paso-editor__numero { display: none; }
+  .paso-editor__acciones { margin-top: 0; justify-content: flex-end; }
+  .fase-propuesta { grid-template-columns: minmax(0, 1fr); }
+  .fase-propuesta::before { width: 28px; height: 28px; font-size: .8125rem; }
+  .cambio-fases__comparacion { grid-template-columns: minmax(0, 1fr); }
+}
+
+.cambio-fases[hidden], [data-seccion-cambios][hidden] { display: none; }
+
+/* Cola de cambios por autorizar (admin/proyectos.html) */
+.cambios-autorizar { margin-bottom: var(--espacio-6); }
+.cambios-autorizar__titulo { display: flex; align-items: center; gap: var(--espacio-2); margin: 0 0 var(--espacio-3); font-size: 1rem; }
+.cambios-autorizar .cambio-fases { margin-bottom: 0; }
+.avance-tabla .fases-mini__barras { margin-top: 6px; }
+.cambios-autorizar__titulo .pendientes__cantidad { min-width: 22px; padding: 1px 7px; border-radius: var(--radio-pildora); background: #f59e0b; color: #1f1300; font-size: .75rem; text-align: center; }
+
+/* Propuesta del cliente en celular: las dos acciones quedan fijas abajo */
+.barra-accion-movil { display: none; }
+@media (max-width: 640px) {
+  .barra-accion-movil {
+    position: fixed; left: 0; right: 0; bottom: 0; z-index: 80; display: grid; grid-template-columns: 1fr 1fr; gap: var(--espacio-2);
+    padding: var(--espacio-3) var(--espacio-4) calc(var(--espacio-3) + env(safe-area-inset-bottom));
+    background: var(--color-fondo); border-top: 1px solid var(--color-borde); box-shadow: 0 -6px 18px rgba(17, 24, 39, .08);
+  }
+  .barra-accion-movil .boton { justify-content: center; }
+  body:has(.barra-accion-movil) { padding-bottom: 96px; }
+  /* Tres acciones: Aprobar ocupa la primera fila; Pedir ajustes y Rechazar, la segunda */
+  .barra-accion-movil__principal { grid-column: 1 / -1; }
+  body:has(.barra-accion-movil--tres) { padding-bottom: 150px; }
+  body:has(.barra-accion-movil--tres) .accesibilidad-boton { bottom: 148px; }
+}
+
+/* Rechazar la propuesta: acción secundaria con texto de peligro */
+.boton--rechazar { color: var(--color-error-texto); }
+.boton--rechazar:hover { background: var(--color-error-fondo); }
+
+.plan-aviso { margin-bottom: var(--espacio-5); }
+.plan-aviso p { margin: 0; }
