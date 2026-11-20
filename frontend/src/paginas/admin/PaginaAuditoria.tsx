@@ -27,6 +27,8 @@ const CAMPOS: Record<string, string> = {
   debeCambiarPassword: 'Contraseña temporal', datosPersonales: 'Datos personales', registros: 'Registros exportados',
   descripcionCorta: 'Descripción', imagenUrl: 'Imagen', imagenAlt: 'Texto alternativo', visible: 'Visible en el catálogo',
   orden: 'Orden en el carrusel', slug: 'Dirección',
+  servicio: 'Servicio', fases: 'Fases', nombresFases: 'Nombres de las fases', pasos: 'Pasos',
+  fasesQueApruebaElCliente: 'Fases que aprueba el cliente',
 };
 
 /** "descripcionCorta" → "Descripcion corta" cuando el campo no está en la lista. */
@@ -43,6 +45,7 @@ export function valorCambio(valor: unknown): string {
   if (valor === true) return 'Sí';
   if (valor === false) return 'No';
   if (typeof valor === 'string' && ISO_FECHA_HORA.test(valor)) return fechaEvento(valor);
+  if (Array.isArray(valor)) return valor.length ? valor.join(', ') : '—';
   return String(valor);
 }
 

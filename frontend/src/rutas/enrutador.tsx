@@ -9,6 +9,7 @@ import { PaginaIngresar } from '../paginas/acceso/PaginaIngresar';
 import { PaginaRegistro } from '../paginas/acceso/PaginaRegistro';
 import { PaginaRestablecer } from '../paginas/acceso/PaginaRestablecer';
 import { PaginaContenido } from '../paginas/admin/PaginaContenido';
+import { PaginaPlantillas } from '../paginas/admin/PaginaPlantillas';
 import { PaginaServicios } from '../paginas/admin/PaginaServicios';
 import { PaginaCitasAdmin } from '../paginas/admin/PaginaCitasAdmin';
 import { PaginaCitasEquipo } from '../paginas/equipo/PaginaCitasEquipo';
@@ -51,6 +52,7 @@ const PAGINAS: Record<string, ReactElement> = {
   '/': <PaginaInicio />,
   '/legal': <PaginaLegal />,
   '/admin/servicios': <PaginaServicios />,
+  '/admin/plantillas': <PaginaPlantillas />,
   '/admin/contenido': <PaginaContenido />,
   '/admin/usuarios': <PaginaUsuarios />,
   '/admin/especialidad/desarrolladores': <PaginaDesarrolladores />,

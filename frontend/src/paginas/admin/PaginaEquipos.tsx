@@ -190,6 +190,8 @@ function FormularioEquipo({ equipo, devs, alCerrar, alGuardar }: {
   const [filaInvalida, setFilaInvalida] = useState<number | null>(null);
   const [general, setGeneral] = useState<string | null>(null);
   const [guardando, setGuardando] = useState(false);
+  /** Integrante que se va a quitar del equipo, mientras se espera la confirmación. */
+  const [filaPorQuitar, setFilaPorQuitar] = useState<Fila | null>(null);
 
   const porId = useMemo(() => new Map(devs.map((d) => [d.desarrolladorId, d])), [devs]);
   // Un desarrollador activo que no esté en otro equipo (los de este equipo siguen disponibles)
@@ -349,7 +351,7 @@ function FormularioEquipo({ equipo, devs, alCerrar, alGuardar }: {
                     </select>
                   </label>
                   <button type="button" className="boton-icono boton-icono--pequeno integrantes__quitar" aria-label="Quitar integrante" title="Quitar integrante"
-                          onClick={() => { limpiarErrores(); setFilas((f) => f.filter((x) => x.clave !== fila.clave)); }}>
+                          onClick={() => { if (fila.devId) setFilaPorQuitar(fila); else { limpiarErrores(); setFilas((f) => f.filter((x) => x.clave !== fila.clave)); } }}>
                     <Icono nombre="papelera" />
                   </button>
                 </li>
@@ -365,6 +367,30 @@ function FormularioEquipo({ equipo, devs, alCerrar, alGuardar }: {
           </p>
         </fieldset>
       </form>
+      <Dialogo
+        abierto={filaPorQuitar !== null}
+        alCerrar={() => setFilaPorQuitar(null)}
+        tono="peligro"
+        icono="papelera"
+        titulo="¿Quitar este integrante?"
+        texto={`Se quitará a ${porId.get(filaPorQuitar?.devId ?? '')?.nombre ?? 'este desarrollador'} del equipo. Se aplica al guardar el equipo.`}
+        acciones={(
+          <>
+            <Boton variante="contorno" onClick={() => setFilaPorQuitar(null)}>Cancelar</Boton>
+            <Boton
+              variante="peligro"
+              onClick={() => {
+                const clave = filaPorQuitar?.clave;
+                limpiarErrores();
+                setFilas((f) => f.filter((x) => x.clave !== clave));
+                setFilaPorQuitar(null);
+              }}
+            >
+              Quitar integrante
+            </Boton>
+          </>
+        )}
+      />
     </Dialogo>
   );
 }
