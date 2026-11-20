@@ -1,0 +1,5 @@
+# Variables de entorno con secretos (clave de Gmail, clave de la sesión…): nunca al repositorio.
+# La plantilla sin valores reales es .env.example.
+.env
+.env.*
+!.env.example

@@ -166,3 +166,66 @@ Si una vista no necesita estilos propios, solo carga sus plantillas
 - Estados con el prefijo `esta-` (`esta-visible`, `esta-abierto`).
 - Ajustes de accesibilidad con el prefijo `modo-`, aplicados sobre `<html>`.
 - Archivos en minúscula y con guiones (`mis-proyectos.html`).
+
+## Código de la aplicación
+
+Además de las pantallas estáticas, esta carpeta guarda el código del portal:
+
+- `backend/`: API en Java 17 + Spring Boot (monolito modular). Se prueba con `cd backend && ./mvnw verify` (necesita Docker Desktop abierto).
+- `frontend/`: SPA en React 18 + Vite + TypeScript. En esa carpeta: `npm install` (una vez), `npm run dev` (http://localhost:5173; la API debe correr en 8080), `npm test` y `npm run build`.
+
+Las pantallas `.html`, `css/`, `js/` e `img/` siguen siendo la referencia visual de la SPA.
+
+## Cómo levantar todo en desarrollo
+
+Necesitas JDK 17, Node.js 24 y Docker Desktop abierto. Todos los comandos se ejecutan desde esta carpeta (`prototipo/`).
+
+1. **Base de datos y correo** (PostgreSQL 15 y Mailpit):
+
+   ```
+   docker compose up -d
+   ```
+
+2. **API** (Spring Boot, perfil `dev`, puerto 8080). Al arrancar, Flyway crea el esquema y carga los datos de demostración:
+
+   ```
+   cd backend
+   ./mvnw spring-boot:run
+   ```
+
+   En Windows con PowerShell usa `.\mvnw.cmd spring-boot:run`. Swagger: http://localhost:8080/swagger-ui.html
+
+3. **Frontend** (en otra terminal, puerto 5173; `/api` va a la API por el proxy de Vite):
+
+   ```
+   cd frontend
+   npm install
+   npm run dev
+   ```
+
+   Abre http://localhost:5173
+
+4. **Correos de prueba:** los que envía la API llegan a la bandeja de Mailpit, http://localhost:8025
+
+### Cuentas de demostración
+
+Todas con la contraseña **`Demo2026!`** (solo existen en el perfil `dev`):
+
+| Rol | Persona | Correo |
+|---|---|---|
+| Cliente | Laura Gómez | `laura.gomez@correo.com` |
+| Desarrollador (Product Owner) | Andrés Pérez | `andres.perez@coretechsolutions.co` |
+| Administradora | Patricia León | `patricia.leon@coretechsolutions.co` |
+
+También están los demás usuarios, desarrolladores y equipos de `admin/usuarios.html`, `admin/desarrolladores.html` y `admin/equipos.html`; los festivos de Colombia de 2026 y 2027; las citas C-0045, C-0051, C-0058, C-0061 y C-0062, y los proyectos de Laura **P-0031** (tienda en línea, 40 %, fase 3 en curso) y **P-0035** (inventario del salón, plan y cotización por aprobar). Los datos están en `backend/src/main/resources/db/demo/R__datos_demo.sql`.
+
+### Empezar desde cero
+
+Para borrar la base y volver a cargar todo (por ejemplo, después de cambiar los datos de demostración):
+
+```
+docker compose down -v
+docker compose up -d
+```
+
+y vuelve a arrancar la API.

@@ -1,0 +1,155 @@
+# Configuración común. Perfiles: dev (desarrollo local con docker-compose) y test (pruebas con Testcontainers).
+spring:
+  application:
+    name: portal
+  profiles:
+    default: dev
+  jpa:
+    open-in-view: false
+    hibernate:
+      ddl-auto: validate          # el esquema lo manda Flyway
+    properties:
+      hibernate:
+        jdbc:
+          time_zone: UTC          # los instantes se guardan en UTC (timestamptz)
+  flyway:
+    enabled: true
+    locations: classpath:db/migration
+  mail:
+    # Producción no usa SMTP: los correos salen por Gmail, con la cuenta que el administrador conecta desde
+    # "Correo del sistema" (D-51, sin contraseñas). dev y test usan Mailpit (host abajo).
+    default-encoding: UTF-8
+    properties:
+      # Que un servidor de correo lento no deje esperando a la cola (milisegundos)
+      mail.smtp.connectiontimeout: 10000
+      mail.smtp.timeout: 10000
+      mail.smtp.writetimeout: 10000
+  thymeleaf:
+    # Solo se usa para las plantillas de los correos (templates/correos); la API no sirve páginas
+    check-template-location: false
+  task:
+    scheduling:
+      pool:
+        size: 3                   # tareas programadas y reintentos de los correos directos comparten estos hilos
+  servlet:
+    multipart:
+      # Las imágenes de los servicios pesan máximo 2 MB (lo valida el servicio con su mensaje);
+      # este tope más alto solo corta envíos desproporcionados.
+      max-file-size: 6MB
+      max-request-size: 6MB
+
+springdoc:
+  swagger-ui:
+    path: /swagger-ui.html
+
+coretech:
+  zona-negocio: America/Bogota    # zona del negocio: horario laboral, días hábiles y horas mostradas
+  sesion:
+    # Clave del JWT (HS256, mínimo 32 bytes). En producción SOLO por la variable de entorno; sin ella, la API no arranca.
+    secreto: ${CORETECH_SESION_SECRETO:}
+    cookie-segura: true           # Secure: la cookie solo viaja por HTTPS
+    duracion: 8h                  # RNF-10
+    duracion-recordarme: 30d      # con "Recordarme"
+  url-portal: ${CORETECH_URL_PORTAL:https://localhost}
+  origenes-permitidos: ${CORETECH_ORIGENES_PERMITIDOS:https://localhost}
+  archivos:
+    directorio: ${CORETECH_ARCHIVOS:datos/archivos}   # en Docker, el volumen de archivos (P25)
+  correos:
+    cron: "*/15 * * * * *"        # TareaEnvioCorreos: cola de correos de las notificaciones (RNF-13): reintentos y respaldo
+    inmediato: true               # además, cada aviso se envía en cuanto se guarda (EnvioInmediato)
+    # Remitente de lo que sale por SMTP (Mailpit). Lo que sale por Gmail lleva siempre la cuenta conectada.
+    remitente: "CoreTech Solutions <no-responder@coretech.local>"
+    # Vacías = Gmail escribe al correo que registró cada usuario (producción). Direcciones o dominios ("@dominio.com"):
+    # bloqueados nunca reciben por Gmail; permitidos, si tiene valores, es la única lista que sí. Lo demás va a Mailpit.
+    destinos-permitidos: ${CORETECH_CORREO_DESTINOS_PERMITIDOS:}
+    destinos-bloqueados: ${CORETECH_CORREO_DESTINOS_BLOQUEADOS:}
+  # Cliente OAuth de Google Cloud (Credenciales → ID de cliente OAuth, aplicación web) para "Conectar con Gmail".
+  # URI de redirección autorizada: <url-portal>/api/v1/correo-sistema/gmail/callback
+  google:
+    cliente-id: ${CORETECH_GOOGLE_ID:}
+    cliente-secreto: ${CORETECH_GOOGLE_SECRETO:}
+  # Registro e ingreso de clientes con Microsoft (RF-50): registro de aplicación en Azure (Microsoft Entra ID),
+  # cuentas personales. URI de redirección: <url-portal>/api/v1/auth/externo/callback/microsoft. Con Google se usa el
+  # mismo cliente de arriba (agrega también <url-portal>/api/v1/auth/externo/callback/google). Sin ID o secreto, el botón no aparece.
+  microsoft:
+    cliente-id: ${CORETECH_MICROSOFT_ID:}
+    cliente-secreto: ${CORETECH_MICROSOFT_SECRETO:}
+  # Clave con la que se cifra en la base el permiso de Gmail (mínimo 32 caracteres; sin ella la API no arranca)
+  cifrado:
+    clave: ${CORETECH_CIFRADO_CLAVE:}
+
+---
+spring:
+  config:
+    activate:
+      on-profile: dev
+    # Variables locales (CORETECH_GOOGLE_ID, CORETECH_GOOGLE_SECRETO…) de prototipo/.env, que no se sube a git.
+    # La API se ejecuta desde prototipo/backend; si el archivo no existe, no pasa nada.
+    import: optional:file:../.env[.properties]
+  datasource:
+    url: jdbc:postgresql://localhost:5432/coretech
+    username: coretech
+    password: coretech_dev
+  flyway:
+    # Solo en desarrollo: datos de demostración (cuentas del prototipo con contraseña Demo2026!).
+    # Nunca en test ni en producción.
+    locations: classpath:db/migration,classpath:db/demo
+  mail:
+    host: localhost
+    port: 1025                    # Mailpit (docker-compose, servicio "correo"); bandeja en http://localhost:8025
+    properties:
+      mail.smtp.auth: false
+
+coretech:
+  sesion:
+    secreto: ${CORETECH_SESION_SECRETO:clave-solo-para-desarrollo-local-no-usar-en-produccion}
+    cookie-segura: false          # en desarrollo se usa http://localhost
+  url-portal: http://localhost:5173
+  # SPA de Vite (el proxy conserva el Origin) y Swagger
+  origenes-permitidos: http://localhost:5173,http://localhost:8080
+  correos:
+    # Con Gmail conectado, en desarrollo sale correo real al correo que cada usuario registró, salvo a las cuentas
+    # demo: @correo.com y @coretechsolutions.co son dominios reales con dueños reales; esos van a Mailpit.
+    destinos-bloqueados: ${CORETECH_CORREO_DESTINOS_BLOQUEADOS:@correo.com,@coretechsolutions.co}
+  cifrado:
+    clave: ${CORETECH_CIFRADO_CLAVE:clave-de-cifrado-solo-para-desarrollo-local}
+
+---
+spring:
+  config:
+    activate:
+      on-profile: test
+  # El datasource lo configura Testcontainers (@ServiceConnection, PostgreSQL 15).
+  mail:
+    host: localhost
+    port: 1025
+    properties:
+      mail.smtp.auth: false
+
+coretech:
+  sesion:
+    secreto: clave-de-pruebas-con-mas-de-32-bytes-0123456789
+    cookie-segura: false
+  url-portal: http://localhost:5173
+  origenes-permitidos: http://localhost:5173
+  archivos:
+    directorio: ${java.io.tmpdir}/coretech-pruebas-archivos
+  # La cola de correos no corre sola en las pruebas: NotificacionesTest la llama a mano
+  correos:
+    cron: "-"
+    inmediato: false
+  # Google y Microsoft simulados en las pruebas (CorreoSistemaTest, IngresoExternoTest); nunca se sale a internet
+  google:
+    cliente-id: cliente-de-pruebas
+    cliente-secreto: secreto-de-pruebas
+  microsoft:
+    cliente-id: cliente-de-pruebas
+    cliente-secreto: secreto-de-pruebas
+  cifrado:
+    clave: clave-de-cifrado-de-pruebas-0123456789
+  # Las pruebas inician sesión muchas veces desde 127.0.0.1; el límite se prueba aparte (FiltroLimitePeticionesTest)
+  limites:
+    login-por-minuto: 100000
+    recuperacion-por-15-minutos: 100000
+    restablecer-por-15-minutos: 100000
+    registro-por-hora: 100000

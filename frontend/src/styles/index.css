@@ -1,0 +1,13 @@
+/* Estilos de la SPA: los mismos del prototipo (prototipo/css), en el mismo orden. */
+@import './tokens.css';
+@import './global.css';
+@import './plantillas/panel.css';
+@import './plantillas/tabla.css';
+@import './plantillas/tarjetas.css';
+@import './plantillas/acceso.css';
+@import './plantillas/agendamiento.css';
+@import './plantillas/documento.css';
+@import './plantillas/linea-tiempo.css';
+@import './plantillas/proyecto.css';
+@import './plantillas/tarjeta-servicio.css';
+@import './componentes.css';

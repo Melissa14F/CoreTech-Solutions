@@ -1,0 +1,26 @@
+# Base de datos y buzón de correo para desarrollo local. La API corre aparte (cd backend && ./mvnw spring-boot:run);
+# la API y Nginx se agregan a este archivo en P25 (ver docs/08-plan-desarrollo.md).
+# Nombre fijo del proyecto: los contenedores y el volumen no dependen del nombre de la carpeta.
+name: coretech
+
+services:
+  db:
+    image: postgres:15
+    environment:
+      POSTGRES_DB: coretech
+      POSTGRES_USER: coretech
+      POSTGRES_PASSWORD: coretech_dev
+      TZ: America/Bogota
+    ports:
+      - "5432:5432"
+    # La base nace vacía: el esquema lo crea Flyway al arrancar la API (backend/src/main/resources/db/migration).
+    volumes:
+      - datos_pg:/var/lib/postgresql/data
+  correo:
+    # Mailpit: recibe los correos que envía la API en desarrollo. Bandeja en http://localhost:8025
+    image: axllent/mailpit
+    ports:
+      - "1025:1025"   # SMTP (spring.mail.host=localhost, port=1025)
+      - "8025:8025"   # bandeja web
+volumes:
+  datos_pg:

@@ -1,0 +1,8 @@
+# Fines de línea del sistema (todo el código vive en prototipo/).
+# Las migraciones SQL se guardan byte a byte: Flyway calcula su checksum y no debe cambiar entre Windows y Linux.
+*.sql      -text
+# Scripts que se ejecutan dentro de Docker o en Linux: siempre LF.
+mvnw       text eol=lf
+*.sh       text eol=lf
+# Scripts de Windows: CRLF.
+*.cmd      text eol=crlf

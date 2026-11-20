@@ -1,0 +1,9 @@
+/* ==========================================================================
+   Vista: Mis citas (cliente/mis-citas.html)
+   Requiere: global.css, plantillas/panel.css y plantillas/tarjetas.css
+   (los filtros y el estado vacío están en plantillas/panel.css)
+   ========================================================================== */
+
+/* 1. Grupos de citas ======================================================= */
+.grupo-citas + .grupo-citas { margin-top: var(--espacio-10); }
+.grupo-citas__titulo { margin: 0 0 var(--espacio-4); font-size: .8125rem; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; color: var(--color-texto-suave); }

@@ -1,0 +1,92 @@
+/* ==========================================================================
+   Estilos propios de la SPA que el prototipo no necesitaba (no cambian el diseño).
+   Usan solo los tokens de tokens.css.
+   ========================================================================== */
+
+/* Indicador de carga (componente Cargando) */
+.cargando { display: flex; align-items: center; justify-content: center; gap: var(--espacio-3); padding: var(--espacio-12) var(--espacio-6); color: var(--color-texto-suave); font-size: .9375rem; }
+.cargando__giro { width: 20px; height: 20px; border: 2px solid var(--color-borde); border-top-color: var(--color-acento); border-radius: 50%; animation: girar .7s linear infinite; }
+@media (prefers-reduced-motion: reduce) { .cargando__giro { animation-duration: 2s; } }
+
+/* Página provisional (P04): cada ruta muestra su nombre y su HU hasta que se construya */
+.provisional { max-width: 720px; }
+.provisional__hu { display: flex; flex-wrap: wrap; gap: var(--espacio-2); margin-top: var(--espacio-4); }
+.pagina-no-encontrada { padding-block: var(--espacio-16); }
+/* En el sitio público el encabezado es fijo: el contenido provisional baja para no quedar debajo */
+.encabezado ~ main > .provisional { padding-block: var(--espacio-24) var(--espacio-12); }
+
+/* P07 · En el prototipo estos controles eran enlaces <a>; en la SPA son <button> (hacen una acción).
+   Se quitan los estilos de botón del navegador para que se vean igual que el prototipo. */
+button.panel__salir,
+button.acceso-demo,
+.boton-enlace { border: 0; background: transparent; cursor: pointer; }
+button.panel__salir { padding: 0; }
+button.acceso-demo { width: 100%; border: 1px solid var(--color-borde); text-align: left; }
+button.acceso-demo:disabled { cursor: wait; opacity: .7; }
+.boton-enlace { padding: 0; font: inherit; }
+/* "¿Olvidaste tu contraseña?": el campo del correo y su botón dentro del desplegable */
+.recuperar__ayuda .campo { margin-bottom: var(--espacio-3); }
+/* Alerta sobre el formulario de acceso */
+.acceso__caja > .alerta { margin-bottom: var(--espacio-5); }
+.acceso__caja > .alerta + .boton { margin-top: var(--espacio-2); }
+
+/* P09 · Paginación bajo las tablas de administración (el prototipo mostraba todo en una página) */
+.paginacion { display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: var(--espacio-3); margin-top: var(--espacio-4); }
+.paginacion__estado { font-size: .8125rem; font-weight: 600; color: var(--color-texto-suave); font-variant-numeric: tabular-nums; }
+/* Filtro de fechas de la auditoría (rango personalizado) */
+.rango-fechas { display: flex; flex-wrap: wrap; align-items: center; gap: var(--espacio-2); }
+.rango-fechas .campo__control { width: auto; }
+.rango-fechas__error { flex-basis: 100%; margin: 0; font-size: .8125rem; color: var(--color-error); }
+/* Aviso de que la contraseña temporal llega por correo (en el prototipo se veía en pantalla, RF-05) */
+.clave-temporal__ayuda--sola { margin: 0; }
+/* Botón deshabilitado: el prototipo usaba aria-disabled; la SPA usa el atributo disabled. Mismo aspecto
+   (salvo mientras carga, que conserva su giro). */
+.boton:disabled:not(.esta-cargando) { opacity: .45; cursor: not-allowed; }
+
+/* P10 · Campana de notificaciones (HU-24). El prototipo solo tenía el botón con el punto rojo; la lista se
+   arma con los mismos tokens que los menús «Más acciones». */
+.campana-menu { position: relative; }
+.bandeja { position: absolute; right: 0; top: calc(100% + 8px); z-index: 30; width: min(360px, calc(100vw - 2 * var(--espacio-4))); border: 1px solid var(--color-borde); border-radius: var(--radio-caja); background: var(--color-fondo); box-shadow: var(--sombra-alta); animation: entrar var(--duracion-rapida) var(--curva); }
+.bandeja__cabecera { display: flex; align-items: center; justify-content: space-between; gap: var(--espacio-3); padding: var(--espacio-3) var(--espacio-4); border-bottom: 1px solid var(--color-borde); }
+.bandeja__titulo { display: flex; align-items: center; gap: var(--espacio-2); margin: 0; font-size: .875rem; font-weight: 700; }
+.bandeja__contador { padding: 2px 8px; border-radius: 999px; background: var(--color-acento-suave); color: var(--color-acento); font-size: .75rem; font-weight: 600; }
+.bandeja__marcar { padding: 0; border: 0; background: none; font: inherit; font-size: .8125rem; cursor: pointer; }
+.bandeja__lista { max-height: min(420px, 60vh); margin: 0; padding: 6px; overflow-y: auto; list-style: none; }
+.bandeja__aviso { position: relative; display: grid; gap: 2px; width: 100%; padding: 10px 12px 10px 24px; border: 0; border-radius: 8px; background: transparent; color: var(--color-tinta); font: inherit; text-align: left; text-decoration: none; }
+a.bandeja__aviso, button.bandeja__aviso { cursor: pointer; }
+a.bandeja__aviso:hover, button.bandeja__aviso:hover, .bandeja__aviso:focus-visible { background: var(--color-fondo-suave); }
+.bandeja__aviso--nuevo::before { content: ""; position: absolute; left: 10px; top: 16px; width: 8px; height: 8px; border-radius: 50%; background: var(--color-acento); }
+.bandeja__aviso-titulo { font-size: .8125rem; font-weight: 600; }
+.bandeja__aviso--nuevo .bandeja__aviso-titulo { font-weight: 700; }
+.bandeja__aviso-texto { font-size: .8125rem; line-height: 1.45; color: var(--color-texto-suave); }
+.bandeja__aviso-fecha { font-size: .75rem; color: var(--color-texto-tenue); }
+.bandeja__vacia { margin: 0; padding: var(--espacio-6) var(--espacio-4); font-size: .8125rem; text-align: center; color: var(--color-texto-suave); }
+@media (max-width: 640px) {
+  /* En el teléfono la lista ocupa el ancho de la pantalla, debajo de la barra */
+  .bandeja { position: fixed; left: var(--espacio-4); right: var(--espacio-4); top: 64px; width: auto; }
+}
+
+/* D-51 · Correo del sistema (pantalla nueva sin prototipo, con los tokens del panel) */
+.correo-sistema { display: grid; gap: var(--espacio-6); max-width: 760px; }
+.correo-sistema__cabecera { display: flex; align-items: center; justify-content: space-between; gap: var(--espacio-3); margin-bottom: var(--espacio-4); }
+.correo-sistema__cabecera .tarjeta__titulo { margin: 0; }
+.correo-sistema__texto { margin: 0 0 var(--espacio-4); max-width: 62ch; font-size: .9375rem; color: var(--color-texto-suave); }
+.correo-sistema__datos { display: grid; gap: var(--espacio-3); margin: 0 0 var(--espacio-4); }
+.correo-sistema__datos div { display: flex; flex-wrap: wrap; gap: var(--espacio-2); }
+.correo-sistema__datos dt { min-width: 110px; font-size: .875rem; color: var(--color-texto-suave); }
+.correo-sistema__datos dd { margin: 0; font-weight: 600; overflow-wrap: anywhere; }
+.correo-sistema__acciones { display: flex; flex-wrap: wrap; gap: var(--espacio-3); }
+.correo-sistema .alerta { margin-top: var(--espacio-4); }
+.correo-sistema__prueba { display: flex; flex-wrap: wrap; align-items: flex-end; gap: var(--espacio-3); }
+.correo-sistema__prueba .campo { flex: 1 1 260px; margin: 0; }
+
+/* RF-50 · Continuar con Google o Microsoft, sobre el formulario de ingresar y de crear cuenta.
+   Los logos son las marcas oficiales: no se recolorean. */
+.ingreso-externo { display: grid; gap: var(--espacio-3); margin: 0 0 var(--espacio-2); padding: 0; list-style: none; }
+.boton-externo { gap: var(--espacio-3); }
+.boton-externo svg { width: 20px; height: 20px; flex: none; }
+.ingreso-externo + .separador { margin-top: var(--espacio-5); margin-bottom: var(--espacio-5); }
+
+/* El prototipo oculta .aparecer (opacity 0) hasta que js/principal.js le agrega .esta-visible. La SPA no tiene ese
+   script, así que sin esta regla todo lo que se copie con esa clase queda invisible: se muestra de una vez. */
+.aparecer { opacity: 1; transform: none; }

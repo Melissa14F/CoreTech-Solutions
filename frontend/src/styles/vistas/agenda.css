@@ -1,0 +1,21 @@
+/* ==========================================================================
+   Agendamiento en la SPA (P12): lo que el prototipo hacía con etiquetas y radios ocultos en el calendario
+   ahora son botones (así los días no disponibles también reciben el foco y se anuncian). Solo tokens.
+   ========================================================================== */
+button.calendario__dia { font: inherit; font-weight: 600; color: var(--color-texto); cursor: pointer; background: var(--color-fondo-suave); transition: border-color var(--duracion-rapida), background-color var(--duracion-rapida); }
+button.calendario__dia:hover { border-color: var(--color-acento); background: var(--color-fondo); }
+button.calendario__dia[aria-disabled="true"] { cursor: not-allowed; background: transparent; color: var(--color-texto-tenue); font-weight: 400; }
+button.calendario__dia[aria-disabled="true"]:hover { border-color: transparent; }
+button.calendario__dia--hoy, button.calendario__dia--hoy[aria-disabled="true"]:hover { border-color: var(--color-borde); }
+button.calendario__dia--elegido, button.calendario__dia--elegido:hover { border-color: var(--color-acento); background: var(--color-acento); color: #fff; box-shadow: 0 6px 16px rgba(79, 70, 229, .3); }
+button.calendario__dia--elegido .calendario__cupos { background: #fff; }
+button.calendario__dia:focus-visible { outline: 2px solid var(--color-acento); outline-offset: 2px; }
+
+/* Mensajes de error de un grupo de opciones y alertas entre bloques */
+.agendamiento__alerta { margin-bottom: var(--espacio-4); }
+.aviso-sin-conexion { display: flex; align-items: center; gap: var(--espacio-3); flex-wrap: wrap; }
+
+/* Botones del paso 3 y de Mis citas que son enlaces o botones: sin subrayado */
+.detalle-cita__cambiar { background: none; border: 0; padding: 0; font: inherit; cursor: pointer; }
+.volver { background: none; border: 0; padding: 0; font: inherit; cursor: pointer; }
+.tarjeta-cita__nota--motivo { font-style: italic; }
