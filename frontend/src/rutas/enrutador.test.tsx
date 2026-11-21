@@ -1,3 +1,5 @@
+import { PLAN_ENVIADO } from '../pruebas/plan';
+import { DETALLE, DETALLE_DEL_EQUIPO } from '../pruebas/seguimiento';
 import { screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 
@@ -23,6 +25,10 @@ const TITULO_EN_PANTALLA: Record<string, string> = {
   '/completar-registro': 'Completa tu registro',
   '/legal': 'Tus datos y las reglas del servicio',
   '/cliente/agendar': 'Agendar una cita',
+  '/admin/proyectos/:codigo/plan': 'Plan de trabajo Enviado',
+  '/equipo/proyectos/:codigo/plan': 'Plan de trabajo Enviado',
+  '/cliente/proyectos/:codigo/propuesta': 'Inventario del salón Propuesta por aprobar',
+  '/cliente/proyectos/:codigo': 'Tienda en línea Laura En desarrollo',
 };
 
 const casos = (Object.entries(PANTALLAS) as [Area, (typeof PANTALLAS)[Area]][]).flatMap(([area, pantallas]) =>
@@ -32,7 +38,10 @@ const casos = (Object.entries(PANTALLAS) as [Area, (typeof PANTALLAS)[Area]][]).
 describe('enrutador', () => {
   it.each(casos)('%s muestra la pantalla "%s"', async (ruta, titulo, area) => {
     // Cambiar contraseña necesita sesión (la de alguien con la contraseña temporal)
-    simularApi(ruta === '/cambiar-contrasena' ? { ...ANDRES, debeCambiarPassword: true } : SESION_DEL_AREA[area]);
+    simularApi(ruta === '/cambiar-contrasena' ? { ...ANDRES, debeCambiarPassword: true } : SESION_DEL_AREA[area], {
+      'GET /proyectos/P-0031/plan': { estado: 200, cuerpo: PLAN_ENVIADO },
+      'GET /proyectos/P-0031': { estado: 200, cuerpo: area === 'equipo' ? DETALLE_DEL_EQUIPO : DETALLE },
+    });
     abrirEn(ruta);
     expect(await screen.findByRole('heading', { level: 1, name: titulo })).toBeInTheDocument();
   });

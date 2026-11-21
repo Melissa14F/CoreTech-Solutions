@@ -11,3 +11,6 @@
 @import './plantillas/proyecto.css';
 @import './plantillas/tarjeta-servicio.css';
 @import './componentes.css';
+@import './vistas/proyecto-detalle.css';
+@import './vistas/registrar-avance.css';
+@import './vistas/proyecto-no-encontrado.css';

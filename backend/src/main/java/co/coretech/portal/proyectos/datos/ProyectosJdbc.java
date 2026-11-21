@@ -183,6 +183,7 @@ public class ProyectosJdbc {
         jdbc.update("""
                 UPDATE proyectos SET estado = 'ACTIVO', motivo_estado = NULL, equipo_id = ?,
                        estado_plan = CASE WHEN ? THEN 'BORRADOR'::estado_plan ELSE estado_plan END,
+                       plan_recordado_at = NULL, plan_cancelacion_avisada_at = NULL,
                        updated_at = now(), version = version + 1
                  WHERE id = ?
                 """, equipoId, planVuelveABorrador, id);

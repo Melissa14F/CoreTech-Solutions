@@ -90,3 +90,10 @@ a.bandeja__aviso:hover, button.bandeja__aviso:hover, .bandeja__aviso:focus-visib
 /* El prototipo oculta .aparecer (opacity 0) hasta que js/principal.js le agrega .esta-visible. La SPA no tiene ese
    script, así que sin esta regla todo lo que se copie con esa clase queda invisible: se muestra de una vez. */
 .aparecer { opacity: 1; transform: none; }
+
+/* P18 · Adjuntos de un paso (HU-03): un documento (PDF) en la galería de bocetos y los archivos elegidos en el formulario.
+   El prototipo no tenía un campo para subir archivos; usa los tokens del panel. */
+.boceto__documento { display: grid; place-items: center; aspect-ratio: 10 / 7; border-radius: 6px; background: var(--color-fondo-suave); color: var(--color-acento); }
+.archivos-elegidos { display: grid; gap: var(--espacio-2); margin: calc(-1 * var(--espacio-2)) 0 var(--espacio-4); padding: 0; list-style: none; }
+.archivos-elegidos li { display: flex; align-items: center; justify-content: space-between; gap: var(--espacio-3); padding: var(--espacio-2) var(--espacio-3); border: 1px solid var(--color-borde); border-radius: var(--radio-control); background: var(--color-fondo-suave); font-size: .875rem; overflow-wrap: anywhere; }
+.archivos-elegidos small { margin-left: var(--espacio-2); color: var(--color-texto-suave); }

@@ -75,7 +75,7 @@ export function porcentajeFase(fases: number): string {
   return `${String(valor).replace('.', ',')} %`;
 }
 
-export function validarPlan(fases: FaseEditable[], cliente = 'el cliente'): ErroresPlan {
+export function validarPlan(fases: FaseEditable[], cliente = 'el cliente', ambito = 'este servicio'): ErroresPlan {
   const porCampo: Record<string, string> = {};
   const generales: string[] = [];
   const vistos = new Set<string>();
@@ -90,7 +90,7 @@ export function validarPlan(fases: FaseEditable[], cliente = 'el cliente'): Erro
     } else if (nombre.length > 60) {
       porCampo[`${campo}.nombre`] = 'El nombre de la fase puede tener máximo 60 caracteres.';
     } else if (vistos.has(nombre.toLowerCase())) {
-      porCampo[`${campo}.nombre`] = 'Ya hay una fase con ese nombre en este servicio';
+      porCampo[`${campo}.nombre`] = `Ya hay una fase con ese nombre en ${ambito}`;
     } else {
       vistos.add(nombre.toLowerCase());
     }
@@ -124,3 +124,112 @@ export function validarPlan(fases: FaseEditable[], cliente = 'el cliente'): Erro
 }
 
 export const hayErrores = (e: ErroresPlan) => e.generales.length > 0 || Object.keys(e.porCampo).length > 0;
+
+// ------------------------------------------------------------------------------------------ Plan de un proyecto (HU-28, HU-29)
+
+export type EstadoPlanProyecto = 'BORRADOR' | 'ENVIADO' | 'AJUSTES_PEDIDOS' | 'APROBADO' | 'VENCIDO' | 'RECHAZADO';
+
+export const VALOR_MINIMO = 1_000_000;
+export const VALOR_MAXIMO = 200_000_000;
+
+/** Comentario de ajustes o motivo de rechazo que escribió el cliente. */
+export interface ComentarioCliente {
+  texto: string;
+  fecha: string;
+}
+
+/** GET /proyectos/{codigo}/plan: el plan como lo ven el equipo y el cliente. */
+export interface PlanProyecto {
+  codigo: string;
+  nombre: string;
+  estado: string;
+  estadoPlan: EstadoPlanProyecto;
+  cliente: string;
+  productOwner: string;
+  servicio: string;
+  citaCodigo: string | null;
+  citaFecha: string | null;
+  fechaInicio: string;
+  fechaEstimadaEntrega: string;
+  valorCotizado: number | null;
+  condicionesCotizacion: string | null;
+  creadoAt: string;
+  enviadoAt: string | null;
+  aprobadoAt: string | null;
+  plazoRespuesta: string | null;
+  venceEl: string | null;
+  fases: FaseApi[];
+  porcentajePorFase: number;
+  ajustesPedidos: ComentarioCliente | null;
+  rechazo: ComentarioCliente | null;
+  editable: boolean;
+}
+
+/** Lo que se escribe en la tarjeta de cotización; el valor son solo los dígitos ("7800000"). */
+export interface CotizacionEditable {
+  valor: string;
+  entrega: string;
+  condiciones: string;
+}
+
+export const cotizacionDe = (plan: PlanProyecto): CotizacionEditable => ({
+  valor: plan.valorCotizado === null ? '' : String(plan.valorCotizado),
+  entrega: plan.fechaEstimadaEntrega,
+  condiciones: plan.condicionesCotizacion ?? '',
+});
+
+/** Cuerpo de PUT .../plan y POST .../plan/enviar. */
+export const aEnvioPlan = (fases: FaseEditable[], c: CotizacionEditable) => ({
+  ...aEnvio(fases),
+  valorCotizado: c.valor === '' ? null : Number(c.valor),
+  condicionesCotizacion: c.condiciones.trim() || null,
+  fechaEstimadaEntrega: c.entrega || null,
+});
+
+/** Para saber si hay cambios sin guardar en el plan completo. */
+export const huellaPlan = (fases: FaseEditable[], c: CotizacionEditable): string => JSON.stringify(aEnvioPlan(fases, c));
+
+export const soloDigitos = (texto: string): string => texto.replace(/\D/g, '');
+
+/** "7800000" → "7.800.000". */
+export const conPuntos = (digitos: string): string => digitos.replace(/\B(?=(\d{3})+(?!\d))/g, '.');
+
+/** AAAA-MM-DD más {@code dias} días (sin depender de la zona horaria). */
+export function sumarDiasIso(iso: string, dias: number): string {
+  const [a, m, d] = iso.slice(0, 10).split('-').map(Number);
+  return new Date(Date.UTC(a ?? 1970, (m ?? 1) - 1, (d ?? 1) + dias)).toISOString().slice(0, 10);
+}
+
+const MESES = ['ene', 'feb', 'mar', 'abr', 'may', 'jun', 'jul', 'ago', 'sep', 'oct', 'nov', 'dic'];
+const DIAS = ['domingo', 'lunes', 'martes', 'miércoles', 'jueves', 'viernes', 'sábado'];
+
+/** "2026-11-17" → "martes 17 nov". */
+export function fechaConDia(iso: string): string {
+  const [a, m, d] = iso.slice(0, 10).split('-').map(Number);
+  const dia = new Date(Date.UTC(a ?? 1970, (m ?? 1) - 1, d ?? 1)).getUTCDay();
+  return `${DIAS[dia]} ${d} ${MESES[(m ?? 1) - 1]}`;
+}
+
+/** "Miguel Ángel Duarte" → "Miguel": los textos del prototipo llaman al cliente por su nombre. */
+export const nombrePila = (nombre: string): string => nombre.trim().split(/\s+/)[0] || 'el cliente';
+
+/**
+ * Cotización: valor entre $1.000.000 y $200.000.000, entrega al menos 2 semanas después del inicio y qué incluye (20 a 600).
+ * Mismos mensajes que el backend (ServicioPlan) y el prototipo (js/vistas/plan-de-trabajo.js).
+ */
+export function validarCotizacion(c: CotizacionEditable, inicio: string, fechaLegible: (iso: string) => string): Record<string, string> {
+  const errores: Record<string, string> = {};
+  if (c.valor === '') errores.valorCotizado = 'Escribe el valor del proyecto.';
+  else {
+    const valor = Number(c.valor);
+    if (valor < VALOR_MINIMO || valor > VALOR_MAXIMO) errores.valorCotizado = 'El valor debe estar entre $1.000.000 y $200.000.000.';
+  }
+  if (!c.entrega) errores.fechaEstimadaEntrega = 'Elige la fecha estimada de entrega.';
+  else if (c.entrega < sumarDiasIso(inicio, 14)) {
+    errores.fechaEstimadaEntrega = `La entrega debe ser al menos 2 semanas después del inicio (${fechaLegible(inicio)}).`;
+  } else if (c.entrega > '2028-12-31') errores.fechaEstimadaEntrega = 'Revisa el año de la fecha.';
+  const condiciones = c.condiciones.trim();
+  if (!condiciones) errores.condicionesCotizacion = 'Escribe qué incluye el valor.';
+  else if (condiciones.length < 20) errores.condicionesCotizacion = 'Escribe al menos 20 caracteres.';
+  return errores;
+}

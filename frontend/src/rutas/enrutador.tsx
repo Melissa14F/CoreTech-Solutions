@@ -10,6 +10,11 @@ import { PaginaRegistro } from '../paginas/acceso/PaginaRegistro';
 import { PaginaRestablecer } from '../paginas/acceso/PaginaRestablecer';
 import { PaginaContenido } from '../paginas/admin/PaginaContenido';
 import { PaginaPlantillas } from '../paginas/admin/PaginaPlantillas';
+import { PaginaPlanTrabajo } from '../paginas/proyectos/PaginaPlanTrabajo';
+import { PaginaDetalleProyecto } from '../paginas/proyectos/PaginaDetalleProyecto';
+import { PaginaPropuesta } from '../paginas/proyectos/PaginaPropuesta';
+import { PaginaRegistrarTrabajo } from '../paginas/proyectos/PaginaRegistrarTrabajo';
+import { PaginaMisProyectos } from '../paginas/proyectos/PaginaMisProyectos';
 import { PaginaServicios } from '../paginas/admin/PaginaServicios';
 import { PaginaCitasAdmin } from '../paginas/admin/PaginaCitasAdmin';
 import { PaginaCitasEquipo } from '../paginas/equipo/PaginaCitasEquipo';
@@ -65,6 +70,13 @@ const PAGINAS: Record<string, ReactElement> = {
   '/admin/citas': <PaginaCitasAdmin />,
   '/admin/proyectos': <PaginaProyectosAdmin />,
   '/admin/proyectos/nuevo': <PaginaCrearProyecto />,
+  '/admin/proyectos/:codigo/plan': <PaginaPlanTrabajo />,
+  '/equipo/proyectos/:codigo/plan': <PaginaPlanTrabajo />,
+  '/cliente/proyectos/:codigo/propuesta': <PaginaPropuesta />,
+  '/cliente/proyectos/:codigo': <PaginaDetalleProyecto />,
+  '/equipo/proyectos/:codigo/registrar': <PaginaRegistrarTrabajo />,
+  '/cliente/proyectos': <PaginaMisProyectos vista="cliente" />,
+  '/equipo/proyectos': <PaginaMisProyectos vista="equipo" />,
   '/equipo/citas': <PaginaCitasEquipo />,
   '/cliente/citas': <PaginaMisCitas />,
   '/cliente/agendar': <PaginaAgendar />,

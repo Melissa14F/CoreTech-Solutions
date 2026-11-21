@@ -304,7 +304,7 @@ class AdministracionTest {
             mvc.perform(get("/api/v1/roles/permisos").cookie(admin))
                     .andExpect(status().isOk())
                     .andExpect(jsonPath("$.roles[*].codigo").value(org.hamcrest.Matchers.contains("CLIENTE", "PRODUCT_OWNER", "ADMINISTRADOR")))
-                    .andExpect(jsonPath("$.permisos", hasSize(21)))
+                    .andExpect(jsonPath("$.permisos", hasSize(22)))
                     .andExpect(jsonPath("$.permisos[0].nombre").value("Agendar citas"))
                     .andExpect(jsonPath("$.permisos[0].regla").value("RN-01 a RN-03"))
                     .andExpect(jsonPath("$.permisos[0].grupo").value("Citas"))

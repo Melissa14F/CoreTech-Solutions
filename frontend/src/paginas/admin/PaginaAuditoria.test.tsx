@@ -82,7 +82,7 @@ describe('Consultar la auditoría (HU-22)', () => {
 
   it('nombra los campos y los valores como los lee el administrador', () => {
     expect(nombreCampo('email')).toBe('Correo');
-    expect(nombreCampo('fechaEstimadaEntrega')).toBe('Fecha estimada entrega');
+    expect(nombreCampo('fechaEstimadaEntrega')).toBe('Entrega estimada');
     expect(valorCambio(true)).toBe('Sí');
     expect(valorCambio(null)).toBe('—');
     expect(valorCambio(3)).toBe('3');

@@ -103,9 +103,17 @@ class ManejadorGlobalErrores {
         return responder(HttpStatus.UNPROCESSABLE_ENTITY, RespuestaError.de(ex.getParameterName(), "Este dato es obligatorio"));
     }
 
-    /** Un archivo más grande que el tope de spring.servlet.multipart (6 MB): mismo mensaje que el límite de 2 MB. */
+    /**
+     * Un archivo más grande que el tope de spring.servlet.multipart (6 MB): mismo mensaje que el límite de 2 MB.
+     * En los adjuntos de un paso el límite es de 5 MB por archivo.
+     */
     @ExceptionHandler(MaxUploadSizeExceededException.class)
-    ResponseEntity<RespuestaError> archivoDemasiadoGrande(MaxUploadSizeExceededException ex) {
+    ResponseEntity<RespuestaError> archivoDemasiadoGrande(MaxUploadSizeExceededException ex,
+            jakarta.servlet.http.HttpServletRequest peticion) {
+        if (peticion.getRequestURI().endsWith("/adjuntos")) {
+            return responder(HttpStatus.UNPROCESSABLE_ENTITY,
+                    RespuestaError.de("adjuntos", "Cada archivo pesa máximo 5 MB, y son máximo 5 archivos."));
+        }
         return responder(HttpStatus.UNPROCESSABLE_ENTITY,
                 RespuestaError.de("imagen", "La imagen pesa más de 2 MB. Comprímela o usa formato WebP."));
     }

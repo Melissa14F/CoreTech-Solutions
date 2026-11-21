@@ -305,8 +305,8 @@ export function EditorPlan({ fases, alCambiar, errores, cliente = 'el cliente', 
         icono="papelera"
         titulo={porQuitar?.paso ? '¿Quitar este paso?' : '¿Quitar esta fase?'}
         texto={porQuitar?.paso
-          ? `Se quitará el paso «${porQuitar.paso.titulo.trim() || 'sin título'}». Se aplica al guardar la plantilla.`
-          : `Se quitará la fase «${porQuitar?.fase.nombre.trim() || 'sin nombre'}» con sus ${porQuitar?.fase.pasos.length ?? 0} pasos. Se aplica al guardar la plantilla.`}
+          ? `Se quitará el paso «${porQuitar.paso.titulo.trim() || 'sin título'}». Se aplica al guardar ${prefijo === 'plantilla' ? 'la plantilla' : 'el plan'}.`
+          : `Se quitará la fase «${porQuitar?.fase.nombre.trim() || 'sin nombre'}» con sus ${porQuitar?.fase.pasos.length ?? 0} pasos. Se aplica al guardar ${prefijo === 'plantilla' ? 'la plantilla' : 'el plan'}.`}
         acciones={(
           <>
             <Boton variante="contorno" onClick={() => setPorQuitar(null)}>Cancelar</Boton>

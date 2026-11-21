@@ -63,7 +63,7 @@ public class ServicioPlantillas {
     public List<FasePlantilla> guardar(UUID servicioId, List<FasePlantilla> pedidas) {
         String nombreServicio = existe(servicioId);
         List<FasePlantilla> fases = normalizar(pedidas);
-        validar(fases);
+        validar(fases, "este servicio");
 
         List<FasePlantilla> antes = plantillas.leer(servicioId);
         plantillas.reemplazar(servicioId, sesion.usuario().id(), fases);
@@ -88,7 +88,7 @@ public class ServicioPlantillas {
     }
 
     /** Recorta los textos, descarta el orden que mande el cliente y deja los vacíos opcionales como nulos. */
-    private static List<FasePlantilla> normalizar(List<FasePlantilla> pedidas) {
+    static List<FasePlantilla> normalizar(List<FasePlantilla> pedidas) {
         List<FasePlantilla> fases = new ArrayList<>();
         if (pedidas == null) {
             return fases;
@@ -108,7 +108,8 @@ public class ServicioPlantillas {
         return fases;
     }
 
-    private static void validar(List<FasePlantilla> fases) {
+    /** ambito: "este servicio" (plantilla) o "el plan" (proyecto); solo cambia el mensaje de nombre repetido. */
+    static void validar(List<FasePlantilla> fases, String ambito) {
         var errores = new ValidacionException.Acumulador();
         if (fases.size() < MIN_FASES) {
             errores.agregar("fases", "El plan necesita al menos 2 fases");
@@ -129,7 +130,7 @@ public class ServicioPlantillas {
             } else if (fase.nombre().length() > 60) {
                 errores.agregar(campo + ".nombre", "El nombre de la fase puede tener máximo 60 caracteres.");
             } else if (vistos.putIfAbsent(fase.nombre().toLowerCase(), f) != null) {
-                errores.agregar(campo + ".nombre", "Ya hay una fase con ese nombre en este servicio");
+                errores.agregar(campo + ".nombre", "Ya hay una fase con ese nombre en " + ambito);
             }
             if (fase.queEs() != null && fase.queEs().length() > 140) {
                 errores.agregar(campo + ".queEs", "Escribe máximo 140 caracteres.");

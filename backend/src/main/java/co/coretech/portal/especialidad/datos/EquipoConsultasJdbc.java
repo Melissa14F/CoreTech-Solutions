@@ -67,6 +67,16 @@ class EquipoConsultasJdbc implements EquipoConsultas {
     }
 
     @Override
+    public List<Integrante> integrantes(UUID equipoId) {
+        return jdbc.query("""
+                SELECT d.nombre, i.rol::text
+                  FROM integrantes_equipo i JOIN desarrolladores d ON d.id = i.desarrollador_id
+                 WHERE i.equipo_id = ? AND i.rol <> 'PRODUCT_OWNER' AND d.activo
+                 ORDER BY i.desde, d.nombre
+                """, (r, n) -> new Integrante(r.getString(1), r.getString(2)), equipoId);
+    }
+
+    @Override
     public int cupoDisponible(UUID equipoId) {
         return activo(equipoId).map(e -> Math.max(0, e.maxProyectos() - e.proyectosActivos())).orElse(0);
     }

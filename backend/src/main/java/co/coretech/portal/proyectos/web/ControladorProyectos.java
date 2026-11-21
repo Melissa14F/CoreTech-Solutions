@@ -27,6 +27,7 @@ import co.coretech.portal.proyectos.aplicacion.ServicioProyectos.Creado;
 import co.coretech.portal.proyectos.aplicacion.ServicioProyectos.Edicion;
 import co.coretech.portal.proyectos.aplicacion.ServicioProyectos.Filtros;
 import co.coretech.portal.proyectos.aplicacion.ServicioProyectos.Listado;
+import co.coretech.portal.proyectos.aplicacion.ServicioProyectos.ProyectoPropio;
 import co.coretech.portal.proyectos.aplicacion.ServicioProyectos.ResultadoEdicion;
 import co.coretech.portal.proyectos.aplicacion.ServicioProyectos.VistaProyecto;
 import co.coretech.portal.proyectos.datos.ProyectosJdbc.Fila;
@@ -156,6 +157,13 @@ class ControladorProyectos {
     CreadoDto crear(@RequestBody SolicitudCrear cuerpo) {
         return CreadoDto.de(servicio.crear(new Creacion(cuerpo.citaId(), cuerpo.nombre(), cuerpo.alcance(), cuerpo.fechaInicio(),
                 cuerpo.fechaEstimadaEntrega(), cuerpo.equipoId())));
+    }
+
+    /** «Mis proyectos» del cliente y del Product Owner: cada uno ve solo los suyos (RN-10). El administrador usa la lista de arriba. */
+    @GetMapping("/propios")
+    @PreAuthorize("@permisos.tiene('proyectos.ver_propios')")
+    List<ProyectoPropio> propios() {
+        return servicio.propios();
     }
 
     /**

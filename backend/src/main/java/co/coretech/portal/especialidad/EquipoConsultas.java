@@ -46,6 +46,13 @@ public interface EquipoConsultas {
     record ProductOwner(UUID usuarioId, String nombre, String email) {
     }
 
+    /** Un integrante del equipo; {@code rol} es el nombre del enum de la base (FRONTEND, QA, UX_UI…). */
+    record Integrante(String nombre, String rol) {
+    }
+
+    /** Integrantes activos del equipo sin su Product Owner, por orden de ingreso (P18: el cliente ve quién trabaja en su proyecto). */
+    List<Integrante> integrantes(UUID equipoId);
+
     /** Datos de varios equipos (también inactivos: una cita vieja conserva el suyo), por id. */
     java.util.Map<UUID, Equipo> porIds(java.util.Collection<UUID> equipoIds);
 }

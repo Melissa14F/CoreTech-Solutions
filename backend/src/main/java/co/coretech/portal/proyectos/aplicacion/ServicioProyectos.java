@@ -212,6 +212,53 @@ public class ServicioProyectos {
         return new Creado(id, codigo, "BORRADOR", fases);
     }
 
+    // ------------------------------------------------------------------------------------------- Mis proyectos (HU-03, HU-04)
+
+    /**
+     * Un proyecto como lo ve su cliente o el Product Owner del equipo en «Mis proyectos». {@code porHacer} dice qué espera
+     * a quien mira (PREPARAR_PLAN, AJUSTAR_PLAN, REVISAR_PROPUESTA) o es nulo si no hay nada pendiente.
+     */
+    public record ProyectoPropio(String codigo, String nombre, String servicio, String estado, String estadoPlan, String cliente,
+            String productOwner, LocalDate fechaEstimadaEntrega, java.math.BigDecimal valorCotizado, java.math.BigDecimal avancePorcentaje,
+            int fases, Integer faseActualOrden, String faseActualNombre, LocalDate plazoRespuesta, LocalDate venceEl, String porHacer) {
+    }
+
+    /**
+     * Los proyectos de quien tiene la sesión: el cliente ve los suyos; el Product Owner, los de su equipo. El administrador
+     * tiene su propia lista (HU-17) y aquí recibe una lista vacía.
+     */
+    @Transactional(readOnly = true)
+    public List<ProyectoPropio> propios() {
+        var usuario = sesion.usuario();
+        boolean cliente = usuario.rol().equals("CLIENTE");
+        UUID equipoDelPo = cliente ? null : equipos.equipoDelProductOwner(usuario.id()).orElse(null);
+        if (!cliente && equipoDelPo == null) {
+            return List.of();
+        }
+        List<Fila> mios = proyectos.todos(LocalDate.now(reloj)).stream()
+                .filter(f -> cliente ? f.clienteId().equals(usuario.id()) : equipoDelPo.equals(f.equipoId()))
+                .toList();
+        Map<UUID, ContactoCorreo> clientes = usuarios.perfiles(mios.stream().map(Fila::clienteId).collect(java.util.stream.Collectors.toSet()));
+        Map<UUID, String> nombresServicio = servicios.nombres(mios.stream().map(Fila::servicioId).collect(java.util.stream.Collectors.toSet()));
+        Map<UUID, Equipo> deEquipos = equipos.porIds(mios.stream().map(Fila::equipoId).collect(java.util.stream.Collectors.toSet()));
+        List<ProyectoPropio> lista = new ArrayList<>();
+        for (Fila f : mios) {
+            ContactoCorreo c = clientes.get(f.clienteId());
+            Equipo e = deEquipos.get(f.equipoId());
+            String porHacer = !f.estado().equals("ACTIVO") ? null : switch (f.estadoPlan()) {
+                case "BORRADOR" -> cliente ? null : "PREPARAR_PLAN";
+                case "AJUSTES_PEDIDOS" -> cliente ? null : "AJUSTAR_PLAN";
+                case "ENVIADO" -> cliente ? "REVISAR_PROPUESTA" : null;
+                default -> null;
+            };
+            lista.add(new ProyectoPropio(f.codigo(), f.nombre(), nombresServicio.getOrDefault(f.servicioId(), ""), f.estado(),
+                    f.estadoPlan(), c == null ? "" : c.nombre(), e == null ? "" : e.productOwner(), f.fechaEntrega(),
+                    f.valorCotizado(), f.avance(), f.fases(), f.faseActualOrden(), f.faseActualNombre(), f.planPlazoRespuesta(),
+                    f.planVenceEl(), porHacer));
+        }
+        return lista;
+    }
+
     // ------------------------------------------------------------------------------------------- Lista (HU-17)
 
     @Transactional(readOnly = true)

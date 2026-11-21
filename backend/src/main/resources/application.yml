@@ -33,10 +33,10 @@ spring:
         size: 3                   # tareas programadas y reintentos de los correos directos comparten estos hilos
   servlet:
     multipart:
-      # Las imágenes de los servicios pesan máximo 2 MB (lo valida el servicio con su mensaje);
-      # este tope más alto solo corta envíos desproporcionados.
+      # Las imágenes de los servicios pesan máximo 2 MB y los adjuntos de un paso 5 MB (lo valida cada servicio con su
+      # mensaje); estos topes más altos solo cortan envíos desproporcionados. Un paso lleva hasta 5 adjuntos (HU-03).
       max-file-size: 6MB
-      max-request-size: 6MB
+      max-request-size: 30MB
 
 springdoc:
   swagger-ui:

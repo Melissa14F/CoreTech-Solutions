@@ -1,0 +1,27 @@
+/* ==========================================================================
+   Vista: Proyecto no encontrado (cliente/proyecto-no-encontrado.html)
+   Respuesta 404 cuando se pide un proyecto que no existe o que no es del
+   cliente (RN-10, CB-05). No revela si el proyecto existe.
+   Requiere: global.css y plantillas/panel.css
+   ========================================================================== */
+
+/* 1. Contenido centrado ==================================================== */
+.no-encontrado { display: grid; justify-items: center; max-width: 560px; margin: var(--espacio-12) auto 0; text-align: center; }
+.no-encontrado__codigo {
+  font-family: var(--fuente-titulos); font-size: clamp(5rem, 14vw, 8rem); font-weight: 800; line-height: 1; letter-spacing: -.05em;
+  background: linear-gradient(180deg, var(--color-acento) 10%, #c7d2fe); -webkit-background-clip: text; background-clip: text; color: transparent;
+}
+.no-encontrado__icono { width: 64px; height: 64px; display: grid; place-items: center; margin: calc(-1 * var(--espacio-6)) 0 var(--espacio-6); border: 6px solid var(--color-fondo-suave); border-radius: 50%; background: var(--color-fondo); color: var(--color-acento); box-shadow: var(--sombra-media); }
+.no-encontrado__titulo { margin: 0 0 var(--espacio-3); font-size: clamp(1.5rem, 3vw, 2rem); font-weight: 800; letter-spacing: -.03em; }
+.no-encontrado__texto { margin: 0 0 var(--espacio-8); font-size: 1.0625rem; }
+.no-encontrado__acciones { display: flex; justify-content: center; gap: var(--espacio-3); flex-wrap: wrap; }
+.no-encontrado__ayuda { margin: var(--espacio-10) 0 0; font-size: .875rem; }
+
+/* Modo resaltar títulos: el número 404 conserva un color legible */
+.modo-titulos .no-encontrado__codigo, .modo-contraste .no-encontrado__codigo { background: none; -webkit-text-fill-color: currentColor; color: var(--color-tinta); }
+
+/* 2. Diseño adaptable ====================================================== */
+@media (max-width: 640px) {
+  .no-encontrado { margin-top: var(--espacio-6); }
+  .no-encontrado__acciones .boton { width: 100%; }
+}
