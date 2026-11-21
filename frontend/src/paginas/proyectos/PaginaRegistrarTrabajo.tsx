@@ -1,33 +1,27 @@
-import { useEffect, useRef, useState, type ChangeEvent, type FormEvent } from 'react';
 import { Link, useParams } from 'react-router-dom';
 
-import { ErrorApi } from '../../api/cliente';
 import { Alerta } from '../../componentes/Alerta';
-import { Boton, EnlaceBoton } from '../../componentes/Boton';
-import { Campo } from '../../componentes/Campo';
+import { EnlaceBoton } from '../../componentes/Boton';
+import { CambiosDelPlanEquipo } from '../../componentes/CambiosDelPlanEquipo';
 import { Cargando } from '../../componentes/Cargando';
-import { Dialogo } from '../../componentes/Dialogo';
+import { ConversacionProyecto } from '../../componentes/ConversacionProyecto';
 import { Icono } from '../../componentes/Icono';
 import { LineaTiempoFases } from '../../componentes/LineaTiempoFases';
-import { useNotificar } from '../../componentes/Notificaciones';
 import { useTituloDocumento } from '../../componentes/useTituloDocumento';
-import { fechaLegible } from '../../proyectos/admin';
-import { nombrePila } from '../../proyectos/plan';
-import {
-  MAX_ADJUNTOS, MAX_NOTA, MAX_NOTA_CORRECCION, MIN_NOTA, pasoEnCurso, seguimiento, validarAdjuntos,
-  type DetalleProyecto, type FaseDetalle, type PasoDetalle,
-} from '../../seguimiento/api';
+import { fechaLegible, hoyColombia } from '../../proyectos/admin';
+import { fechaConDia, nombrePila } from '../../proyectos/plan';
+import { faseActual, garantiaCumplida, pasosPorHacer, type DetalleProyecto } from '../../seguimiento/api';
 import { useDetalleProyecto } from '../../seguimiento/useDetalleProyecto';
-import { separarErrores } from '../acceso/erroresFormulario';
 import { ProyectoNoEncontrado } from './ProyectoNoEncontrado';
+import { FormularioRegistro } from './registro/FormularioRegistro';
+import { CorreccionesAbiertas, EntregaFase } from './registro/PanelesDeFase';
 
 const iniciales = (nombre: string) => nombre.split(/\s+/).filter(Boolean).slice(0, 2).map((p) => p[0]?.toUpperCase()).join('');
-const kb = (bytes: number) => (bytes >= 1024 * 1024 ? `${(bytes / 1024 / 1024).toFixed(1).replace('.', ',')} MB` : `${Math.max(1, Math.round(bytes / 1024))} KB`);
 
 /**
- * Registrar trabajo del desarrollador (Product Owner) (HU-03; prototipo/desarrollador/registrar-avance-tienda-en-linea.html):
- * marca un paso de la fase actual como hecho con una nota sencilla para el cliente y, si quiere, sus bocetos. Lo publicado no
- * se edita ni se borra. Agregar correcciones y entregar la fase llegan en el paso de fases (HU-11 a HU-13).
+ * Registrar trabajo del desarrollador (Product Owner) (HU-03, HU-12, HU-13; prototipo:
+ * desarrollador/registrar-avance-tienda-en-linea.html): marca pasos de la fase actual como hechos, agrega y termina correcciones
+ * y entrega o cierra la fase. Lo publicado no se edita ni se borra. Con el proyecto en garantía solo se registran correcciones.
  */
 export function PaginaRegistrarTrabajo() {
   const { codigo = '' } = useParams();
@@ -49,9 +43,19 @@ export function PaginaRegistrarTrabajo() {
 
 function Registro({ d, recargar }: { d: DetalleProyecto; recargar: () => Promise<void> }) {
   const pila = nombrePila(d.cliente);
-  const fase = d.fases.find((f) => f.estado !== 'APROBADA');
-  const habilitado = d.puedeRegistrar && d.estadoPlan === 'APROBADO' && fase?.estado === 'EN_CURSO';
-  const pendientes = habilitado ? fase.pasos.filter((p) => p.estado !== 'HECHO') : [];
+  const hoy = hoyColombia();
+  const fase = faseActual(d);
+  const enGarantia = d.estado === 'EN_GARANTIA';
+  const vencida = garantiaCumplida(d, hoy);
+  const enRevision = fase?.estado === 'EN_REVISION';
+  const habilitado = d.puedeRegistrar && d.estadoPlan === 'APROBADO' && !enRevision;
+
+  // Lo que se puede registrar ahora: pasos de la fase en curso y correcciones en fases en curso o aprobadas (HU-12)
+  const pendientes = habilitado && fase?.estado === 'EN_CURSO' && d.estado === 'ACTIVO' ? pasosPorHacer(fase) : [];
+  const corregibles = d.fases.filter((f) => ['EN_CURSO', 'APROBADA', 'EN_CORRECCION'].includes(f.estado));
+  const puedePaso = pendientes.length > 0;
+  const puedeCorreccion = habilitado && corregibles.length > 0 && !vencida;
+  const hayFormulario = puedePaso || puedeCorreccion;
 
   return (
     <>
@@ -75,9 +79,14 @@ function Registro({ d, recargar }: { d: DetalleProyecto; recargar: () => Promise
                 </span>
               )}
             </div>
-            {habilitado && fase && pendientes.length > 0
-              ? <Formulario d={d} fase={fase} pendientes={pendientes} alPublicar={recargar} />
-              : <SinRegistro d={d} fase={fase} habilitado={habilitado} />}
+
+            <AvisoDeEstado d={d} vencida={vencida} enRevision={enRevision} habilitado={habilitado} hayFormulario={hayFormulario} />
+            {habilitado && <CorreccionesAbiertas detalle={d} alTerminar={recargar} />}
+            {hayFormulario && (
+              <FormularioRegistro detalle={d} fase={fase?.estado === 'EN_CURSO' ? fase : undefined} pendientes={pendientes} corregibles={corregibles}
+                                  puedePaso={puedePaso} puedeCorreccion={puedeCorreccion} alPublicar={recargar} />
+            )}
+            {habilitado && d.estado === 'ACTIVO' && fase?.estado === 'EN_CURSO' && <EntregaFase detalle={d} fase={fase} alEntregar={recargar} />}
           </section>
 
           <section aria-labelledby="titulo-linea">
@@ -122,15 +131,22 @@ function Registro({ d, recargar }: { d: DetalleProyecto; recargar: () => Promise
             )}
           </section>
 
+          <section className="tarjeta aparecer" style={{ ['--retraso' as string]: '45ms' }} aria-labelledby="titulo-mensajes">
+            <ConversacionProyecto codigo={d.codigo} interlocutor={nombrePila(d.cliente)} />
+          </section>
+
+          <CambiosDelPlanEquipo detalle={d} />
+
           <section className="tarjeta aparecer" style={{ ['--retraso' as string]: '60ms' }} aria-labelledby="titulo-datos">
             <h2 className="tarjeta__titulo" id="titulo-datos">Estado del proyecto</h2>
             <dl className="lista-datos">
               <div className="lista-datos__fila"><dt className="lista-datos__dato">Avance del proyecto</dt><dd className="lista-datos__valor">{Math.round(d.avancePorcentaje * 10) / 10} %</dd></div>
               <div className="lista-datos__fila">
                 <dt className="lista-datos__dato">Fase actual</dt>
-                <dd className="lista-datos__valor">{fase ? `${fase.nombre} · ${fase.pasosHechos} de ${fase.pasosTotal} pasos` : '—'}</dd>
+                <dd className="lista-datos__valor">{fase ? `${fase.nombre} · ${fase.pasosHechos} de ${fase.pasosTotal} pasos` : enGarantia ? 'Todas aprobadas' : '—'}</dd>
               </div>
               <div className="lista-datos__fila"><dt className="lista-datos__dato">Entrega estimada</dt><dd className="lista-datos__valor">{fechaLegible(d.fechaEstimadaEntrega)}</dd></div>
+              {d.garantiaHasta && <div className="lista-datos__fila"><dt className="lista-datos__dato">Garantía hasta</dt><dd className="lista-datos__valor">{fechaLegible(d.garantiaHasta)}</dd></div>}
               <div className="lista-datos__fila"><dt className="lista-datos__dato">Pasos hechos</dt><dd className="lista-datos__valor">{d.pasosHechos}</dd></div>
             </dl>
           </section>
@@ -146,7 +162,10 @@ function Registro({ d, recargar }: { d: DetalleProyecto; recargar: () => Promise
             <ul className="reglas-avance__lista">
               <li>Marca cada paso cuando esté hecho y deja una nota sencilla: {pila} no es programador(a).</li>
               <li>Puedes agregar hasta 5 bocetos o documentos (PNG, JPG, SVG o PDF) para que {pila} los vea.</li>
-              <li>Solo el desarrollador (Product Owner) del equipo registra el trabajo del proyecto.</li>
+              <li>Entregas o cierras la fase cuando todos sus pasos están hechos y no tiene correcciones abiertas. Las fases que aprueba {pila} tienen 3 días hábiles para revisarse.</li>
+              <li>Si hay que arreglar algo, agrega una corrección. Si la fase ya estaba aprobada, deja de sumar su porcentaje hasta que la termines; tú sigues avanzando.</li>
+              <li>Cada fase que aprueba {pila} incluye 2 rondas de ajustes. Lo que pida de más, o algo nuevo, se cotiza antes de hacerlo.</li>
+              <li>Con el proyecto en garantía (30 días) solo se registran correcciones.</li>
               <li>Lo publicado no se edita ni se borra: queda en la auditoría.</li>
             </ul>
           </section>
@@ -156,170 +175,30 @@ function Registro({ d, recargar }: { d: DetalleProyecto; recargar: () => Promise
   );
 }
 
-/** Por qué no hay formulario: el proyecto no admite registros, la fase espera al cliente o no queda nada por hacer. */
-function SinRegistro({ d, fase, habilitado }: { d: DetalleProyecto; fase: FaseDetalle | undefined; habilitado: boolean }) {
+/** Por qué el formulario no está, o qué hay que saber antes de usarlo: espera al cliente, garantía, proyecto cerrado o sin plan. */
+function AvisoDeEstado({ d, vencida, enRevision, habilitado, hayFormulario }:
+  { d: DetalleProyecto; vencida: boolean; enRevision: boolean; habilitado: boolean; hayFormulario: boolean }) {
   const pila = nombrePila(d.cliente);
-  if (!d.puedeRegistrar || d.estado !== 'ACTIVO') {
+  const fase = faseActual(d);
+  if (!d.puedeRegistrar || (d.estado !== 'ACTIVO' && d.estado !== 'EN_GARANTIA')) {
     return <Alerta tipo="info">El proyecto no admite registros en su estado actual.</Alerta>;
   }
   if (d.estadoPlan !== 'APROBADO') {
     return <Alerta tipo="info">El trabajo empieza cuando {pila} apruebe el plan y la cotización.</Alerta>;
   }
-  if (!fase) return <Alerta tipo="exito">Todas las fases del proyecto están aprobadas.</Alerta>;
-  if (fase.estado === 'EN_REVISION') {
-    return <Alerta tipo="advertencia" titulo={`Fase terminada · esperando la aprobación de ${pila}`}>Cuando responda, aquí podrás seguir con la siguiente fase.</Alerta>;
+  if (enRevision && fase) {
+    return (
+      <Alerta tipo="advertencia" titulo={`Fase terminada · esperando la aprobación de ${pila}`}>
+        Tiene {fase.plazoAprobacion ? <>hasta el {fechaConDia(fase.plazoAprobacion)}</> : '3 días hábiles'} para responder; si no lo hace, se le recuerda y la fase se da por aprobada.
+        Si pide ajustes, aparecerán como un paso de ajuste en esta fase.
+      </Alerta>
+    );
   }
-  return habilitado
-    ? <Alerta tipo="info">No quedan pasos por marcar en {fase.nombre}.</Alerta>
-    : <Alerta tipo="info">La fase {fase.nombre} todavía no está en curso.</Alerta>;
-}
-
-interface PropiedadesFormulario {
-  d: DetalleProyecto;
-  fase: FaseDetalle;
-  pendientes: PasoDetalle[];
-  alPublicar: () => Promise<void>;
-}
-
-function Formulario({ d, fase, pendientes, alPublicar }: PropiedadesFormulario) {
-  const notificar = useNotificar();
-  const pila = nombrePila(d.cliente);
-  const enCurso = pasoEnCurso(fase);
-  const [pasoId, setPasoId] = useState(enCurso ?? pendientes[0]?.id ?? '');
-  const [nota, setNota] = useState('');
-  const [archivos, setArchivos] = useState<File[]>([]);
-  const [errores, setErrores] = useState<Record<string, string>>({});
-  const [general, setGeneral] = useState<string | null>(null);
-  const [confirmar, setConfirmar] = useState(false);
-  const [enviando, setEnviando] = useState(false);
-  const entrada = useRef<HTMLInputElement>(null);
-
-  // Después de publicar, el paso elegido ya no está pendiente: se pasa al siguiente.
-  useEffect(() => {
-    if (!pendientes.some((p) => p.id === pasoId)) setPasoId(enCurso ?? pendientes[0]?.id ?? '');
-  }, [pendientes, pasoId, enCurso]);
-
-  const paso = pendientes.find((p) => p.id === pasoId);
-  const maximo = paso && paso.tipo !== 'PASO' ? MAX_NOTA_CORRECCION : MAX_NOTA;
-  const faltan = pendientes.length - 1;
-
-  function revisar(evento: FormEvent) {
-    evento.preventDefault();
-    const nuevos: Record<string, string> = {};
-    if (!paso) nuevos.paso = 'Elige el paso que terminaste.';
-    const texto = nota.trim();
-    if (!texto) nuevos.nota = `Escribe la nota para que ${pila} sepa qué cambió.`;
-    else if (texto.length < MIN_NOTA) nuevos.nota = `Escribe al menos ${MIN_NOTA} caracteres.`;
-    else if (texto.length > maximo) nuevos.nota = `Escribe máximo ${maximo} caracteres.`;
-    const archivosMal = validarAdjuntos(archivos);
-    if (archivosMal) nuevos.adjuntos = archivosMal;
-    setErrores(nuevos);
-    setGeneral(null);
-    if (Object.keys(nuevos).length === 0) setConfirmar(true);
+  if (d.estado === 'EN_GARANTIA' && d.garantiaHasta) {
+    return vencida
+      ? <Alerta tipo="advertencia" titulo="La garantía ya terminó">Solo se terminan las correcciones abiertas; no se registran correcciones nuevas. Cuando termines la última, el proyecto queda finalizado.</Alerta>
+      : <Alerta tipo="exito" titulo="Proyecto en garantía">Todas las fases están aprobadas. Hasta el {fechaConDia(d.garantiaHasta)} solo se registran correcciones, sin costo para {pila}.</Alerta>;
   }
-
-  function elegirArchivos(evento: ChangeEvent<HTMLInputElement>) {
-    const elegidos = Array.from(evento.target.files ?? []);
-    setArchivos((actuales) => [...actuales, ...elegidos]);
-    evento.target.value = '';
-    setErrores((e) => { const { adjuntos: _quitado, ...resto } = e; return resto; });
-  }
-
-  async function publicar() {
-    if (!paso) return;
-    setEnviando(true);
-    let mensaje = `✓ Paso hecho. ${pila} verá tu nota.`;
-    try {
-      await seguimiento.marcarHecho(paso.id, nota.trim());
-    } catch (e) {
-      const { porCampo, general: otro } = separarErrores(e);
-      setConfirmar(false);
-      setEnviando(false);
-      setErrores(porCampo);
-      setGeneral(otro ?? null);
-      // 409: otra pestaña ya lo registró o la fase cambió; se muestra lo último
-      if (e instanceof ErrorApi && e.estado === 409) void alPublicar();
-      return;
-    }
-    if (archivos.length > 0) {
-      try {
-        await seguimiento.adjuntar(paso.id, archivos);
-      } catch (e) {
-        const problema = separarErrores(e);
-        mensaje = `El paso quedó publicado, pero no se subieron los archivos: ${problema.porCampo.adjuntos ?? problema.general ?? 'intenta de nuevo más tarde'}`;
-      }
-    }
-    setConfirmar(false);
-    setNota('');
-    setArchivos([]);
-    setErrores({});
-    setGeneral(null);
-    setEnviando(false);
-    notificar(mensaje);
-    await alPublicar();
-  }
-
-  return (
-    <>
-      <form onSubmit={revisar} noValidate>
-        {general && <Alerta tipo="error">{general}</Alerta>}
-        <Campo etiqueta="Paso terminado" error={errores.paso ?? errores.estado}>
-          <select className="select" value={pasoId} onChange={(e) => { setPasoId(e.target.value); setErrores({}); }}>
-            {pendientes.map((p) => (
-              <option key={p.id} value={p.id}>
-                {p.titulo}{p.tipo !== 'PASO' ? ' (corrección)' : ''}{p.id === enCurso ? ' (en curso)' : ''}
-              </option>
-            ))}
-          </select>
-        </Campo>
-
-        <p className="impacto-proyecto" aria-live="polite">
-          {faltan > 0
-            ? <>Después de este paso {faltan === 1 ? <>quedará <strong>1</strong> paso</> : <>quedarán <strong>{faltan}</strong> pasos</>} por hacer en {fase.nombre}.</>
-            : <>Es el último paso por hacer en <strong>{fase.nombre}</strong>.</>}
-        </p>
-
-        <Campo etiqueta={`Nota para ${pila}: ¿qué se hizo?`} error={errores.nota} contador={{ actual: nota.length, maximo }}
-               ayuda="Escríbelo como se lo dirías en persona, sin términos técnicos.">
-          <textarea className="campo__control--area" value={nota} maxLength={maximo} onChange={(e) => setNota(e.target.value)}
-                    placeholder="Ejemplo: ya recibes cada pedido en tu panel y tu cliente recibe un correo con el resumen de su compra." />
-        </Campo>
-
-        <Campo etiqueta="Bocetos o documentos" opcional error={errores.adjuntos}
-               ayuda={`PNG, JPG, SVG o PDF · hasta ${MAX_ADJUNTOS} archivos de 5 MB.`}>
-          <input ref={entrada} type="file" multiple accept=".png,.jpg,.jpeg,.svg,.pdf,image/png,image/jpeg,image/svg+xml,application/pdf"
-                 onChange={elegirArchivos} />
-        </Campo>
-        {archivos.length > 0 && (
-          <ul className="archivos-elegidos" aria-label="Archivos elegidos">
-            {archivos.map((a, i) => (
-              <li key={`${a.name}-${i}`}>
-                <span>{a.name} <small>{kb(a.size)}</small></span>
-                <button type="button" className="boton-icono boton-icono--pequeno" aria-label={`Quitar ${a.name}`}
-                        onClick={() => setArchivos((actuales) => actuales.filter((_, j) => j !== i))}>
-                  <Icono nombre="cerrar" />
-                </button>
-              </li>
-            ))}
-          </ul>
-        )}
-
-        <div className="formulario-avance__pie">
-          <p className="formulario-avance__nota"><Icono nombre="candado" />Lo que publiques no se puede editar ni borrar.</p>
-          <Boton type="submit" variante="acento" icono="enviar">Marcar como hecho</Boton>
-        </div>
-      </form>
-
-      <Dialogo
-        abierto={confirmar} alCerrar={() => !enviando && setConfirmar(false)} icono="enviar" titulo="¿Marcar el paso como hecho?"
-        texto={`«${paso?.titulo ?? ''}» quedará con ✓ y ${pila} verá tu nota. No se podrá editar ni borrar.`}
-        acciones={(
-          <>
-            <Boton variante="contorno" disabled={enviando} onClick={() => setConfirmar(false)}>Revisar de nuevo</Boton>
-            <Boton variante="acento" cargando={enviando} onClick={() => void publicar()}>Sí, publicar</Boton>
-          </>
-        )}
-      />
-    </>
-  );
+  if (habilitado && !hayFormulario && !fase) return <Alerta tipo="exito">Todas las fases del proyecto están aprobadas.</Alerta>;
+  return null;
 }

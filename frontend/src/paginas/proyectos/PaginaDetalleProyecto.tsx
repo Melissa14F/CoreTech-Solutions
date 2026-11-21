@@ -2,16 +2,21 @@ import { Link, useParams } from 'react-router-dom';
 
 import { Alerta } from '../../componentes/Alerta';
 import { EnlaceBoton } from '../../componentes/Boton';
+import { CambiosDelPlanCliente } from '../../componentes/CambiosDelPlanCliente';
 import { Cargando } from '../../componentes/Cargando';
+import { ConversacionProyecto } from '../../componentes/ConversacionProyecto';
 import { Icono } from '../../componentes/Icono';
 import { Insignia, type VarianteInsignia } from '../../componentes/Insignia';
+import { ReunionesDelProyecto } from '../../componentes/ReunionesDelProyecto';
 import { diaCorto, LineaTiempoFases } from '../../componentes/LineaTiempoFases';
+import { useNotificar } from '../../componentes/Notificaciones';
 import { useTituloDocumento } from '../../componentes/useTituloDocumento';
 import { diasEntre, fechaLegible, hoyColombia } from '../../proyectos/admin';
-import { nombrePila } from '../../proyectos/plan';
-import type { DetalleProyecto } from '../../seguimiento/api';
+import { fechaConDia, nombrePila } from '../../proyectos/plan';
+import { faseActual, pasosPorHacer, type DetalleProyecto } from '../../seguimiento/api';
 import { useDetalleProyecto } from '../../seguimiento/useDetalleProyecto';
 import { ProyectoNoEncontrado } from './ProyectoNoEncontrado';
+import { RevisionFase } from './RevisionFase';
 
 const iniciales = (nombre: string) => nombre.split(/\s+/).filter(Boolean).slice(0, 2).map((p) => p[0]?.toUpperCase()).join('');
 const dias = (n: number) => `${n} ${n === 1 ? 'día' : 'días'}`;
@@ -21,6 +26,9 @@ function insigniaDe(d: DetalleProyecto): { variante: VarianteInsignia; texto: st
   if (d.estado === 'ACTIVO') {
     if (d.estadoPlan === 'ENVIADO') return { variante: 'plan', texto: 'Plan por aprobar' };
     if (d.estadoPlan !== 'APROBADO') return { variante: 'borrador', texto: 'Plan en preparación' };
+    const actual = faseActual(d);
+    if (actual?.estado === 'EN_REVISION') return { variante: 'pendiente', texto: 'Fase por aprobar' };
+    if (actual && pasosPorHacer(actual).some((p) => p.tipo === 'AJUSTE')) return { variante: 'pendiente', texto: 'En ajustes' };
     return { variante: 'activo', texto: 'En desarrollo' };
   }
   const otros: Record<string, { variante: VarianteInsignia; texto: string }> = {
@@ -39,7 +47,7 @@ function insigniaDe(d: DetalleProyecto): { variante: VarianteInsignia; texto: st
  */
 export function PaginaDetalleProyecto() {
   const { codigo = '' } = useParams();
-  const { detalle, error } = useDetalleProyecto(codigo);
+  const { detalle, error, recargar } = useDetalleProyecto(codigo);
   useTituloDocumento(detalle ? detalle.nombre : 'Proyecto');
 
   if (error?.estado === 404) return <ProyectoNoEncontrado vista="cliente" />;
@@ -52,17 +60,18 @@ export function PaginaDetalleProyecto() {
     );
   }
   if (!detalle) return <Cargando texto="Cargando tu proyecto…" />;
-  return <Detalle d={detalle} />;
+  return <Detalle d={detalle} recargar={recargar} />;
 }
 
-function Detalle({ d }: { d: DetalleProyecto }) {
+function Detalle({ d, recargar }: { d: DetalleProyecto; recargar: () => Promise<void> }) {
+  const notificar = useNotificar();
   const hoy = hoyColombia();
   const insignia = insigniaDe(d);
   const pila = nombrePila(d.productOwner);
   const sinFases = d.fases.length === 0;
   const faltan = diasEntre(hoy, d.fechaEstimadaEntrega);
   const hace = diasEntre(d.fechaInicio, hoy);
-  const actual = d.fases.find((f) => f.estado !== 'APROBADA');
+  const actual = faseActual(d);
   const comenzo = d.estadoPlan === 'APROBADO';
   const avance = Math.round(d.avancePorcentaje * 10) / 10;
 
@@ -80,6 +89,15 @@ function Detalle({ d }: { d: DetalleProyecto }) {
         </div>
       </div>
 
+      {d.estado === 'EN_GARANTIA' && d.garantiaHasta && (
+        <Alerta tipo="exito" titulo="¡Tu proyecto está terminado!">
+          Tiene garantía hasta el {fechaConDia(d.garantiaHasta)} ({fechaLegible(d.garantiaHasta)}): si algo falla, {pila} y su equipo lo corrigen sin costo.
+          {d.fases.some((f) => f.pasos.some((p) => p.tipo === 'CORRECCION' && p.estado !== 'HECHO')) && ' Ya están trabajando en una corrección, que ves abierta en su fase.'}
+        </Alerta>
+      )}
+      {d.estado === 'FINALIZADO' && (
+        <Alerta tipo="info" titulo="Tu proyecto terminó su garantía">Gracias por confiar en nosotros. Puedes seguir viendo aquí todo lo que se hizo.</Alerta>
+      )}
       {d.estadoPlan === 'ENVIADO' && d.estado === 'ACTIVO' && (
         <Alerta tipo="info" titulo="Tu propuesta espera tu respuesta">
           Revisa el plan de trabajo y la cotización que te envió {pila}. <Link className="enlace" to={`/cliente/proyectos/${d.codigo}/propuesta`}>Ver la propuesta</Link>.
@@ -131,7 +149,11 @@ function Detalle({ d }: { d: DetalleProyecto }) {
         <section className="proyecto-detalle__principal" aria-labelledby="titulo-linea">
           {sinFases
             ? <p className="proyecto-detalle__nota">{pila} está preparando el plan de trabajo. Cuando te lo envíe, verás aquí sus fases.</p>
-            : <LineaTiempoFases fases={d.fases} mirada="cliente" cliente={d.cliente} productOwner={d.productOwner} />}
+            : <LineaTiempoFases fases={d.fases} mirada="cliente" cliente={d.cliente} productOwner={d.productOwner}
+                revision={(fase) => (
+                  <RevisionFase detalle={d} fase={fase} alResponder={async (mensaje) => { notificar(mensaje); await recargar(); }} />
+                )} />}
+          <CambiosDelPlanCliente codigo={d.codigo} alAplicar={recargar} />
         </section>
 
         <aside className="proyecto-detalle__lateral">
@@ -158,10 +180,12 @@ function Detalle({ d }: { d: DetalleProyecto }) {
                 </ul>
               </>
             )}
+            <ConversacionProyecto codigo={d.codigo} interlocutor={pila} />
             {d.productOwnerCorreo && (
-              <p className="conversacion__correo">Puedes escribir a <a className="enlace" href={`mailto:${d.productOwnerCorreo}`}>{d.productOwnerCorreo}</a></p>
+              <p className="conversacion__correo">También puedes escribir a <a className="enlace" href={`mailto:${d.productOwnerCorreo}`}>{d.productOwnerCorreo}</a></p>
             )}
           </section>
+          <ReunionesDelProyecto codigo={d.codigo} interlocutor={pila} />
           <section className="tarjeta aparecer" style={{ ['--retraso' as string]: '180ms' }} aria-labelledby="titulo-datos">
             <h2 className="tarjeta__titulo" id="titulo-datos">Datos del proyecto</h2>
             <dl className="lista-datos">

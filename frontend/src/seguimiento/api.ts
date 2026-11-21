@@ -1,5 +1,13 @@
-import { api } from '../api/cliente';
+import { api, ErrorApi } from '../api/cliente';
 import type { EstadoPlanProyecto } from '../proyectos/plan';
+
+/**
+ * El servidor respondió 409 sin un campo concreto: lo que se veía ya cambió (otra pestaña se adelantó, HU-03 «Datos
+ * desactualizados»; o la fase ya no estaba en ese estado). La pantalla muestra el mensaje y vuelve a pedir el proyecto.
+ */
+export function esConflictoDeEstado(e: unknown): e is ErrorApi {
+  return e instanceof ErrorApi && e.estado === 409 && Object.keys(e.porCampo).length === 0;
+}
 
 /** Lo que el cliente, el equipo y el administrador ven de un proyecto (GET /proyectos/{codigo}, HU-04). */
 export type EstadoFase = 'PENDIENTE' | 'EN_CURSO' | 'EN_REVISION' | 'APROBADA' | 'EN_CORRECCION';
@@ -28,6 +36,14 @@ export interface PasoDetalle {
   adjuntos: Adjunto[];
 }
 
+/** Algo que pidió el cliente al revisar una fase: un ajuste o algo nuevo por cotizar (HU-11). */
+export interface CambioPedido {
+  tipo: 'AJUSTE' | 'ALCANCE';
+  descripcion: string;
+  estado: 'ABIERTO' | 'POR_COTIZAR' | 'COTIZADO' | 'ACEPTADO' | 'RECHAZADO' | 'RESUELTO';
+  creadoAt: string;
+}
+
 export interface FaseDetalle {
   id: string;
   orden: number;
@@ -42,9 +58,12 @@ export interface FaseDetalle {
   aprobadaAt: string | null;
   rondasAjusteUsadas: number;
   aprobacionAutomatica: boolean;
+  /** Último día para que el cliente responda; solo con la fase EN_REVISION (RN-17). */
+  plazoAprobacion: string | null;
   pasosHechos: number;
   pasosTotal: number;
   pasos: PasoDetalle[];
+  cambios: CambioPedido[];
 }
 
 export interface Persona {
@@ -62,6 +81,8 @@ export interface DetalleProyecto {
   avancePorcentaje: number;
   fechaInicio: string;
   fechaEstimadaEntrega: string;
+  /** Fin de la garantía de 30 días (RN-31); nulo hasta que se completa la última fase. */
+  garantiaHasta: string | null;
   faseActual: { orden: number; nombre: string } | null;
   pasosHechos: number;
   ultimoPaso: { fecha: string; titulo: string } | null;
@@ -89,10 +110,54 @@ export const MIN_NOTA = 20;
 export const MAX_NOTA = 400;
 export const MAX_NOTA_CORRECCION = 500;
 
+/** Resultado de entregar o cerrar una fase (HU-13). */
+export interface FaseEntregada {
+  estado: 'EN_REVISION' | 'APROBADA';
+  plazoAprobacion: string | null;
+  avancePorcentaje: number;
+  estadoProyecto: DetalleProyecto['estado'];
+  garantiaHasta: string | null;
+}
+
+export interface FaseAprobada {
+  estado: 'APROBADA';
+  avancePorcentaje: number;
+  estadoProyecto: DetalleProyecto['estado'];
+  garantiaHasta: string | null;
+}
+
+export interface CambioCreado {
+  solicitudId: string;
+  tipo: 'AJUSTE' | 'ALCANCE';
+  estado: string;
+  rondasUsadas: number;
+  estadoFase: EstadoFase;
+  pasoId: string | null;
+}
+
+export interface CorreccionRegistrada {
+  pasoId: string;
+  estadoFase: EstadoFase;
+  avancePorcentaje: number;
+}
+
+/** De dónde sale una corrección (HU-12): los tres textos que valida el servidor. */
+export const ORIGENES_CORRECCION = ['Lo pidió el cliente', 'La encontramos al construir', 'La encontramos en pruebas'] as const;
+export const MAX_RONDAS_AJUSTE = 2;
+export const MIN_CAMBIO = 20;
+export const MAX_CAMBIO = 800;
+export const MAX_EXPLICACION = 400;
+
 export const seguimiento = {
   detalle: (codigo: string) => api.obtener<DetalleProyecto>(`/proyectos/${codigo}`),
   marcarHecho: (pasoId: string, nota: string) =>
     api.modificar<PasoRegistrado>(`/pasos/${pasoId}`, { estado: 'HECHO', nota }),
+  entregarFase: (faseId: string) => api.crear<FaseEntregada>(`/fases/${faseId}/entregar`),
+  aprobarFase: (faseId: string) => api.crear<FaseAprobada>(`/fases/${faseId}/aprobar`),
+  pedirCambio: (faseId: string, tipo: 'AJUSTE' | 'ALCANCE', descripcion: string) =>
+    api.crear<CambioCreado>(`/fases/${faseId}/solicitudes-cambio`, { tipo, descripcion }),
+  registrarCorreccion: (faseId: string, origen: string, titulo: string, explicacion: string) =>
+    api.crear<CorreccionRegistrada>(`/fases/${faseId}/pasos`, { origen, titulo, explicacion }),
   adjuntar: (pasoId: string, archivos: File[]) => {
     const datos = new FormData();
     archivos.forEach((a) => datos.append('archivos', a));
@@ -118,6 +183,22 @@ export function pasoEnCurso(fase: FaseDetalle): string | null {
   return fase.pasos.find((p) => p.estado !== 'HECHO')?.id ?? null;
 }
 
-/** La fase en la que se trabaja: la primera que todavía no está aprobada. */
+/** La fase en la que se trabaja: la primera que está en curso o esperando al cliente. Una anterior en corrección no lo es. */
 export const faseActual = (d: DetalleProyecto): FaseDetalle | undefined =>
-  d.fases.find((f) => f.estado !== 'APROBADA');
+  d.fases.find((f) => f.estado === 'EN_CURSO' || f.estado === 'EN_REVISION');
+
+const abierto = (p: PasoDetalle) => p.estado !== 'HECHO';
+
+/** Correcciones sin terminar de una fase (RN-16): bloquean entregarla. */
+export const correccionesAbiertas = (fase: FaseDetalle): PasoDetalle[] => fase.pasos.filter((p) => p.tipo === 'CORRECCION' && abierto(p));
+
+/** Pasos por hacer de una fase: del plan, ajustes y correcciones. */
+export const pasosPorHacer = (fase: FaseDetalle): PasoDetalle[] => fase.pasos.filter(abierto);
+
+/** La fase que sigue a otra en el plan, si hay. */
+export const faseSiguiente = (d: DetalleProyecto, fase: FaseDetalle): FaseDetalle | undefined =>
+  d.fases.find((f) => f.orden > fase.orden);
+
+/** El proyecto ya cumplió sus 30 días de garantía (RN-31): solo se terminan las correcciones abiertas. */
+export const garantiaCumplida = (d: DetalleProyecto, hoy: string): boolean =>
+  d.estado === 'EN_GARANTIA' && d.garantiaHasta !== null && hoy >= d.garantiaHasta;

@@ -97,3 +97,54 @@ a.bandeja__aviso:hover, button.bandeja__aviso:hover, .bandeja__aviso:focus-visib
 .archivos-elegidos { display: grid; gap: var(--espacio-2); margin: calc(-1 * var(--espacio-2)) 0 var(--espacio-4); padding: 0; list-style: none; }
 .archivos-elegidos li { display: flex; align-items: center; justify-content: space-between; gap: var(--espacio-3); padding: var(--espacio-2) var(--espacio-3); border: 1px solid var(--color-borde); border-radius: var(--radio-control); background: var(--color-fondo-suave); font-size: .875rem; overflow-wrap: anywhere; }
 .archivos-elegidos small { margin-left: var(--espacio-2); color: var(--color-texto-suave); }
+
+/* P20 · Mensajes y reuniones de seguimiento (HU-14, HU-15, HU-16).
+   El prototipo trae el hilo (.conversacion, .mensaje) y la tabla de solicitudes; esto cubre lo que no tenía: el tema y la
+   marca «Editado» de un mensaje, la lista de reuniones del cliente con su resumen y los textos del resumen en los diálogos. */
+.mensaje__tema { margin: 0 0 var(--espacio-1); font-size: .75rem; font-weight: 600; color: var(--color-acento); }
+.mensaje__editado { color: var(--color-texto-suave); }
+.mensaje__editar { margin-top: var(--espacio-1); font-size: .75rem; }
+.lista-reuniones { display: grid; gap: var(--espacio-3); margin: 0 0 var(--espacio-4); padding: 0; list-style: none; }
+.reunion { display: grid; gap: var(--espacio-1); padding: var(--espacio-3); border: 1px solid var(--color-borde); border-radius: 10px; background: var(--color-fondo-suave); }
+.reunion__cabecera { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: var(--espacio-2); margin: 0; }
+.reunion__detalle { display: flex; align-items: center; gap: var(--espacio-2); margin: 0; font-size: .8125rem; color: var(--color-texto-suave); }
+.reunion__detalle .icono { width: 14px; height: 14px; flex: none; }
+.reunion__resumen { display: grid; gap: var(--espacio-1); margin-top: var(--espacio-2); padding: var(--espacio-3); border-radius: 8px; background: var(--color-fondo); font-size: .8125rem; }
+.reunion__resumen p { margin: 0; }
+.reunion__resumen-titulo { font-weight: 700; color: var(--color-tinta); }
+.solicitar-reunion .tarjeta__titulo + .alerta { margin-bottom: var(--espacio-3); }
+/* Cuando el hilo es lo único de su tarjeta (Registrar trabajo), no lleva la línea que lo separa de lo de arriba */
+.tarjeta > .conversacion:first-child { margin-top: 0; padding-top: 0; border-top: 0; }
+/* Día y hora de una opción de reunión: uno junto al otro cuando hay espacio, uno bajo el otro en pantallas angostas */
+.opcion-horario { display: grid; gap: var(--espacio-2); grid-template-columns: 1fr; }
+@media (min-width: 560px) { .opcion-horario { grid-template-columns: 3fr 2fr; } }
+
+/* P21 · Cambios de un plan aprobado (HU-30): el cambio, la comparación del plan antes y después y las tarjetas de cada rol.
+   El prototipo trae la tarjeta del cambio; esto cubre la comparación y los detalles que no tenía. */
+.cambio-plan { display: grid; gap: var(--espacio-2); padding: var(--espacio-4); border: 1px solid var(--color-borde); border-radius: 12px; background: var(--color-fondo); }
+.cambio-plan__cabecera { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: var(--espacio-2); }
+.cambio-plan__titulo { margin: 0; font-size: 1rem; }
+.cambio-plan__que, .cambio-plan__nota { margin: 0; font-size: .875rem; color: var(--color-texto); }
+.cambio-plan__pasos { margin: 0; padding-left: var(--espacio-5); font-size: .875rem; color: var(--color-texto-suave); }
+.cambio-plan__datos { display: flex; flex-wrap: wrap; gap: var(--espacio-2) var(--espacio-4); margin: 0; padding: 0; list-style: none; font-size: .8125rem; color: var(--color-texto-suave); }
+.lista-cambios { display: grid; gap: var(--espacio-4); margin: 0 0 var(--espacio-4); padding: 0; list-style: none; }
+.cambio-plan__acciones { display: flex; flex-wrap: wrap; gap: var(--espacio-3); margin-top: var(--espacio-2); }
+.comparacion-plan { display: grid; gap: var(--espacio-3); margin-top: var(--espacio-2); }
+@media (min-width: 640px) { .comparacion-plan { grid-template-columns: 1fr 1fr; } }
+.comparacion-plan__columna { padding: var(--espacio-3); border-radius: 10px; background: var(--color-fondo-suave); }
+.comparacion-plan__columna--despues { background: var(--color-acento-suave); }
+.comparacion-plan__titulo { margin: 0; font-size: .75rem; letter-spacing: .04em; text-transform: uppercase; color: var(--color-texto-suave); }
+.comparacion-plan__resumen { margin: var(--espacio-1) 0 var(--espacio-2); font-weight: 700; }
+.comparacion-plan__fases { display: grid; gap: var(--espacio-1); margin: 0 0 var(--espacio-3); padding-left: var(--espacio-5); font-size: .875rem; }
+.comparacion-plan__fases li { padding-left: var(--espacio-1); }
+.comparacion-plan__fases li > span { display: inline-flex; justify-content: space-between; gap: var(--espacio-3); width: calc(100% - var(--espacio-1)); }
+.comparacion-plan__fases .es-nueva { font-weight: 700; color: var(--color-exito); }
+.comparacion-plan__fases .se-quita { text-decoration: line-through; color: var(--color-texto-suave); }
+.comparacion-plan .cambia { font-weight: 700; color: var(--color-acento); }
+
+/* P22 · Dashboard (HU-23): lo que el prototipo no traía, el bloque «De un vistazo» con los conteos que pide la historia. */
+.de-un-vistazo { display: grid; gap: var(--espacio-3); grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); margin: 0; padding: 0; list-style: none; }
+.de-un-vistazo__enlace { display: flex; align-items: center; gap: var(--espacio-3); padding: var(--espacio-3); border: 1px solid var(--color-borde); border-radius: 10px; color: var(--color-texto); text-decoration: none; font-size: .875rem; }
+.de-un-vistazo__enlace:hover { border-color: var(--color-acento); }
+.de-un-vistazo__valor { min-width: 2ch; font-size: 1.5rem; line-height: 1; color: var(--color-tinta); }
+.de-un-vistazo__item--con-datos .de-un-vistazo__valor { color: var(--color-acento); }

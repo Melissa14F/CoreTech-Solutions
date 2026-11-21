@@ -58,6 +58,11 @@ public class ServicioSeguimiento {
     static final String NO_ES_DE_TU_EQUIPO = "Este proyecto no es de tu equipo";
     static final String PASO_YA_REGISTRADO = "Este paso ya está registrado o no es de la fase actual";
     static final String ESTADO_NO_ADMITE = "El proyecto no admite registros en su estado actual";
+    /**
+     * HU-03, «Datos desactualizados»: al leerlo la acción era posible, pero otra pestaña se adelantó y el UPDATE condicionado no
+     * cambió ninguna fila. Si el estado ya la impedía al leerlo, se usa el mensaje propio de cada caso.
+     */
+    static final String DATOS_DESACTUALIZADOS = "El proyecto cambió, recarga para ver lo último";
     static final String CARPETA = "adjuntos";
     static final int MAX_ADJUNTOS = 5;
     static final int MAX_BYTES = 5 * 1024 * 1024;
@@ -80,10 +85,18 @@ public class ServicioSeguimiento {
             String nota, Instant hechoAt, List<AdjuntoVista> adjuntos) {
     }
 
-    /** {@code porcentaje} es lo que vale la fase en el proyecto (RN-08: 100 dividido entre el número de fases). */
+    /** Algo que pidió el cliente al revisar la fase: un ajuste o algo nuevo por cotizar (HU-11). */
+    public record CambioVista(String tipo, String descripcion, String estado, Instant creadoAt) {
+    }
+
+    /**
+     * {@code porcentaje} es lo que vale la fase en el proyecto (RN-08: 100 dividido entre el número de fases).
+     * {@code plazoAprobacion} es el último día para que el cliente responda, solo con la fase EN_REVISION (RN-17).
+     */
     public record FaseVista(UUID id, int orden, String nombre, String queEs, boolean apruebaCliente, String estado,
             BigDecimal porcentaje, Instant iniciadaAt, Instant entregadaAt, Instant aprobadaAt, int rondasAjusteUsadas,
-            boolean aprobacionAutomatica, int pasosHechos, int pasosTotal, List<PasoVista> pasos) {
+            boolean aprobacionAutomatica, LocalDate plazoAprobacion, int pasosHechos, int pasosTotal, List<PasoVista> pasos,
+            List<CambioVista> cambios) {
     }
 
     public record Persona(String nombre, String rol) {
@@ -101,7 +114,7 @@ public class ServicioSeguimiento {
      */
     public record DetalleProyecto(String codigo, String nombre, String servicio, String citaCodigo, String estado,
             String estadoPlan, BigDecimal avancePorcentaje, LocalDate fechaInicio, LocalDate fechaEstimadaEntrega,
-            FaseActual faseActual, int pasosHechos, UltimoPaso ultimoPaso, String cliente, String clienteCorreo,
+            LocalDate garantiaHasta, FaseActual faseActual, int pasosHechos, UltimoPaso ultimoPaso, String cliente, String clienteCorreo,
             String productOwner, String productOwnerCorreo, List<Persona> equipo, boolean puedeRegistrar, List<FaseVista> fases) {
     }
 
@@ -110,6 +123,7 @@ public class ServicioSeguimiento {
     }
 
     private final SeguimientoJdbc datos;
+    private final ServicioFases fases;
     private final ProyectosParaSeguimiento proyectos;
     private final EquipoConsultas equipos;
     private final DirectorioUsuarios usuarios;
@@ -119,10 +133,11 @@ public class ServicioSeguimiento {
     private final ApplicationEventPublisher eventos;
     private final Clock reloj;
 
-    public ServicioSeguimiento(SeguimientoJdbc datos, ProyectosParaSeguimiento proyectos, EquipoConsultas equipos,
+    public ServicioSeguimiento(SeguimientoJdbc datos, ServicioFases fases, ProyectosParaSeguimiento proyectos, EquipoConsultas equipos,
             DirectorioUsuarios usuarios, AlmacenArchivos almacen, RegistroAuditoria auditoria, SesionActual sesion,
             ApplicationEventPublisher eventos, Clock reloj) {
         this.datos = datos;
+        this.fases = fases;
         this.proyectos = proyectos;
         this.equipos = equipos;
         this.usuarios = usuarios;
@@ -151,7 +166,7 @@ public class ServicioSeguimiento {
             exigirCliente(p, usuario, "consultar");
         }
         boolean sinPlanVisible = !equipo && !usuario.tienePermiso("proyectos.ver_todos") && p.estadoPlan().equals("BORRADOR");
-        return vista(p, usuario, equipo && p.estado().equals("ACTIVO"), sinPlanVisible);
+        return vista(p, usuario, equipo && List.of("ACTIVO", "EN_GARANTIA").contains(p.estado()), sinPlanVisible);
     }
 
     // ------------------------------------------------------------------------------------------- Registrar (HU-03)
@@ -179,7 +194,7 @@ public class ServicioSeguimiento {
         exigirRegistrable(p, paso);
         Instant ahora = Instant.now(reloj);
         if (!datos.marcarHecho(paso.pasoId(), texto, usuario.id(), ahora)) {
-            throw new ConflictoException(PASO_YA_REGISTRADO);
+            throw new ConflictoException(DATOS_DESACTUALIZADOS);
         }
 
         Map<String, CambioDeValor> cambios = new LinkedHashMap<>();
@@ -187,6 +202,7 @@ public class ServicioSeguimiento {
         cambios.put("estado", CambioDeValor.de(paso.estado(), "HECHO"));
         cambios.put("nota", CambioDeValor.nuevo(texto));
         auditoria.registrar(CategoriaAuditoria.AVANCES, "Marcó un paso como hecho", "proyecto", p.codigo(), cambios);
+        fases.alTerminarPaso(p, paso);
 
         eventos.publishEvent(AvisoSolicitado.para(p.clienteId(), "PASO_HECHO", recortar("Hay un avance en " + p.nombre(), 80),
                 recortar(quienPublica(p) + " terminó «" + paso.titulo() + "». Entra a ver su nota.", 255),
@@ -309,6 +325,9 @@ public class ServicioSeguimiento {
      */
     private static void exigirRegistrable(Proyecto p, PasoContexto paso) {
         boolean esPaso = paso.tipo().equals("PASO");
+        if (p.estado().equals("EN_GARANTIA") && esPaso) {
+            throw new ConflictoException("En garantía solo se registran correcciones");
+        }
         boolean estadoAdmite = p.estado().equals("ACTIVO") || (p.estado().equals("EN_GARANTIA") && !esPaso);
         if (!estadoAdmite || !p.estadoPlan().equals("APROBADO")) {
             throw new ConflictoException(ESTADO_NO_ADMITE);
@@ -377,6 +396,9 @@ public class ServicioSeguimiento {
         BigDecimal porFase = fases.isEmpty() ? BigDecimal.ZERO
                 : BigDecimal.valueOf(100).divide(BigDecimal.valueOf(fases.size()), 1, RoundingMode.HALF_UP);
 
+        Map<UUID, List<CambioVista>> cambiosPorFase = ocultarPlan ? Map.of() : datos.cambiosPedidos(p.id()).stream()
+                .collect(Collectors.groupingBy(SeguimientoJdbc.CambioPedido::faseId, LinkedHashMap::new,
+                        Collectors.mapping(c -> new CambioVista(c.tipo(), c.descripcion(), c.estado(), c.creadoAt()), Collectors.toList())));
         List<FaseVista> vistaFases = new ArrayList<>();
         FaseActual actual = null;
         for (FaseFila f : fases) {
@@ -385,9 +407,11 @@ public class ServicioSeguimiento {
                     s.explicacion(), s.origen(), s.estado(), s.nota(), s.hechoAt(), adjuntos.getOrDefault(s.id(), List.of()))).toList();
             int hechos = (int) deLaFase.stream().filter(s -> s.estado().equals("HECHO")).count();
             vistaFases.add(new FaseVista(f.id(), f.orden(), f.nombre(), f.queEs(), f.apruebaCliente(), f.estado(), porFase,
-                    f.iniciadaAt(), f.entregadaAt(), f.aprobadaAt(), f.rondasAjusteUsadas(), f.aprobacionAutomatica(), hechos,
-                    deLaFase.size(), vistaPasos));
-            if (actual == null && !f.estado().equals("APROBADA")) {
+                    f.iniciadaAt(), f.entregadaAt(), f.aprobadaAt(), f.rondasAjusteUsadas(), f.aprobacionAutomatica(),
+                    f.estado().equals("EN_REVISION") ? f.plazoAprobacion() : null, hechos, deLaFase.size(), vistaPasos,
+                    cambiosPorFase.getOrDefault(f.id(), List.of())));
+            // La fase en la que se trabaja: la que está en curso o esperando al cliente. Una anterior en corrección no lo es.
+            if (actual == null && List.of("EN_CURSO", "EN_REVISION").contains(f.estado())) {
                 actual = new FaseActual(f.orden(), f.nombre());
             }
         }
@@ -400,7 +424,7 @@ public class ServicioSeguimiento {
         List<Persona> equipo = p.equipoId() == null ? List.of() : equipos.integrantes(p.equipoId()).stream()
                 .map(i -> new Persona(i.nombre(), rolVisible(i))).toList();
         return new DetalleProyecto(p.codigo(), p.nombre(), p.servicio(), p.citaCodigo(), p.estado(), p.estadoPlan(), p.avance(),
-                p.fechaInicio(), p.fechaEntrega(), actual, totalHechos,
+                p.fechaInicio(), p.fechaEntrega(), p.garantiaHasta(), actual, totalHechos,
                 ultimo == null ? null : new UltimoPaso(ultimo.hechoAt(), ultimo.titulo()),
                 cliente == null ? "" : cliente.nombre(), cliente == null ? "" : cliente.email(),
                 po.map(ProductOwner::nombre).orElse(""), po.map(ProductOwner::email).orElse(""), equipo, puedeRegistrar,

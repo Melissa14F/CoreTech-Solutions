@@ -5,6 +5,7 @@ import { iniciales } from '../../administracion/formato';
 import { ErrorApi } from '../../api/cliente';
 import { Alerta } from '../../componentes/Alerta';
 import { Boton } from '../../componentes/Boton';
+import { CambiosPorAutorizar } from '../../componentes/CambiosPorAutorizar';
 import { Campo } from '../../componentes/Campo';
 import { Cargando } from '../../componentes/Cargando';
 import { Dialogo } from '../../componentes/Dialogo';
@@ -146,6 +147,8 @@ export function PaginaProyectosAdmin() {
         </div>
         <Link className="boton boton--acento" to="/admin/proyectos/nuevo"><Icono nombre="mas" />Crear proyecto</Link>
       </div>
+
+      <CambiosPorAutorizar />
 
       {error && !lista ? (
         <>

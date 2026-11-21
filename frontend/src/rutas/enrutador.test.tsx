@@ -25,6 +25,7 @@ const TITULO_EN_PANTALLA: Record<string, string> = {
   '/completar-registro': 'Completa tu registro',
   '/legal': 'Tus datos y las reglas del servicio',
   '/cliente/agendar': 'Agendar una cita',
+  '/admin': 'Hola, Patricia',
   '/admin/proyectos/:codigo/plan': 'Plan de trabajo Enviado',
   '/equipo/proyectos/:codigo/plan': 'Plan de trabajo Enviado',
   '/cliente/proyectos/:codigo/propuesta': 'Inventario del salón Propuesta por aprobar',

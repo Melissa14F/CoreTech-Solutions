@@ -37,52 +37,11 @@ import jakarta.servlet.http.Cookie;
 @AutoConfigureMockMvc
 @ActiveProfiles("test")
 @Import(ContenedoresPrueba.class)
-class SeguimientoTest extends BaseProyectosPrueba {
+class SeguimientoTest extends BaseSeguimientoPrueba {
 
-    static final String NOTA = "Quedó listo y ya puedes verlo funcionando en tu cuenta de pruebas.";
     static final byte[] PNG = { (byte) 0x89, 'P', 'N', 'G', 0x0D, 0x0A, 0x1A, 0x0A, 0, 0, 0, 0 };
     static final byte[] PDF = "%PDF-1.4\n1 0 obj\n<<>>\nendobj\n".getBytes(StandardCharsets.US_ASCII);
     static final String SVG = "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"10\" height=\"10\"><rect width=\"10\" height=\"10\"/></svg>";
-
-    /** Un proyecto con el plan aprobado: la fase 1 en curso (la aprueba el cliente) y sus dos pasos pendientes. */
-    record Aprobado(String admin, Proyecto proyecto, Cookie po, Cookie cliente) {
-    }
-
-    private Aprobado aprobado() throws Exception {
-        String admin = crearUsuario("ADMINISTRADOR");
-        Proyecto p = proyecto(admin);
-        Cookie po = sesionDe(p.equipo().email());
-        Cookie cliente = sesionDe(p.clienteEmail());
-        mvc.perform(json(post("/api/v1/proyectos/" + p.codigo() + "/plan/enviar").cookie(po), planJson())).andExpect(status().isOk());
-        mvc.perform(json(post("/api/v1/proyectos/" + p.codigo() + "/plan/aprobar").cookie(cliente), "{\"aceptaPlanYCotizacion\":true}"))
-                .andExpect(status().isOk());
-        return new Aprobado(admin, p, po, cliente);
-    }
-
-    /** Tres fases de dos pasos; solo la primera la aprueba el cliente. */
-    private static String planJson() {
-        StringBuilder s = new StringBuilder("{\"fases\":[");
-        for (int f = 1; f <= 3; f++) {
-            s.append(f > 1 ? "," : "").append("{\"nombre\":\"Fase ").append(f).append("\",\"queEs\":\"Qué es\",\"apruebaCliente\":")
-                    .append(f == 1).append(",\"pasos\":[{\"titulo\":\"Paso 1 de la fase ").append(f)
-                    .append("\",\"explicacion\":\"Explicación\"},{\"titulo\":\"Paso 2 de la fase ").append(f).append("\"}]}");
-        }
-        LocalDate entrega = hoy().plusDays(60);
-        return s.append("],\"valorCotizado\":7800000,\"fechaEstimadaEntrega\":\"").append(entrega)
-                .append("\",\"condicionesCotizacion\":\"Incluye 2 rondas de ajustes en cada fase y 30 días de garantía.\"}").toString();
-    }
-
-    /** Los pasos del proyecto en orden: fase 1 paso 1, fase 1 paso 2, fase 2 paso 1… */
-    private List<UUID> pasos(String codigo) {
-        return jdbc.queryForList("""
-                SELECT s.id FROM pasos s JOIN proyecto_fases f ON f.id = s.proyecto_fase_id JOIN proyectos p ON p.id = f.proyecto_id
-                 WHERE p.codigo = ? ORDER BY f.orden, s.orden
-                """, UUID.class, codigo);
-    }
-
-    private static String hecho(String nota) {
-        return "{\"estado\":\"HECHO\",\"nota\":\"" + nota + "\"}";
-    }
 
     private MockMultipartHttpServletRequestBuilder subir(UUID paso, Cookie sesion, MockMultipartFile... archivos) {
         MockMultipartHttpServletRequestBuilder peticion = multipart("/api/v1/pasos/" + paso + "/adjuntos");
@@ -94,10 +53,6 @@ class SeguimientoTest extends BaseProyectosPrueba {
 
     private static MockMultipartFile archivo(String nombre, byte[] contenido) {
         return new MockMultipartFile("archivos", nombre, "application/octet-stream", contenido);
-    }
-
-    private int auditoriaDe(String codigo, String accion) {
-        return jdbc.queryForObject("SELECT count(*) FROM auditoria WHERE entidad_id = ? AND accion = ?", Integer.class, codigo, accion);
     }
 
     // ------------------------------------------------------------------------------------------ HU-03 y HU-04: camino feliz

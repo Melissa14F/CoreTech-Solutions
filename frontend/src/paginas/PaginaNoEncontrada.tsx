@@ -8,6 +8,7 @@ export function PaginaNoEncontrada() {
   return (
     <main id="contenido" className="contenedor pagina-no-encontrada" tabIndex={-1}>
       <EstadoVacio
+        encabezado="h1"
         titulo="No encontramos esta página"
         texto="Puede que el enlace esté mal escrito o que la página ya no exista."
         accion={<EnlaceBoton a="/" variante="contorno" tamano="pequeno">Ir al inicio</EnlaceBoton>}

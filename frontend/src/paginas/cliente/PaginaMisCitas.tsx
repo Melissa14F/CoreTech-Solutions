@@ -91,7 +91,7 @@ function TarjetaCita({ cita, alCancelar }: { cita: CitaPropia; alCancelar: () =>
           </a>
         )}
         {cita.puedeCancelar && (
-          <Boton variante="contorno" tamano="pequeno" icono="cerrar" onClick={alCancelar} aria-label={`Cancelar la cita ${cita.codigo}`}>
+          <Boton variante="contorno" tamano="pequeno" icono="cerrar" onClick={alCancelar} aria-label={`Cancelar cita ${cita.codigo}`}>
             Cancelar cita
           </Boton>
         )}

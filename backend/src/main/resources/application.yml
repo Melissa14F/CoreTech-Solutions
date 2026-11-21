@@ -153,3 +153,29 @@ coretech:
     recuperacion-por-15-minutos: 100000
     restablecer-por-15-minutos: 100000
     registro-por-hora: 100000
+
+---
+# Pruebas de punta a punta (Playwright, prototipo/frontend/e2e). Se activa JUNTO con dev: --spring.profiles.active=dev,e2e
+# Usa una base propia (coretech_e2e) que el script de las pruebas borra y vuelve a crear en cada corrida, con los datos
+# demo de dev, y otro puerto para no chocar con la API de desarrollo.
+spring:
+  config:
+    activate:
+      on-profile: e2e
+  datasource:
+    url: jdbc:postgresql://localhost:5432/coretech_e2e
+
+server:
+  port: 8090
+
+coretech:
+  url-portal: http://localhost:5174
+  origenes-permitidos: http://localhost:5174
+  archivos:
+    directorio: ${java.io.tmpdir}/coretech-e2e-archivos
+  # Las pruebas registran e inician sesión muchas veces desde la misma IP
+  limites:
+    login-por-minuto: 100000
+    recuperacion-por-15-minutos: 100000
+    restablecer-por-15-minutos: 100000
+    registro-por-hora: 100000

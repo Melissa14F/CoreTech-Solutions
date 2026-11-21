@@ -25,7 +25,9 @@ import { PaginaRolesPermisos } from '../paginas/admin/PaginaRolesPermisos';
 import { PaginaAuditoria } from '../paginas/admin/PaginaAuditoria';
 import { PaginaCorreoSistema } from '../paginas/admin/PaginaCorreoSistema';
 import { PaginaCrearProyecto } from '../paginas/admin/PaginaCrearProyecto';
+import { PaginaDashboard } from '../paginas/admin/PaginaDashboard';
 import { PaginaProyectosAdmin } from '../paginas/admin/PaginaProyectosAdmin';
+import { PaginaSolicitudes } from '../paginas/admin/PaginaSolicitudes';
 import { PaginaAgendar } from '../paginas/cliente/PaginaAgendar';
 import { PaginaMisCitas } from '../paginas/cliente/PaginaMisCitas';
 import { PaginaInicio } from '../paginas/PaginaInicio';
@@ -68,7 +70,9 @@ const PAGINAS: Record<string, ReactElement> = {
   '/admin/auditoria': <PaginaAuditoria />,
   '/admin/correo': <PaginaCorreoSistema />,
   '/admin/citas': <PaginaCitasAdmin />,
+  '/admin': <PaginaDashboard />,
   '/admin/proyectos': <PaginaProyectosAdmin />,
+  '/admin/solicitudes': <PaginaSolicitudes />,
   '/admin/proyectos/nuevo': <PaginaCrearProyecto />,
   '/admin/proyectos/:codigo/plan': <PaginaPlanTrabajo />,
   '/equipo/proyectos/:codigo/plan': <PaginaPlanTrabajo />,

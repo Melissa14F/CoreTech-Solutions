@@ -29,7 +29,7 @@ describe('Citas y reuniones del equipo (HU-10)', () => {
     await screen.findByText('C-0061');
 
     const titulos = screen.getAllByRole('heading', { level: 2 }).map((h) => h.textContent);
-    expect(titulos).toEqual(['Por confirmar2', 'Confirmadas', 'Cuestionario pendiente1', 'Historial']);
+    expect(titulos).toEqual(['Por confirmar2', 'Confirmadas', 'Cuestionario pendiente1', 'Historial', 'Reuniones de seguimiento']);
 
     // Por confirmar: de la más cercana a la más lejana, con ambas horas si el cliente vive fuera
     const codigos = screen.getAllByText(/^C-00\d\d$/).map((e) => e.textContent);

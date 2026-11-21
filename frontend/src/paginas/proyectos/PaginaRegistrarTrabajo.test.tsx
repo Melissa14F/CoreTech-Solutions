@@ -85,7 +85,18 @@ describe('Registrar trabajo del Product Owner (HU-03)', () => {
     expect(await screen.findByText('✓ Paso hecho. Laura verá tu nota.')).toBeInTheDocument();
   });
 
-  it('si otra pestaña ya lo registró (409) muestra el mensaje y recarga lo último', async () => {
+  it('si otra pestaña se adelantó (409) muestra «El proyecto cambió, recarga para ver lo último» y recarga lo último', async () => {
+    const f = abrir({
+      'PATCH /pasos/s-3': { estado: 409, cuerpo: errores({ mensaje: 'El proyecto cambió, recarga para ver lo último' }) },
+    });
+    await userEvent.type(await screen.findByLabelText('Nota para Laura: ¿qué se hizo?'), NOTA);
+    await userEvent.click(screen.getByRole('button', { name: 'Marcar como hecho' }));
+    await userEvent.click(await screen.findByRole('button', { name: 'Sí, publicar' }));
+    expect(await screen.findByText('El proyecto cambió, recarga para ver lo último')).toBeInTheDocument();
+    await waitFor(() => expect(f.mock.calls.filter(([url]) => url === '/api/v1/proyectos/P-0031')).toHaveLength(2));
+  });
+
+  it('si el paso ya estaba registrado al abrir la pantalla (409) muestra ese mensaje', async () => {
     abrir({
       'PATCH /pasos/s-3': { estado: 409, cuerpo: errores({ mensaje: 'Este paso ya está registrado o no es de la fase actual' }) },
     });

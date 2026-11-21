@@ -9,14 +9,14 @@ export const paso = (id: string, orden: number, titulo: string, extra: Partial<P
 export const FASE_1: FaseDetalle = {
   id: 'f-1', orden: 1, nombre: 'Toma de requerimientos', queEs: 'Entendemos tu negocio.', apruebaCliente: true, estado: 'APROBADA',
   porcentaje: 50, iniciadaAt: '2026-09-29T15:00:00Z', entregadaAt: '2026-10-05T15:00:00Z', aprobadaAt: '2026-10-06T15:00:00Z',
-  rondasAjusteUsadas: 1, aprobacionAutomatica: false, pasosHechos: 1, pasosTotal: 1,
+  rondasAjusteUsadas: 1, aprobacionAutomatica: false, plazoAprobacion: null, cambios: [], pasosHechos: 1, pasosTotal: 1,
   pasos: [paso('s-1', 1, 'Reunión inicial', { estado: 'HECHO', nota: 'Hablamos de los accesorios que vendes.', hechoAt: '2026-09-30T15:00:00Z' })],
 };
 
 export const FASE_2: FaseDetalle = {
   id: 'f-2', orden: 2, nombre: 'Desarrollo', queEs: 'Construimos tu proyecto.', apruebaCliente: false, estado: 'EN_CURSO',
   porcentaje: 50, iniciadaAt: '2026-10-24T15:00:00Z', entregadaAt: null, aprobadaAt: null, rondasAjusteUsadas: 0,
-  aprobacionAutomatica: false, pasosHechos: 1, pasosTotal: 3,
+  aprobacionAutomatica: false, plazoAprobacion: null, cambios: [], pasosHechos: 1, pasosTotal: 3,
   pasos: [
     paso('s-2', 1, 'Catálogo de productos', {
       estado: 'HECHO', nota: 'El catálogo ya muestra los productos con sus filtros.', hechoAt: '2026-11-03T15:00:00Z',
@@ -34,7 +34,7 @@ export const DETALLE: DetalleProyecto = {
   cliente: 'Laura Gómez', clienteCorreo: 'laura.gomez@correo.com', productOwner: 'Andrés Pérez',
   productOwnerCorreo: 'andres.perez@coretechsolutions.co',
   equipo: [{ nombre: 'Valeria Rincón', rol: 'Diseño de pantallas' }, { nombre: 'Camilo Suárez', rol: 'Pruebas' }],
-  puedeRegistrar: false, fases: [FASE_1, FASE_2],
+  garantiaHasta: null, puedeRegistrar: false, fases: [FASE_1, FASE_2],
 };
 
 /** El mismo proyecto visto por el Product Owner del equipo. */

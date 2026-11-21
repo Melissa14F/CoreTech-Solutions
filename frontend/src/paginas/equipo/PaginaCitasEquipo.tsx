@@ -13,6 +13,7 @@ import { Campo } from '../../componentes/Campo';
 import { Cargando } from '../../componentes/Cargando';
 import { Dialogo } from '../../componentes/Dialogo';
 import { EstadoVacio } from '../../componentes/EstadoVacio';
+import { GestionSolicitudes } from '../../componentes/GestionSolicitudes';
 import { Icono } from '../../componentes/Icono';
 import { Insignia, type VarianteInsignia } from '../../componentes/Insignia';
 import { useNotificar } from '../../componentes/Notificaciones';
@@ -136,6 +137,12 @@ export function PaginaCitasEquipo() {
           </section>
         ))
       )}
+
+      <section className="grupo-agenda" aria-labelledby="titulo-reuniones-seguimiento">
+        <h2 className="grupo-agenda__titulo" id="titulo-reuniones-seguimiento">Reuniones de seguimiento</h2>
+        <p className="grupo-agenda__vacio">Las que piden los clientes de tus proyectos. Programa una de sus horas, recházala con un motivo o, después de la reunión, registra su resumen.</p>
+        <GestionSolicitudes modo="equipo" />
+      </section>
 
       {confirmando && (
         <DialogoConfirmar

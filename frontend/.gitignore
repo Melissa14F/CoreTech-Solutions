@@ -4,3 +4,5 @@ coverage/
 *.local
 .vite/
 *.tsbuildinfo
+test-results/
+playwright-report/

@@ -29,18 +29,19 @@ class PortalApplicationTests {
     void flywayAplicaLasMigraciones() {
         List<String> versiones = jdbc.queryForList(
                 "SELECT version FROM flyway_schema_history WHERE success ORDER BY installed_rank", String.class);
-        assertThat(versiones).containsExactly("1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12");
+        assertThat(versiones).containsExactly("1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16");
     }
 
     @Test
-    void existenLas31Tablas() {
+    void existenLas32Tablas() {
         Integer tablas = jdbc.queryForObject("""
                 SELECT count(*) FROM information_schema.tables
                 WHERE table_schema = 'public' AND table_type = 'BASE TABLE'
                   AND table_name <> 'flyway_schema_history'
                 """, Integer.class);
         // 27 de V1 + rol_permisos_vetados (V6) + sesiones_cerradas (V7) + correo_sistema (V8) + cuentas_externas (V9)
-        assertThat(tablas).isEqualTo(31);
+        // + resumenes_reunion (V14)
+        assertThat(tablas).isEqualTo(32);
     }
 
     @Test

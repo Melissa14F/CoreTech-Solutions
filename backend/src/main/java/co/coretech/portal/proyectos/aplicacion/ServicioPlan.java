@@ -156,11 +156,12 @@ public class ServicioPlan {
         Datos datos = validarCotizacion(pedida, f, completa, errores);
         errores.lanzarSiHay();
 
+        int fasesAntes = planes.fases(f.id()).size();
         planes.reemplazarFases(f.id(), fases);
         planes.guardarCotizacion(f.id(), datos.valor(), datos.condiciones(), datos.entrega());
 
         Map<String, CambioDeValor> cambios = new LinkedHashMap<>();
-        cambios.put("fases", CambioDeValor.de(planes.fases(f.id()).size(), fases.size()));
+        cambios.put("fases", CambioDeValor.de(fasesAntes, fases.size()));
         if (datos.valor() != null || actual.valor() != null) {
             cambios.put("valorCotizado", CambioDeValor.de(actual.valor(), datos.valor()));
         }
