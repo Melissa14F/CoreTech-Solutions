@@ -37,6 +37,12 @@ public interface EquipoConsultas {
     /** Proyectos que el equipo todavía puede recibir (cupo menos proyectos activos); 0 si no existe o no está activo. */
     int cupoDisponible(UUID equipoId);
 
+    /**
+     * Bloquea la fila del equipo hasta el final de la transacción (SELECT … FOR UPDATE) para que dos asignaciones
+     * simultáneas no pasen del cupo (RN-05). Llámalo dentro de una transacción, antes de leer el cupo.
+     */
+    void bloquear(UUID equipoId);
+
     record ProductOwner(UUID usuarioId, String nombre, String email) {
     }
 

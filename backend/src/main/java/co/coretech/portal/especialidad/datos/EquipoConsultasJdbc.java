@@ -72,6 +72,11 @@ class EquipoConsultasJdbc implements EquipoConsultas {
     }
 
     @Override
+    public void bloquear(UUID equipoId) {
+        jdbc.query("SELECT id FROM equipos WHERE id = ? FOR UPDATE", (r, n) -> r.getObject(1, UUID.class), equipoId);
+    }
+
+    @Override
     public Map<UUID, Equipo> porIds(Collection<UUID> equipoIds) {
         Map<UUID, Equipo> mapa = new LinkedHashMap<>();
         if (equipoIds.isEmpty()) {

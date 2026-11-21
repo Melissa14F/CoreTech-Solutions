@@ -164,6 +164,10 @@ SELECT c.id::uuid, c.codigo, c.cliente::uuid, s.id, c.equipo::uuid, c.fecha_hora
     ('d0000000-0000-4000-8000-000000000058', 'C-0058', 'a0000000-0000-4000-8000-000000000010', 'sistema-inventario', 'c0000000-0000-4000-8000-000000000001',
      '2026-10-27 15:00-05', 'PRESENCIAL', 'Quiero controlar el inventario del salón de belleza: productos, entradas y salidas.',
      'ATENDIDA', NULL, '2026-10-22 09:15-05', '2026-10-27 16:10-05', NULL, NULL, NULL, '2026-10-20 17:05-05')
+,
+    ('d0000000-0000-4000-8000-000000000057', 'C-0057', 'a0000000-0000-4000-8000-000000000017', 'web-corporativa', 'c0000000-0000-4000-8000-000000000004',
+     '2026-11-05 10:00-05', 'VIRTUAL', 'Quiero renovar la web de mi firma de asesoría tributaria y contable; la actual no se ve bien en celular.',
+     'ATENDIDA', 'https://meet.google.com/ctx-migu-a57', '2026-11-02 09:30-05', '2026-11-05 11:10-05', NULL, NULL, NULL, '2026-10-30 16:20-05')
   ) AS c(id, codigo, cliente, servicio, equipo, fecha_hora, modalidad, descripcion, estado, enlace, confirmada, atendida,
          cancelada, cancelada_por, motivo, creada)
   JOIN servicios s ON s.slug = c.servicio
@@ -197,6 +201,11 @@ SELECT q.cita::uuid, q.resumen, q.cliente, q.presupuesto::rango_presupuesto, q.f
      'Laura quiere controlar los productos del salón: existencias por bodega, entradas, salidas y alertas cuando algo se acaba.',
      'Salón de belleza con 6 empleadas; hoy llevan el inventario en un cuaderno y en hojas de cálculo.',
      'DE_5_A_15M', 'Primer trimestre de 2027', 'MEDIA', '2026-10-27 16:10-05')
+,
+    ('d0000000-0000-4000-8000-000000000057',
+     'Miguel quiere renovar la web de Duarte Asesores para presentar sus servicios tributarios y contables, publicar artículos y recibir solicitudes de asesoría por formulario.',
+     'Socio fundador de Duarte Asesores, firma de asesoría tributaria en Cúcuta con 8 empleados y clientes empresariales. Su web actual es de 2018 y no se ve bien en celular.',
+     'DE_5_A_15M', 'Antes de febrero de 2027', 'MEDIA', '2026-11-05 11:10-05')
   ) AS q(cita, resumen, cliente, presupuesto, fecha_deseada, urgencia, creado)
 ON CONFLICT DO NOTHING;
 

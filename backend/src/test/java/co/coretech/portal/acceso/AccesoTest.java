@@ -306,7 +306,7 @@ class AccesoTest {
 
             // Esta sesión sigue con una cookie nueva; las demás (y la cookie anterior) dejan de valer (RNF-10)
             Cookie nueva = cookieDe(r);
-            mvc.perform(get("/api/v1/proyectos").cookie(nueva)).andExpect(status().isNotFound());
+            mvc.perform(get("/api/v1/proyectos").cookie(nueva)).andExpect(status().isForbidden());
             mvc.perform(get("/api/v1/auth/yo").cookie(sesion)).andExpect(status().isUnauthorized());
             mvc.perform(get("/api/v1/auth/yo").cookie(otroDispositivo)).andExpect(status().isUnauthorized());
             mvc.perform(json(post("/api/v1/auth/login"), login(email, "Nueva2026!", false))).andExpect(status().isOk());

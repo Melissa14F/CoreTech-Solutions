@@ -8,8 +8,11 @@ import { Dialogo } from '../componentes/Dialogo';
 import { Insignia } from '../componentes/Insignia';
 import { IDIOMAS, PRESUPUESTOS, URGENCIAS, gestionCitas, type Cuestionario, type CitaGestion } from './gestion';
 
+/** Lo mínimo de una cita para mostrar su cuestionario; la modalidad es opcional (al crear un proyecto no se conoce). */
+export type CitaParaVer = Pick<CitaGestion, 'citaId' | 'codigo' | 'servicio' | 'cliente'> & Partial<Pick<CitaGestion, 'modalidad'>>;
+
 /** Cuestionario de una cita atendida, solo lectura (no se edita: RN-24, RNF-02). Lo ven el administrador y el equipo. */
-export function VerCuestionario({ cita, alCerrar, texto }: { cita: CitaGestion | null; alCerrar: () => void; texto: string }) {
+export function VerCuestionario({ cita, alCerrar, texto }: { cita: CitaParaVer | null; alCerrar: () => void; texto: string }) {
   const [datos, setDatos] = useState<Cuestionario | null>(null);
   const [error, setError] = useState<string | null>(null);
 
@@ -48,7 +51,7 @@ export function VerCuestionario({ cita, alCerrar, texto }: { cita: CitaGestion |
       {cita && (
         <div className="resumen-dialogo">
           <strong>{`${cita.cliente.nombre} · ${cita.servicio}`}</strong>
-          <span>{`${cita.codigo} · ${cita.modalidad === 'VIRTUAL' ? 'Virtual' : 'Presencial'}`}</span>
+          <span>{cita.modalidad ? `${cita.codigo} · ${cita.modalidad === 'VIRTUAL' ? 'Virtual' : 'Presencial'}` : cita.codigo}</span>
         </div>
       )}
       {error && <Alerta tipo="error" titulo={error} />}
