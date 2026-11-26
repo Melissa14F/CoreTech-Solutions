@@ -21,11 +21,11 @@ import org.springframework.transaction.support.TransactionTemplate;
 
 import co.coretech.portal.ContenedoresPrueba;
 import co.coretech.portal.acceso.DirectorioUsuarios;
-import co.coretech.portal.compartido.aplicacion.CalendarioHabil;
-import co.coretech.portal.compartido.aplicacion.RegistroAuditoria;
+import co.coretech.portal.compartido.service.CalendarioHabil;
+import co.coretech.portal.compartido.service.RegistroAuditoria;
 import co.coretech.portal.especialidad.EquipoConsultas;
-import co.coretech.portal.proyectos.aplicacion.TareasPlan;
-import co.coretech.portal.proyectos.datos.PlanesJdbc;
+import co.coretech.portal.proyectos.service.TareasPlan;
+import co.coretech.portal.proyectos.repository.PlanesJdbc;
 
 /**
  * La tarea diaria de las propuestas sin respuesta (HU-29, RN-29) con un reloj fijo en 2031 y un festivo en medio: recordatorio
@@ -45,6 +45,8 @@ class TareasPlanTest extends BaseProyectosPrueba {
 
     @Autowired
     PlanesJdbc planes;
+    @Autowired
+    co.coretech.portal.proyectos.repository.ProyectoRepositorio proyectosJpa;
     @Autowired
     EquipoConsultas equipos;
     @Autowired
@@ -74,7 +76,7 @@ class TareasPlanTest extends BaseProyectosPrueba {
     }
 
     private void revisarEl(LocalDate dia) {
-        TareasPlan tarea = new TareasPlan(planes, equipos, usuarios, calendario, auditoria, eventos,
+        TareasPlan tarea = new TareasPlan(planes, proyectosJpa, equipos, usuarios, calendario, auditoria, eventos,
                 Clock.fixed(dia.atTime(8, 0).atZone(COLOMBIA).toInstant(), COLOMBIA));
         transaccion.executeWithoutResult(t -> tarea.revisar());
     }

@@ -41,9 +41,9 @@ import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.transaction.support.TransactionTemplate;
 
 import co.coretech.portal.ContenedoresPrueba;
-import co.coretech.portal.acceso.aplicacion.TareasAcceso;
-import co.coretech.portal.comunicacion.aplicacion.ServicioNotificaciones;
-import co.coretech.portal.comunicacion.aplicacion.TareaEnvioCorreos;
+import co.coretech.portal.acceso.service.TareasAcceso;
+import co.coretech.portal.comunicacion.service.ServicioNotificaciones;
+import co.coretech.portal.comunicacion.service.TareaEnvioCorreos;
 import jakarta.mail.Message;
 import jakarta.mail.Multipart;
 import jakarta.mail.Part;

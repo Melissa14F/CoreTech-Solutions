@@ -75,5 +75,11 @@ public record PropiedadesCoretech(ZoneId zonaNegocio, Sesion sesion, List<String
             duracion = duracion == null ? Duration.ofHours(8) : duracion;
             duracionRecordarme = duracionRecordarme == null ? Duration.ofDays(30) : duracionRecordarme;
         }
+
+        /** Sin la clave que firma las sesiones: quien la tenga puede fabricar una sesión de cualquiera. */
+        @Override
+        public String toString() {
+            return "Sesion[cookieSegura=" + cookieSegura + ", duracion=" + duracion + "]";
+        }
     }
 }

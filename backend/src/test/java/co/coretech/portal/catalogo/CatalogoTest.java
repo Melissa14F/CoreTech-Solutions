@@ -42,7 +42,7 @@ import org.springframework.transaction.support.TransactionTemplate;
 import com.jayway.jsonpath.JsonPath;
 
 import co.coretech.portal.ContenedoresPrueba;
-import co.coretech.portal.catalogo.aplicacion.ServicioCatalogo;
+import co.coretech.portal.catalogo.service.ServicioCatalogo;
 import co.coretech.portal.compartido.PropiedadesCoretech;
 import jakarta.servlet.http.Cookie;
 

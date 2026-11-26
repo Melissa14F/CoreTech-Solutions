@@ -44,7 +44,7 @@ import org.springframework.test.web.servlet.MvcResult;
 import org.springframework.test.web.servlet.request.MockHttpServletRequestBuilder;
 
 import co.coretech.portal.ContenedoresPrueba;
-import co.coretech.portal.compartido.aplicacion.CorreoSaliente;
+import co.coretech.portal.compartido.service.CorreoSaliente;
 import jakarta.servlet.http.Cookie;
 
 /**

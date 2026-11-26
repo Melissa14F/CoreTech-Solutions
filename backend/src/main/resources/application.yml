@@ -179,3 +179,31 @@ coretech:
     recuperacion-por-15-minutos: 100000
     restablecer-por-15-minutos: 100000
     registro-por-hora: 100000
+
+---
+# Producción (Docker, P25): se activa con SPRING_PROFILES_ACTIVE=prod. La conexión a la base y los secretos llegan por
+# variables de entorno (spring.datasource.*, CORETECH_*); aquí solo van las diferencias de seguridad con dev.
+spring:
+  config:
+    activate:
+      on-profile: prod
+
+logging:
+  structured:
+    format:
+      console: ecs                # logs en JSON, una línea por evento (Spring Boot 3.4+)
+
+server:
+  # Detrás de Nginx: la IP y el esquema (https) reales salen de X-Forwarded-*; la auditoría y el límite por IP los usan.
+  forward-headers-strategy: framework
+  error:
+    include-message: never
+    include-stacktrace: never
+    include-binding-errors: never
+
+springdoc:
+  # El contrato completo de la API no debe estar abierto al público (RNF-01): Swagger solo en desarrollo.
+  api-docs:
+    enabled: false
+  swagger-ui:
+    enabled: false

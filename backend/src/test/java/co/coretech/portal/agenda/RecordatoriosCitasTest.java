@@ -19,10 +19,10 @@ import org.springframework.test.context.ActiveProfiles;
 
 import co.coretech.portal.ContenedoresPrueba;
 import co.coretech.portal.acceso.DirectorioUsuarios;
-import co.coretech.portal.agenda.aplicacion.RecordatoriosCitas;
-import co.coretech.portal.agenda.datos.CitaRepositorio;
-import co.coretech.portal.agenda.datos.CuestionarioCitaRepositorio;
-import co.coretech.portal.compartido.aplicacion.CalendarioHabil;
+import co.coretech.portal.agenda.service.RecordatoriosCitas;
+import co.coretech.portal.agenda.repository.CitaRepositorio;
+import co.coretech.portal.agenda.repository.CuestionarioCitaRepositorio;
+import co.coretech.portal.compartido.service.CalendarioHabil;
 import co.coretech.portal.especialidad.EquipoConsultas;
 
 /**

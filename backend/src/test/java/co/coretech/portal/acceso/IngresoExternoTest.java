@@ -30,11 +30,11 @@ import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.ResultActions;
 
 import co.coretech.portal.ContenedoresPrueba;
-import co.coretech.portal.acceso.aplicacion.ClienteIdentidadExterna;
-import co.coretech.portal.acceso.aplicacion.ClienteIdentidadExterna.ErrorProveedorException;
-import co.coretech.portal.acceso.aplicacion.ClienteIdentidadExterna.Identidad;
-import co.coretech.portal.acceso.dominio.ProveedorExterno;
-import co.coretech.portal.comunicacion.aplicacion.TareaEnvioCorreos;
+import co.coretech.portal.acceso.service.ClienteIdentidadExterna;
+import co.coretech.portal.acceso.service.ClienteIdentidadExterna.ErrorProveedorException;
+import co.coretech.portal.acceso.service.ClienteIdentidadExterna.Identidad;
+import co.coretech.portal.acceso.domain.ProveedorExterno;
+import co.coretech.portal.comunicacion.service.TareaEnvioCorreos;
 import jakarta.servlet.http.Cookie;
 
 /**

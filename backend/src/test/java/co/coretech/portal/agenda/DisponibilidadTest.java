@@ -23,12 +23,12 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.test.context.ActiveProfiles;
 
 import co.coretech.portal.ContenedoresPrueba;
-import co.coretech.portal.agenda.aplicacion.ServicioDisponibilidad;
-import co.coretech.portal.agenda.aplicacion.ServicioDisponibilidad.Estado;
-import co.coretech.portal.agenda.aplicacion.ServicioDisponibilidad.Franja;
-import co.coretech.portal.agenda.datos.CitaRepositorio;
-import co.coretech.portal.agenda.datos.HorarioLaboral;
-import co.coretech.portal.compartido.datos.DiasNoHabilesRepositorio;
+import co.coretech.portal.agenda.service.ServicioDisponibilidad;
+import co.coretech.portal.agenda.service.ServicioDisponibilidad.Estado;
+import co.coretech.portal.agenda.service.ServicioDisponibilidad.Franja;
+import co.coretech.portal.agenda.repository.CitaRepositorio;
+import co.coretech.portal.agenda.repository.HorarioLaboral;
+import co.coretech.portal.compartido.repository.DiasNoHabilesRepositorio;
 
 /**
  * Las franjas de las citas con el reloj fijo (HU-01, RN-01, RN-02, RN-03, RN-23). Hoy es el martes 2031-03-04 a las
@@ -224,6 +224,19 @@ class DisponibilidadTest {
             assertThat(deLosAngeles("2031-03-07", "05:00").fechaHora()).endsWith("-08:00");
             assertThat(deLosAngeles("2031-03-10", "06:00").fechaHora()).endsWith("-07:00");
             assertThat(deLosAngeles("2031-03-10", "06:00").horaColombia()).startsWith("2031-03-10T08:00");
+        }
+
+        @Test
+        void nuevaYorkCambiaElHorarioElMismoDiaQueLosAngeles() {
+            // RNF-12 pide probar Nueva York. Con la hora de invierno (UTC-5) coincide con Colombia; desde el domingo 2031-03-09,
+            // con el horario de verano (UTC-4), las 8:00 de Colombia son las 9:00 allá.
+            List<Franja> marzo = servicio.deMes(cliente, YearMonth.of(2031, 3), ZoneId.of("America/New_York"));
+            Franja antes = franja(marzo, "2031-03-07", "08:00");
+            assertThat(antes.fechaHora()).endsWith("-05:00");
+            assertThat(antes.horaColombia()).startsWith("2031-03-07T08:00");
+            Franja despues = franja(marzo, "2031-03-10", "09:00");
+            assertThat(despues.fechaHora()).startsWith("2031-03-10T09:00").endsWith("-04:00");
+            assertThat(despues.horaColombia()).startsWith("2031-03-10T08:00").endsWith("-05:00");
         }
 
         @Test

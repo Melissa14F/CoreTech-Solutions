@@ -21,14 +21,14 @@ import org.springframework.transaction.support.TransactionTemplate;
 
 import co.coretech.portal.ContenedoresPrueba;
 import co.coretech.portal.acceso.DirectorioUsuarios;
-import co.coretech.portal.compartido.aplicacion.AlmacenArchivos;
-import co.coretech.portal.compartido.aplicacion.CalendarioHabil;
-import co.coretech.portal.compartido.aplicacion.RegistroAuditoria;
-import co.coretech.portal.compartido.aplicacion.SesionActual;
+import co.coretech.portal.compartido.service.AlmacenArchivos;
+import co.coretech.portal.compartido.service.CalendarioHabil;
+import co.coretech.portal.compartido.service.RegistroAuditoria;
+import co.coretech.portal.compartido.service.SesionActual;
 import co.coretech.portal.especialidad.EquipoConsultas;
-import co.coretech.portal.seguimiento.aplicacion.ServicioFases;
-import co.coretech.portal.seguimiento.aplicacion.TareasSeguimiento;
-import co.coretech.portal.seguimiento.datos.SeguimientoJdbc;
+import co.coretech.portal.seguimiento.service.ServicioFases;
+import co.coretech.portal.seguimiento.service.TareasSeguimiento;
+import co.coretech.portal.seguimiento.repository.SeguimientoJdbc;
 
 /**
  * La tarea diaria del seguimiento (HU-11, HU-13; RN-13, RN-17, RN-31, RNF-09) con un reloj fijo: recordatorio a los 2 días hábiles,

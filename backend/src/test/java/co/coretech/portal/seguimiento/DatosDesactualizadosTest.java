@@ -20,7 +20,7 @@ import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.bean.override.mockito.MockitoSpyBean;
 
 import co.coretech.portal.ContenedoresPrueba;
-import co.coretech.portal.seguimiento.datos.SeguimientoJdbc;
+import co.coretech.portal.seguimiento.repository.SeguimientoJdbc;
 
 /**
  * La excepción «Datos desactualizados» de HU-03 y de las acciones de fase (HU-11, HU-13): si al leer el estado la acción era

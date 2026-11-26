@@ -34,7 +34,7 @@ import org.springframework.test.web.servlet.MvcResult;
 import org.springframework.test.web.servlet.request.MockHttpServletRequestBuilder;
 
 import co.coretech.portal.ContenedoresPrueba;
-import co.coretech.portal.compartido.aplicacion.CorreoSaliente;
+import co.coretech.portal.compartido.service.CorreoSaliente;
 import jakarta.servlet.http.Cookie;
 
 /**
@@ -81,6 +81,9 @@ class AccesoTest {
             // El correo se guarda en minúsculas y con la fecha de aceptación de la política (RNF-09)
             assertThat(jdbc.queryForObject("SELECT acepta_datos_at IS NOT NULL FROM usuarios WHERE email = ?", Boolean.class, email)).isTrue();
             assertThat(auditoria("Creó su cuenta de cliente", email)).isEqualTo(1);
+            // RNF-10: la contraseña se guarda con BCrypt de costo 10 y nunca en claro
+            assertThat(jdbc.queryForObject("SELECT password_hash FROM usuarios WHERE email = ?", String.class, email))
+                    .startsWith("$2a$10$").doesNotContain(CLAVE);
             // El autor es la cuenta nueva, no "Sin identificar"
             assertThat(jdbc.queryForObject("SELECT usuario_id::text FROM auditoria WHERE accion = 'Creó su cuenta de cliente' AND entidad_id = ?",
                     String.class, idDe(email))).isEqualTo(idDe(email));
@@ -403,10 +406,17 @@ class AccesoTest {
 
         @Test
         void unClienteEnUnEndpointDelAdministradorRecibe403() throws Exception {
-            Cookie cliente = sesionDe(crearUsuario("CLIENTE", false, true));
+            String email = crearUsuario("CLIENTE", false, true);
+            Cookie cliente = sesionDe(email);
             mvc.perform(post("/api/v1/usuarios/{id}/recuperacion", UUID.randomUUID()).cookie(cliente))
                     .andExpect(status().isForbidden())
                     .andExpect(jsonPath("$.errores[0].mensaje").value("No tienes permiso para hacer esta acción"));
+            // RNF-01: el intento rechazado queda en la auditoría (categoría Seguridad), con quién y a qué ruta
+            assertThat(jdbc.queryForObject("""
+                    SELECT count(*) FROM auditoria
+                    WHERE usuario_id = ?::uuid AND categoria = 'seguridad' AND accion = 'Intentó una acción sin permiso'
+                      AND cambios::text LIKE '%POST /api/v1/usuarios/%/recuperacion%'
+                    """, Integer.class, idDe(email))).isEqualTo(1);
         }
 
         @Test

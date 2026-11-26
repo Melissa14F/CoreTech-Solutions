@@ -39,10 +39,10 @@ import org.springframework.test.web.servlet.MockMvc;
 import com.jayway.jsonpath.JsonPath;
 
 import co.coretech.portal.ContenedoresPrueba;
-import co.coretech.portal.compartido.aplicacion.ClienteGoogle;
-import co.coretech.portal.compartido.aplicacion.ClienteGoogle.PermisoRetiradoException;
-import co.coretech.portal.compartido.aplicacion.ClienteGoogle.TokenAcceso;
-import co.coretech.portal.compartido.aplicacion.ClienteGoogle.Tokens;
+import co.coretech.portal.compartido.service.ClienteGoogle;
+import co.coretech.portal.compartido.service.ClienteGoogle.PermisoRetiradoException;
+import co.coretech.portal.compartido.service.ClienteGoogle.TokenAcceso;
+import co.coretech.portal.compartido.service.ClienteGoogle.Tokens;
 import jakarta.servlet.http.Cookie;
 
 /**

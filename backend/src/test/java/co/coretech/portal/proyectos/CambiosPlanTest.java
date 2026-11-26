@@ -288,7 +288,9 @@ class CambiosPlanTest extends BaseProyectosPrueba {
         @Test
         void laMismaFechaOUnaInvalidaSeRechazan() throws Exception {
             Aprobado a = aprobado();
-            String[] fechas = { entregaActual().toString(), "no es una fecha", hoy().plusDays(3).toString(), "2030-01-01" };
+            String[] fechas = { entregaActual().toString(), "no es una fecha", hoy().plusDays(3).toString(),
+                    // Más de 5 años desde hoy: el tope cuenta desde hoy, no es una fecha fija
+                    hoy().plusYears(5).plusDays(1).toString() };
             for (String fecha : fechas) {
                 mvc.perform(json(post(ruta(a)).cookie(a.po()), "{\"tipo\":\"CAMBIAR_FECHA\",\"motivo\":\"" + MOTIVO + "\",\"nuevaEntrega\":\"" + fecha
                         + "\",\"valorAdicional\":0}")).andExpect(status().isUnprocessableEntity())
