@@ -1,6 +1,6 @@
 import { fechaLegible } from './admin';
 import {
-  aEnvioPlan, conPuntos, cotizacionDe, fechaConDia, nombrePila, soloDigitos, sumarDiasIso, validarCotizacion,
+  aEnvioPlan, conPuntos, cotizacionDe, fechaConDia, nombrePila, soloDigitos, sumarDiasIso, ultimaFechaDeEntrega, validarCotizacion,
   type CotizacionEditable,
 } from './plan';
 import { PLAN_BORRADOR, PLAN_ENVIADO } from '../pruebas/plan';
@@ -22,17 +22,31 @@ describe('cotización del plan (RN-29)', () => {
     expect(errores({ valor: '' }).valorCotizado).toBe('Escribe el valor del proyecto.');
   });
 
-  it('la entrega es al menos 14 días después del inicio y no pasa de 2028', () => {
+  it('la entrega es al menos 14 días después del inicio y no pasa de 5 años desde hoy', () => {
     expect(errores({ entrega: '2026-11-29' }).fechaEstimadaEntrega)
       .toBe('La entrega debe ser al menos 2 semanas después del inicio (16 nov 2026).');
     expect(errores({ entrega: '2026-11-30' }).fechaEstimadaEntrega).toBeUndefined();
-    expect(errores({ entrega: '2029-01-01' }).fechaEstimadaEntrega).toBe('Revisa el año de la fecha.');
+    const ultima = ultimaFechaDeEntrega();
+    expect(errores({ entrega: ultima }).fechaEstimadaEntrega).toBeUndefined();
+    expect(errores({ entrega: sumarDiasIso(ultima, 1) }).fechaEstimadaEntrega).toBe('Revisa el año de la fecha.');
     expect(errores({ entrega: '' }).fechaEstimadaEntrega).toBe('Elige la fecha estimada de entrega.');
   });
 
   it('qué incluye pide al menos 20 caracteres', () => {
     expect(errores({ condiciones: '' }).condicionesCotizacion).toBe('Escribe qué incluye el valor.');
     expect(errores({ condiciones: 'Muy corto' }).condicionesCotizacion).toBe('Escribe al menos 20 caracteres.');
+  });
+});
+
+describe('última fecha de entrega', () => {
+  it('es 5 años después de hoy, no una fecha fija', () => {
+    expect(ultimaFechaDeEntrega(new Date(2026, 10, 21))).toBe('2031-11-21');
+    expect(ultimaFechaDeEntrega(new Date(2040, 0, 1))).toBe('2045-01-01');
+  });
+
+  it('desde un 29 de febrero cae en el 28 si el año de llegada no es bisiesto, como en el backend', () => {
+    expect(ultimaFechaDeEntrega(new Date(2028, 1, 29))).toBe('2033-02-28');
+    expect(ultimaFechaDeEntrega(new Date(2031, 1, 28))).toBe('2036-02-28');
   });
 });
 

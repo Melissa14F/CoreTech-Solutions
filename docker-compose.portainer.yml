@@ -1,0 +1,20 @@
+# Panel web para ver Docker desde el navegador (contenedores, logs, volúmenes, redes), sin instalar Docker Desktop.
+# Se ejecuta en el MISMO servidor que docker-compose.prod.yml:
+#   docker compose -f docker-compose.portainer.yml up -d
+# Entra en https://<servidor>:9443 (certificado propio: el navegador avisa, se acepta). La primera vez pide crear el
+# usuario administrador en los primeros 5 minutos; luego crea un usuario de solo lectura para el docente
+# (Users → Add user, y en Environments → local → Access, rol «Read-only user»).
+name: coretech-panel
+
+services:
+  portainer:
+    image: portainer/portainer-ce:lts
+    restart: unless-stopped
+    ports:
+      - "9443:9443"
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      - datos_portainer:/data
+
+volumes:
+  datos_portainer:

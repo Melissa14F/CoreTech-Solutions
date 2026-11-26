@@ -200,6 +200,16 @@ export function sumarDiasIso(iso: string, dias: number): string {
   return new Date(Date.UTC(a ?? 1970, (m ?? 1) - 1, (d ?? 1) + dias)).toISOString().slice(0, 10);
 }
 
+/**
+ * La entrega más lejana que se acepta: 5 años desde hoy (AAAA-MM-DD). Sirve para atrapar un año mal escrito; la misma regla
+ * la aplica el backend (`ServicioPlan.ultimaFechaDeEntrega`). Si hoy es 29 de febrero y el año de llegada no es bisiesto, cae en el 28.
+ */
+export function ultimaFechaDeEntrega(hoy: Date = new Date()): string {
+  const anio = hoy.getFullYear() + 5;
+  const ultimoDelMes = new Date(Date.UTC(anio, hoy.getMonth() + 1, 0)).getUTCDate();
+  return new Date(Date.UTC(anio, hoy.getMonth(), Math.min(hoy.getDate(), ultimoDelMes))).toISOString().slice(0, 10);
+}
+
 const MESES = ['ene', 'feb', 'mar', 'abr', 'may', 'jun', 'jul', 'ago', 'sep', 'oct', 'nov', 'dic'];
 const DIAS = ['domingo', 'lunes', 'martes', 'miércoles', 'jueves', 'viernes', 'sábado'];
 
@@ -227,7 +237,7 @@ export function validarCotizacion(c: CotizacionEditable, inicio: string, fechaLe
   if (!c.entrega) errores.fechaEstimadaEntrega = 'Elige la fecha estimada de entrega.';
   else if (c.entrega < sumarDiasIso(inicio, 14)) {
     errores.fechaEstimadaEntrega = `La entrega debe ser al menos 2 semanas después del inicio (${fechaLegible(inicio)}).`;
-  } else if (c.entrega > '2028-12-31') errores.fechaEstimadaEntrega = 'Revisa el año de la fecha.';
+  } else if (c.entrega > ultimaFechaDeEntrega()) errores.fechaEstimadaEntrega = 'Revisa el año de la fecha.';
   const condiciones = c.condiciones.trim();
   if (!condiciones) errores.condicionesCotizacion = 'Escribe qué incluye el valor.';
   else if (condiciones.length < 20) errores.condicionesCotizacion = 'Escribe al menos 20 caracteres.';

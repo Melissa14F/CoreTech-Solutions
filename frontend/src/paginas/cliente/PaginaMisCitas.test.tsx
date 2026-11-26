@@ -8,6 +8,9 @@ const CITAS = [CITA_ATENDIDA, CITA_CONFIRMADA, CITA_PENDIENTE];
 
 const tarjeta = (codigo: string) => screen.getByText(codigo).closest('li') as HTMLElement;
 
+/** El diálogo de la pantalla (el panel de accesibilidad también es un dialog, pero está cerrado y oculto). */
+const dialogoDeLaPagina = () => document.querySelector<HTMLElement>('dialog.dialogo')!;
+
 describe('Mis citas (HU-08)', () => {
   it('lista las citas por grupo, con su estado y los botones que corresponden', async () => {
     simularApi(LAURA, { 'GET /citas': { estado: 200, cuerpo: CITAS } });
@@ -59,7 +62,7 @@ describe('Mis citas (HU-08)', () => {
     await screen.findByText('C-0061');
 
     await userEvent.click(screen.getByRole('button', { name: 'Cancelar cita C-0061' }));
-    const dialogo = screen.getByRole('dialog', { hidden: true });
+    const dialogo = dialogoDeLaPagina();
     expect(within(dialogo).getByText('¿Cancelar la cita C-0061?')).toBeInTheDocument();
     expect(within(dialogo).getByText(/Martes 11 de marzo, 9:00 a\. m\. La franja quedará libre/)).toBeInTheDocument();
     // "Mantener cita" no cancela nada
@@ -67,7 +70,7 @@ describe('Mis citas (HU-08)', () => {
     expect(fetchSimulado.mock.calls.some(([, op]) => op?.method === 'PATCH')).toBe(false);
 
     await userEvent.click(screen.getByRole('button', { name: 'Cancelar cita C-0061' }));
-    await userEvent.click(within(screen.getByRole('dialog', { hidden: true })).getByRole('button', { name: 'Sí, cancelar', hidden: true }));
+    await userEvent.click(within(dialogoDeLaPagina()).getByRole('button', { name: 'Sí, cancelar', hidden: true }));
 
     await waitFor(() => expect(within(tarjeta('C-0061')).getByText('Cancelada')).toBeInTheDocument());
     expect(within(tarjeta('C-0061')).queryByRole('button', { name: /Cancelar/ })).not.toBeInTheDocument();
@@ -86,7 +89,7 @@ describe('Mis citas (HU-08)', () => {
     });
     abrirEn('/cliente/citas');
     await userEvent.click(await screen.findByRole('button', { name: 'Cancelar cita C-0061' }));
-    await userEvent.click(within(screen.getByRole('dialog', { hidden: true })).getByRole('button', { name: 'Sí, cancelar', hidden: true }));
+    await userEvent.click(within(dialogoDeLaPagina()).getByRole('button', { name: 'Sí, cancelar', hidden: true }));
 
     expect(await screen.findByText('Esta cita ya fue confirmada, escríbenos para reprogramarla')).toBeInTheDocument();
     await waitFor(() => expect(within(tarjeta('C-0061')).getByText('Confirmada')).toBeInTheDocument());

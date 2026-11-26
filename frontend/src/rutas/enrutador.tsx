@@ -1,6 +1,7 @@
 import type { ReactElement } from 'react';
 import { Outlet, ScrollRestoration, createBrowserRouter, type RouteObject } from 'react-router-dom';
 
+import { PanelAccesibilidad } from '../componentes/PanelAccesibilidad';
 import { LayoutPanel } from '../layouts/LayoutPanel';
 import { LayoutPublico } from '../layouts/LayoutPublico';
 import { PaginaCambiarContrasena } from '../paginas/acceso/PaginaCambiarContrasena';
@@ -51,6 +52,7 @@ function Raiz() {
           y al volver atrás recupera la posición que tenía (docs/07-prototipo.md, "Desplazamiento").
         */}
         <ScrollRestoration />
+        <PanelAccesibilidad />
       </ProveedorNotificaciones>
     </ProveedorSesion>
   );

@@ -1,4 +1,4 @@
-import { screen, waitFor } from '@testing-library/react';
+import { cleanup, screen, waitFor } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 
 import { LAURA, abrirEn, cuerpoEnviado, errores, simularApi } from '../../pruebas/aplicacion';
@@ -18,7 +18,7 @@ describe('ingreso con Google y Microsoft (RF-50)', () => {
       expect(google).toHaveAttribute('href', '/api/v1/auth/externo/google');
       expect(screen.getByRole('link', { name: 'Continuar con Microsoft' })).toHaveAttribute('href', '/api/v1/auth/externo/microsoft');
       expect(screen.getByText(/^o (ingresa|regístrate) con tu correo$/)).toBeInTheDocument();
-      document.body.replaceChildren();
+      cleanup(); // desmonta la pantalla anterior (no vaciar el <body> a mano: el panel de accesibilidad vive en un portal)
     }
   });
 

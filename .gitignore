@@ -3,3 +3,13 @@
 .env
 .env.*
 !.env.example
+
+# Respaldos de la base y de los archivos (scripts/respaldo.sh): contienen datos personales
+respaldos/
+
+# Prueba de carga (carga/README.md): datos sembrados y resultados de cada corrida
+carga/datos.json
+carga/resultado*.json
+
+# Certificados y llaves de Nginx (scripts/certificado-local.sh): nunca al repositorio
+nginx/certs/

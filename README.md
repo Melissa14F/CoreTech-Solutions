@@ -176,6 +176,19 @@ Además de las pantallas estáticas, esta carpeta guarda el código del portal:
 
 Las pantallas `.html`, `css/`, `js/` e `img/` siguen siendo la referencia visual de la SPA.
 
+### Pruebas y revisiones
+
+| Qué | Comando (desde `prototipo/`) | Notas |
+|---|---|---|
+| Backend (JUnit + Testcontainers) | `cd backend && ./mvnw verify` | Necesita Docker Desktop abierto. |
+| Cobertura del backend | `cd backend && ./mvnw org.jacoco:jacoco-maven-plugin:0.8.13:prepare-agent test org.jacoco:jacoco-maven-plugin:0.8.13:report` | Informe en `backend/target/site/jacoco`. |
+| Frontend (Vitest) | `cd frontend && npm test` | En Windows, desde PowerShell. |
+| Punta a punta y accesibilidad (Playwright + axe) | `cd frontend && npx playwright test` | Necesita `docker compose up -d`; crea su propia base `coretech_e2e`. Tarda unos 10 minutos. |
+| Carga (k6) | ver `carga/README.md` | La API se prueba desde el jar, no con `spring-boot:run`. |
+| Dependencias del frontend | `cd frontend && npm audit` | |
+
+Las reglas, los requerimientos no funcionales y su resultado están en `docs/PROGRESO.md` (solo en el repositorio de trabajo; esa carpeta no forma parte de `prototipo/`).
+
 ## Cómo levantar todo en desarrollo
 
 Necesitas JDK 17, Node.js 24 y Docker Desktop abierto. Todos los comandos se ejecutan desde esta carpeta (`prototipo/`).
@@ -229,3 +242,89 @@ docker compose up -d
 ```
 
 y vuelve a arrancar la API.
+
+---
+
+# Despliegue con Docker y HTTPS (P25)
+
+Producción y pruebas locales usan `docker-compose.prod.yml`: **nginx** (SPA + HTTPS), **api** (Spring Boot, perfil
+`prod`), **db** (PostgreSQL 15) y un volumen para los archivos subidos. Solo Nginx abre puertos (80 y 443); la API y la
+base quedan en la red interna. Todos los servicios se reinician solos y tienen healthcheck. La base nace vacía: sin
+datos de demostración (el administrador se crea según la sección «Primer administrador»).
+
+## 1. Variables (`prototipo/.env`)
+
+Copia `.env.example` como `.env` (nunca se sube a git) y llena, como mínimo:
+
+| Variable | Para qué |
+|---|---|
+| `CORETECH_DB_CLAVE` | Contraseña de PostgreSQL (se fija la primera vez que se crea el volumen) |
+| `CORETECH_SESION_SECRETO` | Clave del JWT, mínimo 32 caracteres |
+| `CORETECH_CIFRADO_CLAVE` | Cifra el permiso de Gmail en la base, mínimo 32 caracteres. **No la cambies** después de conectar Gmail |
+| `CORETECH_URL_PORTAL` | Dirección pública, por ejemplo `https://tu-dominio` (por omisión `https://localhost`) |
+| `CORETECH_GOOGLE_ID`, `CORETECH_GOOGLE_SECRETO` | Cliente OAuth de Google (ver «Correos con Gmail») |
+
+Genera claves largas con `openssl rand -base64 36`.
+
+## 2. Certificado y arranque
+
+```powershell
+bash scripts/certificado-local.sh            # solo para probar: certificado autofirmado para localhost
+docker compose -f docker-compose.prod.yml up -d --build
+docker compose -f docker-compose.prod.yml ps  # los tres servicios deben decir "healthy"
+```
+
+Abre https://localhost (el navegador avisará que el certificado no es de confianza: es normal con el autofirmado).
+En un servidor real, copia tu certificado a `nginx/certs/fullchain.pem` y `nginx/certs/privkey.pem` (por ejemplo
+con Let's Encrypt) y reinicia Nginx. Nginx acepta TLS 1.2 y 1.3, redirige HTTP a HTTPS y manda los encabezados de
+seguridad (HSTS, CSP…). `nginx/certs/` está en `.gitignore`.
+
+Para detener: `docker compose -f docker-compose.prod.yml down` (los volúmenes se conservan; con `-v` se borra todo).
+
+## 3. Primer administrador
+
+La base de producción no trae cuentas. Crea el primer administrador una sola vez; el script muestra una contraseña
+temporal que el portal obliga a cambiar al ingresar. Las demás cuentas se crean después en «Usuarios».
+
+```powershell
+bash scripts/crear-administrador.sh "Nombre Apellido" correo@dominio.com 3001234567
+```
+
+## 4. Correos con Gmail (D-51)
+
+En producción no hay SMTP: los correos salen por la cuenta que el administrador conecta en «Correo del sistema».
+
+1. En Google Cloud Console crea un proyecto → **APIs y servicios** → habilita **Gmail API**.
+2. **Pantalla de consentimiento OAuth**: tipo externo, con la página principal del portal y la política de privacidad
+   (`https://<dominio>/legal#datos`). Publica la app **«En producción»** (en «Prueba» el permiso vence a los 7 días).
+3. **Credenciales** → ID de cliente OAuth → aplicación web. URI de redirección autorizadas:
+   - `https://<dominio>/api/v1/correo-sistema/gmail/callback`
+   - `https://<dominio>/api/v1/auth/externo/callback/google` (ingreso de clientes con Google)
+4. Copia el ID y el secreto a `.env` (`CORETECH_GOOGLE_ID`, `CORETECH_GOOGLE_SECRETO`) y reinicia la API:
+   `docker compose -f docker-compose.prod.yml up -d`.
+5. Ingresa como administrador → **Correo del sistema** → «Conectar con Gmail» y acepta con la cuenta del proyecto.
+   El portal solo recibe permiso para enviar; nunca la contraseña.
+6. Comprueba que el correo de restablecer contraseña y el de una cita lleguen al buzón real (revisa spam).
+
+Microsoft (opcional): registro de aplicación en Azure con la URI `https://<dominio>/api/v1/auth/externo/callback/microsoft`
+y las variables `CORETECH_MICROSOFT_ID` y `CORETECH_MICROSOFT_SECRETO`.
+
+## 5. Respaldar y restaurar
+
+Los scripts de `scripts/` usan el compose de desarrollo por omisión; para producción indícales el archivo y el volumen:
+
+```powershell
+$env:COMPOSE_FILE = "docker-compose.prod.yml"
+$env:CORETECH_ARCHIVOS_VOLUMEN = "coretech-prod_archivos"
+bash scripts/respaldo.sh      # crea respaldos/AAAA-MM-DD_HHMMSS/ (base + archivos + SHA256SUMS)
+bash scripts/restaurar.sh respaldos/AAAA-MM-DD_HHMMSS   # restaura en una base NUEVA <base>_restaurada
+```
+
+El respaldo se puede programar cada día (instrucciones en la cabecera de `scripts/respaldo.sh`). Copia `respaldos/` a
+otra máquina: si el disco falla, el respaldo local se pierde con él. La restauración se niega a pisar una base con datos
+salvo con `REEMPLAZAR=si`.
+
+## 6. Qué trae el perfil `prod`
+
+Cookie `Secure`, Swagger apagado, sin datos demo, sin detalles de error, IP real desde `X-Forwarded-For` (que Nginx
+sobrescribe) y registros en formato JSON (`docker compose -f docker-compose.prod.yml logs api`).

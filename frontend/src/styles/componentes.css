@@ -148,3 +148,14 @@ a.bandeja__aviso:hover, button.bandeja__aviso:hover, .bandeja__aviso:focus-visib
 .de-un-vistazo__enlace:hover { border-color: var(--color-acento); }
 .de-un-vistazo__valor { min-width: 2ch; font-size: 1.5rem; line-height: 1; color: var(--color-tinta); }
 .de-un-vistazo__item--con-datos .de-un-vistazo__valor { color: var(--color-acento); }
+
+/* Fuente para dislexia del panel de accesibilidad (RNF-07). OpenDyslexic, licencia SIL OFL (public/fonts/opendyslexic/LICENSE),
+   guardada en el portal: así carga con la política de seguridad (font-src 'self') y sin pedirle nada a un tercero. */
+@font-face {
+  font-family: "OpenDyslexic"; font-style: normal; font-weight: 400; font-display: swap;
+  src: url("/fonts/opendyslexic/opendyslexic-latin-400-normal.woff2") format("woff2");
+}
+@font-face {
+  font-family: "OpenDyslexic"; font-style: normal; font-weight: 700; font-display: swap;
+  src: url("/fonts/opendyslexic/opendyslexic-latin-700-normal.woff2") format("woff2");
+}

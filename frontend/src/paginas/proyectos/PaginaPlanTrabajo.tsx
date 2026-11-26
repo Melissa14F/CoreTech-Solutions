@@ -18,7 +18,7 @@ import { useTituloDocumento } from '../../componentes/useTituloDocumento';
 import { fechaLegible, fechaSinAnio, pesos } from '../../proyectos/admin';
 import { planes } from '../../proyectos/api';
 import {
-  SIN_ERRORES, aEditable, cotizacionDe, fechaConDia, hayErrores, huellaPlan, nombrePila, porcentajeFase, sumarDiasIso,
+  SIN_ERRORES, aEditable, cotizacionDe, fechaConDia, hayErrores, huellaPlan, nombrePila, porcentajeFase, sumarDiasIso, ultimaFechaDeEntrega,
   validarCotizacion, validarPlan,
   type CotizacionEditable, type ErroresPlan, type EstadoPlanProyecto, type FaseEditable, type PlanProyecto,
 } from '../../proyectos/plan';
@@ -290,7 +290,7 @@ export function PaginaPlanTrabajo() {
                 error={erroresCotizacion.fechaEstimadaEntrega}
               >
                 <input
-                  type="date" min={sumarDiasIso(plan.fechaInicio, 14)} max="2028-12-31" value={cotizacion.entrega}
+                  type="date" min={sumarDiasIso(plan.fechaInicio, 14)} max={ultimaFechaDeEntrega()} value={cotizacion.entrega}
                   onChange={(e) => cambiarCotizacion({ entrega: e.target.value })}
                 />
               </Campo>

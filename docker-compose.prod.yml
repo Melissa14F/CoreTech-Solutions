@@ -1,0 +1,79 @@
+# Producción y pruebas locales con HTTPS (P25, RNF-05, RNF-09, RNF-11): nginx + api + db + volumen de archivos.
+# Uso desde prototipo/:  docker compose -f docker-compose.prod.yml up -d --build
+# Los secretos salen de prototipo/.env (plantilla: .env.example). No hay Mailpit: los correos salen por Gmail (D-51).
+# Antes de la primera vez: bash scripts/certificado-local.sh   (o copia tu certificado a nginx/certs/)
+name: coretech-prod
+
+services:
+  db:
+    image: postgres:15
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB: coretech
+      POSTGRES_USER: coretech
+      POSTGRES_PASSWORD: ${CORETECH_DB_CLAVE:?Falta CORETECH_DB_CLAVE en .env}
+      TZ: America/Bogota
+    volumes:
+      - datos_pg:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U coretech -d coretech"]
+      interval: 10s
+      timeout: 5s
+      retries: 6
+    # Sin "ports": la base no se abre fuera de la red interna de Docker.
+
+  api:
+    build: ./backend
+    restart: unless-stopped
+    depends_on:
+      db:
+        condition: service_healthy
+    environment:
+      SPRING_PROFILES_ACTIVE: prod
+      SPRING_DATASOURCE_URL: jdbc:postgresql://db:5432/coretech
+      SPRING_DATASOURCE_USERNAME: coretech
+      SPRING_DATASOURCE_PASSWORD: ${CORETECH_DB_CLAVE}
+      CORETECH_SESION_SECRETO: ${CORETECH_SESION_SECRETO:?Falta CORETECH_SESION_SECRETO en .env}
+      CORETECH_CIFRADO_CLAVE: ${CORETECH_CIFRADO_CLAVE:?Falta CORETECH_CIFRADO_CLAVE en .env}
+      CORETECH_URL_PORTAL: ${CORETECH_URL_PORTAL:-https://localhost}
+      CORETECH_ORIGENES_PERMITIDOS: ${CORETECH_ORIGENES_PERMITIDOS:-${CORETECH_URL_PORTAL:-https://localhost}}
+      CORETECH_GOOGLE_ID: ${CORETECH_GOOGLE_ID:-}
+      CORETECH_GOOGLE_SECRETO: ${CORETECH_GOOGLE_SECRETO:-}
+      CORETECH_MICROSOFT_ID: ${CORETECH_MICROSOFT_ID:-}
+      CORETECH_MICROSOFT_SECRETO: ${CORETECH_MICROSOFT_SECRETO:-}
+      CORETECH_CORREO_DESTINOS_PERMITIDOS: ${CORETECH_CORREO_DESTINOS_PERMITIDOS:-}
+      CORETECH_CORREO_DESTINOS_BLOQUEADOS: ${CORETECH_CORREO_DESTINOS_BLOQUEADOS:-}
+      TZ: America/Bogota
+    volumes:
+      - archivos:/datos/archivos
+    healthcheck:
+      # GET, no HEAD: un HEAD a un endpoint público responde 401 (ver notas de P24)
+      test: ["CMD-SHELL", "wget -q -O /dev/null http://localhost:8080/api/v1/servicios || exit 1"]
+      interval: 15s
+      timeout: 5s
+      retries: 8
+      start_period: 60s
+    # Sin "ports": solo Nginx habla con la API.
+
+  nginx:
+    build:
+      context: .
+      dockerfile: nginx/Dockerfile
+    restart: unless-stopped
+    depends_on:
+      api:
+        condition: service_healthy
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ./nginx/certs:/etc/nginx/certs:ro
+    healthcheck:
+      test: ["CMD-SHELL", "wget -q -O /dev/null http://127.0.0.1/salud || exit 1"]
+      interval: 15s
+      timeout: 5s
+      retries: 5
+
+volumes:
+  datos_pg:
+  archivos:

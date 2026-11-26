@@ -30,7 +30,7 @@ const CAMPOS: Record<string, string> = {
   servicio: 'Servicio', fases: 'Fases', nombresFases: 'Nombres de las fases', pasos: 'Pasos',
   fasesQueApruebaElCliente: 'Fases que aprueba el cliente',
   alcance: 'Alcance', cita: 'Cita de origen', equipo: 'Equipo', fechaInicio: 'Fecha de inicio', fechaEstimadaEntrega: 'Entrega estimada',
-  estadoPlan: 'Estado del plan', motivo: 'Motivo', fasesDelPlan: 'Fases del plan', cambioDeFechaAutorizado: 'Cambio de entrega propuesto al cliente',
+  solicitud: 'Acción que intentó', estadoPlan: 'Estado del plan', motivo: 'Motivo', fasesDelPlan: 'Fases del plan', cambioDeFechaAutorizado: 'Cambio de entrega propuesto al cliente',
 };
 
 /** "descripcionCorta" → "Descripcion corta" cuando el campo no está en la lista. */
