@@ -1,0 +1,76 @@
+%% Diagrama de secuencia full stack · Agendar una cita (HU-01, RN-01 a RN-03)
+%% Código: PaginaAgendar (React) → ControladorCitas → ServicioCitas → CitaRepositorio → PostgreSQL
+sequenceDiagram
+    autonumber
+    actor C as Cliente
+    participant UI as SPA React<br/>(PaginaAgendar)
+    participant F as FiltroOrigen / FiltroSesion
+    participant Ctl as ControladorCitas
+    participant Svc as ServicioCitas
+    participant Disp as ServicioDisponibilidad
+    participant Repo as CitaRepositorio<br/>(Spring Data JPA)
+    participant DB as PostgreSQL
+    participant Ev as Eventos de Spring<br/>(AvisoSolicitado)
+
+    C->>UI: Elige servicio, franja, modalidad y describe su necesidad
+    UI->>F: POST /api/v1/citas (cookie de sesión, JSON)
+    alt Sin sesión válida
+        F-->>UI: 401 Unauthorized
+    else Origin no permitido
+        F-->>UI: 403 Forbidden
+    else Sesión válida
+        F->>Ctl: petición autenticada
+        Note over Ctl: @PreAuthorize("@permisos.tiene('citas.agendar')")
+        alt Sin el permiso citas.agendar
+            Ctl-->>UI: 403 Forbidden (queda en auditoría)
+        else Con permiso
+            Ctl->>Svc: agendar(clienteId, DatosCita)
+            Note over Svc: @Transactional
+            Svc->>Svc: valida campos (Acumulador)
+            alt Datos inválidos (descripción < 20, zona o fecha mal formada)
+                Svc-->>Ctl: ValidacionException
+                Ctl-->>UI: 422 Unprocessable Entity {errores:[{campo, mensaje}]}
+            else Datos válidos
+                Svc->>Svc: catalogo.nombreSiVisible(servicioId)
+                alt Servicio oculto o inexistente
+                    Svc-->>UI: 404 "Este servicio ya no está disponible"
+                else Servicio visible
+                    Svc->>Disp: esFranjaAgendable(inicio)
+                    Disp-->>Svc: false si es festivo, fin de semana, fuera de +24 h / +30 días
+                    alt Franja fuera de las reglas (RN-01)
+                        Svc-->>UI: 422 {fechaHora: "fuera de horario"}
+                    else Franja agendable
+                        Svc->>Repo: clienteTieneCita(clienteId, inicio)
+                        Repo->>DB: SELECT ...
+                        DB-->>Repo: resultado
+                        Svc->>Repo: franjaOcupada(inicio)
+                        Repo->>DB: SELECT ...
+                        DB-->>Repo: resultado
+                        alt El cliente ya tiene cita a esa hora o la franja está ocupada (RN-02, RN-03)
+                            Svc-->>UI: 409 Conflict {fechaHora: "La hora ya no está disponible"}
+                        else Libre
+                            Svc->>Repo: saveAndFlush(Cita PENDIENTE)
+                            Repo->>DB: INSERT INTO citas
+                            alt Otro cliente tomó la franja en el mismo instante
+                                DB-->>Repo: 23505 viola ux_cita_franja
+                                Repo-->>Svc: DataIntegrityViolationException
+                                Note over Svc,UI: TraductorErroresBaseDatos (ManejadorGlobalErrores)
+                                Svc-->>UI: 409 Conflict (transacción revertida)
+                            else Inserción correcta
+                                DB-->>Repo: fila creada
+                                Svc->>DB: RegistroAuditoria (misma transacción)
+                                Svc->>Ev: publishEvent(AvisoSolicitado CITA_REGISTRADA)
+                                opt Al confirmar la transacción
+                                    Ev->>DB: INSERT notificaciones (BEFORE_COMMIT)
+                                    Ev-->>Ev: correo asíncrono (EnvioInmediato, 3 reintentos)
+                                end
+                                Svc-->>Ctl: CitaConServicio
+                                Ctl-->>UI: 201 Created (DtoCitas.CitaCreada)
+                                UI-->>C: "Registramos tu cita C-0064"
+                            end
+                        end
+                    end
+                end
+            end
+        end
+    end

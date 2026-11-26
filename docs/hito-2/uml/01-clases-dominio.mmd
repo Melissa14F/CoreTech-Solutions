@@ -1,0 +1,330 @@
+%% Diagrama de clases de dominio · CoreTech Solutions (Parcial 2)
+%% Fuente: tablas de db/coretech_solutions.sql y entidades de prototipo/backend (paquetes domain/).
+%% Cardinalidades: uno a uno (Cita y CuestionarioCita), uno a muchos (Proyecto y ProyectoFase) y muchos a muchos (Rol y Permiso, tabla rol_permisos).
+classDiagram
+    direction LR
+
+    %% ---------- Acceso y seguridad
+    class Rol {
+        <<entity>>
+        +Short id
+        +String codigo
+        +String nombre
+    }
+    class Permiso {
+        +Short id
+        +String codigo
+        +String modulo
+        +String descripcion
+    }
+    class Usuario {
+        <<entity>>
+        +UUID id
+        +String nombre
+        +String email
+        +String celular
+        +String empresa
+        +String passwordHash
+        +boolean activo
+        +short intentosFallidos
+        +Instant bloqueadoHasta
+        +int versionSesion
+        +registrarIntentoFallido(ahora) boolean
+        +estaBloqueada(ahora) boolean
+        +cambiarPassword(hash, ahora)
+        +anonimizar(...)
+    }
+    class TokenRecuperacion {
+        <<entity>>
+        +UUID id
+        +String tokenHash
+        +Instant expiraEn
+        +Instant usadoEn
+        +esValido(ahora) boolean
+        +usar(ahora)
+    }
+    class CuentaExterna {
+        <<entity>>
+        +UUID id
+        +ProveedorExterno proveedor
+        +String sujeto
+        +String email
+        +Instant ultimoIngresoEn
+    }
+    class ProveedorExterno {
+        <<enumeration>>
+        GOOGLE
+        MICROSOFT
+    }
+    class SesionCerrada {
+        <<entity>>
+        +UUID jti
+        +Instant expiraEn
+    }
+    class Auditoria {
+        +Long id
+        +String categoria
+        +String accion
+        +String entidad
+        +String entidadId
+        +String cambios
+        +Instant creadoEn
+    }
+
+    %% ---------- Catálogo y agenda
+    class Servicio {
+        <<entity>>
+        +UUID id
+        +String nombre
+        +String slug
+        +short orden
+        +boolean visible
+        +cambiarVisibilidad(visible, ahora)
+    }
+    class PlantillaFase {
+        +UUID id
+        +short orden
+        +String nombre
+        +boolean apruebaCliente
+    }
+    class PlantillaPaso {
+        +UUID id
+        +short orden
+        +String titulo
+        +String explicacion
+    }
+    class Cita {
+        <<entity>>
+        +UUID id
+        +String codigo
+        +Instant fechaHora
+        +Modalidad modalidad
+        +EstadoCita estado
+        +String zonaHoraria
+        +cancelar(quien, motivo, ahora)
+        +confirmar(enlace, nota, ahora)
+        +atender(ahora)
+        +asignar(equipo, nota, ahora)
+    }
+    class CuestionarioCita {
+        +UUID id
+        +String resumen
+        +String descripcionCliente
+        +RangoPresupuesto presupuesto
+        +Urgencia urgencia
+    }
+    class EstadoCita {
+        <<enumeration>>
+        PENDIENTE
+        CONFIRMADA
+        ATENDIDA
+        CANCELADA
+    }
+    class Modalidad {
+        <<enumeration>>
+        PRESENCIAL
+        VIRTUAL
+    }
+    class HorarioLaboral {
+        +short diaSemana
+        +LocalTime horaInicio
+        +LocalTime horaFin
+    }
+    class DiaNoHabil {
+        +LocalDate fecha
+        +String motivo
+    }
+
+    %% ---------- Especialidad
+    class Equipo {
+        +UUID id
+        +short maxProyectos
+        +boolean activo
+    }
+    class Desarrollador {
+        +UUID id
+        +String nombre
+        +Especialidad especialidad
+        +boolean activo
+    }
+
+    %% ---------- Proyectos, plan y seguimiento
+    class Proyecto {
+        <<entity>>
+        +UUID id
+        +String codigo
+        +String nombre
+        +EstadoProyecto estado
+        +EstadoPlan estadoPlan
+        +BigDecimal valorCotizado
+        +BigDecimal avancePorcentaje
+        +LocalDate fechaEstimadaEntrega
+        +int version
+        +nuevo(...) Proyecto
+    }
+    class EstadoProyecto {
+        <<enumeration>>
+        ACTIVO
+        PAUSADO
+        EN_GARANTIA
+        FINALIZADO
+        CANCELADO
+    }
+    class EstadoPlan {
+        <<enumeration>>
+        BORRADOR
+        ENVIADO
+        AJUSTES_PEDIDOS
+        APROBADO
+        VENCIDO
+        RECHAZADO
+    }
+    class ProyectoFase {
+        <<entity>>
+        +UUID id
+        +short orden
+        +String nombre
+        +boolean apruebaCliente
+        +EstadoFase estado
+        +short rondasAjusteUsadas
+    }
+    class EstadoFase {
+        <<enumeration>>
+        PENDIENTE
+        EN_CURSO
+        EN_REVISION
+        APROBADA
+        EN_CORRECCION
+        QUITADA
+    }
+    class Paso {
+        <<entity>>
+        +UUID id
+        +short orden
+        +TipoPaso tipo
+        +String titulo
+        +EstadoPaso estado
+        +String nota
+    }
+    class TipoPaso {
+        <<enumeration>>
+        PASO
+        CORRECCION
+        AJUSTE
+        ALCANCE
+    }
+    class AdjuntoPaso {
+        +UUID id
+        +String url
+        +String tipoMime
+        +int tamanoBytes
+    }
+    class RespuestaPlan {
+        +UUID id
+        +TipoRespuestaPlan respuesta
+        +String comentario
+    }
+    class SolicitudCambio {
+        +UUID id
+        +TipoPaso tipo
+        +String descripcion
+        +EstadoCambio estado
+        +BigDecimal costo
+    }
+    class CambioPlan {
+        <<entity>>
+        +UUID id
+        +TipoCambioPlan tipo
+        +EstadoCambioPlan estado
+        +BigDecimal valorAdicional
+        +LocalDate nuevaFechaEntrega
+        +proponer(...) CambioPlan
+    }
+    class TipoCambioPlan {
+        <<enumeration>>
+        AGREGAR_FASE
+        QUITAR_FASE
+        CAMBIAR_FECHA
+        QUITAR_PASO
+        AGREGAR_ALCANCE
+    }
+    class EstadoCambioPlan {
+        <<enumeration>>
+        PROPUESTO
+        AUTORIZADO
+        ACEPTADO
+        RECHAZADO_ADMIN
+        RECHAZADO_CLIENTE
+    }
+
+    %% ---------- Comunicación
+    class Mensaje {
+        +UUID id
+        +String contenido
+        +Instant creadoEn
+    }
+    class SolicitudReunion {
+        +UUID id
+        +String codigo
+        +EstadoSolicitudReunion estado
+    }
+    class Notificacion {
+        <<entity>>
+        +UUID id
+        +String tipo
+        +String titulo
+        +boolean leida
+        +boolean enviadaEmail
+        +short intentosEnvio
+        +marcarLeida()
+    }
+    class ContenidoSitio {
+        <<entity>>
+        +String clave
+        +String valor
+        +publicar(valor, usuario, ahora)
+    }
+
+    %% ---------- Relaciones: acceso
+    Rol "1" <-- "0..*" Usuario : tiene rol (LAZY)
+    Rol "0..*" -- "0..*" Permiso : rol_permisos N a M
+    Usuario "1" --> "0..*" TokenRecuperacion : genera
+    Usuario "1" --> "0..2" CuentaExterna : se vincula (LAZY)
+    Usuario "0..1" --> "0..*" Auditoria : actor
+    CuentaExterna ..> ProveedorExterno
+    Usuario "1" --> "0..*" Notificacion : recibe
+    Usuario "0..1" --> "0..*" ContenidoSitio : actualiza
+
+    %% ---------- Relaciones: catálogo y agenda
+    Servicio "1" --> "2..8" PlantillaFase : plantilla
+    PlantillaFase "1" *-- "1..12" PlantillaPaso : pasos
+    Usuario "1" --> "0..*" Cita : agenda (cliente)
+    Servicio "1" --> "0..*" Cita : se solicita en
+    Equipo "1" --> "0..*" Cita : atiende
+    Cita "1" -- "0..1" CuestionarioCita : cuestionario uno a uno
+    Cita ..> EstadoCita
+    Cita ..> Modalidad
+
+    %% ---------- Relaciones: especialidad
+    Equipo "1" --> "1..*" Desarrollador : integrantes
+    Desarrollador "0..1" -- "1" Usuario : cuenta del Product Owner
+
+    %% ---------- Relaciones: proyectos
+    Cita "1" --> "0..1" Proyecto : origina uno a uno
+    Usuario "1" --> "0..*" Proyecto : es cliente de
+    Servicio "1" --> "0..*" Proyecto : tipo
+    Equipo "1" --> "0..3" Proyecto : ejecuta activos (RN-05)
+    Proyecto "1" *-- "2..8" ProyectoFase : plan de trabajo
+    ProyectoFase "1" *-- "1..12" Paso : contiene
+    Paso "1" --> "0..*" AdjuntoPaso : evidencia
+    Proyecto "1" --> "0..*" RespuestaPlan : respuestas del cliente
+    ProyectoFase "1" --> "0..*" SolicitudCambio : ajustes y alcance
+    Proyecto "1" --> "0..*" CambioPlan : cambios del plan
+    Proyecto "1" --> "0..*" Mensaje : conversación
+    Proyecto "1" --> "0..*" SolicitudReunion : reuniones
+    Proyecto ..> EstadoProyecto
+    Proyecto ..> EstadoPlan
+    ProyectoFase ..> EstadoFase
+    Paso ..> TipoPaso
+    CambioPlan ..> TipoCambioPlan
+    CambioPlan ..> EstadoCambioPlan

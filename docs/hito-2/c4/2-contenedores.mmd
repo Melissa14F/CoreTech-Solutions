@@ -1,0 +1,29 @@
+flowchart TB
+    Cliente(["<b>Cliente</b>"]):::person
+    PO(["<b>Desarrollador (Product Owner)</b>"]):::person
+    Admin(["<b>Administradora</b>"]):::person
+
+    subgraph CoreTech ["Portal CoreTech Solutions"]
+        SPA["<b>Aplicación web (SPA)</b><br/>React 18 + Vite<br/><i>Paneles de cliente, equipo y administración;<br/>diseño adaptable y accesible (WCAG 2.1 AA)</i>"]:::container
+        Proxy["<b>Proxy inverso</b><br/>Nginx<br/><i>HTTPS (TLS 1.2+); entrega los archivos<br/>de la SPA y enruta /api/v1 a la API</i>"]:::container
+        API["<b>API backend · monolito modular</b><br/>Java 17 + Spring Boot 3.5<br/><i>Reglas de negocio, seguridad por roles,<br/>tareas programadas y envío de correos</i>"]:::container
+        DB[("<b>Base de datos</b><br/>PostgreSQL 15<br/><i>Usuarios, citas, proyectos, planes, fases,<br/>pasos, notificaciones y auditoría</i>")]:::db
+        Archivos[("<b>Almacenamiento de archivos</b><br/>Volumen Docker<br/><i>Bocetos y adjuntos de los pasos</i>")]:::db
+    end
+
+    SMTP[["<b>Gmail API</b><br/>Correos del sistema (OAuth 2.0)"]]:::ext
+
+    Cliente -->|"Usa desde el navegador"| SPA
+    PO -->|"Usa desde el navegador"| SPA
+    Admin -->|"Usa desde el navegador"| SPA
+    SPA -->|"Peticiones REST / JSON sobre HTTPS<br/>/api/v1"| Proxy
+    Proxy -->|"Reenvía /api/v1"| API
+    API -->|"Lee y escribe · JPA / JDBC<br/>transacciones y disparadores"| DB
+    API -->|"Guarda y entrega adjuntos"| Archivos
+    API -->|"Envío asíncrono con reintentos (API de Gmail)"| SMTP
+
+    classDef person fill:#1E3A8A,color:#fff,stroke:#172554
+    classDef container fill:#2563EB,color:#fff,stroke:#1E3A8A
+    classDef db fill:#1D4ED8,color:#fff,stroke:#1E3A8A
+    classDef ext fill:#6B7280,color:#fff,stroke:#4B5563
+    style CoreTech fill:#EFF6FF,stroke:#2563EB,stroke-dasharray:6 4,color:#1E3A8A

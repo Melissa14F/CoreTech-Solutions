@@ -1,0 +1,22 @@
+flowchart TB
+    Cliente(["<b>Cliente</b><br/>Empresa que contrata un sistema nuevo"]):::person
+    PO(["<b>Desarrollador (Product Owner)</b><br/>Líder de un equipo de desarrollo"]):::person
+    Admin(["<b>Administradora</b><br/>Gestiona la operación de CoreTech"]):::person
+
+    Sistema["<b>Portal CoreTech Solutions</b><br/>Agenda citas, planifica y cotiza proyectos<br/>y muestra su avance por fases"]:::system
+
+    SMTP[["<b>Gmail API</b><br/>Correos del sistema (OAuth 2.0)"]]:::ext
+    Video[["<b>Servicio de videollamadas</b><br/>Google Meet / Zoom"]]:::ext
+    Pasarela[["<b>Pasarela de pagos</b><br/>PSE / tarjetas<br/><i>Alcance futuro: cobro de la cita</i>"]]:::future
+
+    Cliente -->|"Agenda citas, aprueba el plan y la cotización<br/>y sigue el avance de su proyecto"| Sistema
+    PO -->|"Atiende citas, arma el plan de trabajo<br/>y registra los pasos hechos"| Sistema
+    Admin -->|"Asigna citas, crea proyectos, configura<br/>servicios, plantillas y permisos"| Sistema
+    Sistema -->|"Envía correos a clientes y equipos<br/>en cada cambio de estado"| SMTP
+    Cliente -.->|"Se une a la reunión con el enlace<br/>que registra el Product Owner"| Video
+    Sistema -.->|"Cobrará la cita (futuro)"| Pasarela
+
+    classDef person fill:#1E3A8A,color:#fff,stroke:#172554
+    classDef system fill:#2563EB,color:#fff,stroke:#1E3A8A
+    classDef ext fill:#6B7280,color:#fff,stroke:#4B5563
+    classDef future fill:#F3F4F6,color:#374151,stroke:#6B7280,stroke-dasharray:5 4

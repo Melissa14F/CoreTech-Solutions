@@ -1,0 +1,36 @@
+%% Diagrama de despliegue · producción con Docker Compose (prototipo/docker-compose.prod.yml)
+flowchart TB
+    Navegador["<b>Dispositivo del usuario</b><br/>Navegador web<br/><i>SPA React 18 ejecutándose</i>"]:::cliente
+
+    subgraph VPS ["Nodo: servidor VPS (Linux) · Docker Engine + Docker Compose (proyecto coretech-prod)"]
+        direction TB
+        subgraph Red ["Red interna de Docker (sin puertos publicados salvo Nginx)"]
+            direction TB
+            Nginx["<b>Contenedor nginx</b><br/>Nginx<br/>Puertos 80 → 443 y 443<br/>TLS 1.2 / 1.3 · cabeceras de seguridad (CSP, HSTS)<br/>sirve la SPA compilada y enruta /api/v1"]:::cont
+            Api["<b>Contenedor api</b><br/>Java 17 + Spring Boot 3.5<br/>puerto interno 8080<br/>perfil prod · Flyway · Spring Security"]:::cont
+            Db[("<b>Contenedor db</b><br/>PostgreSQL 15<br/>puerto interno 5432")]:::db
+        end
+        VolPg[("Volumen datos_pg<br/>/var/lib/postgresql/data")]:::vol
+        VolArch[("Volumen archivos<br/>/datos/archivos (adjuntos)")]:::vol
+        Certs["Certificados TLS<br/>nginx/certs (solo lectura)"]:::vol
+    end
+
+    Gmail[["Gmail API<br/>(HTTPS, OAuth 2.0)"]]:::ext
+    Google[["Google / Microsoft<br/>(ingreso externo, OIDC)"]]:::ext
+
+    Navegador -->|"HTTPS 443"| Nginx
+    Nginx -->|"HTTP 8080 (red interna)"| Api
+    Api -->|"JDBC · PostgreSQL 5432"| Db
+    Db --- VolPg
+    Api --- VolArch
+    Nginx --- Certs
+    Api -->|"HTTPS · envío de correos"| Gmail
+    Api -->|"HTTPS · OAuth con PKCE"| Google
+
+    classDef cliente fill:#1E3A8A,color:#fff,stroke:#172554
+    classDef cont fill:#2563EB,color:#fff,stroke:#1E3A8A
+    classDef db fill:#1D4ED8,color:#fff,stroke:#1E3A8A
+    classDef vol fill:#E5E7EB,color:#111,stroke:#6B7280
+    classDef ext fill:#6B7280,color:#fff,stroke:#4B5563
+    style VPS fill:#F8FAFC,stroke:#2563EB,stroke-dasharray:6 4
+    style Red fill:#EFF6FF,stroke:#93C5FD

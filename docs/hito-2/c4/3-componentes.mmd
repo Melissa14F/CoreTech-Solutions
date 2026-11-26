@@ -1,0 +1,83 @@
+%% C4 nivel 3 · Componentes de la API backend, con los nombres reales del código (paquete co.coretech.portal)
+flowchart TB
+    SPA["<b>Aplicación web (SPA)</b><br/>React 18"]:::ext
+
+    subgraph API ["API backend · Spring Boot 3.5 · monolito modular (capas internas: controller → service → repository / domain)"]
+        Sec["<b>ConfiguracionSeguridad</b><br/>FiltroLimitePeticiones · FiltroOrigen · FiltroSesion<br/>JWT en cookie HttpOnly y @PreAuthorize por permiso<br/><i>RNF-01, RNF-10</i>"]:::comp
+
+        subgraph Acceso ["Módulo acceso"]
+            direction TB
+            AccCtl["<b>ControladorAutenticacion</b><br/><b>ControladorUsuarios · ControladorPermisos</b><br/><b>ControladorIngresoExterno</b><br/>/api/v1/auth · /usuarios"]:::ctrl
+            AccSrv["<b>ServicioAutenticacion · ServicioUsuarios</b><br/><b>ServicioRecuperacion · ServicioIngresoExterno</b><br/>BCrypt, bloqueo por intentos<br/><i>RN-18, RN-19, RN-22</i>"]:::srv
+            AccRepo["<b>UsuarioRepositorio · RolRepositorio</b><br/><b>CuentaExternaRepositorio</b><br/>JpaRepository"]:::repo
+            AccCtl --> AccSrv --> AccRepo
+        end
+
+        subgraph Agenda ["Módulo agenda"]
+            direction TB
+            CitCtl["<b>ControladorCitas</b><br/><b>ControladorGestionCitas</b><br/>/api/v1/citas"]:::ctrl
+            CitSrv["<b>ServicioCitas · ServicioGestionCitas</b><br/><b>ServicioDisponibilidad</b><br/>Franjas, estados, zona horaria<br/><i>RN-01 a RN-03, RN-11, RN-12, RN-23, RN-24</i>"]:::srv
+            CitRepo["<b>CitaRepositorio</b><br/>JpaRepository + JPQL"]:::repo
+            CitCtl --> CitSrv --> CitRepo
+        end
+
+        subgraph Proyectos ["Módulo proyectos"]
+            direction TB
+            PryCtl["<b>ControladorProyectos · ControladorPlan</b><br/><b>ControladorCambiosPlan</b><br/>/api/v1/proyectos"]:::ctrl
+            PrySrv["<b>ServicioProyectos · ServicioPlan</b><br/><b>ServicioCambiosPlan</b><br/>(+ ReglasProyecto · ReglasPlan · ReglasCambioPlan)<br/>Cupo, plan, cotización, cambios<br/><i>RN-04 a RN-06, RN-13, RN-27 a RN-30</i>"]:::srv
+            PryRepo["<b>ProyectoRepositorio · CambioPlanRepositorio</b><br/>JpaRepository (escrituras)<br/><b>ProyectosJdbc · PlanesJdbc · CambiosPlanJdbc</b><br/>JdbcTemplate (lecturas con JOIN)"]:::repo
+            PryCtl --> PrySrv --> PryRepo
+        end
+
+        subgraph Seguimiento ["Módulo seguimiento"]
+            direction TB
+            SegCtl["<b>ControladorPasos · ControladorFases</b><br/>/api/v1/pasos · /fases"]:::ctrl
+            SegSrv["<b>ServicioSeguimiento · ServicioFases</b> (+ ReglasFase)<br/>Pasos, correcciones, aprobación<br/><i>RN-07 a RN-09, RN-16, RN-17</i>"]:::srv
+            SegRepo["<b>SeguimientoJdbc</b><br/>JdbcTemplate"]:::repo
+            SegCtl --> SegSrv --> SegRepo
+        end
+
+        subgraph Catalogo ["Módulo catalogo"]
+            direction TB
+            CatCtl["<b>ControladorServicios</b><br/><b>ControladorContenido</b>"]:::ctrl
+            CatSrv["<b>ServicioCatalogo · ServicioContenido</b><br/><i>RN-21, RNF-06</i>"]:::srv
+            CatRepo["<b>ServicioRepositorio</b><br/><b>ContenidoRepositorio</b>"]:::repo
+            CatCtl --> CatSrv --> CatRepo
+        end
+
+        subgraph Comunicacion ["Módulo comunicacion"]
+            direction TB
+            ComSrv["<b>ServicioNotificaciones</b> · <b>AvisosDeAcceso</b><br/><b>ServicioMensajes · ServicioReuniones</b><br/>Escuchan <i>AvisoSolicitado</i> y guardan el aviso<br/><i>RNF-13</i>"]:::srv
+            ComEnvio["<b>EnvioInmediato · TareaEnvioCorreos</b><br/>Correo asíncrono con 3 reintentos"]:::comp
+            ComSrv --> ComEnvio
+        end
+
+        Tareas["<b>TareasPlan · TareasAcceso · TareasCatalogo</b><br/>@Scheduled: vencer planes, aprobar fases,<br/>cerrar garantías, limpiar datos"]:::comp
+        Sesiones["<b>SesionCerradaRepositorio</b><br/>Sesiones cerradas (JPA)"]:::repo
+        Audit["<b>RegistroAuditoria</b><br/>Dentro de la transacción del servicio<br/><i>RN-20, RNF-02</i>"]:::comp
+        Err["<b>ManejadorGlobalErrores</b><br/>@RestControllerAdvice + TraductorErroresBaseDatos<br/>404 · 403 · 409 · 422 · 423"]:::comp
+        Files["<b>AlmacenArchivos</b><br/>Adjuntos de los pasos"]:::comp
+        Correo["<b>ServidorCorreoEnrutado</b><br/>Gmail API o SMTP"]:::comp
+    end
+
+    DB[("<b>PostgreSQL 15</b><br/>Flyway · restricciones y disparadores")]:::db
+    Vol[("<b>Volumen de archivos</b>")]:::db
+    Gmail[["<b>Gmail API</b>"]]:::ext
+
+    SPA -->|"HTTPS / JSON"| Sec
+    Sec --> Acceso & Agenda & Proyectos & Seguimiento & Catalogo
+    Tareas --> Proyectos & Seguimiento & Acceso & Catalogo
+    Agenda & Proyectos & Seguimiento & Acceso -.->|"publishEvent(AvisoSolicitado)"| ComSrv
+    Acceso & Agenda & Proyectos & Seguimiento & Catalogo & Comunicacion -.-> Audit
+    Acceso & Agenda & Proyectos & Seguimiento & Catalogo & Comunicacion -.->|"excepciones"| Err
+    AccRepo & CitRepo & PryRepo & SegRepo & CatRepo & Audit & ComSrv -->|"JPA / JDBC"| DB
+    Seguimiento --> Files --> Vol
+    ComEnvio --> Correo -->|"HTTPS"| Gmail
+
+    classDef ctrl fill:#2563EB,color:#fff,stroke:#1E3A8A
+    classDef srv fill:#1E40AF,color:#fff,stroke:#172554
+    classDef repo fill:#0E7490,color:#fff,stroke:#164E63
+    classDef comp fill:#0F766E,color:#fff,stroke:#134E4A
+    classDef db fill:#1D4ED8,color:#fff,stroke:#1E3A8A
+    classDef ext fill:#6B7280,color:#fff,stroke:#4B5563
+    style API fill:#F8FAFC,stroke:#2563EB,stroke-dasharray:6 4,color:#1E3A8A
